@@ -1824,3 +1824,97 @@ footer {
     }
 
 }
+```css
+/* =========================================================
+   CONTACT ICON - UKURAN NORMAL
+========================================================= */
+
+.contact-icon {
+    width: 56px;
+    height: 56px;
+
+    min-width: 56px;
+    max-width: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    font-size: 0;
+}
+
+
+.contact-icon svg {
+    display: block;
+
+    width: 28px !important;
+    height: 28px !important;
+
+    min-width: 28px;
+    max-width: 28px;
+
+    min-height: 28px;
+    max-height: 28px;
+}
+
+
+/* Warna ikon */
+
+.whatsapp-icon {
+    background: #e5f8ed;
+    color: #25D366;
+}
+
+
+.instagram-icon {
+    background: #f8e8f1;
+    color: #d62976;
+}
+
+
+.tiktok-icon {
+    background: #eeeeee;
+    color: #111111;
+}
+
+
+.facebook-icon {
+    background: #e8f0ff;
+    color: #1877F2;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .contact-icon {
+        width: 52px;
+        height: 52px;
+
+        min-width: 52px;
+        max-width: 52px;
+
+        margin-bottom: 16px;
+    }
+
+
+    .contact-icon svg {
+        width: 26px !important;
+        height: 26px !important;
+
+        min-width: 26px;
+        max-width: 26px;
+
+        min-height: 26px;
+        max-height: 26px;
+    }
+
+}
+```
