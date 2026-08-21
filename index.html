@@ -157,541 +157,167 @@
         </section>
 
 
+<!-- =========================
+     CALCULATOR PREVIEW
+========================= -->
 
-        <!-- =========================
-             KALKULATOR
-        ========================== -->
+<section class="section calculator-preview">
 
-        <section
-            id="kalkulator"
-            class="section"
+    <div class="section-heading">
+
+        <p class="section-label">
+            HEALTH CALCULATOR
+        </p>
+
+        <h2>
+            Kenali kebutuhan tubuhmu
+        </h2>
+
+        <p>
+            Gunakan kalkulator kesehatan Klinik Putra Medika
+            untuk mendapatkan estimasi BMI, kebutuhan energi
+            dan kebutuhan makronutrien harian.
+        </p>
+
+    </div>
+
+
+    <div class="calculator-preview-card">
+
+        <div>
+
+            <div class="card-icon">
+                🧮
+            </div>
+
+            <h3>
+                Kalkulator Kesehatan
+            </h3>
+
+            <p>
+                Hitung BMI, BMR, TDEE serta estimasi
+                kebutuhan kalori, protein, karbohidrat
+                dan lemak harian.
+            </p>
+
+        </div>
+
+
+        <a
+            href="kalkulator.html"
+            class="button primary"
         >
+            Buka Semua Kalkulator →
+        </a>
 
-            <div class="section-heading">
+    </div>
 
-                <p class="section-label">
-                    HEALTH CALCULATOR
-                </p>
+</section>
+<!-- =========================
+     EDUKASI & BERITA
+========================= -->
 
-                <h2>
-                    Kenali kebutuhan tubuhmu
-                </h2>
+<section class="section health-content">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            INFORMASI KESEHATAN
+        </p>
+
+        <h2>
+            Informasi untuk hidup lebih sehat
+        </h2>
+
+        <p>
+            Temukan edukasi kesehatan dan informasi
+            terbaru yang mudah dipahami.
+        </p>
+
+    </div>
+
+
+    <div class="health-content-grid">
+
+
+        <!-- EDUKASI -->
+
+        <article class="content-card">
+
+            <div class="content-card-icon">
+                🥗
+            </div>
+
+            <div>
+
+                <span class="content-category">
+                    EDUKASI
+                </span>
+
+                <h3>
+                    Panduan pola makan seimbang
+                </h3>
 
                 <p>
-                    Gunakan kalkulator sederhana
-                    berikut sebagai informasi awal.
+                    Pelajari dasar pola makan seimbang,
+                    pentingnya protein, sayur, buah dan
+                    sumber energi dalam kehidupan sehari-hari.
                 </p>
 
-            </div>
-
-
-            <div class="calculator-grid">
-
-
-                <!-- BMI -->
-
-                <article class="calculator-card">
-
-                    <div class="card-icon">
-                        ⚖️
-                    </div>
-
-                    <h3>
-                        BMI Calculator
-                    </h3>
-
-                    <p>
-                        Menghitung indeks massa tubuh
-                        berdasarkan berat dan tinggi badan.
-                    </p>
-
-                    <a
-                        href="#bmi"
-                        class="card-link"
-                    >
-                        Hitung BMI →
-                    </a>
-
-                </article>
-
-
-
-                <!-- BMR -->
-
-                <article class="calculator-card">
-
-                    <div class="card-icon">
-                        🔥
-                    </div>
-
-                    <h3>
-                        BMR & TDEE
-                    </h3>
-
-                    <p>
-                        Estimasi kebutuhan energi tubuh
-                        berdasarkan karakteristik dan
-                        tingkat aktivitas.
-                    </p>
-
-                    <a
-                        href="#bmr"
-                        class="card-link"
-                    >
-                        Hitung BMR →
-                    </a>
-
-                </article>
-
-
-
-                <!-- MAKRO -->
-
-                <article class="calculator-card">
-
-                    <div class="card-icon">
-                        🍽️
-                    </div>
-
-                    <h3>
-                        Kalori & Makro
-                    </h3>
-
-                    <p>
-                        Hitung kebutuhan kalori, protein,
-                        lemak, dan karbohidrat berdasarkan
-                        kondisi tubuh dan tujuan.
-                    </p>
-
-                    <a
-                        href="#makro"
-                        class="card-link"
-                    >
-                        Hitung Makro →
-                    </a>
-
-                </article>
+                <a
+                    href="edukasi.html"
+                    class="card-link"
+                >
+                    Baca Edukasi →
+                </a>
 
             </div>
 
-        </section>
+        </article>
 
 
 
-        <!-- =========================
-             BMI
-        ========================== -->
+        <!-- BERITA -->
 
-        <section
-            id="bmi"
-            class="calculator-section"
-        >
+        <article class="content-card">
 
-            <div class="calculator-container">
+            <div class="content-card-icon">
+                📰
+            </div>
 
-                <div>
+            <div>
 
-                    <p class="section-label">
-                        BMI CALCULATOR
-                    </p>
+                <span class="content-category">
+                    BERITA KESEHATAN
+                </span>
 
-                    <h2>
-                        Hitung Body Mass Index
-                    </h2>
+                <h3>
+                    Informasi kesehatan terbaru
+                </h3>
 
-                    <p>
-                        Masukkan berat dan tinggi badan
-                        untuk mendapatkan estimasi BMI.
-                    </p>
+                <p>
+                    Dapatkan informasi dan berita seputar
+                    kesehatan yang disajikan secara sederhana
+                    dan mudah dipahami masyarakat.
+                </p>
 
-                </div>
-
-
-                <div class="form-card">
-
-                    <label for="weight">
-                        Berat badan (kg)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="weight"
-                        placeholder="Contoh: 70"
-                        min="1"
-                        step="0.1"
-                    >
-
-
-                    <label for="height">
-                        Tinggi badan (cm)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="height"
-                        placeholder="Contoh: 170"
-                        min="1"
-                        step="0.1"
-                    >
-
-
-                    <button onclick="calculateBMI()">
-                        Hitung BMI
-                    </button>
-
-
-                    <div
-                        id="bmiResult"
-                        class="result"
-                    >
-
-                        <div class="result-placeholder">
-                            Hasil perhitungan BMI akan muncul di sini.
-                        </div>
-
-                    </div>
-
-                </div>
+                <a
+                    href="berita.html"
+                    class="card-link"
+                >
+                    Lihat Berita →
+                </a>
 
             </div>
 
-        </section>
+        </article>
 
 
+    </div>
 
-        <!-- =========================
-             BMR & TDEE
-        ========================== -->
+</section>
 
-        <section
-            id="bmr"
-            class="calculator-section white"
-        >
-
-            <div class="calculator-container">
-
-                <div>
-
-                    <p class="section-label">
-                        BMR & TDEE
-                    </p>
-
-                    <h2>
-                        Ketahui kebutuhan energi tubuh
-                    </h2>
-
-                    <p>
-                        Masukkan data dasar dan tingkat aktivitas
-                        untuk mendapatkan estimasi BMR dan TDEE.
-                    </p>
-
-                    <p class="calculator-note">
-                        Kalkulator ini ditujukan untuk orang dewasa.
-                        Hasil merupakan estimasi dan bukan pengganti
-                        pemeriksaan atau konsultasi medis.
-                    </p>
-
-                </div>
-
-
-                <div class="form-card">
-
-
-                    <label for="gender">
-                        Jenis kelamin
-                    </label>
-
-                    <select id="gender">
-
-                        <option value="male">
-                            Pria
-                        </option>
-
-                        <option value="female">
-                            Wanita
-                        </option>
-
-                    </select>
-
-
-
-                    <label for="age">
-                        Umur (tahun)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="age"
-                        placeholder="Contoh: 25"
-                        min="18"
-                        max="120"
-                        step="1"
-                    >
-
-
-
-                    <label for="weightBMR">
-                        Berat badan (kg)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="weightBMR"
-                        placeholder="Contoh: 70"
-                        min="1"
-                        step="0.1"
-                    >
-
-
-
-                    <label for="heightBMR">
-                        Tinggi badan (cm)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="heightBMR"
-                        placeholder="Contoh: 170"
-                        min="1"
-                        step="0.1"
-                    >
-
-
-
-                    <label for="activity">
-                        Tingkat aktivitas
-                    </label>
-
-                    <select id="activity">
-
-                        <option value="1.2">
-                            Sedentary — sangat sedikit aktivitas
-                        </option>
-
-                        <option value="1.375">
-                            Light — olahraga ringan 1–3 hari/minggu
-                        </option>
-
-                        <option value="1.55">
-                            Moderate — olahraga sedang 3–5 hari/minggu
-                        </option>
-
-                        <option value="1.725">
-                            Active — olahraga berat 6–7 hari/minggu
-                        </option>
-
-                        <option value="1.9">
-                            Very Active — aktivitas fisik sangat tinggi
-                        </option>
-
-                    </select>
-
-
-                    <p class="activity-note">
-                        Pilih tingkat aktivitas yang paling mendekati
-                        rutinitas harian Anda.
-                    </p>
-
-
-                    <button onclick="calculateTDEE()">
-                        Hitung BMR & TDEE
-                    </button>
-
-
-                    <div
-                        id="tdeeResult"
-                        class="result"
-                    >
-
-                        <div class="result-placeholder">
-                            Hasil BMR dan TDEE akan muncul di sini.
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             KALKULATOR MAKRO
-        ========================== -->
-
-        <section
-            id="makro"
-            class="calculator-section"
-        >
-
-            <div class="calculator-container">
-
-                <div>
-
-                    <p class="section-label">
-                        CALORIE & MACRO CALCULATOR
-                    </p>
-
-                    <h2>
-                        Hitung kebutuhan kalori & makro
-                    </h2>
-
-                    <p>
-                        Masukkan data tubuh, aktivitas,
-                        dan tujuan untuk mendapatkan estimasi
-                        kebutuhan kalori, protein, lemak,
-                        dan karbohidrat harian.
-                    </p>
-
-                    <p class="calculator-note">
-                        Hasil merupakan estimasi untuk tujuan
-                        edukasi dan dapat berbeda pada setiap individu.
-                    </p>
-
-                </div>
-
-
-                <div class="form-card">
-
-
-                    <label for="macroGender">
-                        Jenis kelamin
-                    </label>
-
-                    <select id="macroGender">
-
-                        <option value="male">
-                            Pria
-                        </option>
-
-                        <option value="female">
-                            Wanita
-                        </option>
-
-                    </select>
-
-
-
-                    <label for="macroAge">
-                        Umur (tahun)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="macroAge"
-                        placeholder="Contoh: 25"
-                        min="18"
-                        max="120"
-                        step="1"
-                    >
-
-
-
-                    <label for="macroWeight">
-                        Berat badan (kg)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="macroWeight"
-                        placeholder="Contoh: 70"
-                        min="1"
-                        step="0.1"
-                    >
-
-
-
-                    <label for="macroHeight">
-                        Tinggi badan (cm)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="macroHeight"
-                        placeholder="Contoh: 170"
-                        min="1"
-                        step="0.1"
-                    >
-
-
-
-                    <label for="macroActivity">
-                        Tingkat aktivitas
-                    </label>
-
-                    <select id="macroActivity">
-
-                        <option value="1.2">
-                            Sedentary — sangat sedikit aktivitas
-                        </option>
-
-                        <option value="1.375">
-                            Light — olahraga ringan 1–3 hari/minggu
-                        </option>
-
-                        <option value="1.55">
-                            Moderate — olahraga sedang 3–5 hari/minggu
-                        </option>
-
-                        <option value="1.725">
-                            Active — olahraga berat 6–7 hari/minggu
-                        </option>
-
-                        <option value="1.9">
-                            Very Active — aktivitas fisik sangat tinggi
-                        </option>
-
-                    </select>
-
-
-
-                    <label for="macroGoal">
-                        Tujuan
-                    </label>
-
-                    <select id="macroGoal">
-
-                        <option value="maintenance">
-                            Menjaga berat badan
-                        </option>
-
-                        <option value="fatloss">
-                            Menurunkan berat badan
-                        </option>
-
-                        <option value="muscle">
-                            Meningkatkan massa otot
-                        </option>
-
-                    </select>
-
-
-
-                    <button onclick="calculateMacros()">
-                        Hitung Kebutuhan Makro
-                    </button>
-
-
-
-                    <div
-                        id="macroResult"
-                        class="result"
-                    >
-
-                        <div class="result-placeholder">
-                            Hasil kebutuhan kalori dan makro
-                            akan muncul di sini.
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
+        
 
 
 
