@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
-    <rect width="800" height="450" fill="#e8f5f2"></rect>
-    <circle cx="400" cy="225" r="120" fill="#ffffff"></circle>
-    <rect x="365" y="145" width="70" height="160" rx="10" fill="#2a9d8f"></rect>
-    <rect x="320" y="190" width="160" height="70" rx="10" fill="#2a9d8f"></rect>
-    <text x="400" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#264653">
-        Informasi Kesehatan
-    </text>
-</svg>
