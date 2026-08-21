@@ -14,7 +14,9 @@ function calculateBMI() {
         document.getElementById("bmiResult");
 
 
-    // Validasi input
+    // =========================
+    // VALIDASI
+    // =========================
 
     if (
         !weight ||
@@ -23,10 +25,12 @@ function calculateBMI() {
         height <= 0
     ) {
 
-        result.className = "result result-error";
+        result.className =
+            "result result-error";
 
         result.innerHTML = `
             <strong>Data belum lengkap</strong>
+
             <p>
                 Silakan masukkan berat dan tinggi
                 badan yang valid.
@@ -37,20 +41,21 @@ function calculateBMI() {
     }
 
 
-    // Konversi tinggi dari cm menjadi meter
+    // =========================
+    // HITUNG BMI
+    // =========================
 
     const heightMeter =
         height / 100;
-
-
-    // Rumus BMI
 
     const bmi =
         weight /
         (heightMeter * heightMeter);
 
 
-    // Menentukan kategori
+    // =========================
+    // KATEGORI BMI
+    // =========================
 
     let category;
     let description;
@@ -64,7 +69,8 @@ function calculateBMI() {
         description =
             "BMI berada di bawah rentang berat badan sehat.";
 
-        resultClass = "result-underweight";
+        resultClass =
+            "result-underweight";
 
 
     } else if (bmi < 25) {
@@ -74,7 +80,8 @@ function calculateBMI() {
         description =
             "BMI berada dalam rentang berat badan sehat.";
 
-        resultClass = "result-normal";
+        resultClass =
+            "result-normal";
 
 
     } else if (bmi < 30) {
@@ -82,24 +89,84 @@ function calculateBMI() {
         category = "Overweight";
 
         description =
-            "BMI berada di atas rentang berat badan sehat.";
+            "BMI berada pada kategori overweight.";
 
-        resultClass = "result-overweight";
+        resultClass =
+            "result-overweight";
+
+
+    } else if (bmi < 35) {
+
+        category = "Obesity Class I";
+
+        description =
+            "BMI berada pada kategori obesitas kelas I.";
+
+        resultClass =
+            "result-obesity";
+
+
+    } else if (bmi < 40) {
+
+        category = "Obesity Class II";
+
+        description =
+            "BMI berada pada kategori obesitas kelas II.";
+
+        resultClass =
+            "result-obesity";
 
 
     } else {
 
-        category = "Obesity";
+        category = "Obesity Class III";
 
         description =
-            "BMI berada pada kategori obesitas.";
+            "BMI berada pada kategori obesitas kelas III.";
 
-        resultClass = "result-obesity";
+        resultClass =
+            "result-obesity";
 
     }
 
 
-    // Menampilkan hasil
+    // =========================
+    // POSISI INDIKATOR
+    // =========================
+
+    let indicatorPosition;
+
+
+    if (bmi < 18.5) {
+
+        indicatorPosition = 10;
+
+    } else if (bmi < 25) {
+
+        indicatorPosition = 30;
+
+    } else if (bmi < 30) {
+
+        indicatorPosition = 50;
+
+    } else if (bmi < 35) {
+
+        indicatorPosition = 65;
+
+    } else if (bmi < 40) {
+
+        indicatorPosition = 80;
+
+    } else {
+
+        indicatorPosition = 95;
+
+    }
+
+
+    // =========================
+    // TAMPILKAN HASIL
+    // =========================
 
     result.className =
         `result ${resultClass}`;
@@ -111,13 +178,16 @@ function calculateBMI() {
             HASIL BMI
         </div>
 
+
         <div class="bmi-number">
             ${bmi.toFixed(1)}
         </div>
 
+
         <div class="bmi-category">
             ${category}
         </div>
+
 
         <div class="result-details">
 
@@ -133,17 +203,65 @@ function calculateBMI() {
 
         </div>
 
+
         <p class="result-description">
             ${description}
         </p>
 
+
+        <div class="bmi-scale">
+
+            <div class="scale-bar">
+
+                <div
+                    class="scale-indicator"
+                    style="left: ${indicatorPosition}%"
+                ></div>
+
+            </div>
+
+
+            <div class="scale-labels">
+
+                <span>
+                    < 18.5
+                </span>
+
+                <span>
+                    18.5–24.9
+                </span>
+
+                <span>
+                    25–29.9
+                </span>
+
+                <span>
+                    30–34.9
+                </span>
+
+                <span>
+                    35–39.9
+                </span>
+
+                <span>
+                    ≥40
+                </span>
+
+            </div>
+
+        </div>
+
+
         <div class="bmi-note">
+
             BMI merupakan alat skrining dan
             bukan diagnosis medis.
+
         </div>
 
     `;
 }
+
 
 
 
