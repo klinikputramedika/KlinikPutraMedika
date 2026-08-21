@@ -572,20 +572,91 @@ button:hover {
 /* CATATAN */
 
 .bmi-note {
-    margin-top: 15px;
+  /* =========================
+   BMI SCALE
+========================= */
 
-    padding-top: 12px;
+.bmi-scale {
+    margin-top: 22px;
+}
 
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+.scale-bar {
+    position: relative;
+
+    width: 100%;
+
+    height: 12px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            to right,
+
+            #d6aa16 0%,
+            #d6aa16 18%,
+
+            #16804b 18%,
+            #16804b 42%,
+
+            #e58b25 42%,
+            #e58b25 60%,
+
+            #d64545 60%,
+            #d64545 78%,
+
+            #8d2020 78%,
+            #8d2020 100%
+        );
+}
+
+
+.scale-indicator {
+
+    position: absolute;
+
+    top: 50%;
+
+    width: 20px;
+
+    height: 20px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 4px solid #18352a;
+
+    box-shadow:
+        0 2px 8px
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+.scale-labels {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 4px;
+
+    margin-top: 10px;
 
     color: #6c7971;
 
-    font-size: 12px;
+    font-size: 9px;
 
-    line-height: 1.5;
+    line-height: 1.2;
 
-    font-weight: 400;
+    text-align: center;
 }
+
 
 
 /* NORMAL */
