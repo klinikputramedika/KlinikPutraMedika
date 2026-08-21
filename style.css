@@ -1,6 +1,7 @@
+```css
 /* =========================================================
    KLINIK PUTRA MEDIKA
-   STYLE.CSS FINAL
+   MAIN WEBSITE STYLESHEET
 ========================================================= */
 
 
@@ -14,25 +15,45 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5faf7;
-    color: #18352a;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f7faf8;
+
+    color: #17231d;
+
     line-height: 1.6;
+
+    min-height: 100vh;
 }
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
 
 a {
     color: inherit;
     text-decoration: none;
 }
 
-img {
-    max-width: 100%;
-    display: block;
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
 }
 
 
@@ -41,91 +62,47 @@ img {
 ========================================================= */
 
 .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    width: 100%;
 
-    width: calc(100% - 40px);
-    max-width: 1250px;
+    min-height: 72px;
 
-    margin: 15px auto 0;
-    padding: 10px 12px;
+    padding: 0 6%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    background: rgba(255, 255, 255, 0.96);
+    gap: 30px;
 
-    border: 1px solid rgba(22, 128, 75, 0.10);
-    border-radius: 18px;
+    background: #ffffff;
 
-    box-shadow: 0 8px 30px rgba(24, 80, 48, 0.08);
+    border-bottom: 1px solid #e7eee9;
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
 }
 
 
 /* LOGO */
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 11px;
+    font-size: 21px;
 
-    padding: 7px 12px;
-
-    border-radius: 12px;
-
-    transition: 0.2s ease;
-}
-
-.logo:hover {
-    background: #f0f8f3;
-}
-
-.logo-icon {
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: linear-gradient(
-        135deg,
-        #16804b,
-        #20a461
-    );
-
-    color: white;
-
-    border-radius: 12px;
-
-    font-size: 23px;
     font-weight: 800;
 
-    box-shadow: 0 6px 15px rgba(22, 128, 75, 0.20);
+    color: #17231d;
+
+    white-space: nowrap;
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
 
-    color: #68766e;
-
-    font-size: 13px;
-    line-height: 1.1;
-}
-
-.logo-text strong {
-    margin-top: 3px;
-
-    color: #18352a;
-
-    font-size: 17px;
-    font-weight: 800;
+.logo span {
+    color: #16804b;
 }
 
 
@@ -133,1352 +110,699 @@ img {
 
 .navbar nav {
     display: flex;
+
     align-items: center;
 
-    gap: 5px;
-
-    padding: 5px;
-
-    background: #f5faf7;
-
-    border: 1px solid #e4eee8;
-    border-radius: 14px;
+    gap: 8px;
 }
 
+
 .navbar nav a {
-    position: relative;
+    display: inline-flex;
 
-    display: flex;
     align-items: center;
-    gap: 7px;
 
-    padding: 10px 15px;
+    justify-content: center;
 
-    color: #65736a;
+    min-height: 42px;
+
+    padding: 9px 15px;
 
     border-radius: 10px;
 
-    font-size: 13px;
-    font-weight: 700;
+    color: #526159;
 
-    transition: 0.2s ease;
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
-.nav-icon {
-    font-size: 15px;
-    opacity: 0.75;
-
-    transition: 0.2s ease;
-}
 
 .navbar nav a:hover {
+    background: #edf7f1;
+
     color: #16804b;
-    background: white;
-
-    transform: translateY(-1px);
-
-    box-shadow: 0 4px 12px rgba(24, 80, 48, 0.07);
 }
 
-.navbar nav a:hover .nav-icon {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-
-/* ACTIVE MENU */
 
 .navbar nav a.active {
-    color: white;
+    background: #16804b;
 
-    background: linear-gradient(
-        135deg,
-        #16804b,
-        #1d9659
-    );
-
-    box-shadow: 0 6px 15px rgba(22, 128, 75, 0.22);
-}
-
-.navbar nav a.active .nav-icon {
-    opacity: 1;
-}
-
-.navbar nav a.active::after {
-    content: "";
-
-    position: absolute;
-
-    bottom: 3px;
-    left: 50%;
-
-    width: 4px;
-    height: 4px;
-
-    transform: translateX(-50%);
-
-    background: white;
-    border-radius: 50%;
+    color: #ffffff;
 }
 
 
 /* =========================================================
-   GENERAL
+   MAIN
 ========================================================= */
 
 main {
-    overflow: hidden;
+    width: 100%;
 }
+
+
+/* =========================================================
+   GENERAL SECTION
+========================================================= */
 
 .section {
-    padding: 90px 6%;
+    width: 100%;
+
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    padding: 70px 6%;
 }
+
 
 .section-heading {
-    max-width: 700px;
-    margin-bottom: 45px;
+    max-width: 760px;
+
+    margin-bottom: 40px;
 }
 
-.section-label {
-    display: block;
 
-    color: #16804b;
+.section-heading h1 {
+    margin-bottom: 14px;
 
-    font-size: 13px;
-    font-weight: 800;
+    font-size: clamp(34px, 5vw, 52px);
 
-    letter-spacing: 1.5px;
+    line-height: 1.15;
+
+    color: #17231d;
 }
+
 
 .section-heading h2 {
-    margin-top: 10px;
+    margin-bottom: 12px;
 
-    font-size: 42px;
-    line-height: 1.15;
+    font-size: clamp(27px, 4vw, 38px);
+
+    line-height: 1.2;
+
+    color: #17231d;
 }
+
 
 .section-heading p {
-    margin-top: 12px;
-
-    color: #65736a;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    min-height: 85vh;
-
-    padding: 80px 6%;
-
-    display: grid;
-    grid-template-columns: 1.4fr 0.6fr;
-
-    gap: 60px;
-
-    align-items: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e5f6eb,
-            #ffffff
-        );
-}
-
-.hero-content {
-    max-width: 700px;
-}
-
-.badge {
-    display: inline-block;
-
-    padding: 8px 14px;
-
-    border-radius: 50px;
-
-    background: #d8f0e1;
-
-    color: #147545;
-
-    font-size: 12px;
-    font-weight: 800;
-}
-
-.hero h1 {
-    margin-top: 22px;
-
-    font-size: clamp(45px, 7vw, 78px);
-
-    line-height: 1.05;
-}
-
-.hero h1 span {
-    display: block;
-    color: #16804b;
-}
-
-.hero-content > p {
-    max-width: 620px;
-
-    margin-top: 25px;
-
-    color: #617168;
-
-    font-size: 18px;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 12px;
-
-    margin-top: 30px;
-}
-
-
-/* BUTTON */
-
-.button {
-    display: inline-block;
-
-    padding: 14px 22px;
-
-    border-radius: 10px;
-
-    font-weight: 700;
-
-    transition: 0.2s ease;
-}
-
-.button.primary {
-    background: #16804b;
-    color: white;
-}
-
-.button.primary:hover {
-    background: #11683d;
-    transform: translateY(-2px);
-}
-
-.button.secondary {
-    background: white;
-
-    color: #16804b;
-
-    border: 1px solid #cfe2d7;
-}
-
-.button.secondary:hover {
-    transform: translateY(-2px);
-
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-}
-
-
-/* HERO CARD */
-
-.hero-card {
-    padding: 35px;
-
-    background: white;
-
-    border-radius: 25px;
-
-    box-shadow: 0 20px 60px rgba(24, 80, 48, 0.12);
-}
-
-.heart {
-    width: 60px;
-    height: 60px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 20px;
-
-    background: #e4f6eb;
-
-    border-radius: 50%;
-
-    font-size: 25px;
-}
-
-.hero-card h3 {
-    margin-bottom: 10px;
-
-    font-size: 25px;
-}
-
-.hero-card p {
-    color: #64736a;
-}
-
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.intro {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
-
-    padding: 90px 6%;
-
-    background: white;
-}
-
-.intro h2 {
-    max-width: 500px;
-
-    margin-top: 10px;
-
-    font-size: 40px;
-    line-height: 1.15;
-}
-
-.intro > p {
-    max-width: 600px;
-
-    color: #637168;
-}
-
-
-/* =========================================================
-   CARDS
-========================================================= */
-
-.calculator-grid,
-.education-grid,
-.health-content-grid,
-.news-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-
-/* CALCULATOR CARD */
-
-.calculator-card {
-    padding: 30px;
-
-    background: white;
-
-    border: 1px solid #e4eee8;
-
-    border-radius: 18px;
-
-    transition: 0.2s ease;
-}
-
-.calculator-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
-}
-
-.card-icon {
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 20px;
-
-    background: #e5f6eb;
-
-    border-radius: 14px;
-
-    font-size: 24px;
-}
-
-.calculator-card h3 {
-    margin-bottom: 10px;
-
-    font-size: 24px;
-}
-
-.calculator-card p {
-    margin-bottom: 20px;
-
     color: #68766e;
-}
-
-.card-link {
-    color: #16804b;
-
-    font-weight: 800;
-}
-
-.card-link:hover {
-    color: #11683d;
-}
-
-
-/* =========================================================
-   CALCULATOR PAGE
-========================================================= */
-
-.calculator-page-header,
-.education-header,
-.news-header {
-    padding: 80px 6%;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e5f6eb,
-            #ffffff
-        );
-}
-
-.calculator-page-header h1,
-.education-header h1,
-.news-header h1 {
-    font-size: clamp(40px, 6vw, 65px);
-    line-height: 1.1;
-}
-
-.calculator-page-header > p,
-.education-header > p,
-.news-header > p {
-    max-width: 650px;
-
-    margin: 20px auto 0;
-
-    color: #637168;
-
-    font-size: 17px;
-}
-
-
-/* CALCULATOR SECTION */
-
-.calculator-section {
-    padding: 90px 6%;
-
-    background: #eaf7ef;
-}
-
-.calculator-section.white {
-    background: white;
-}
-
-.calculator-container {
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
-
-    align-items: start;
-}
-
-.calculator-container h2 {
-    margin-top: 10px;
-
-    font-size: 42px;
-    line-height: 1.15;
-}
-
-.calculator-container > div:first-child > p:last-child {
-    margin-top: 15px;
-
-    color: #65736a;
-}
-
-
-/* =========================================================
-   FORM
-========================================================= */
-
-.form-card {
-    padding: 30px;
-
-    background: white;
-
-    border-radius: 18px;
-
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
-}
-
-label {
-    display: block;
-
-    margin-top: 18px;
-    margin-bottom: 7px;
-
-    font-size: 14px;
-    font-weight: 700;
-}
-
-label:first-child {
-    margin-top: 0;
-}
-
-input,
-select {
-    width: 100%;
-
-    padding: 13px 14px;
-
-    border: 1px solid #d5e3da;
-
-    border-radius: 9px;
-
-    background: white;
 
     font-size: 16px;
 
-    outline: none;
-}
-
-input:focus,
-select:focus {
-    border-color: #16804b;
-
-    box-shadow: 0 0 0 3px rgba(22, 128, 75, 0.1);
-}
-
-button {
-    width: 100%;
-
-    margin-top: 22px;
-
-    padding: 14px;
-
-    border: none;
-    border-radius: 9px;
-
-    background: #16804b;
-
-    color: white;
-
-    font-size: 16px;
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition: 0.2s ease;
-}
-
-button:hover {
-    background: #11683d;
-    transform: translateY(-1px);
+    line-height: 1.75;
 }
 
 
-/* =========================================================
-   RESULT
-========================================================= */
+/* LABEL */
 
-.result {
-    min-height: 20px;
+.section-label {
+    margin-bottom: 10px;
 
-    margin-top: 20px;
-    padding: 22px;
+    color: #16804b !important;
 
-    border-radius: 14px;
+    font-size: 12px !important;
 
-    background: #f4f8f5;
-
-    color: #18352a;
-
-    border: 1px solid #dfe9e3;
-}
-
-.result-placeholder {
-    color: #718078;
-
-    font-size: 14px;
-
-    text-align: center;
-}
-
-.result-title {
-    margin-bottom: 5px;
-
-    font-size: 12px;
-    font-weight: 800;
+    font-weight: 800 !important;
 
     letter-spacing: 1.5px;
-}
 
-
-/* BMI */
-
-.bmi-number {
-    margin: 5px 0;
-
-    font-size: 48px;
-    font-weight: 800;
-
-    line-height: 1.1;
-}
-
-.bmi-category {
-    display: inline-block;
-
-    padding: 6px 12px;
-
-    border-radius: 50px;
-
-    font-size: 13px;
-    font-weight: 800;
-}
-
-.result-details {
-    margin-top: 18px;
-    padding-top: 15px;
-
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.result-details p {
-    margin: 5px 0;
-
-    font-size: 14px;
-}
-
-.result-description {
-    margin-top: 15px;
-
-    font-size: 14px;
-}
-
-
-/* BMI COLORS */
-
-.result-normal {
-    background: #eaf7ef;
-    border-color: #bfe4cc;
-    color: #12683d;
-}
-
-.result-normal .bmi-category {
-    background: #16804b;
-    color: white;
-}
-
-.result-underweight {
-    background: #fff8df;
-    border-color: #eadb9b;
-    color: #75601b;
-}
-
-.result-underweight .bmi-category {
-    background: #d6aa16;
-    color: white;
-}
-
-.result-overweight {
-    background: #fff1df;
-    border-color: #edcfaa;
-    color: #8a5012;
-}
-
-.result-overweight .bmi-category {
-    background: #e58b25;
-    color: white;
-}
-
-.result-obesity {
-    background: #ffebeb;
-    border-color: #efc4c4;
-    color: #9b2c2c;
-}
-
-.result-obesity .bmi-category {
-    background: #d64545;
-    color: white;
-}
-
-.result-error {
-    background: #fff1f1;
-    border-color: #efcaca;
-    color: #9b2c2c;
+    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   BMI SCALE
+   PAGE HEADER
 ========================================================= */
 
-.bmi-scale {
-    margin-top: 22px;
-}
+.calculator-page-header {
+    max-width: none;
 
-.scale-bar {
-    position: relative;
+    padding-top: 80px;
 
-    width: 100%;
-    height: 12px;
-
-    border-radius: 50px;
+    padding-bottom: 65px;
 
     background:
         linear-gradient(
-            to right,
-            #d6aa16 0%,
-            #d6aa16 18%,
-            #16804b 18%,
-            #16804b 42%,
-            #e58b25 42%,
-            #e58b25 60%,
-            #d64545 60%,
-            #d64545 78%,
-            #8d2020 78%,
-            #8d2020 100%
+            135deg,
+            #f2faf5,
+            #ffffff
         );
+
+    border-bottom: 1px solid #e5eee8;
 }
 
-.scale-indicator {
-    position: absolute;
 
-    top: 50%;
+.calculator-page-header .section-heading {
+    max-width: 900px;
 
-    width: 20px;
-    height: 20px;
+    margin-left: auto;
 
-    transform: translate(-50%, -50%);
-
-    background: white;
-
-    border: 4px solid #18352a;
-
-    border-radius: 50%;
-
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-}
-
-.scale-labels {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-top: 10px;
-
-    color: #6c7971;
-
-    font-size: 9px;
+    margin-right: auto;
 
     text-align: center;
 }
 
 
 /* =========================================================
-   ENERGY / BMR / TDEE
+   BUTTON
 ========================================================= */
 
-.energy-result {
-    margin-top: 20px;
-}
-
-.energy-box {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
-}
-
-.energy-box > div {
-    padding: 18px;
-
-    background: white;
-
-    border: 1px solid #d7e9dd;
-
-    border-radius: 12px;
-
-    text-align: center;
-}
-
-.energy-box span {
-    display: block;
-
-    color: #637168;
-
-    font-size: 12px;
-    font-weight: 800;
-
-    letter-spacing: 1px;
-}
-
-.energy-box strong {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #16804b;
-
-    font-size: 30px;
-}
-
-.energy-box small {
-    color: #718078;
-
-    font-size: 12px;
-}
-
-.energy-box.featured {
-    background: #16804b;
-}
-
-.energy-box.featured span,
-.energy-box.featured strong,
-.energy-box.featured small {
-    color: white;
-}
-
-.energy-explanation {
-    margin-top: 18px;
-    padding-top: 15px;
-
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-
-    color: #5f6d65;
-
-    font-size: 13px;
-}
-
-.activity-note {
-    margin-top: 8px;
-
-    color: #718078;
-
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   MACRO
-========================================================= */
-
-.macro-calories {
-    margin-top: 12px;
-    padding: 20px;
-
-    background: #16804b;
-
-    color: white;
-
-    border-radius: 14px;
-
-    text-align: center;
-}
-
-.macro-calories span {
-    display: block;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-}
-
-.macro-calories strong {
-    display: block;
-
-    margin-top: 5px;
-
-    font-size: 38px;
-}
-
-.macro-calories small {
-    font-size: 12px;
-}
-
-.macro-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin-top: 15px;
-}
-
-.macro-box {
-    padding: 15px;
-
-    background: white;
-
-    border: 1px solid #e0e9e3;
-
-    border-radius: 12px;
-
-    text-align: center;
-}
-
-.macro-box span {
-    display: block;
-
-    font-size: 12px;
-    font-weight: 800;
-}
-
-.macro-box strong {
-    display: block;
-
-    margin-top: 5px;
-
-    font-size: 20px;
-}
-
-.macro-box small {
-    display: block;
-
-    margin-top: 3px;
-
-    color: #718078;
-
-    font-size: 11px;
-}
-
-.macro-box.protein {
-    border-top: 4px solid #d64545;
-}
-
-.macro-box.carbs {
-    border-top: 4px solid #e58b25;
-}
-
-.macro-box.fat {
-    border-top: 4px solid #d6aa16;
-}
-
-.macro-explanation {
-    margin-top: 15px;
-
-    color: #68766e;
-
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-.calculator-note {
-    margin-top: 20px;
-    padding: 15px;
-
-    background: #f4f8f5;
-
-    border-radius: 10px;
-
-    color: #68766e;
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   EDUCATION
-========================================================= */
-
-.education {
-    background: #eaf7ef;
-}
-
-.education-card {
-    padding: 30px;
-
-    background: white;
-
-    border: 1px solid #e4eee8;
-
-    border-radius: 18px;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
-}
-
-.education-card-icon {
-    width: 58px;
-    height: 58px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 18px;
-
-    background: #e5f6eb;
-
-    border-radius: 15px;
-
-    font-size: 26px;
-}
-
-.education-card h3 {
-    margin-bottom: 10px;
-
-    font-size: 24px;
-}
-
-.education-card > p {
-    color: #68766e;
-
-    font-size: 14px;
-}
-
-.education-details {
-    margin-top: 20px;
-    padding-top: 18px;
-
-    border-top: 1px solid #e4eee8;
-}
-
-.education-details h4 {
-    margin-bottom: 8px;
-
-    font-size: 15px;
-}
-
-.education-details p {
-    margin-bottom: 15px;
-
-    color: #68766e;
-
-    font-size: 14px;
-}
-
-.education-details ul {
-    padding-left: 20px;
-
-    color: #68766e;
-
-    font-size: 14px;
-}
-
-.education-details li {
-    margin-bottom: 7px;
-}
-
-
-/* =========================================================
-   HEALTH CONTENT
-========================================================= */
-
-.health-content {
-    background: white;
-}
-
-.content-card {
-    padding: 28px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 18px;
-
-    background: #f8fbf9;
-
-    border: 1px solid #e4eee8;
-
-    border-radius: 18px;
-
-    transition: 0.2s ease;
-}
-
-.content-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-}
-
-.content-card-icon {
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #e5f6eb;
-
-    border-radius: 14px;
-
-    font-size: 25px;
-}
-
-.content-category {
+.card-link {
     display: inline-block;
 
-    margin-bottom: 8px;
-
     color: #16804b;
 
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 1px;
-}
-
-.content-card h3 {
-    margin-bottom: 8px;
-
-    font-size: 21px;
-    line-height: 1.3;
-}
-
-.content-card p {
-    color: #68766e;
-
     font-size: 14px;
-    line-height: 1.6;
+
+    font-weight: 700;
+
+    transition: color 0.2s ease;
+}
+
+
+.card-link:hover {
+    color: #0d5e36;
 }
 
 
 /* =========================================================
-   NEWS / BERITA
+   NEWS
 ========================================================= */
 
-.news-page {
-    background: #f5faf7;
-}
-
-.news-section {
-    background: white;
-}
-
 .news-grid {
-    max-width: 1200px;
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 24px;
 }
+
 
 .news-card {
-    overflow: hidden;
+    background: #ffffff;
 
-    background: white;
-
-    border: 1px solid #e4eee8;
+    border: 1px solid #e5eee8;
 
     border-radius: 18px;
 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
 
-    transition: 0.2s ease;
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
+
 
 .news-card:hover {
     transform: translateY(-5px);
 
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.08);
 }
+
 
 .news-image {
     width: 100%;
+
     height: 210px;
 
+    object-fit: cover;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            #e5f6eb,
-            #ffffff
-        );
+    background: #edf7f1;
 
     color: #16804b;
 
-    font-size: 50px;
-
-    object-fit: cover;
+    font-size: 42px;
 }
+
 
 .news-content {
-    padding: 25px;
+    padding: 24px;
 }
+
+
+.content-category {
+    display: inline-block;
+
+    margin-bottom: 9px;
+
+    color: #16804b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
 
 .news-date {
-    margin-bottom: 8px;
+    margin-bottom: 9px;
 
-    color: #718078;
+    color: #8a968f;
 
-    font-size: 13px;
+    font-size: 12px;
 }
+
 
 .news-content h3 {
     margin-bottom: 10px;
 
-    font-size: 22px;
-    line-height: 1.3;
+    color: #17231d;
+
+    font-size: 20px;
+
+    line-height: 1.35;
 }
 
-.news-content > p:not(.news-date) {
-    margin-bottom: 18px;
+
+.news-content p {
+    margin-bottom: 16px;
 
     color: #68766e;
 
     font-size: 14px;
-    line-height: 1.6;
-}
 
-.news-content .card-link {
-    display: inline-block;
-
-    color: #16804b;
-
-    font-weight: 800;
-}
-
-.news-content .card-link:hover {
-    color: #11683d;
+    line-height: 1.7;
 }
 
 
 /* =========================================================
-   ARTICLE
+   CONTACT US
 ========================================================= */
 
-.article-page {
-    padding: 70px 6%;
+.contact-grid {
+    width: 100%;
 
-    background: #f5faf7;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 24px;
 }
 
-.article-container {
-    max-width: 850px;
 
-    margin: auto;
+/* CONTACT CARD */
 
-    padding: 45px;
+.contact-card {
+    display: block;
 
-    background: white;
+    padding: 28px;
 
-    border: 1px solid #e4eee8;
+    background: #ffffff;
+
+    border: 1px solid #e3ece6;
 
     border-radius: 20px;
 
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.article-container h1 {
-    margin-bottom: 10px;
 
-    font-size: clamp(32px, 5vw, 48px);
+.contact-card:hover {
+    transform: translateY(-5px);
 
-    line-height: 1.15;
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.08);
 }
 
-.article-meta {
-    margin-bottom: 30px;
 
-    color: #718078;
+/* =========================================================
+   CONTACT ICON
+========================================================= */
+
+/*
+   PENTING:
+   Ukuran container ikon sengaja dibuat kecil.
+*/
+
+.contact-icon {
+    width: 52px !important;
+
+    height: 52px !important;
+
+    min-width: 52px !important;
+
+    max-width: 52px !important;
+
+    min-height: 52px !important;
+
+    max-height: 52px !important;
+
+    padding: 0 !important;
+
+    margin: 0 0 18px 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-sizing: border-box !important;
+
+    font-size: 0 !important;
+}
+
+
+/*
+   UKURAN SVG
+*/
+
+.contact-icon svg {
+    display: block !important;
+
+    width: 25px !important;
+
+    height: 25px !important;
+
+    min-width: 25px !important;
+
+    max-width: 25px !important;
+
+    min-height: 25px !important;
+
+    max-height: 25px !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    flex: 0 0 25px !important;
+}
+
+
+/* ICON COLORS */
+
+.whatsapp-icon {
+    background: #e5f8ed;
+
+    color: #25d366;
+}
+
+
+.instagram-icon {
+    background: #f8e8f1;
+
+    color: #d62976;
+}
+
+
+.tiktok-icon {
+    background: #eeeeee;
+
+    color: #111111;
+}
+
+
+.facebook-icon {
+    background: #e8f0ff;
+
+    color: #1877f2;
+}
+
+
+/* CONTACT TEXT */
+
+.contact-card h3 {
+    margin-bottom: 9px;
+
+    color: #17231d;
+
+    font-size: 21px;
+
+    line-height: 1.3;
+}
+
+
+.contact-card p {
+    margin-bottom: 13px;
+
+    color: #68766e;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.contact-card strong {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #17231d;
 
     font-size: 14px;
 }
 
-.article-container h2 {
-    margin-top: 30px;
-    margin-bottom: 10px;
+
+.contact-link {
+    display: inline-block;
 
     color: #16804b;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CONTACT LOCATION
+========================================================= */
+
+.contact-location {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 30px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    background: #f1f8f4;
+
+    border: 1px solid #dcebe1;
+
+    border-radius: 20px;
+}
+
+
+.contact-location-icon {
+    width: 52px;
+
+    height: 52px;
+
+    min-width: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ffffff;
+
+    border-radius: 14px;
 
     font-size: 25px;
 }
 
-.article-container p {
-    margin-bottom: 18px;
 
-    color: #53635b;
-
-    line-height: 1.8;
-}
-
-.article-container ul {
-    margin-bottom: 20px;
-
-    padding-left: 25px;
-
-    color: #53635b;
-}
-
-.article-container li {
+.contact-location h2 {
     margin-bottom: 8px;
-}
-/* ARTICLE IMAGE */
 
-.article-image {
-    width: 100%;
-    max-height: 450px;
+    color: #17231d;
 
-    display: block;
-
-    margin: 25px 0 30px;
-
-    object-fit: cover;
-
-    border-radius: 15px;
+    font-size: 27px;
 }
 
 
-/* ARTICLE CONTENT */
-
-.article-content {
-    margin-top: 10px;
-}
-
-.article-content p {
-    margin-bottom: 18px;
-
-    color: #53635b;
-
-    line-height: 1.8;
-}
-
-.article-content h2 {
-    margin-top: 30px;
+.contact-location p {
     margin-bottom: 12px;
 
-    color: #16804b;
+    color: #68766e;
 
-    font-size: 25px;
+    font-size: 14px;
+
+    line-height: 1.7;
 }
 
-.article-content h3 {
-    margin-top: 25px;
-    margin-bottom: 10px;
 
-    color: #18352a;
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+.calculator {
+    width: 100%;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding: 30px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ece6;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.04);
+}
+
+
+.calculator label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #35433b;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.calculator input,
+.calculator select {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin-bottom: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #d9e4dd;
+
+    border-radius: 10px;
+
+    outline: none;
+}
+
+
+.calculator input:focus,
+.calculator select:focus {
+    border-color: #16804b;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(22, 128, 75, 0.1);
+}
+
+
+.calculator button {
+    width: 100%;
+
+    padding: 13px 18px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: #16804b;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+
+.calculator button:hover {
+    background: #0d663b;
+}
+
+
+/* =========================================================
+   EDUKASI
+========================================================= */
+
+.education-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+
+.education-card {
+    padding: 26px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ece6;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.04);
+}
+
+
+.education-card h3 {
+    margin-bottom: 10px;
 
     font-size: 20px;
 }
 
-.article-content ul,
-.article-content ol {
-    margin-bottom: 20px;
 
-    padding-left: 25px;
+.education-card p {
+    color: #68766e;
 
-    color: #53635b;
-}
+    font-size: 14px;
 
-.article-content li {
-    margin-bottom: 8px;
-}
-
-.article-content a {
-    color: #16804b;
-
-    font-weight: 700;
+    line-height: 1.7;
 }
 
 
@@ -1487,48 +811,35 @@ button:hover {
 ========================================================= */
 
 .disclaimer {
-    margin: 60px 6%;
+    width: 100%;
 
-    padding: 25px;
+    max-width: 1100px;
 
-    background: #fff7df;
+    margin: 30px auto 60px;
+
+    padding: 25px 6%;
+
+    background: #fff9e8;
+
+    border: 1px solid #f1e4bb;
 
     border-radius: 15px;
-
-    color: #66582e;
 }
+
 
 .disclaimer h3 {
     margin-bottom: 8px;
+
+    font-size: 17px;
 }
 
 
-/* =========================================================
-   MAP BUTTON
-========================================================= */
+.disclaimer p {
+    color: #756d59;
 
-.maps-button {
-    display: inline-block;
+    font-size: 13px;
 
-    margin-bottom: 20px;
-    padding: 10px 15px;
-
-    background: #16804b;
-
-    color: white !important;
-
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    transition: 0.2s ease;
-}
-
-.maps-button:hover {
-    background: #1a9659;
-
-    transform: translateY(-2px);
+    line-height: 1.7;
 }
 
 
@@ -1537,93 +848,80 @@ button:hover {
 ========================================================= */
 
 footer {
-    padding: 50px 6%;
+    margin-top: 40px;
 
-    background: #123c29;
+    background: #17231d;
 
-    color: white;
+    color: #ffffff;
 }
 
-.footer-content {
-    max-width: 1100px;
 
-    margin: auto;
+.footer-content {
+    width: 100%;
+
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    padding: 50px 6%;
 
     display: grid;
 
-    grid-template-columns: 1.2fr 1fr 0.7fr;
+    grid-template-columns:
+        1.5fr 1fr 1fr;
 
-    gap: 50px;
+    gap: 40px;
 }
+
 
 .footer-info h3 {
     margin-bottom: 10px;
 
-    font-size: 24px;
+    font-size: 21px;
 }
+
+
+.footer-info p,
+.footer-contact p {
+    color: #b8c5be;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
 
 .footer-contact h4 {
-    margin-bottom: 5px;
+    margin-bottom: 7px;
 
-    color: white;
+    color: #ffffff;
+
+    font-size: 14px;
 }
 
-.footer-contact p {
-    margin-bottom: 18px;
-
-    color: #bcd2c5;
-}
 
 .footer-contact a {
-    color: #bcd2c5;
+    color: #ffffff;
 
-    transition: 0.2s ease;
+    text-decoration: underline;
+
+    text-underline-offset: 3px;
 }
 
-.footer-contact a:hover {
-    color: white;
-}
-
-.footer-content p {
-    color: #bcd2c5;
-}
 
 .footer-copyright {
     display: flex;
+
     align-items: flex-end;
+
+    justify-content: flex-end;
 }
 
 
-/* =========================================================
-   MOBILE / TABLET
-========================================================= */
+.footer-copyright p {
+    color: #9eaaa3;
 
-@media (max-width: 900px) {
-
-    .news-grid,
-    .calculator-grid,
-    .education-grid,
-    .health-content-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hero {
-        grid-template-columns: 1fr;
-
-        padding: 70px 6%;
-
-        gap: 40px;
-    }
-
-    .calculator-container {
-        grid-template-columns: 1fr;
-
-        gap: 40px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
-    }
+    font-size: 13px;
 }
 
 
@@ -1631,290 +929,183 @@ footer {
    MOBILE
 ========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+
+
+    /* NAVBAR */
 
     .navbar {
-        width: calc(100% - 16px);
+        padding: 14px 5%;
 
-        margin-top: 8px;
+        flex-direction: column;
 
-        padding: 7px;
-
-        border-radius: 15px;
+        gap: 12px;
     }
 
-    .logo-text {
-        display: none;
-    }
-
-    .logo {
-        padding: 3px;
-    }
-
-    .logo-icon {
-        width: 38px;
-        height: 38px;
-
-        font-size: 20px;
-    }
 
     .navbar nav {
-        flex: 1;
-
-        justify-content: space-between;
-
-        margin-left: 8px;
-
-        padding: 4px;
-    }
-
-    .navbar nav a {
-        flex: 1;
+        width: 100%;
 
         justify-content: center;
 
-        padding: 9px 5px;
-
-        font-size: 10px;
+        flex-wrap: wrap;
     }
 
-    .nav-icon {
+
+    .navbar nav a {
+        padding: 8px 10px;
+
         font-size: 13px;
     }
 
 
-    .hero {
-        min-height: auto;
+    /* SECTIONS */
 
-        padding: 60px 5%;
+    .section {
+        padding: 55px 5%;
     }
 
-    .hero h1 {
-        font-size: 43px;
+
+    /* NEWS */
+
+    .news-grid {
+        grid-template-columns: 1fr;
     }
 
-    .hero-buttons {
+
+    /* EDUCATION */
+
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* CONTACT */
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .contact-card {
+        padding: 24px;
+    }
+
+
+    /* LOCATION */
+
+    .contact-location {
+        padding: 24px;
+
         flex-direction: column;
     }
 
-    .button {
-        width: 100%;
 
-        text-align: center;
-    }
-
-
-    .intro {
-        grid-template-columns: 1fr;
-
-        padding: 60px 5%;
-
-        gap: 25px;
-    }
-
-    .intro h2 {
-        font-size: 34px;
-    }
-
-
-    .section {
-        padding: 60px 5%;
-    }
-
-    .section-heading h2,
-    .calculator-container h2 {
-        font-size: 34px;
-    }
-
-
-    .news-grid,
-    .calculator-grid,
-    .education-grid,
-    .health-content-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .calculator-page-header,
-    .education-header,
-    .news-header {
-        padding: 60px 5%;
-    }
-
-
-    .calculator-page-header h1,
-    .education-header h1,
-    .news-header h1 {
-        font-size: 42px;
-    }
-
-
-    .form-card {
-        padding: 22px;
-    }
-
-
-    .energy-box {
-        grid-template-columns: 1fr;
-    }
-
-
-    .macro-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .article-page {
-        padding: 40px 5%;
-    }
-
-    .article-container {
-        padding: 28px 22px;
-    }
-
-
-    .disclaimer {
-        margin: 40px 5%;
-    }
-
+    /* FOOTER */
 
     .footer-content {
         grid-template-columns: 1fr;
 
-        gap: 30px;
+        gap: 25px;
+
+        padding: 40px 5%;
     }
 
+
     .footer-copyright {
-        display: block;
+        justify-content: flex-start;
+
+        align-items: flex-start;
     }
 
 }
 
 
 /* =========================================================
-   EXTRA SMALL MOBILE
+   SMALL MOBILE
 ========================================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
 
-    .navbar nav a span:last-child {
-        display: none;
+
+    .logo {
+        font-size: 19px;
     }
+
+
+    .navbar nav {
+        gap: 4px;
+    }
+
 
     .navbar nav a {
-        min-width: 42px;
+        min-height: 38px;
 
-        padding: 10px 5px;
+        padding: 7px 8px;
+
+        font-size: 12px;
     }
 
-    .nav-icon {
-        font-size: 16px;
-    }
 
-    .hero h1 {
-        font-size: 40px;
-    }
-
-    .bmi-number {
-        font-size: 42px;
-    }
-
-    .macro-calories strong {
+    .section-heading h1 {
         font-size: 34px;
     }
 
-}
-```css
-/* =========================================================
-   CONTACT ICON - UKURAN NORMAL
-========================================================= */
 
-.contact-icon {
-    width: 56px;
-    height: 56px;
-
-    min-width: 56px;
-    max-width: 56px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 18px;
-
-    border-radius: 16px;
-
-    overflow: hidden;
-
-    font-size: 0;
-}
+    .section-heading h2 {
+        font-size: 27px;
+    }
 
 
-.contact-icon svg {
-    display: block;
-
-    width: 28px !important;
-    height: 28px !important;
-
-    min-width: 28px;
-    max-width: 28px;
-
-    min-height: 28px;
-    max-height: 28px;
-}
-
-
-/* Warna ikon */
-
-.whatsapp-icon {
-    background: #e5f8ed;
-    color: #25D366;
-}
-
-
-.instagram-icon {
-    background: #f8e8f1;
-    color: #d62976;
-}
-
-
-.tiktok-icon {
-    background: #eeeeee;
-    color: #111111;
-}
-
-
-.facebook-icon {
-    background: #e8f0ff;
-    color: #1877F2;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 700px) {
+    /*
+       Contact icon dibuat lebih kecil
+       pada layar HP.
+    */
 
     .contact-icon {
-        width: 52px;
-        height: 52px;
+        width: 48px !important;
 
-        min-width: 52px;
-        max-width: 52px;
+        height: 48px !important;
 
-        margin-bottom: 16px;
+        min-width: 48px !important;
+
+        max-width: 48px !important;
+
+        min-height: 48px !important;
+
+        max-height: 48px !important;
     }
 
 
     .contact-icon svg {
-        width: 26px !important;
-        height: 26px !important;
+        width: 23px !important;
 
-        min-width: 26px;
-        max-width: 26px;
+        height: 23px !important;
 
-        min-height: 26px;
-        max-height: 26px;
+        min-width: 23px !important;
+
+        max-width: 23px !important;
+
+        min-height: 23px !important;
+
+        max-height: 23px !important;
+
+        flex: 0 0 23px !important;
     }
+
+
+    .contact-location-icon {
+        width: 48px;
+
+        height: 48px;
+
+        min-width: 48px;
+
+        font-size: 22px;
+    }
+
 
 }
 ```
