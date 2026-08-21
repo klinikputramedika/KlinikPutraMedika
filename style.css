@@ -2436,3 +2436,15 @@ footer {
     text-decoration: none;
     font-weight: 600;
 }
+/* =========================
+   GAMBAR BERITA
+   ========================= */
+
+.news-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    display: block;
+}
