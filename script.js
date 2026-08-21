@@ -271,43 +271,66 @@ function calculateTDEE() {
     const gender =
         document.getElementById("gender").value;
 
-
     const age =
         Number(
             document.getElementById("age").value
         );
-
 
     const weight =
         Number(
             document.getElementById("weightBMR").value
         );
 
-
     const height =
         Number(
             document.getElementById("heightBMR").value
         );
-
 
     const activity =
         Number(
             document.getElementById("activity").value
         );
 
+    const result =
+        document.getElementById("tdeeResult");
+
+
+    // =========================
+    // VALIDASI
+    // =========================
 
     if (
         !age ||
         !weight ||
-        !height
+        !height ||
+        age < 20 ||
+        age > 120 ||
+        weight <= 0 ||
+        height <= 0
     ) {
 
-        document.getElementById("tdeeResult").innerHTML =
-            "Silakan lengkapi semua data.";
+        result.className =
+            "result result-error";
+
+        result.innerHTML = `
+
+            <strong>Data belum lengkap</strong>
+
+            <p>
+                Masukkan umur 20 tahun atau lebih,
+                berat badan, dan tinggi badan yang valid.
+            </p>
+
+        `;
 
         return;
     }
 
+
+    // =========================
+    // BMR
+    // Mifflin-St Jeor
+    // =========================
 
     let bmr;
 
@@ -331,16 +354,114 @@ function calculateTDEE() {
     }
 
 
+    // =========================
+    // TDEE
+    // =========================
+
     const tdee =
         bmr * activity;
 
 
-    document.getElementById("tdeeResult").innerHTML =
+    // =========================
+    // HASIL
+    // =========================
 
-        `BMR: ${Math.round(bmr)} kcal/hari
-        <br>
-        TDEE: ${Math.round(tdee)} kcal/hari`;
+    result.className =
+        "result result-normal";
+
+
+    result.innerHTML = `
+
+        <div class="result-title">
+            HASIL KEBUTUHAN ENERGI
+        </div>
+
+
+        <div class="energy-result">
+
+            <div class="energy-box">
+
+                <span>
+                    BMR
+                </span>
+
+                <strong>
+                    ${Math.round(bmr)}
+                </strong>
+
+                <small>
+                    kcal/hari
+                </small>
+
+            </div>
+
+
+            <div class="energy-box featured">
+
+                <span>
+                    TDEE
+                </span>
+
+                <strong>
+                    ${Math.round(tdee)}
+                </strong>
+
+                <small>
+                    kcal/hari
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="result-details">
+
+            <p>
+                <strong>Umur:</strong>
+                ${age} tahun
+            </p>
+
+            <p>
+                <strong>Berat badan:</strong>
+                ${weight} kg
+            </p>
+
+            <p>
+                <strong>Tinggi badan:</strong>
+                ${height} cm
+            </p>
+
+        </div>
+
+
+        <div class="energy-explanation">
+
+            <p>
+                <strong>BMR</strong> adalah estimasi energi
+                yang dibutuhkan tubuh saat istirahat.
+            </p>
+
+            <p>
+                <strong>TDEE</strong> adalah estimasi kebutuhan
+                energi harian setelah memperhitungkan
+                tingkat aktivitas.
+            </p>
+
+        </div>
+
+
+        <div class="bmi-note">
+
+            Angka ini merupakan estimasi dan kebutuhan
+            energi sebenarnya dapat berbeda pada setiap
+            individu.
+
+        </div>
+
+    `;
 }
+
 
 
 
