@@ -2,88 +2,129 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Berita dan informasi kesehatan Klinik Putra Medika."
+    >
 
     <title>Berita - Klinik Putra Medika</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
     <!-- =========================
          NAVBAR
-    ========================= -->
+    ========================== -->
 
-  <header class="navbar">
+    <header class="navbar">
 
-    <a href="index.html" class="logo">
-        <span class="logo-icon">✚</span>
-        <span class="logo-text">
-            Klinik <strong>Putra Medika</strong>
-        </span>
-    </a>
-
-    <nav>
-        <a href="index.html">
-            <span class="nav-icon">⌂</span>
-            <span>Beranda</span>
+        <a href="index.html" class="logo">
+            Klinik <span>Putra Medika</span>
         </a>
 
-        <a href="kalkulator.html">
-            <span class="nav-icon">▣</span>
-            <span>Kalkulator</span>
-        </a>
 
-        <a href="berita.html">
-            <span class="nav-icon">◉</span>
-            <span>Berita</span>
-        </a>
+        <nav>
 
-        <a href="edukasi.html">
-            <span class="nav-icon">▤</span>
-            <span>Edukasi</span>
-        </a>
-    </nav>
+            <a href="index.html">
+                Beranda
+            </a>
 
-</header>
+            <a href="kalkulator.html">
+                Kalkulator
+            </a>
+
+            <a href="berita.html" class="active">
+                Berita
+            </a>
+
+            <a href="edukasi.html">
+                Edukasi
+            </a>
+
+        </nav>
+
+    </header>
+
 
 
     <!-- =========================
-         HEADER BERITA
-    ========================= -->
+         MAIN
+    ========================== -->
 
-    <main class="news-page">
+    <main>
 
-        <section class="section">
+
+        <!-- =========================
+             PAGE HEADER
+        ========================== -->
+
+        <section class="section calculator-page-header">
 
             <div class="section-heading">
 
                 <p class="section-label">
-                    BERITA & INFORMASI
+                    INFORMASI TERBARU
                 </p>
 
                 <h1>
-                    Informasi Kesehatan
+                    Berita & Informasi
                 </h1>
 
                 <p>
-                    Temukan informasi terbaru seputar kesehatan,
-                    pelayanan, dan kegiatan Klinik Putra Medika.
+                    Temukan berita terbaru, informasi kesehatan,
+                    kegiatan dan berbagai informasi dari
+                    Klinik Putra Medika.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             BERITA
+        ========================== -->
+
+        <section class="section news-page">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    BERITA TERBARU
+                </p>
+
+                <h2>
+                    Kabar terbaru Klinik Putra Medika
+                </h2>
+
+                <p>
+                    Informasi kesehatan dan kegiatan klinik
+                    yang dapat membantu masyarakat.
                 </p>
 
             </div>
 
 
-            <!-- =========================
-                 DAFTAR BERITA
-            ========================= -->
-
             <div class="news-grid">
 
 
-                <!-- BERITA 1 -->
+                <!-- =========================
+                     BERITA 1
+                ========================== -->
 
                 <article class="news-card">
 
@@ -91,26 +132,36 @@
                         🏥
                     </div>
 
+
                     <div class="news-content">
+
+                        <span class="content-category">
+                            KEGIATAN KLINIK
+                        </span>
+
 
                         <p class="news-date">
                             21 Agustus 2026
                         </p>
 
+
                         <h3>
-                            Selamat Datang di Halaman Berita
+                            Informasi terbaru dari
                             Klinik Putra Medika
                         </h3>
 
+
                         <p>
-                            Ikuti berbagai informasi terbaru mengenai
-                            kesehatan, pelayanan klinik, serta edukasi
-                            kesehatan dari Klinik Putra Medika.
+                            Simak informasi dan kegiatan terbaru
+                            dari Klinik Putra Medika untuk
+                            masyarakat.
                         </p>
+
 
                         <a
                             href="artikel-1.html"
-                            class="card-link">
+                            class="card-link"
+                        >
                             Baca Selengkapnya →
                         </a>
 
@@ -120,7 +171,9 @@
 
 
 
-                <!-- BERITA 2 -->
+                <!-- =========================
+                     BERITA 2
+                ========================== -->
 
                 <article class="news-card">
 
@@ -128,26 +181,36 @@
                         🩺
                     </div>
 
+
                     <div class="news-content">
+
+                        <span class="content-category">
+                            EDUKASI KESEHATAN
+                        </span>
+
 
                         <p class="news-date">
                             20 Agustus 2026
                         </p>
 
+
                         <h3>
-                            Pentingnya Pemeriksaan Kesehatan
-                            Secara Berkala
+                            Tips menjaga kesehatan
+                            sehari-hari
                         </h3>
 
+
                         <p>
-                            Pemeriksaan kesehatan secara berkala
-                            dapat membantu mengetahui kondisi tubuh
-                            lebih awal dan menjaga kesehatan.
+                            Informasi sederhana yang dapat
+                            membantu menjaga kesehatan dalam
+                            kehidupan sehari-hari.
                         </p>
+
 
                         <a
                             href="artikel-2.html"
-                            class="card-link">
+                            class="card-link"
+                        >
                             Baca Selengkapnya →
                         </a>
 
@@ -157,7 +220,9 @@
 
 
 
-                <!-- BERITA 3 -->
+                <!-- =========================
+                     BERITA 3
+                ========================== -->
 
                 <article class="news-card">
 
@@ -165,26 +230,36 @@
                         ❤️
                     </div>
 
+
                     <div class="news-content">
 
+                        <span class="content-category">
+                            INFORMASI KESEHATAN
+                        </span>
+
+
                         <p class="news-date">
-                            18 Agustus 2026
+                            19 Agustus 2026
                         </p>
+
 
                         <h3>
-                            Tips Menjaga Kesehatan dan
-                            Kebugaran Tubuh
+                            Mengenal layanan
+                            Klinik Putra Medika
                         </h3>
 
+
                         <p>
-                            Pola makan seimbang, aktivitas fisik,
-                            istirahat cukup, dan pola hidup sehat
-                            merupakan bagian penting menjaga kebugaran.
+                            Kenali berbagai informasi dan
+                            layanan kesehatan yang tersedia
+                            di Klinik Putra Medika.
                         </p>
+
 
                         <a
                             href="artikel-3.html"
-                            class="card-link">
+                            class="card-link"
+                        >
                             Baca Selengkapnya →
                         </a>
 
@@ -197,16 +272,42 @@
 
         </section>
 
+
+
+        <!-- =========================
+             DISCLAIMER
+        ========================== -->
+
+        <section class="disclaimer">
+
+            <h3>
+                ⚠️ Catatan penting
+            </h3>
+
+            <p>
+                Informasi pada website ini ditujukan untuk
+                edukasi kesehatan umum. Informasi kesehatan
+                tidak dimaksudkan sebagai diagnosis atau
+                pengganti konsultasi dengan tenaga kesehatan
+                profesional.
+            </p>
+
+        </section>
+
     </main>
+
 
 
     <!-- =========================
          FOOTER
-    ========================= -->
+    ========================== -->
 
     <footer>
 
         <div class="footer-content">
+
+
+            <!-- INFO -->
 
             <div class="footer-info">
 
@@ -215,25 +316,54 @@
                 </h3>
 
                 <p>
-                    Informasi kesehatan terpercaya untuk
-                    masyarakat.
+                    Informasi dan edukasi kesehatan
+                    untuk masyarakat.
                 </p>
 
             </div>
 
+
+
+            <!-- KONTAK -->
 
             <div class="footer-contact">
 
                 <h4>
-                    Kontak
+                    Alamat
                 </h4>
 
                 <p>
-                    Klinik Putra Medika
+                    Kp. Gandasoli, Cikidangbayabang,
+                    Kec. Mande, Kabupaten Cianjur,
+                    Jawa Barat 43292
+                </p>
+
+
+                <a
+                    href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="maps-button"
+                >
+                    📍 Lihat Lokasi Klinik
+                </a>
+
+
+                <h4>
+                    Telepon
+                </h4>
+
+                <p>
+                    <a href="tel:087810353838">
+                        0878-1035-3838
+                    </a>
                 </p>
 
             </div>
 
+
+
+            <!-- COPYRIGHT -->
 
             <div class="footer-copyright">
 
@@ -243,9 +373,12 @@
 
             </div>
 
+
         </div>
 
     </footer>
+
+
 
 </body>
 
