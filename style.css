@@ -469,16 +469,211 @@ button:hover {
 
     margin-top: 20px;
 
-    padding: 15px;
+    padding: 22px;
 
-    border-radius: 10px;
+    border-radius: 14px;
 
+    background: #f4f8f5;
+
+    color: #18352a;
+
+    border: 1px solid #dfe9e3;
+
+    transition: 0.3s;
+}
+
+
+/* HASIL KOSONG */
+
+.result-placeholder {
+    color: #718078;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    text-align: center;
+}
+
+
+/* JUDUL HASIL */
+
+.result-title {
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
+}
+
+
+/* ANGKA BMI */
+
+.bmi-number {
+    font-size: 48px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    margin: 5px 0;
+}
+
+
+/* KATEGORI */
+
+.bmi-category {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 50px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+/* DETAIL */
+
+.result-details {
+    margin-top: 18px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.result-details p {
+    margin: 5px 0;
+
+    font-size: 14px;
+
+    font-weight: 400;
+}
+
+
+/* DESKRIPSI */
+
+.result-description {
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    font-weight: 400;
+}
+
+
+/* CATATAN */
+
+.bmi-note {
+    margin-top: 15px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+    color: #6c7971;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    font-weight: 400;
+}
+
+
+/* NORMAL */
+
+.result-normal {
     background: #eaf7ef;
 
-    color: #12683d;
+    border-color: #bfe4cc;
 
-    font-weight: 700;
+    color: #12683d;
 }
+
+.result-normal .bmi-category {
+    background: #16804b;
+
+    color: white;
+}
+
+
+/* UNDERWEIGHT */
+
+.result-underweight {
+    background: #fff8df;
+
+    border-color: #eadb9b;
+
+    color: #75601b;
+}
+
+.result-underweight .bmi-category {
+    background: #d6aa16;
+
+    color: white;
+}
+
+
+/* OVERWEIGHT */
+
+.result-overweight {
+    background: #fff1df;
+
+    border-color: #edcfaa;
+
+    color: #8a5012;
+}
+
+.result-overweight .bmi-category {
+    background: #e58b25;
+
+    color: white;
+}
+
+
+/* OBESITY */
+
+.result-obesity {
+    background: #ffebeb;
+
+    border-color: #efc4c4;
+
+    color: #9b2c2c;
+}
+
+.result-obesity .bmi-category {
+    background: #d64545;
+
+    color: white;
+}
+
+
+/* ERROR */
+
+.result-error {
+    background: #fff1f1;
+
+    border-color: #efcaca;
+
+    color: #9b2c2c;
+}
+
+.result-error p {
+    margin-top: 5px;
+
+    font-weight: 400;
+
+    font-size: 14px;
+}
+
 
 
 /* EDUCATION */
