@@ -1,11 +1,12 @@
 /* =========================================================
    KLINIK PUTRA MEDIKA
-   STYLE.CSS - VERSI FINAL
+   STYLE.CSS FINAL
 ========================================================= */
 
-/* =========================
+
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -18,19 +19,20 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: #f5faf7;
     color: #18352a;
     line-height: 1.6;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 img {
     max-width: 100%;
+    display: block;
 }
 
 
@@ -43,73 +45,222 @@ img {
     top: 0;
     z-index: 1000;
 
-    width: 100%;
+    width: calc(100% - 40px);
+    max-width: 1250px;
+
+    margin: 15px auto 0;
+    padding: 10px 12px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 18px 6%;
+    background: rgba(255, 255, 255, 0.96);
 
-    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(22, 128, 75, 0.10);
+    border-radius: 18px;
 
-    border-bottom: 1px solid #e5eee9;
+    box-shadow: 0 8px 30px rgba(24, 80, 48, 0.08);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
+
+
+/* LOGO */
 
 .logo {
-    font-size: 23px;
-    font-weight: 800;
-    color: #16804b;
-    white-space: nowrap;
-}
-
-.logo span {
-    color: #18352a;
-}
-
-.nav-menu {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 11px;
+
+    padding: 7px 12px;
+
+    border-radius: 12px;
+
+    transition: 0.2s ease;
 }
 
-.nav-menu a {
+.logo:hover {
+    background: #f0f8f3;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        #16804b,
+        #20a461
+    );
+
+    color: white;
+
+    border-radius: 12px;
+
+    font-size: 23px;
+    font-weight: 800;
+
+    box-shadow: 0 6px 15px rgba(22, 128, 75, 0.20);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    color: #68766e;
+
+    font-size: 13px;
+    line-height: 1.1;
+}
+
+.logo-text strong {
+    margin-top: 3px;
+
+    color: #18352a;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+/* NAVIGATION */
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 5px;
+
+    background: #f5faf7;
+
+    border: 1px solid #e4eee8;
+    border-radius: 14px;
+}
+
+.navbar nav a {
     position: relative;
 
-    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 7px;
 
-    color: #53635b;
+    padding: 10px 15px;
 
-    font-size: 14px;
+    color: #65736a;
+
+    border-radius: 10px;
+
+    font-size: 13px;
     font-weight: 700;
 
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
-.nav-menu a:hover {
+.nav-icon {
+    font-size: 15px;
+    opacity: 0.75;
+
+    transition: 0.2s ease;
+}
+
+.navbar nav a:hover {
     color: #16804b;
+    background: white;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 4px 12px rgba(24, 80, 48, 0.07);
 }
 
-.nav-menu a.active {
-    color: #16804b;
+.navbar nav a:hover .nav-icon {
+    opacity: 1;
+    transform: scale(1.1);
 }
 
-.nav-menu a.active::after {
+
+/* ACTIVE MENU */
+
+.navbar nav a.active {
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #16804b,
+        #1d9659
+    );
+
+    box-shadow: 0 6px 15px rgba(22, 128, 75, 0.22);
+}
+
+.navbar nav a.active .nav-icon {
+    opacity: 1;
+}
+
+.navbar nav a.active::after {
     content: "";
 
     position: absolute;
 
-    left: 0;
-    right: 0;
-    bottom: -6px;
+    bottom: 3px;
+    left: 50%;
 
-    height: 2px;
+    width: 4px;
+    height: 4px;
 
-    border-radius: 10px;
+    transform: translateX(-50%);
 
-    background: #16804b;
+    background: white;
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+main {
+    overflow: hidden;
+}
+
+.section {
+    padding: 90px 6%;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin-bottom: 45px;
+}
+
+.section-label {
+    display: block;
+
+    color: #16804b;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin-top: 10px;
+
+    font-size: 42px;
+    line-height: 1.15;
+}
+
+.section-heading p {
+    margin-top: 12px;
+
+    color: #65736a;
 }
 
 
@@ -123,7 +274,6 @@ img {
     padding: 80px 6%;
 
     display: grid;
-
     grid-template-columns: 1.4fr 0.6fr;
 
     gap: 60px;
@@ -154,7 +304,6 @@ img {
     color: #147545;
 
     font-size: 12px;
-
     font-weight: 800;
 }
 
@@ -168,7 +317,6 @@ img {
 
 .hero h1 span {
     display: block;
-
     color: #16804b;
 }
 
@@ -184,13 +332,15 @@ img {
 
 .hero-buttons {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 12px;
 
     margin-top: 30px;
 }
+
+
+/* BUTTON */
 
 .button {
     display: inline-block;
@@ -200,16 +350,18 @@ img {
     border-radius: 10px;
 
     font-weight: 700;
+
+    transition: 0.2s ease;
 }
 
 .button.primary {
     background: #16804b;
-
     color: white;
 }
 
 .button.primary:hover {
     background: #11683d;
+    transform: translateY(-2px);
 }
 
 .button.secondary {
@@ -220,10 +372,14 @@ img {
     border: 1px solid #cfe2d7;
 }
 
+.button.secondary:hover {
+    transform: translateY(-2px);
 
-/* =========================================================
-   HERO CARD
-========================================================= */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+/* HERO CARD */
 
 .hero-card {
     padding: 35px;
@@ -232,8 +388,7 @@ img {
 
     border-radius: 25px;
 
-    box-shadow:
-        0 20px 60px rgba(24, 80, 48, 0.12);
+    box-shadow: 0 20px 60px rgba(24, 80, 48, 0.12);
 }
 
 .heart {
@@ -241,23 +396,22 @@ img {
     height: 60px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
+
+    margin-bottom: 20px;
 
     background: #e4f6eb;
 
     border-radius: 50%;
 
     font-size: 25px;
-
-    margin-bottom: 20px;
 }
 
 .hero-card h3 {
-    font-size: 25px;
-
     margin-bottom: 10px;
+
+    font-size: 25px;
 }
 
 .hero-card p {
@@ -271,7 +425,6 @@ img {
 
 .intro {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
 
     gap: 60px;
@@ -287,7 +440,6 @@ img {
     margin-top: 10px;
 
     font-size: 40px;
-
     line-height: 1.15;
 }
 
@@ -299,75 +451,39 @@ img {
 
 
 /* =========================================================
-   GENERAL SECTION
+   CARDS
 ========================================================= */
 
-.section {
-    padding: 90px 6%;
-}
-
-.section-heading {
-    max-width: 700px;
-
-    margin-bottom: 45px;
-}
-
-.section-label {
-    color: #16804b;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
-}
-
-.section-heading h1,
-.section-heading h2 {
-    margin-top: 10px;
-
-    font-size: 42px;
-
-    line-height: 1.15;
-}
-
-.section-heading > p:last-child {
-    margin-top: 12px;
-
-    color: #65736a;
-}
-
-
-/* =========================================================
-   CALCULATOR CARDS
-========================================================= */
-
-.calculator-grid {
+.calculator-grid,
+.education-grid,
+.health-content-grid,
+.news-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 22px;
 }
+
+
+/* CALCULATOR CARD */
 
 .calculator-card {
     padding: 30px;
 
     background: white;
 
-    border-radius: 18px;
-
     border: 1px solid #e4eee8;
 
-    transition: 0.2s;
+    border-radius: 18px;
+
+    transition: 0.2s ease;
 }
 
 .calculator-card:hover {
     transform: translateY(-5px);
 
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
 }
 
 .card-icon {
@@ -375,29 +491,28 @@ img {
     height: 55px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
+
+    margin-bottom: 20px;
 
     background: #e5f6eb;
 
     border-radius: 14px;
 
     font-size: 24px;
-
-    margin-bottom: 20px;
 }
 
 .calculator-card h3 {
-    font-size: 24px;
-
     margin-bottom: 10px;
+
+    font-size: 24px;
 }
 
 .calculator-card p {
-    color: #68766e;
-
     margin-bottom: 20px;
+
+    color: #68766e;
 }
 
 .card-link {
@@ -415,7 +530,9 @@ img {
    CALCULATOR PAGE
 ========================================================= */
 
-.calculator-page-header {
+.calculator-page-header,
+.education-header,
+.news-header {
     padding: 80px 6%;
 
     text-align: center;
@@ -428,21 +545,16 @@ img {
         );
 }
 
-.calculator-page-header .section-label {
-    margin-bottom: 10px;
-}
-
 .calculator-page-header h1,
 .education-header h1,
-.news-page h1 {
+.news-header h1 {
     font-size: clamp(40px, 6vw, 65px);
-
     line-height: 1.1;
 }
 
-.calculator-page-header > p:last-child,
-.education-header > p:last-child,
-.news-page > p:last-child {
+.calculator-page-header > p,
+.education-header > p,
+.news-header > p {
     max-width: 650px;
 
     margin: 20px auto 0;
@@ -453,9 +565,7 @@ img {
 }
 
 
-/* =========================================================
-   CALCULATOR SECTION
-========================================================= */
+/* CALCULATOR SECTION */
 
 .calculator-section {
     padding: 90px 6%;
@@ -485,7 +595,6 @@ img {
     margin-top: 10px;
 
     font-size: 42px;
-
     line-height: 1.15;
 }
 
@@ -507,19 +616,16 @@ img {
 
     border-radius: 18px;
 
-    box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
 }
 
 label {
     display: block;
 
     margin-top: 18px;
-
     margin-bottom: 7px;
 
     font-size: 14px;
-
     font-weight: 700;
 }
 
@@ -548,8 +654,7 @@ input:focus,
 select:focus {
     border-color: #16804b;
 
-    box-shadow:
-        0 0 0 3px rgba(22, 128, 75, 0.1);
+    box-shadow: 0 0 0 3px rgba(22, 128, 75, 0.1);
 }
 
 button {
@@ -560,7 +665,6 @@ button {
     padding: 14px;
 
     border: none;
-
     border-radius: 9px;
 
     background: #16804b;
@@ -568,14 +672,16 @@ button {
     color: white;
 
     font-size: 16px;
-
     font-weight: 800;
 
     cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
 button:hover {
     background: #11683d;
+    transform: translateY(-1px);
 }
 
 
@@ -587,7 +693,6 @@ button:hover {
     min-height: 20px;
 
     margin-top: 20px;
-
     padding: 22px;
 
     border-radius: 14px;
@@ -597,8 +702,6 @@ button:hover {
     color: #18352a;
 
     border: 1px solid #dfe9e3;
-
-    transition: 0.3s;
 }
 
 .result-placeholder {
@@ -606,34 +709,28 @@ button:hover {
 
     font-size: 14px;
 
-    font-weight: 400;
-
     text-align: center;
 }
 
 .result-title {
-    font-size: 12px;
+    margin-bottom: 5px;
 
+    font-size: 12px;
     font-weight: 800;
 
     letter-spacing: 1.5px;
-
-    margin-bottom: 5px;
 }
 
 
-/* =========================================================
-   BMI
-========================================================= */
+/* BMI */
 
 .bmi-number {
-    font-size: 48px;
+    margin: 5px 0;
 
+    font-size: 48px;
     font-weight: 800;
 
     line-height: 1.1;
-
-    margin: 5px 0;
 }
 
 .bmi-category {
@@ -644,13 +741,11 @@ button:hover {
     border-radius: 50px;
 
     font-size: 13px;
-
     font-weight: 800;
 }
 
 .result-details {
     margin-top: 18px;
-
     padding-top: 15px;
 
     border-top: 1px solid rgba(0, 0, 0, 0.08);
@@ -666,8 +761,59 @@ button:hover {
     margin-top: 15px;
 
     font-size: 14px;
+}
 
-    line-height: 1.6;
+
+/* BMI COLORS */
+
+.result-normal {
+    background: #eaf7ef;
+    border-color: #bfe4cc;
+    color: #12683d;
+}
+
+.result-normal .bmi-category {
+    background: #16804b;
+    color: white;
+}
+
+.result-underweight {
+    background: #fff8df;
+    border-color: #eadb9b;
+    color: #75601b;
+}
+
+.result-underweight .bmi-category {
+    background: #d6aa16;
+    color: white;
+}
+
+.result-overweight {
+    background: #fff1df;
+    border-color: #edcfaa;
+    color: #8a5012;
+}
+
+.result-overweight .bmi-category {
+    background: #e58b25;
+    color: white;
+}
+
+.result-obesity {
+    background: #ffebeb;
+    border-color: #efc4c4;
+    color: #9b2c2c;
+}
+
+.result-obesity .bmi-category {
+    background: #d64545;
+    color: white;
+}
+
+.result-error {
+    background: #fff1f1;
+    border-color: #efcaca;
+    color: #9b2c2c;
 }
 
 
@@ -683,7 +829,6 @@ button:hover {
     position: relative;
 
     width: 100%;
-
     height: 12px;
 
     border-radius: 50px;
@@ -691,19 +836,14 @@ button:hover {
     background:
         linear-gradient(
             to right,
-
             #d6aa16 0%,
             #d6aa16 18%,
-
             #16804b 18%,
             #16804b 42%,
-
             #e58b25 42%,
             #e58b25 60%,
-
             #d64545 60%,
             #d64545 78%,
-
             #8d2020 78%,
             #8d2020 100%
         );
@@ -717,17 +857,15 @@ button:hover {
     width: 20px;
     height: 20px;
 
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 50%;
+    transform: translate(-50%, -50%);
 
     background: white;
 
     border: 4px solid #18352a;
 
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .scale-labels {
@@ -735,103 +873,22 @@ button:hover {
 
     justify-content: space-between;
 
-    gap: 4px;
-
     margin-top: 10px;
 
     color: #6c7971;
 
     font-size: 9px;
 
-    line-height: 1.2;
-
     text-align: center;
 }
 
 
 /* =========================================================
-   BMI COLORS
-========================================================= */
-
-.result-normal {
-    background: #eaf7ef;
-
-    border-color: #bfe4cc;
-
-    color: #12683d;
-}
-
-.result-normal .bmi-category {
-    background: #16804b;
-
-    color: white;
-}
-
-.result-underweight {
-    background: #fff8df;
-
-    border-color: #eadb9b;
-
-    color: #75601b;
-}
-
-.result-underweight .bmi-category {
-    background: #d6aa16;
-
-    color: white;
-}
-
-.result-overweight {
-    background: #fff1df;
-
-    border-color: #edcfaa;
-
-    color: #8a5012;
-}
-
-.result-overweight .bmi-category {
-    background: #e58b25;
-
-    color: white;
-}
-
-.result-obesity {
-    background: #ffebeb;
-
-    border-color: #efc4c4;
-
-    color: #9b2c2c;
-}
-
-.result-obesity .bmi-category {
-    background: #d64545;
-
-    color: white;
-}
-
-.result-error {
-    background: #fff1f1;
-
-    border-color: #efcaca;
-
-    color: #9b2c2c;
-}
-
-
-/* =========================================================
-   BMR & TDEE
+   ENERGY / BMR / TDEE
 ========================================================= */
 
 .energy-result {
     margin-top: 20px;
-
-    padding: 15px;
-
-    border-radius: 14px;
-
-    background: #eaf7ef;
-
-    border: 1px solid #bfe4cc;
 }
 
 .energy-box {
@@ -845,23 +902,22 @@ button:hover {
 .energy-box > div {
     padding: 18px;
 
-    border-radius: 12px;
-
     background: white;
 
-    text-align: center;
-
     border: 1px solid #d7e9dd;
+
+    border-radius: 12px;
+
+    text-align: center;
 }
 
 .energy-box span {
     display: block;
 
-    font-size: 12px;
-
-    font-weight: 800;
-
     color: #637168;
+
+    font-size: 12px;
+    font-weight: 800;
 
     letter-spacing: 1px;
 }
@@ -871,9 +927,9 @@ button:hover {
 
     margin-top: 5px;
 
-    font-size: 30px;
-
     color: #16804b;
+
+    font-size: 30px;
 }
 
 .energy-box small {
@@ -882,26 +938,33 @@ button:hover {
     font-size: 12px;
 }
 
+.energy-box.featured {
+    background: #16804b;
+}
+
+.energy-box.featured span,
+.energy-box.featured strong,
+.energy-box.featured small {
+    color: white;
+}
+
 .energy-explanation {
     margin-top: 18px;
-
     padding-top: 15px;
 
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 
-    color: #5f6e66;
+    color: #5f6d65;
 
-    font-size: 14px;
-
-    line-height: 1.6;
+    font-size: 13px;
 }
 
 .activity-note {
-    margin-top: 10px;
+    margin-top: 8px;
 
     color: #718078;
 
-    font-size: 13px;
+    font-size: 11px;
 }
 
 
@@ -909,17 +972,8 @@ button:hover {
    MACRO
 ========================================================= */
 
-.macro-result {
-    padding: 20px;
-
-    border-radius: 14px;
-
-    background: #f4f8f5;
-}
-
 .macro-calories {
     margin-top: 12px;
-
     padding: 20px;
 
     background: #16804b;
@@ -935,7 +989,6 @@ button:hover {
     display: block;
 
     font-size: 12px;
-
     font-weight: 700;
 
     letter-spacing: 1px;
@@ -947,8 +1000,6 @@ button:hover {
     margin-top: 5px;
 
     font-size: 38px;
-
-    line-height: 1.1;
 }
 
 .macro-calories small {
@@ -958,8 +1009,7 @@ button:hover {
 .macro-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 10px;
 
@@ -971,18 +1021,17 @@ button:hover {
 
     background: white;
 
+    border: 1px solid #e0e9e3;
+
     border-radius: 12px;
 
     text-align: center;
-
-    border: 1px solid #e0e9e3;
 }
 
 .macro-box span {
     display: block;
 
     font-size: 12px;
-
     font-weight: 800;
 }
 
@@ -1022,159 +1071,20 @@ button:hover {
     color: #68766e;
 
     font-size: 13px;
-
     line-height: 1.6;
 }
 
 .calculator-note {
     margin-top: 20px;
-
     padding: 15px;
-
-    border-radius: 10px;
 
     background: #f4f8f5;
 
+    border-radius: 10px;
+
     color: #68766e;
 
     font-size: 14px;
-}
-
-
-/* =========================================================
-   CALCULATOR PREVIEW
-========================================================= */
-
-.calculator-preview {
-    background: white;
-}
-
-.calculator-preview-card {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 30px;
-
-    padding: 35px;
-
-    background: white;
-
-    border-radius: 20px;
-
-    border: 1px solid #e4eee8;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.calculator-preview-card h3 {
-    margin-bottom: 8px;
-
-    font-size: 25px;
-}
-
-.calculator-preview-card p {
-    max-width: 650px;
-
-    color: #68766e;
-}
-
-
-/* =========================================================
-   HEALTH CONTENT
-========================================================= */
-
-.health-content {
-    background: white;
-}
-
-.health-content-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-.content-card {
-    padding: 28px;
-
-    background: #f8fbf9;
-
-    border: 1px solid #e4eee8;
-
-    border-radius: 18px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 18px;
-
-    transition: 0.2s;
-}
-
-.content-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.06);
-}
-
-.content-card-icon {
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 14px;
-
-    background: #e5f6eb;
-
-    font-size: 25px;
-}
-
-.content-category {
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    color: #16804b;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-}
-
-.content-card h3 {
-    font-size: 21px;
-
-    line-height: 1.3;
-
-    margin-bottom: 8px;
-}
-
-.content-card p {
-    color: #68766e;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-}
-
-.content-card .card-link {
-    display: inline-block;
-
-    margin-top: 10px;
 }
 
 
@@ -1186,39 +1096,16 @@ button:hover {
     background: #eaf7ef;
 }
 
-.education-header {
-    padding: 80px 6%;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e5f6eb,
-            #ffffff
-        );
-}
-
-.education-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
 .education-card {
     padding: 30px;
 
     background: white;
 
-    border-radius: 18px;
-
     border: 1px solid #e4eee8;
 
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.04);
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
 }
 
 .education-card-icon {
@@ -1226,15 +1113,14 @@ button:hover {
     height: 58px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     margin-bottom: 18px;
 
-    border-radius: 15px;
-
     background: #e5f6eb;
+
+    border-radius: 15px;
 
     font-size: 26px;
 }
@@ -1253,7 +1139,6 @@ button:hover {
 
 .education-details {
     margin-top: 20px;
-
     padding-top: 18px;
 
     border-top: 1px solid #e4eee8;
@@ -1287,54 +1172,93 @@ button:hover {
 
 
 /* =========================================================
-   BERITA
+   HEALTH CONTENT
+========================================================= */
+
+.health-content {
+    background: white;
+}
+
+.content-card {
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    background: #f8fbf9;
+
+    border: 1px solid #e4eee8;
+
+    border-radius: 18px;
+
+    transition: 0.2s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+.content-card-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e5f6eb;
+
+    border-radius: 14px;
+
+    font-size: 25px;
+}
+
+.content-category {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #16804b;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.content-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 21px;
+    line-height: 1.3;
+}
+
+.content-card p {
+    color: #68766e;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   NEWS / BERITA
 ========================================================= */
 
 .news-page {
     background: #f5faf7;
-
-    padding: 80px 6%;
 }
 
-.news-page-header {
-    max-width: 800px;
-
-    margin: 0 auto 50px;
-
-    text-align: center;
-}
-
-.news-page-header .section-label {
-    margin-bottom: 10px;
-}
-
-.news-page-header h1 {
-    font-size: clamp(40px, 6vw, 65px);
-
-    line-height: 1.1;
-}
-
-.news-page-header p {
-    max-width: 650px;
-
-    margin: 20px auto 0;
-
-    color: #637168;
-
-    font-size: 17px;
+.news-section {
+    background: white;
 }
 
 .news-grid {
     max-width: 1200px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 24px;
 }
 
 .news-card {
@@ -1346,26 +1270,22 @@ button:hover {
 
     border-radius: 18px;
 
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
 
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
 .news-card:hover {
     transform: translateY(-5px);
 
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 }
 
 .news-image {
     width: 100%;
-
-    height: 220px;
+    height: 210px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -1378,14 +1298,7 @@ button:hover {
 
     color: #16804b;
 
-    font-size: 55px;
-
-    object-fit: cover;
-}
-
-.news-image img {
-    width: 100%;
-    height: 100%;
+    font-size: 50px;
 
     object-fit: cover;
 }
@@ -1406,7 +1319,6 @@ button:hover {
     margin-bottom: 10px;
 
     font-size: 22px;
-
     line-height: 1.3;
 }
 
@@ -1416,33 +1328,28 @@ button:hover {
     color: #68766e;
 
     font-size: 14px;
-
     line-height: 1.6;
 }
 
-.news-content .card-link,
-.read-more {
+.news-content .card-link {
     display: inline-block;
-
-    margin-top: 5px;
 
     color: #16804b;
 
     font-weight: 800;
 }
 
-.news-content .card-link:hover,
-.read-more:hover {
+.news-content .card-link:hover {
     color: #11683d;
 }
 
 
 /* =========================================================
-   ARTIKEL BERITA
+   ARTICLE
 ========================================================= */
 
 .article-page {
-    padding: 80px 6%;
+    padding: 70px 6%;
 
     background: #f5faf7;
 }
@@ -1452,32 +1359,40 @@ button:hover {
 
     margin: auto;
 
-    padding: 40px;
+    padding: 45px;
 
     background: white;
 
-    border-radius: 20px;
-
     border: 1px solid #e4eee8;
 
-    box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
 }
 
 .article-container h1 {
     margin-bottom: 10px;
 
-    font-size: clamp(32px, 5vw, 52px);
+    font-size: clamp(32px, 5vw, 48px);
 
     line-height: 1.15;
 }
 
-.article-date {
+.article-meta {
     margin-bottom: 30px;
 
     color: #718078;
 
     font-size: 14px;
+}
+
+.article-container h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    color: #16804b;
+
+    font-size: 25px;
 }
 
 .article-container p {
@@ -1486,14 +1401,6 @@ button:hover {
     color: #53635b;
 
     line-height: 1.8;
-}
-
-.article-container h2 {
-    margin-top: 30px;
-
-    margin-bottom: 12px;
-
-    color: #18352a;
 }
 
 .article-container ul {
@@ -1508,26 +1415,6 @@ button:hover {
     margin-bottom: 8px;
 }
 
-.back-button {
-    display: inline-block;
-
-    margin-top: 20px;
-
-    padding: 12px 18px;
-
-    border-radius: 9px;
-
-    background: #16804b;
-
-    color: white;
-
-    font-weight: 700;
-}
-
-.back-button:hover {
-    background: #11683d;
-}
-
 
 /* =========================================================
    DISCLAIMER
@@ -1538,9 +1425,9 @@ button:hover {
 
     padding: 25px;
 
-    border-radius: 15px;
-
     background: #fff7df;
+
+    border-radius: 15px;
 
     color: #66582e;
 }
@@ -1551,27 +1438,25 @@ button:hover {
 
 
 /* =========================================================
-   MAPS BUTTON
+   MAP BUTTON
 ========================================================= */
 
 .maps-button {
     display: inline-block;
 
     margin-bottom: 20px;
-
     padding: 10px 15px;
-
-    border-radius: 8px;
 
     background: #16804b;
 
     color: white !important;
 
-    font-size: 14px;
+    border-radius: 8px;
 
+    font-size: 14px;
     font-weight: 700;
 
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
 .maps-button:hover {
@@ -1600,16 +1485,15 @@ footer {
 
     display: grid;
 
-    grid-template-columns:
-        1.2fr 1fr 0.7fr;
+    grid-template-columns: 1.2fr 1fr 0.7fr;
 
     gap: 50px;
 }
 
 .footer-info h3 {
-    font-size: 24px;
-
     margin-bottom: 10px;
+
+    font-size: 24px;
 }
 
 .footer-contact h4 {
@@ -1627,60 +1511,42 @@ footer {
 .footer-contact a {
     color: #bcd2c5;
 
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
 .footer-contact a:hover {
     color: white;
 }
 
-.footer-copyright {
-    display: flex;
-
-    align-items: flex-end;
-}
-
 .footer-content p {
     color: #bcd2c5;
 }
 
+.footer-copyright {
+    display: flex;
+    align-items: flex-end;
+}
+
 
 /* =========================================================
-   MOBILE - TABLET
+   MOBILE / TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
 
+    .news-grid,
+    .calculator-grid,
+    .education-grid,
+    .health-content-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .hero {
         grid-template-columns: 1fr;
 
-        padding: 70px 5%;
+        padding: 70px 6%;
 
         gap: 40px;
-    }
-
-    .intro {
-        grid-template-columns: 1fr;
-
-        padding: 70px 5%;
-
-        gap: 30px;
-    }
-
-    .calculator-grid,
-    .education-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .health-content-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .news-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
     }
 
     .calculator-container {
@@ -1699,135 +1565,62 @@ footer {
    MOBILE
 ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
     .navbar {
-        padding: 15px 5%;
+        width: calc(100% - 16px);
+
+        margin-top: 8px;
+
+        padding: 7px;
+
+        border-radius: 15px;
+    }
+
+    .logo-text {
+        display: none;
     }
 
     .logo {
-        font-size: 18px;
+        padding: 3px;
     }
 
-    .nav-menu {
-        gap: 14px;
+    .logo-icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: 20px;
     }
 
-    .nav-menu a {
-        font-size: 12px;
+    .navbar nav {
+        flex: 1;
+
+        justify-content: space-between;
+
+        margin-left: 8px;
+
+        padding: 4px;
     }
 
-    .hero {
-        padding: 60px 5%;
-    }
-
-    .hero h1 {
-        font-size: 50px;
-    }
-
-    .intro {
-        padding: 60px 5%;
-    }
-
-    .intro h2 {
-        font-size: 34px;
-    }
-
-    .section {
-        padding: 60px 5%;
-    }
-
-    .section-heading h1,
-    .section-heading h2,
-    .calculator-container h2 {
-        font-size: 34px;
-    }
-
-    .calculator-grid,
-    .education-grid,
-    .health-content-grid,
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .calculator-page-header,
-    .education-header,
-    .news-page {
-        padding: 60px 5%;
-    }
-
-    .calculator-page-header h1,
-    .education-header h1,
-    .news-page-header h1 {
-        font-size: 42px;
-    }
-
-    .calculator-preview-card {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-    .energy-box {
-        grid-template-columns: 1fr;
-    }
-
-    .macro-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .disclaimer {
-        margin: 40px 5%;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-
-        gap: 30px;
-    }
-
-    .footer-copyright {
-        display: block;
-    }
-
-    .article-page {
-        padding: 50px 5%;
-    }
-
-    .article-container {
-        padding: 25px;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .navbar {
-        flex-direction: column;
-
-        gap: 12px;
-
-        padding: 14px 5%;
-    }
-
-    .logo {
-        font-size: 19px;
-    }
-
-    .nav-menu {
-        width: 100%;
+    .navbar nav a {
+        flex: 1;
 
         justify-content: center;
 
-        gap: 15px;
+        padding: 9px 5px;
+
+        font-size: 10px;
     }
 
-    .nav-menu a {
-        font-size: 12px;
+    .nav-icon {
+        font-size: 13px;
+    }
+
+
+    .hero {
+        min-height: auto;
+
+        padding: 60px 5%;
     }
 
     .hero h1 {
@@ -1844,8 +1637,116 @@ footer {
         text-align: center;
     }
 
+
+    .intro {
+        grid-template-columns: 1fr;
+
+        padding: 60px 5%;
+
+        gap: 25px;
+    }
+
+    .intro h2 {
+        font-size: 34px;
+    }
+
+
+    .section {
+        padding: 60px 5%;
+    }
+
+    .section-heading h2,
+    .calculator-container h2 {
+        font-size: 34px;
+    }
+
+
+    .news-grid,
+    .calculator-grid,
+    .education-grid,
+    .health-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .calculator-page-header,
+    .education-header,
+    .news-header {
+        padding: 60px 5%;
+    }
+
+
+    .calculator-page-header h1,
+    .education-header h1,
+    .news-header h1 {
+        font-size: 42px;
+    }
+
+
     .form-card {
         padding: 22px;
+    }
+
+
+    .energy-box {
+        grid-template-columns: 1fr;
+    }
+
+
+    .macro-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .article-page {
+        padding: 40px 5%;
+    }
+
+    .article-container {
+        padding: 28px 22px;
+    }
+
+
+    .disclaimer {
+        margin: 40px 5%;
+    }
+
+
+    .footer-content {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .footer-copyright {
+        display: block;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .navbar nav a span:last-child {
+        display: none;
+    }
+
+    .navbar nav a {
+        min-width: 42px;
+
+        padding: 10px 5px;
+    }
+
+    .nav-icon {
+        font-size: 16px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
     }
 
     .bmi-number {
@@ -1854,18 +1755,6 @@ footer {
 
     .macro-calories strong {
         font-size: 34px;
-    }
-
-    .calculator-preview-card {
-        padding: 25px;
-    }
-
-    .education-card {
-        padding: 24px;
-    }
-
-    .news-image {
-        height: 190px;
     }
 
 }
