@@ -6,6 +6,7 @@ pagination:
   alias: berita
 permalink: berita.html
 ---
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -23,9 +24,11 @@ permalink: berita.html
         content="Berita dan informasi kesehatan Klinik Putra Medika."
     >
 
-    <title>Berita - Klinik Putra Medika</title>
+    <title>
+        Berita - Klinik Putra Medika
+    </title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 
 </head>
 
@@ -39,26 +42,26 @@ permalink: berita.html
 
     <header class="navbar">
 
-        <a href="index.html" class="logo">
+        <a href="/index.html" class="logo">
             Klinik <span>Putra Medika</span>
         </a>
 
 
         <nav>
 
-            <a href="index.html">
+            <a href="/index.html">
                 Beranda
             </a>
 
-            <a href="kalkulator.html">
+            <a href="/kalkulator.html">
                 Kalkulator
             </a>
 
-            <a href="berita.html" class="active">
+            <a href="/berita.html" class="active">
                 Berita
             </a>
 
-            <a href="edukasi.html">
+            <a href="/edukasi.html">
                 Edukasi
             </a>
 
@@ -104,7 +107,7 @@ permalink: berita.html
 
 
         <!-- =========================
-             BERITA
+             BERITA DARI CMS
         ========================== -->
 
         <section class="section news-page">
@@ -130,150 +133,86 @@ permalink: berita.html
             <div class="news-grid">
 
 
-                <!-- =========================
-                     BERITA 1
-                ========================== -->
+                {% for item in berita %}
 
                 <article class="news-card">
+
+
+                    <!-- GAMBAR -->
+
+                    {% if item.data.image %}
+
+                    <img
+                        src="{{ item.data.image }}"
+                        alt="{{ item.data.title }}"
+                        class="news-image"
+                    >
+
+                    {% else %}
 
                     <div class="news-image">
                         🏥
                     </div>
 
+                    {% endif %}
+
+
+
+                    <!-- ISI BERITA -->
 
                     <div class="news-content">
 
+
+                        {% if item.data.category %}
+
                         <span class="content-category">
-                            KEGIATAN KLINIK
+                            {{ item.data.category }}
                         </span>
 
+                        {% endif %}
+
+
+
+                        {% if item.data.date %}
 
                         <p class="news-date">
-                            21 Agustus 2026
+                            {{ item.data.date }}
                         </p>
+
+                        {% endif %}
+
 
 
                         <h3>
-                            Informasi terbaru dari
-                            Klinik Putra Medika
+                            {{ item.data.title }}
                         </h3>
 
 
+
+                        {% if item.data.description %}
+
                         <p>
-                            Simak informasi dan kegiatan terbaru
-                            dari Klinik Putra Medika untuk
-                            masyarakat.
+                            {{ item.data.description }}
                         </p>
+
+                        {% endif %}
+
 
 
                         <a
-                            href="artikel-1.html"
+                            href="{{ item.url }}"
                             class="card-link"
                         >
                             Baca Selengkapnya →
                         </a>
+
 
                     </div>
 
                 </article>
 
 
-
-                <!-- =========================
-                     BERITA 2
-                ========================== -->
-
-                <article class="news-card">
-
-                    <div class="news-image">
-                        🩺
-                    </div>
-
-
-                    <div class="news-content">
-
-                        <span class="content-category">
-                            EDUKASI KESEHATAN
-                        </span>
-
-
-                        <p class="news-date">
-                            20 Agustus 2026
-                        </p>
-
-
-                        <h3>
-                            Tips menjaga kesehatan
-                            sehari-hari
-                        </h3>
-
-
-                        <p>
-                            Informasi sederhana yang dapat
-                            membantu menjaga kesehatan dalam
-                            kehidupan sehari-hari.
-                        </p>
-
-
-                        <a
-                            href="artikel-2.html"
-                            class="card-link"
-                        >
-                            Baca Selengkapnya →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- =========================
-                     BERITA 3
-                ========================== -->
-
-                <article class="news-card">
-
-                    <div class="news-image">
-                        ❤️
-                    </div>
-
-
-                    <div class="news-content">
-
-                        <span class="content-category">
-                            INFORMASI KESEHATAN
-                        </span>
-
-
-                        <p class="news-date">
-                            19 Agustus 2026
-                        </p>
-
-
-                        <h3>
-                            Mengenal layanan
-                            Klinik Putra Medika
-                        </h3>
-
-
-                        <p>
-                            Kenali berbagai informasi dan
-                            layanan kesehatan yang tersedia
-                            di Klinik Putra Medika.
-                        </p>
-
-
-                        <a
-                            href="artikel-3.html"
-                            class="card-link"
-                        >
-                            Baca Selengkapnya →
-                        </a>
-
-                    </div>
-
-                </article>
+                {% endfor %}
 
 
             </div>
@@ -302,6 +241,7 @@ permalink: berita.html
 
         </section>
 
+
     </main>
 
 
@@ -314,8 +254,6 @@ permalink: berita.html
 
         <div class="footer-content">
 
-
-            <!-- INFO -->
 
             <div class="footer-info">
 
@@ -331,8 +269,6 @@ permalink: berita.html
             </div>
 
 
-
-            <!-- KONTAK -->
 
             <div class="footer-contact">
 
@@ -362,16 +298,16 @@ permalink: berita.html
                 </h4>
 
                 <p>
+
                     <a href="tel:087810353838">
                         0878-1035-3838
                     </a>
+
                 </p>
 
             </div>
 
 
-
-            <!-- COPYRIGHT -->
 
             <div class="footer-copyright">
 
@@ -385,7 +321,6 @@ permalink: berita.html
         </div>
 
     </footer>
-
 
 
 </body>
