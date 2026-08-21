@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: rezihere/Klinik-Putra-Medika
+  name: git-gateway
   branch: main
 
 media_folder: "images/uploads"
@@ -9,6 +8,7 @@ public_folder: "/images/uploads"
 site_url: "https://eloquent-pithivier-a49657.netlify.app"
 
 collections:
+
   - name: "berita"
     label: "Berita"
     folder: "content/berita"
@@ -24,7 +24,7 @@ collections:
       - label: "Tanggal"
         name: "date"
         widget: "datetime"
-        format: "DD MMMM YYYY"
+        format: "YYYY-MM-DD"
         date_format: "DD MMMM YYYY"
         time_format: false
 
