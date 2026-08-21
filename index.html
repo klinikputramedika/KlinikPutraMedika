@@ -32,9 +32,8 @@
     <header class="navbar">
 
         <a href="#home" class="logo">
-            Klinik<span>Putra<span>Medika</span>
+            Klinik<span>Putra Medika</span>
         </a>
-
 
         <nav>
 
@@ -67,22 +66,19 @@
             <div class="hero-content">
 
                 <div class="badge">
-                     🏥 KLINIK PUTRA MEDIKA
+                    🏥 KLINIK PUTRA MEDIKA
                 </div>
-
 
                 <h1>
                     Mulai Hidup
                     <span>Lebih Sehat.</span>
                 </h1>
 
-
                 <p>
                     Kenali tubuhmu, pahami kebutuhanmu,
                     dan mulai membangun kebiasaan hidup
                     sehat dari sekarang.
                 </p>
-
 
                 <div class="hero-buttons">
 
@@ -92,7 +88,6 @@
                     >
                         Mulai Kalkulator
                     </a>
-
 
                     <a
                         href="#edukasi"
@@ -147,14 +142,11 @@
 
             </div>
 
-
             <p>
-
-              Klinik Putra Medika hadir untuk memberikan
-              informasi dan edukasi kesehatan yang mudah
-              dipahami serta membantu masyarakat mengenali
-              kebutuhan kesehatan sehari-hari.
-
+                Klinik Putra Medika hadir untuk memberikan
+                informasi dan edukasi kesehatan yang mudah
+                dipahami serta membantu masyarakat mengenali
+                kebutuhan kesehatan sehari-hari.
             </p>
 
         </section>
@@ -248,28 +240,29 @@
 
 
 
-                <!-- PROTEIN -->
+                <!-- MAKRO -->
 
                 <article class="calculator-card">
 
                     <div class="card-icon">
-                        💪
+                        🍽️
                     </div>
 
                     <h3>
-                        Protein
+                        Kalori & Makro
                     </h3>
 
                     <p>
-                        Estimasi kebutuhan protein harian
-                        berdasarkan berat badan dan tujuan.
+                        Hitung kebutuhan kalori, protein,
+                        lemak, dan karbohidrat berdasarkan
+                        kondisi tubuh dan tujuan.
                     </p>
 
                     <a
-                        href="#protein"
+                        href="#makro"
                         class="card-link"
                     >
-                        Hitung Protein →
+                        Hitung Makro →
                     </a>
 
                 </article>
@@ -281,7 +274,7 @@
 
 
         <!-- =========================
-             BMI PLACEHOLDER
+             BMI
         ========================== -->
 
         <section
@@ -311,7 +304,7 @@
 
                 <div class="form-card">
 
-                    <label>
+                    <label for="weight">
                         Berat badan (kg)
                     </label>
 
@@ -319,10 +312,12 @@
                         type="number"
                         id="weight"
                         placeholder="Contoh: 70"
+                        min="1"
+                        step="0.1"
                     >
 
 
-                    <label>
+                    <label for="height">
                         Tinggi badan (cm)
                     </label>
 
@@ -330,6 +325,8 @@
                         type="number"
                         id="height"
                         placeholder="Contoh: 170"
+                        min="1"
+                        step="0.1"
                     >
 
 
@@ -338,15 +335,18 @@
                     </button>
 
 
-                   <div
-    id="bmiResult"
-    class="result"
->
-    <div class="result-placeholder">
-        Hasil perhitungan BMI akan muncul di sini.
-    </div>
-</div>
+                    <div
+                        id="bmiResult"
+                        class="result"
+                    >
 
+                        <div class="result-placeholder">
+                            Hasil perhitungan BMI akan muncul di sini.
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -355,178 +355,169 @@
 
 
         <!-- =========================
-             BMR PLACEHOLDER
+             BMR & TDEE
         ========================== -->
 
-      <section
-    id="bmr"
-    class="calculator-section white"
->
+        <section
+            id="bmr"
+            class="calculator-section white"
+        >
 
-    <div class="calculator-container">
+            <div class="calculator-container">
 
-        <div>
+                <div>
 
-            <p class="section-label">
-                BMR & TDEE
-            </p>
+                    <p class="section-label">
+                        BMR & TDEE
+                    </p>
 
-            <h2>
-                Ketahui kebutuhan energi tubuh
-            </h2>
+                    <h2>
+                        Ketahui kebutuhan energi tubuh
+                    </h2>
 
-            <p>
-                Masukkan data dasar dan tingkat aktivitas
-                untuk mendapatkan estimasi BMR dan TDEE.
-            </p>
+                    <p>
+                        Masukkan data dasar dan tingkat aktivitas
+                        untuk mendapatkan estimasi BMR dan TDEE.
+                    </p>
 
-            <p class="calculator-note">
-                Kalkulator ini ditujukan untuk orang dewasa.
-                Hasil merupakan estimasi dan bukan pengganti
-                pemeriksaan atau konsultasi medis.
-            </p>
+                    <p class="calculator-note">
+                        Kalkulator ini ditujukan untuk orang dewasa.
+                        Hasil merupakan estimasi dan bukan pengganti
+                        pemeriksaan atau konsultasi medis.
+                    </p>
 
-        </div>
-
-
-        <div class="form-card">
-
-            <!-- JENIS KELAMIN -->
-
-            <label for="gender">
-                Jenis kelamin
-            </label>
-
-            <select id="gender">
-
-                <option value="male">
-                    Pria
-                </option>
-
-                <option value="female">
-                    Wanita
-                </option>
-
-            </select>
+                </div>
 
 
-            <!-- UMUR -->
-
-            <label for="age">
-                Umur (tahun)
-            </label>
-
-            <input
-                type="number"
-                id="age"
-                placeholder="Contoh: 25"
-                min="20"
-                max="120"
-                step="1"
-            >
+                <div class="form-card">
 
 
-            <!-- BERAT -->
+                    <label for="gender">
+                        Jenis kelamin
+                    </label>
 
-            <label for="weightBMR">
-                Berat badan (kg)
-            </label>
+                    <select id="gender">
 
-            <input
-                type="number"
-                id="weightBMR"
-                placeholder="Contoh: 70"
-                min="1"
-                step="0.1"
-            >
+                        <option value="male">
+                            Pria
+                        </option>
 
+                        <option value="female">
+                            Wanita
+                        </option>
 
-            <!-- TINGGI -->
-
-            <label for="heightBMR">
-                Tinggi badan (cm)
-            </label>
-
-            <input
-                type="number"
-                id="heightBMR"
-                placeholder="Contoh: 170"
-                min="1"
-                step="0.1"
-            >
+                    </select>
 
 
-            <!-- AKTIVITAS -->
 
-            <label for="activity">
-                Tingkat aktivitas
-            </label>
+                    <label for="age">
+                        Umur (tahun)
+                    </label>
 
-            <select id="activity">
-
-                <option value="1.2">
-                    Sedentary — sangat sedikit aktivitas
-                </option>
-
-                <option value="1.375">
-                    Light — olahraga ringan 1–3 hari/minggu
-                </option>
-
-                <option value="1.55">
-                    Moderate — olahraga sedang 3–5 hari/minggu
-                </option>
-
-                <option value="1.725">
-                    Active — olahraga berat 6–7 hari/minggu
-                </option>
-
-                <option value="1.9">
-                    Very Active — aktivitas fisik sangat tinggi
-                </option>
-
-            </select>
+                    <input
+                        type="number"
+                        id="age"
+                        placeholder="Contoh: 25"
+                        min="18"
+                        max="120"
+                        step="1"
+                    >
 
 
-            <p class="activity-note">
-                Pilih tingkat aktivitas yang paling mendekati
-                rutinitas harian Anda.
-            </p>
+
+                    <label for="weightBMR">
+                        Berat badan (kg)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="weightBMR"
+                        placeholder="Contoh: 70"
+                        min="1"
+                        step="0.1"
+                    >
 
 
-            <button
-                onclick="calculateTDEE()"
-            >
-                Hitung BMR & TDEE
-            </button>
+
+                    <label for="heightBMR">
+                        Tinggi badan (cm)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="heightBMR"
+                        placeholder="Contoh: 170"
+                        min="1"
+                        step="0.1"
+                    >
 
 
-            <!-- HASIL -->
 
-            <div
-                id="tdeeResult"
-                class="result"
-            >
+                    <label for="activity">
+                        Tingkat aktivitas
+                    </label>
 
-                <div class="result-placeholder">
-                    Hasil BMR dan TDEE akan muncul di sini.
+                    <select id="activity">
+
+                        <option value="1.2">
+                            Sedentary — sangat sedikit aktivitas
+                        </option>
+
+                        <option value="1.375">
+                            Light — olahraga ringan 1–3 hari/minggu
+                        </option>
+
+                        <option value="1.55">
+                            Moderate — olahraga sedang 3–5 hari/minggu
+                        </option>
+
+                        <option value="1.725">
+                            Active — olahraga berat 6–7 hari/minggu
+                        </option>
+
+                        <option value="1.9">
+                            Very Active — aktivitas fisik sangat tinggi
+                        </option>
+
+                    </select>
+
+
+                    <p class="activity-note">
+                        Pilih tingkat aktivitas yang paling mendekati
+                        rutinitas harian Anda.
+                    </p>
+
+
+                    <button onclick="calculateTDEE()">
+                        Hitung BMR & TDEE
+                    </button>
+
+
+                    <div
+                        id="tdeeResult"
+                        class="result"
+                    >
+
+                        <div class="result-placeholder">
+                            Hasil BMR dan TDEE akan muncul di sini.
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
 
         <!-- =========================
-             PROTEIN
+             KALKULATOR MAKRO
         ========================== -->
 
         <section
-            id="protein"
+            id="makro"
             class="calculator-section"
         >
 
@@ -535,16 +526,23 @@
                 <div>
 
                     <p class="section-label">
-                        PROTEIN CALCULATOR
+                        CALORIE & MACRO CALCULATOR
                     </p>
 
                     <h2>
-                        Berapa kebutuhan proteinmu?
+                        Hitung kebutuhan kalori & makro
                     </h2>
 
                     <p>
-                        Dapatkan estimasi kebutuhan protein
-                        berdasarkan berat badan dan tujuan.
+                        Masukkan data tubuh, aktivitas,
+                        dan tujuan untuk mendapatkan estimasi
+                        kebutuhan kalori, protein, lemak,
+                        dan karbohidrat harian.
+                    </p>
+
+                    <p class="calculator-note">
+                        Hasil merupakan estimasi untuk tujuan
+                        edukasi dan dapat berbeda pada setiap individu.
                     </p>
 
                 </div>
@@ -552,47 +550,137 @@
 
                 <div class="form-card">
 
-                    <label>
-                        Berat badan (kg)
+
+                    <label for="macroGender">
+                        Jenis kelamin
                     </label>
 
-                    <input
-                        type="number"
-                        id="proteinWeight"
-                        placeholder="Contoh: 70"
-                    >
+                    <select id="macroGender">
 
-
-                    <label>
-                        Tujuan
-                    </label>
-
-                    <select id="goal">
-
-                        <option value="maintenance">
-                            Maintenance
+                        <option value="male">
+                            Pria
                         </option>
 
-                        <option value="fatloss">
-                            Fat Loss
-                        </option>
-
-                        <option value="bulking">
-                            Muscle Gain / Bulking
+                        <option value="female">
+                            Wanita
                         </option>
 
                     </select>
 
 
-                    <button onclick="calculateProtein()">
-                        Hitung Protein
+
+                    <label for="macroAge">
+                        Umur (tahun)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="macroAge"
+                        placeholder="Contoh: 25"
+                        min="18"
+                        max="120"
+                        step="1"
+                    >
+
+
+
+                    <label for="macroWeight">
+                        Berat badan (kg)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="macroWeight"
+                        placeholder="Contoh: 70"
+                        min="1"
+                        step="0.1"
+                    >
+
+
+
+                    <label for="macroHeight">
+                        Tinggi badan (cm)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="macroHeight"
+                        placeholder="Contoh: 170"
+                        min="1"
+                        step="0.1"
+                    >
+
+
+
+                    <label for="macroActivity">
+                        Tingkat aktivitas
+                    </label>
+
+                    <select id="macroActivity">
+
+                        <option value="1.2">
+                            Sedentary — sangat sedikit aktivitas
+                        </option>
+
+                        <option value="1.375">
+                            Light — olahraga ringan 1–3 hari/minggu
+                        </option>
+
+                        <option value="1.55">
+                            Moderate — olahraga sedang 3–5 hari/minggu
+                        </option>
+
+                        <option value="1.725">
+                            Active — olahraga berat 6–7 hari/minggu
+                        </option>
+
+                        <option value="1.9">
+                            Very Active — aktivitas fisik sangat tinggi
+                        </option>
+
+                    </select>
+
+
+
+                    <label for="macroGoal">
+                        Tujuan
+                    </label>
+
+                    <select id="macroGoal">
+
+                        <option value="maintenance">
+                            Menjaga berat badan
+                        </option>
+
+                        <option value="fatloss">
+                            Menurunkan berat badan
+                        </option>
+
+                        <option value="muscle">
+                            Meningkatkan massa otot
+                        </option>
+
+                    </select>
+
+
+
+                    <button onclick="calculateMacros()">
+                        Hitung Kebutuhan Makro
                     </button>
 
 
+
                     <div
-                        id="proteinResult"
+                        id="macroResult"
                         class="result"
-                    ></div>
+                    >
+
+                        <div class="result-placeholder">
+                            Hasil kebutuhan kalori dan makro
+                            akan muncul di sini.
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -650,6 +738,7 @@
                 </article>
 
 
+
                 <article>
 
                     <div class="card-icon">
@@ -667,6 +756,7 @@
                     </p>
 
                 </article>
+
 
 
                 <article>
@@ -721,72 +811,75 @@
          FOOTER
     ========================== -->
 
-   <footer>
+    <footer>
 
-    <div class="footer-content">
+        <div class="footer-content">
 
-        <div class="footer-info">
 
-            <h3>
-                Klinik Putra Medika
-            </h3>
+            <div class="footer-info">
 
-            <p>
-                Informasi dan edukasi kesehatan
-                untuk masyarakat.
-            </p>
+                <h3>
+                    Klinik Putra Medika
+                </h3>
+
+                <p>
+                    Informasi dan edukasi kesehatan
+                    untuk masyarakat.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-contact">
+
+                <h4>
+                    Alamat
+                </h4>
+
+                <p>
+                    Kp. Gandasoli, Cikidangbayabang,
+                    Kec. Mande, Kabupaten Cianjur,
+                    Jawa Barat 43292
+                </p>
+
+
+                <a
+                    href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="maps-button"
+                >
+                    📍 Lihat Lokasi Klinik
+                </a>
+
+
+                <h4>
+                    Telepon
+                </h4>
+
+                <p>
+                    <a href="tel:087810353838">
+                        0878-1035-3838
+                    </a>
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-copyright">
+
+                <p>
+                    © 2026 Klinik Putra Medika
+                </p>
+
+            </div>
+
 
         </div>
 
-
-        <div class="footer-contact">
-
-    <h4>
-        Alamat
-    </h4>
-
-    <p>
-        Kp. Gandasoli, Cikidangbayabang,
-        Kec. Mande, Kabupaten Cianjur,
-        Jawa Barat 43292
-    </p>
-
-
-    <a
-        href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="maps-button"
-    >
-        📍 Lihat Lokasi Klinik
-    </a>
-
-
-    <h4>
-        Telepon
-    </h4>
-
-    <p>
-        <a href="tel:087810353838">
-            0878-1035-3838
-        </a>
-    </p>
-
-</div>
-
-
-
-        <div class="footer-copyright">
-
-            <p>
-                © 2026 Klinik Putra Medika
-            </p>
-
-        </div>
-
-    </div>
-
-</footer>
+    </footer>
 
 
 
