@@ -1,0 +1,648 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5faf7;
+    color: #18352a;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 6%;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border-bottom: 1px solid #e5eee9;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: #16794a;
+}
+
+.logo span {
+    color: #18352a;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar nav a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #53635b;
+}
+
+.navbar nav a:hover {
+    color: #16794a;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 85vh;
+
+    padding: 80px 6%;
+
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+
+    gap: 60px;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5f6eb,
+            #ffffff
+        );
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 8px 14px;
+
+    border-radius: 50px;
+
+    background: #d8f0e1;
+
+    color: #147545;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.hero h1 {
+    margin-top: 22px;
+
+    font-size: clamp(45px, 7vw, 78px);
+
+    line-height: 1.05;
+}
+
+.hero h1 span {
+    display: block;
+    color: #16804b;
+}
+
+.hero-content > p {
+    max-width: 620px;
+
+    margin-top: 25px;
+
+    color: #617168;
+
+    font-size: 18px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 14px 22px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+}
+
+.button.primary {
+    background: #16804b;
+    color: white;
+}
+
+.button.primary:hover {
+    background: #11683d;
+}
+
+.button.secondary {
+    background: white;
+
+    color: #16804b;
+
+    border: 1px solid #cfe2d7;
+}
+
+
+/* HERO CARD */
+
+.hero-card {
+    padding: 35px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 60px rgba(24, 80, 48, 0.12);
+}
+
+.heart {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e4f6eb;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+
+    margin-bottom: 20px;
+}
+
+.hero-card h3 {
+    font-size: 25px;
+
+    margin-bottom: 10px;
+}
+
+.hero-card p {
+    color: #64736a;
+}
+
+
+/* INTRO */
+
+.intro {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 60px;
+
+    padding: 90px 6%;
+
+    background: white;
+}
+
+.intro h2 {
+    max-width: 500px;
+
+    margin-top: 10px;
+
+    font-size: 40px;
+
+    line-height: 1.15;
+}
+
+.intro > p {
+    color: #637168;
+
+    max-width: 600px;
+}
+
+
+/* GENERAL SECTION */
+
+.section {
+    padding: 90px 6%;
+}
+
+.section-heading {
+    max-width: 700px;
+
+    margin-bottom: 45px;
+}
+
+.section-label {
+    color: #16804b;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin-top: 10px;
+
+    font-size: 42px;
+
+    line-height: 1.15;
+}
+
+.section-heading > p:last-child {
+    margin-top: 12px;
+
+    color: #65736a;
+}
+
+
+/* CALCULATOR CARDS */
+
+.calculator-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.calculator-card {
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    border: 1px solid #e4eee8;
+
+    transition: 0.2s;
+}
+
+.calculator-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.07);
+}
+
+.card-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e5f6eb;
+
+    border-radius: 14px;
+
+    font-size: 24px;
+
+    margin-bottom: 20px;
+}
+
+.calculator-card h3 {
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+.calculator-card p {
+    color: #68766e;
+
+    margin-bottom: 20px;
+}
+
+.card-link {
+    color: #16804b;
+
+    font-weight: 800;
+}
+
+
+/* CALCULATOR SECTIONS */
+
+.calculator-section {
+    padding: 90px 6%;
+
+    background: #eaf7ef;
+}
+
+.calculator-section.white {
+    background: white;
+}
+
+.calculator-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 60px;
+
+    align-items: start;
+}
+
+.calculator-container h2 {
+    margin-top: 10px;
+
+    font-size: 42px;
+
+    line-height: 1.15;
+}
+
+.calculator-container > div:first-child > p:last-child {
+    margin-top: 15px;
+
+    color: #65736a;
+}
+
+
+/* FORM */
+
+.form-card {
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.07);
+}
+
+label {
+    display: block;
+
+    margin-bottom: 7px;
+    margin-top: 18px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+label:first-child {
+    margin-top: 0;
+}
+
+input,
+select {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d5e3da;
+
+    border-radius: 9px;
+
+    background: white;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #16804b;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 128, 75, 0.1);
+}
+
+button {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #16804b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #11683d;
+}
+
+.result {
+    min-height: 20px;
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background: #eaf7ef;
+
+    color: #12683d;
+
+    font-weight: 700;
+}
+
+
+/* EDUCATION */
+
+.education {
+    background: #eaf7ef;
+}
+
+.education-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.education-grid article {
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 18px;
+}
+
+.education-grid h3 {
+    margin-bottom: 10px;
+
+    font-size: 22px;
+}
+
+.education-grid p {
+    color: #68766e;
+}
+
+
+/* DISCLAIMER */
+
+.disclaimer {
+    margin: 60px 6%;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    background: #fff7df;
+
+    color: #66582e;
+}
+
+.disclaimer h3 {
+    margin-bottom: 8px;
+}
+
+
+/* FOOTER */
+
+footer {
+    padding: 40px 6%;
+
+    background: #123c29;
+
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.footer-content p {
+    color: #bcd2c5;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        padding: 15px 5%;
+    }
+
+    .navbar nav {
+        gap: 12px;
+    }
+
+    .navbar nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding: 60px 5%;
+
+        gap: 35px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+
+        padding: 60px 5%;
+
+        gap: 25px;
+    }
+
+    .intro h2 {
+        font-size: 34px;
+    }
+
+    .section {
+        padding: 60px 5%;
+    }
+
+    .section-heading h2,
+    .calculator-container h2 {
+        font-size: 34px;
+    }
+
+    .calculator-grid,
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-container {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .disclaimer {
+        margin: 40px 5%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .navbar nav a:nth-child(3) {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .button {
+        text-align: center;
+    }
+
+}
