@@ -2401,3 +2401,38 @@ footer {
     }
 
 }
+/* =========================
+   HALAMAN BERITA
+   ========================= */
+
+.news-card {
+    background: #ffffff;
+    padding: 24px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.news-card h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #1f2937;
+}
+
+.news-date {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.news-card p {
+    line-height: 1.7;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+}
