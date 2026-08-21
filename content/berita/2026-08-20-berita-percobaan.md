@@ -5,6 +5,7 @@ category: Berita Klinik
 description: ini lagi coba
 tags:
   - berita
+permalink: "/berita/{{ page.fileSlug }}/"
 ---
 
 Ini adalah isi berita percobaan dari Klinik Putra Medika.
