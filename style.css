@@ -1,10 +1,17 @@
 
 /* =========================================================
    KLINIK PUTRA MEDIKA
-   GLOBAL
+   STYLE.CSS
+========================================================= */
+
+
+/* =========================================================
+   RESET
 ========================================================= */
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -13,27 +20,19 @@ html {
 }
 
 body {
-    margin: 0;
-    background: #f6faf8;
-    color: #17231d;
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7faf8;
+    color: #24332b;
+    line-height: 1.7;
 }
 
 a {
-    color: inherit;
     text-decoration: none;
+    color: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-p {
-    margin-top: 0;
+img {
+    max-width: 100%;
 }
 
 
@@ -43,46 +42,55 @@ p {
 
 .navbar {
     width: 100%;
-    min-height: 72px;
-
-    padding: 0 6%;
-
+    min-height: 70px;
+    padding: 10px 6%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 30px;
 
     background: #ffffff;
 
-    border-bottom: 1px solid #e6eee9;
+    border-bottom: 1px solid #e5eee9;
 
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
 }
 
+
+/* LOGO */
+
 .logo {
-    .logo {
     display: flex;
     align-items: center;
-    height: 50px;
+    justify-content: center;
+
+    height: 48px;
+
+    flex-shrink: 0;
 }
 
 .logo img {
     display: block;
-    width: 150px;
-    height: 50px;
+
+    width: 115px;
+    height: 48px;
+
     object-fit: contain;
 }
 
-.logo span {
-    color: #16804b;
-}
+
+/* NAVIGATION */
 
 .navbar nav {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 
-    gap: 5px;
+    gap: 8px;
 }
 
 .navbar nav a {
@@ -90,595 +98,414 @@ p {
 
     border-radius: 9px;
 
-    color: #56635b;
+    color: #52635b;
 
     font-size: 14px;
     font-weight: 600;
 
     transition:
         background 0.2s ease,
-        color 0.2s ease;
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .navbar nav a:hover {
-    background: #eef7f2;
+    background: #edf7f1;
     color: #16804b;
 }
 
 .navbar nav a.active {
-    background: #16804b;
-    color: #ffffff;
+    background: #e8f5ee;
+    color: #16804b;
 }
 
 
 /* =========================================================
-   CALCULATOR HERO
+   MAIN
 ========================================================= */
 
-.calculator-hero {
-    padding: 70px 6% 45px;
+main {
+    width: 100%;
+}
+
+
+/* =========================================================
+   GENERAL SECTION
+========================================================= */
+
+.section {
+    width: 100%;
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    padding: 80px 6%;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.section:first-child {
+    max-width: none;
+
+    min-height: 590px;
+
+    display: flex;
+    align-items: center;
 
     background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(38, 170, 105, 0.14),
+            transparent 35%
+        ),
         linear-gradient(
-            180deg,
-            #edf8f2 0%,
-            #f6faf8 100%
+            135deg,
+            #f0faf4 0%,
+            #ffffff 60%
         );
 
-    text-align: center;
+    position: relative;
+
+    overflow: hidden;
 }
 
-.calculator-hero-inner {
-    max-width: 780px;
+.section:first-child::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -100px;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(22, 128, 75, 0.08);
+}
+
+.section:first-child .section-heading {
+    width: 100%;
+    max-width: 1180px;
 
     margin: 0 auto;
-}
-
-.hero-icon {
-    width: 64px;
-    height: 64px;
-
-    margin: 0 auto 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #ffffff;
-
-    border: 1px solid #dcebe2;
-
-    border-radius: 18px;
-
-    font-size: 30px;
-
-    box-shadow:
-        0 8px 24px rgba(23, 35, 29, 0.06);
-}
-
-.section-label {
-    margin-bottom: 9px;
-
-    color: #16804b;
-
-    font-size: 12px;
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
-
-    text-transform: uppercase;
-}
-
-.calculator-hero h1 {
-    margin-bottom: 16px;
-
-    color: #17231d;
-
-    font-size:
-        clamp(34px, 5vw, 50px);
-
-    line-height: 1.15;
-}
-
-.calculator-hero-text {
-    max-width: 680px;
-
-    margin: 0 auto;
-
-    color: #68766e;
-
-    font-size: 16px;
-}
-
-
-/* =========================================================
-   CALCULATOR NAVIGATION
-========================================================= */
-
-.calculator-navigation {
-    width: min(1080px, 88%);
-
-    margin: 0 auto;
-
-    padding: 18px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-
-    background: #ffffff;
-
-    border: 1px solid #e1ebe5;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 8px 30px rgba(23, 35, 29, 0.05);
 
     position: relative;
-    z-index: 5;
+    z-index: 2;
 }
 
-.calculator-navigation a {
-    min-height: 70px;
+.section:first-child h1 {
+    max-width: 760px;
 
-    padding: 12px 16px;
+    margin: 12px 0 20px;
 
-    display: flex;
-    align-items: center;
+    color: #173d2a;
 
-    gap: 13px;
+    font-size: clamp(38px, 5vw, 64px);
 
-    border-radius: 12px;
+    line-height: 1.12;
 
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+    letter-spacing: -1.8px;
 }
 
-.calculator-navigation a:hover {
-    background: #eef7f2;
+.section:first-child p:not(.section-label) {
+    max-width: 650px;
 
-    transform: translateY(-2px);
-}
+    color: #64736c;
 
-.calculator-nav-icon {
-    width: 42px;
-    height: 42px;
-
-    flex: 0 0 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #edf7f1;
-
-    border-radius: 11px;
-
-    font-size: 20px;
-}
-
-.calculator-navigation strong {
-    display: block;
-
-    margin-bottom: 2px;
-
-    color: #17231d;
-
-    font-size: 14px;
-}
-
-.calculator-navigation small {
-    display: block;
-
-    color: #7a857f;
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   CALCULATOR SECTION
-========================================================= */
-
-.calculator-section {
-    padding: 65px 6%;
-}
-
-.calculator-section-alt {
-    background: #ffffff;
-
-    border-top: 1px solid #edf2ef;
-    border-bottom: 1px solid #edf2ef;
-}
-
-
-/* =========================================================
-   CALCULATOR CARD
-========================================================= */
-
-.calculator-card {
-    width: min(1080px, 100%);
-
-    margin: 0 auto;
-
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(380px, 440px);
-
-    gap: 65px;
-
-    align-items: start;
-}
-
-
-/* =========================================================
-   INFORMATION SIDE
-========================================================= */
-
-.calculator-info {
-    padding-top: 12px;
-}
-
-.calculator-number {
-    width: 45px;
-    height: 45px;
-
-    margin-bottom: 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #16804b;
-
-    color: #ffffff;
-
-    border-radius: 13px;
-
-    font-size: 13px;
-    font-weight: 800;
-}
-
-.calculator-info h2 {
-    max-width: 520px;
-
-    margin-bottom: 17px;
-
-    color: #17231d;
-
-    font-size: 32px;
-
-    line-height: 1.2;
-}
-
-.calculator-info > p:not(.section-label) {
-    max-width: 540px;
-
-    color: #68766e;
-
-    font-size: 15px;
+    font-size: 17px;
 
     line-height: 1.8;
 }
 
-.calculator-tip {
-    max-width: 530px;
 
-    margin-top: 25px;
+/* =========================================================
+   SECTION LABEL
+========================================================= */
 
-    padding: 15px 17px;
+.section-label {
+    color: #16804b;
 
-    background: #edf7f1;
+    font-size: 12px;
 
-    border-left: 4px solid #16804b;
+    font-weight: 800;
 
-    border-radius: 9px;
+    letter-spacing: 2px;
 
-    color: #506058;
-
-    font-size: 13px;
-
-    line-height: 1.6;
+    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   FORM
+   HEADINGS
 ========================================================= */
 
-.calculator-form {
-    padding: 28px;
-
-    background: #ffffff;
-
-    border: 1px solid #dfe9e3;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 12px 35px rgba(23, 35, 29, 0.07);
+.section-heading {
+    margin-bottom: 40px;
 }
 
-.calculator-section-alt .calculator-form {
-    box-shadow:
-        0 12px 35px rgba(23, 35, 29, 0.08);
+.section-heading h2 {
+    margin: 8px 0 12px;
+
+    color: #173d2a;
+
+    font-size: clamp(28px, 4vw, 42px);
+
+    line-height: 1.2;
+
+    letter-spacing: -0.8px;
 }
 
-.form-title {
-    margin-bottom: 25px;
+.section-heading p:not(.section-label) {
+    max-width: 700px;
 
-    display: flex;
-    align-items: center;
-
-    gap: 13px;
-
-    padding-bottom: 20px;
-
-    border-bottom: 1px solid #edf1ee;
-}
-
-.form-title > span {
-    width: 43px;
-    height: 43px;
-
-    flex: 0 0 43px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #edf7f1;
-
-    border-radius: 11px;
-
-    font-size: 21px;
-}
-
-.form-title h3 {
-    margin-bottom: 2px;
-
-    color: #17231d;
+    color: #69776f;
 
     font-size: 16px;
 }
 
-.form-title p {
-    margin-bottom: 0;
-
-    color: #7a857f;
-
-    font-size: 12px;
-}
-
 
 /* =========================================================
-   FORM GROUP
+   HERO BUTTONS
 ========================================================= */
 
-.form-group {
-    margin-bottom: 17px;
-}
-
-.form-group label {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: #35433b;
-
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    height: 46px;
-
-    padding: 0 13px;
-
-    border: 1px solid #d7e2db;
-
-    border-radius: 10px;
-
-    background: #ffffff;
-
-    color: #26342c;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
-    outline: none;
-
+.section:first-child a[href="kalkulator.html"],
+.section:first-child a[href="contact.html"] {
     transition:
-        border-color 0.2s ease,
+        transform 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-.form-group input::placeholder {
-    color: #a2aca6;
+.section:first-child a[href="kalkulator.html"]:hover,
+.section:first-child a[href="contact.html"]:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(22, 128, 75, 0.12);
 }
 
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #16804b;
+
+/* =========================================================
+   EDUCATION / SERVICE GRID
+========================================================= */
+
+.education-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   EDUCATION CARD
+========================================================= */
+
+.education-card {
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 300px;
+
+    padding: 30px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5eee9;
+
+    border-radius: 20px;
 
     box-shadow:
-        0 0 0 3px rgba(22, 128, 75, 0.10);
+        0 8px 30px rgba(27, 72, 48, 0.05);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
+.education-card:hover {
+    transform: translateY(-6px);
 
-/* =========================================================
-   INPUT WITH UNIT
-========================================================= */
+    border-color: #cce7d8;
 
-.input-unit {
-    position: relative;
+    box-shadow:
+        0 16px 40px rgba(27, 72, 48, 0.10);
 }
 
-.input-unit input {
-    padding-right: 55px;
-}
-
-.input-unit span {
-    position: absolute;
-
-    right: 13px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    color: #7b867f;
-
-    font-size: 12px;
-    font-weight: 600;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   ACTIVITY NOTE
-========================================================= */
-
-.activity-note {
-    margin-top: -3px;
-    margin-bottom: 18px;
-
-    color: #818c85;
-
-    font-size: 11px;
-
-    line-height: 1.5;
-}
-
-
-/* =========================================================
-   BUTTON
-========================================================= */
-
-.calculator-button {
-    width: 100%;
-
-    min-height: 48px;
-
-    padding: 12px 18px;
+.education-card > div:first-child {
+    width: 58px;
+    height: 58px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 10px;
+    margin-bottom: 22px !important;
 
-    border: none;
+    background: #edf8f2;
 
-    border-radius: 10px;
+    border-radius: 16px;
 
-    background: #16804b;
-
-    color: #ffffff;
-
-    font-family: inherit;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    font-size: 27px !important;
 }
 
-.calculator-button:hover {
-    background: #0e683d;
+.education-card h3 {
+    margin-bottom: 10px;
 
-    transform: translateY(-1px);
+    color: #173d2a;
 
-    box-shadow:
-        0 7px 18px rgba(22, 128, 75, 0.20);
+    font-size: 21px;
+
+    line-height: 1.3;
 }
 
-.calculator-button span {
-    font-size: 17px;
-}
-
-
-/* =========================================================
-   RESULT
-========================================================= */
-
-.result {
-    min-height: 86px;
-
-    margin-top: 18px;
-
-    padding: 17px;
-
-    background: #f5faf7;
-
-    border: 1px solid #dcebe2;
-
-    border-radius: 12px;
-
-    color: #35433b;
+.education-card p {
+    color: #69776f;
 
     font-size: 14px;
 
     line-height: 1.7;
 }
 
-.result-placeholder {
-    min-height: 50px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
+.education-card span {
+    margin-top: auto !important;
+    padding-top: 20px;
 }
 
-.result-placeholder > span {
-    width: 38px;
-    height: 38px;
 
-    flex: 0 0 38px;
+/* =========================================================
+   ABOUT / CONTACT LOCATION
+========================================================= */
+
+.contact-location {
+    display: grid;
+
+    grid-template-columns: 90px 1fr;
+
+    gap: 30px;
+
+    align-items: start;
+
+    padding: 45px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5eee9;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 30px rgba(27, 72, 48, 0.05);
+}
+
+.contact-location-icon {
+    width: 75px;
+    height: 75px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #ffffff;
+    background: #edf8f2;
 
-    border-radius: 10px;
+    border-radius: 20px;
 
-    font-size: 18px;
+    font-size: 34px;
 }
 
-.result-placeholder strong {
-    display: block;
+.contact-location h2 {
+    margin: 8px 0 15px;
 
-    margin-bottom: 2px;
+    color: #173d2a;
 
-    color: #35433b;
+    font-size: 32px;
 
-    font-size: 13px;
+    line-height: 1.2;
 }
 
-.result-placeholder small {
-    display: block;
+.contact-location p {
+    max-width: 750px;
 
-    color: #7b867f;
+    margin-bottom: 12px;
 
-    font-size: 11px;
+    color: #69776f;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   WHATSAPP CTA
+========================================================= */
+
+.section > div[style*="background:#16804b"] {
+    position: relative;
+
+    max-width: 950px !important;
+
+    padding: 55px 30px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #16804b,
+            #116b3f
+        ) !important;
+
+    border-radius: 26px !important;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 40px rgba(22, 128, 75, 0.20);
+}
+
+.section > div[style*="background:#16804b"]::before {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    top: -100px;
+    right: -70px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.section > div[style*="background:#16804b"] h2 {
+    position: relative;
+
+    font-size: clamp(27px, 4vw, 38px) !important;
+}
+
+.section > div[style*="background:#16804b"] p {
+    position: relative;
+}
+
+.section > div[style*="background:#16804b"] a {
+    position: relative;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.section > div[style*="background:#16804b"] a:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -687,33 +514,31 @@ p {
 ========================================================= */
 
 .disclaimer {
-    width: min(1080px, 88%);
+    max-width: 950px;
 
-    margin: 5px auto 65px;
+    margin: 0 auto 70px;
 
-    padding: 22px 24px;
+    padding: 25px 30px;
 
-    background: #fff9e8;
+    background: #fffaf0;
 
-    border: 1px solid #f0dfad;
+    border: 1px solid #f2e5c4;
 
-    border-radius: 13px;
+    border-radius: 16px;
+
+    color: #71664d;
 }
 
 .disclaimer h3 {
     margin-bottom: 7px;
 
-    color: #735b1b;
+    color: #65583c;
 
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .disclaimer p {
-    margin-bottom: 0;
-
-    color: #766b4d;
-
-    font-size: 12px;
+    font-size: 13px;
 
     line-height: 1.7;
 }
@@ -724,92 +549,152 @@ p {
 ========================================================= */
 
 footer {
-    background: #17231d;
+    margin-top: 30px;
+
+    background: #123326;
 
     color: #ffffff;
 }
 
 .footer-content {
-    width: min(1080px, 88%);
+    max-width: 1180px;
 
     margin: 0 auto;
 
-    padding: 45px 0;
+    padding: 55px 6%;
 
     display: grid;
 
     grid-template-columns:
-        1.2fr 1fr 0.7fr;
+        1.4fr 1fr 0.7fr;
 
-    gap: 40px;
+    gap: 50px;
 }
 
 .footer-info h3 {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 
-    color: #ffffff;
-
-    font-size: 17px;
+    font-size: 22px;
 }
 
 .footer-info p,
 .footer-contact p {
-    color: #b9c6be;
+    color: #b9cec3;
 
-    font-size: 12px;
+    font-size: 14px;
+
+    line-height: 1.7;
 }
 
 .footer-contact h4 {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 
-    color: #ffffff;
-
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .footer-contact a {
-    color: #ccebd9;
+    display: inline-block;
 
-    font-size: 12px;
+    margin-top: 8px;
+
+    color: #bce8cd;
+
+    font-weight: 600;
+}
+
+.footer-contact a:hover {
+    color: #ffffff;
 }
 
 .footer-copyright {
     display: flex;
+
     align-items: flex-end;
-    justify-content: flex-end;
 }
 
 .footer-copyright p {
-    margin-bottom: 0;
+    color: #8eaaa0;
 
-    color: #91a098;
-
-    font-size: 11px;
+    font-size: 13px;
 }
 
 
 /* =========================================================
-   TABLET
+   GENERAL FORM / CALCULATOR SUPPORT
 ========================================================= */
 
-@media (max-width: 900px) {
+input,
+select,
+textarea,
+button {
+    font-family: inherit;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #dce8e1;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #24332b;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #16804b;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 128, 75, 0.10);
+}
+
+button {
+    border: none;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
 
     .navbar {
-        padding: 0 4%;
+        padding: 10px 5%;
+
+        gap: 15px;
     }
 
-    .calculator-card {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
+    .navbar nav {
+        gap: 2px;
     }
 
-    .calculator-info {
-        padding-top: 0;
+    .navbar nav a {
+        padding: 8px 9px;
+
+        font-size: 13px;
     }
 
-    .calculator-navigation {
-        width: 92%;
+    .education-grid {
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .footer-content {
@@ -818,123 +703,151 @@ footer {
     }
 
     .footer-copyright {
-        justify-content: flex-start;
+        align-items: flex-start;
     }
+
 }
 
 
 /* =========================================================
-   MOBILE
+   SMALL MOBILE
 ========================================================= */
 
 @media (max-width: 650px) {
 
     .navbar {
-        min-height: auto;
+        min-height: 62px;
 
-        padding: 15px 5%;
+        padding: 8px 4%;
 
-        flex-direction: column;
+        gap: 8px;
+    }
 
-        align-items: flex-start;
+    .logo {
+        height: 38px;
+    }
 
-        gap: 12px;
+    .logo img {
+        width: 100px;
+        height: 38px;
     }
 
     .navbar nav {
-        width: 100%;
-
-        overflow-x: auto;
-
-        gap: 3px;
+        gap: 0;
     }
 
     .navbar nav a {
-        padding: 8px 10px;
+        padding: 6px 7px;
 
-        white-space: nowrap;
+        font-size: 11px;
 
-        font-size: 12px;
+        border-radius: 7px;
     }
 
 
-    .calculator-hero {
-        padding: 50px 5% 35px;
-    }
-
-    .calculator-hero h1 {
-        font-size: 34px;
-    }
-
-    .calculator-hero-text {
-        font-size: 14px;
+    .section {
+        padding: 60px 5%;
     }
 
 
-    .calculator-navigation {
-        width: 90%;
+    .section:first-child {
+        min-height: 500px;
 
-        padding: 10px;
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
 
+
+    .section:first-child h1 {
+        font-size: 38px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .section:first-child p:not(.section-label) {
+        font-size: 15px;
+    }
+
+
+    .education-grid {
         grid-template-columns: 1fr;
 
-        gap: 3px;
-
-        border-radius: 15px;
-    }
-
-    .calculator-navigation a {
-        min-height: 60px;
+        gap: 18px;
     }
 
 
-    .calculator-section {
-        padding: 45px 5%;
+    .education-card {
+        min-height: 0;
+
+        padding: 25px;
     }
 
-    .calculator-card {
-        gap: 25px;
+
+    .contact-location {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        padding: 28px;
     }
 
-    .calculator-info h2 {
+
+    .contact-location-icon {
+        width: 60px;
+        height: 60px;
+
+        font-size: 28px;
+    }
+
+
+    .contact-location h2 {
         font-size: 27px;
-    }
-
-    .calculator-info > p:not(.section-label) {
-        font-size: 14px;
-    }
-
-
-    .calculator-form {
-        padding: 21px;
-
-        border-radius: 16px;
-    }
-
-    .form-title {
-        margin-bottom: 21px;
     }
 
 
     .disclaimer {
-        width: 90%;
+        margin: 0 5% 50px;
 
-        margin-bottom: 45px;
+        padding: 22px;
     }
 
 
     .footer-content {
-        width: 90%;
-
-        padding: 38px 0;
-
         grid-template-columns: 1fr;
 
-        gap: 25px;
+        gap: 30px;
+
+        padding: 45px 5%;
     }
 
+
     .footer-copyright {
-        justify-content: flex-start;
+        align-items: flex-start;
     }
 
 }
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .navbar nav a {
+        padding: 5px 5px;
+
+        font-size: 10px;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+
+    .section:first-child h1 {
+        font-size: 33px;
+    }
+
+}
+
