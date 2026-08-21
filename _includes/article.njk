@@ -7,22 +7,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="{{ description }}"
-    >
+    <meta name="description" content="{{ description }}">
 
-    <title>
-        {{ title }} - Klinik Putra Medika
-    </title>
+    <title>{{ title }} - Klinik Putra Medika</title>
 
     <link rel="stylesheet" href="/style.css">
 
 </head>
 
 <body>
-
-    <!-- NAVBAR -->
 
     <header class="navbar">
 
@@ -53,29 +46,29 @@
     </header>
 
 
-    <!-- ARTIKEL -->
-
     <main>
 
         <section class="article-page">
 
             <article class="article-container">
 
+                {% if category %}
                 <span class="content-category">
                     {{ category }}
                 </span>
+                {% endif %}
 
                 <h1>
                     {{ title }}
                 </h1>
 
+                {% if date %}
                 <p class="article-meta">
                     {{ date | readableDate }}
                 </p>
-
+                {% endif %}
 
                 {% if image %}
-
                 <img
                     src="{{ image }}"
                     alt="{{ title }}"
@@ -87,12 +80,15 @@
                         margin-bottom:30px;
                     "
                 >
-
                 {% endif %}
 
+                <div class="article-content">
 
-                {{ content | safe }}
+                    {{ content | safe }}
 
+                </div>
+
+                <br>
 
                 <a
                     href="/berita.html"
@@ -124,8 +120,6 @@
     </main>
 
 
-    <!-- FOOTER -->
-
     <footer>
 
         <div class="footer-content">
@@ -143,12 +137,9 @@
 
             </div>
 
-
             <div class="footer-contact">
 
-                <h4>
-                    Alamat
-                </h4>
+                <h4>Alamat</h4>
 
                 <p>
                     Kp. Gandasoli, Cikidangbayabang,
@@ -165,9 +156,7 @@
                     📍 Lihat Lokasi Klinik
                 </a>
 
-                <h4>
-                    Telepon
-                </h4>
+                <h4>Telepon</h4>
 
                 <p>
                     <a href="tel:087810353838">
@@ -176,7 +165,6 @@
                 </p>
 
             </div>
-
 
             <div class="footer-copyright">
 
