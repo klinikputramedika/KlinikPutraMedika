@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="Kalkulator kesehatan Klinik Putra Medika untuk menghitung BMI, BMR, TDEE, kalori dan kebutuhan makronutrien."
+        content="Kalkulator kesehatan Klinik Putra Medika."
     >
 
     <title>Kalkulator Kesehatan - Klinik Putra Medika</title>
@@ -35,7 +35,6 @@
             Klinik<span>Putra</span>Medika
         </a>
 
-
         <nav>
 
             <a href="index.html">
@@ -50,41 +49,41 @@
                 Edukasi
             </a>
 
-            <a href="berita.html">
-                Berita
-            </a>
-
         </nav>
 
     </header>
 
 
 
-    <!-- =========================
-         HEADER
-    ========================== -->
-
-    <section class="calculator-page-header">
-
-        <p class="section-label">
-            KLINIK PUTRA MEDIKA
-        </p>
-
-        <h1>
-            Kalkulator Kesehatan
-        </h1>
-
-        <p>
-            Gunakan kalkulator berikut untuk mendapatkan
-            estimasi BMI, kebutuhan energi dan kebutuhan
-            makronutrien harian.
-        </p>
-
-    </section>
-
-
-
     <main>
+
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <section class="section calculator-page-header">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    HEALTH CALCULATOR
+                </p>
+
+                <h1>
+                    Kalkulator Kesehatan
+                </h1>
+
+                <p>
+                    Gunakan berbagai kalkulator berikut
+                    sebagai estimasi awal untuk membantu
+                    memahami kebutuhan tubuh.
+                </p>
+
+            </div>
+
+        </section>
+
 
 
         <!-- =========================
@@ -109,9 +108,9 @@
                     </h2>
 
                     <p>
-                        BMI merupakan salah satu metode sederhana
-                        untuk melihat hubungan antara berat badan
-                        dan tinggi badan.
+                        BMI digunakan sebagai salah satu
+                        indikator sederhana untuk melihat
+                        hubungan antara berat dan tinggi badan.
                     </p>
 
                 </div>
@@ -187,13 +186,13 @@
                     </p>
 
                     <h2>
-                        Hitung kebutuhan energi
+                        Ketahui kebutuhan energi tubuh
                     </h2>
 
                     <p>
-                        Estimasi jumlah energi yang dibutuhkan
-                        tubuh berdasarkan karakteristik tubuh
-                        dan tingkat aktivitas harian.
+                        Estimasi kebutuhan energi berdasarkan
+                        jenis kelamin, umur, berat, tinggi
+                        dan tingkat aktivitas.
                     </p>
 
                 </div>
@@ -291,9 +290,18 @@
                     </select>
 
 
+
+                    <p class="activity-note">
+                        Pilih tingkat aktivitas yang paling
+                        mendekati rutinitas harian Anda.
+                    </p>
+
+
+
                     <button onclick="calculateTDEE()">
                         Hitung BMR & TDEE
                     </button>
+
 
 
                     <div
@@ -316,7 +324,7 @@
 
 
         <!-- =========================
-             MACRO CALCULATOR
+             MACRO
         ========================== -->
 
         <section
@@ -333,19 +341,14 @@
                     </p>
 
                     <h2>
-                        Hitung kebutuhan makro harian
+                        Hitung kebutuhan makros harian
                     </h2>
 
                     <p>
-                        Dapatkan estimasi kebutuhan kalori,
-                        protein, karbohidrat dan lemak berdasarkan
-                        data tubuh dan tujuan Anda.
-                    </p>
-
-                    <p class="calculator-note">
-                        Kalkulator ini menggunakan estimasi
-                        kebutuhan energi sebagai dasar pembagian
-                        makronutrien.
+                        Estimasi kebutuhan kalori dan
+                        pembagian protein, karbohidrat
+                        serta lemak berdasarkan kebutuhan
+                        energi dan tujuan.
                     </p>
 
                 </div>
@@ -421,23 +424,23 @@
                     <select id="macroActivity">
 
                         <option value="1.2">
-                            Sedentary — sangat sedikit aktivitas
+                            Sedentary
                         </option>
 
                         <option value="1.375">
-                            Light — olahraga ringan 1–3 hari/minggu
+                            Light
                         </option>
 
                         <option value="1.55">
-                            Moderate — olahraga sedang 3–5 hari/minggu
+                            Moderate
                         </option>
 
                         <option value="1.725">
-                            Active — olahraga berat 6–7 hari/minggu
+                            Active
                         </option>
 
                         <option value="1.9">
-                            Very Active — aktivitas fisik sangat tinggi
+                            Very Active
                         </option>
 
                     </select>
@@ -451,15 +454,15 @@
                     <select id="macroGoal">
 
                         <option value="maintenance">
-                            Maintenance — mempertahankan berat badan
+                            Maintenance
                         </option>
 
                         <option value="fatloss">
-                            Fat Loss — menurunkan berat badan
+                            Fat Loss
                         </option>
 
                         <option value="bulking">
-                            Muscle Gain — meningkatkan massa otot
+                            Muscle Gain / Bulking
                         </option>
 
                     </select>
@@ -467,7 +470,7 @@
 
 
                     <button onclick="calculateMacros()">
-                        Hitung Kebutuhan Makro
+                        Hitung Kebutuhan Makros
                     </button>
 
 
@@ -478,7 +481,7 @@
                     >
 
                         <div class="result-placeholder">
-                            Hasil kebutuhan makro akan muncul di sini.
+                            Hasil kebutuhan makros akan muncul di sini.
                         </div>
 
                     </div>
@@ -488,6 +491,7 @@
             </div>
 
         </section>
+
 
 
         <!-- =========================
@@ -501,14 +505,13 @@
             </h3>
 
             <p>
-                Hasil kalkulator pada website ini merupakan
-                estimasi untuk tujuan edukasi dan tidak
-                dimaksudkan sebagai diagnosis atau pengganti
-                konsultasi dengan tenaga kesehatan profesional.
+                Hasil kalkulator merupakan estimasi
+                untuk tujuan edukasi dan bukan diagnosis
+                medis. Kebutuhan energi dan nutrisi setiap
+                orang dapat berbeda.
             </p>
 
         </section>
-
 
     </main>
 
@@ -535,7 +538,6 @@
                 </p>
 
             </div>
-
 
 
             <div class="footer-contact">
@@ -572,7 +574,6 @@
                 </p>
 
             </div>
-
 
 
             <div class="footer-copyright">
