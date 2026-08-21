@@ -1,39 +1,37 @@
+/* =========================
+   BMI CALCULATOR
+========================= */
+
 function calculateBMI() {
 
-    const weight =
-        Number(
-            document.getElementById("weight").value
-        );
+    const weight = parseFloat(
+        document.getElementById("weight").value
+    );
 
-    const height =
-        Number(
-            document.getElementById("height").value
-        );
+    const heightCm = parseFloat(
+        document.getElementById("height").value
+    );
 
-    const result =
-        document.getElementById("bmiResult");
+    const result = document.getElementById("bmiResult");
 
-
-    // =========================
-    // VALIDASI
-    // =========================
 
     if (
         !weight ||
-        !height ||
+        !heightCm ||
         weight <= 0 ||
-        height <= 0
+        heightCm <= 0
     ) {
 
-        result.className =
-            "result result-error";
+        result.className = "result result-error";
 
         result.innerHTML = `
-            <strong>Data belum lengkap</strong>
+            <div class="result-title">
+                PERHATIAN
+            </div>
 
             <p>
-                Silakan masukkan berat dan tinggi
-                badan yang valid.
+                Silakan masukkan berat dan tinggi badan
+                yang valid.
             </p>
         `;
 
@@ -41,135 +39,72 @@ function calculateBMI() {
     }
 
 
-    // =========================
-    // HITUNG BMI
-    // =========================
+    const heightM = heightCm / 100;
 
-    const heightMeter =
-        height / 100;
+    const bmi = weight / (heightM * heightM);
 
-    const bmi =
-        weight /
-        (heightMeter * heightMeter);
+    const bmiValue = bmi.toFixed(1);
 
 
-    // =========================
-    // KATEGORI BMI
-    // =========================
-
-    let category;
-    let description;
-    let resultClass;
+    let category = "";
+    let resultClass = "";
+    let description = "";
+    let scalePosition = 0;
 
 
     if (bmi < 18.5) {
 
-        category = "Underweight";
+        category = "Berat badan kurang";
+        resultClass = "result-underweight";
 
         description =
-            "BMI berada di bawah rentang berat badan sehat.";
+            "Nilai BMI berada di bawah rentang yang umumnya dianggap normal untuk orang dewasa.";
 
-        resultClass =
-            "result-underweight";
+        scalePosition = 10;
 
+    }
 
-    } else if (bmi < 25) {
+    else if (bmi < 25) {
 
-        category = "Normal";
-
-        description =
-            "BMI berada dalam rentang berat badan sehat.";
-
-        resultClass =
-            "result-normal";
-
-
-    } else if (bmi < 30) {
-
-        category = "Overweight";
+        category = "Berat badan normal";
+        resultClass = "result-normal";
 
         description =
-            "BMI berada pada kategori overweight.";
+            "Nilai BMI berada dalam rentang yang umumnya dianggap normal untuk orang dewasa.";
 
-        resultClass =
-            "result-overweight";
+        scalePosition =
+            18 + ((bmi - 18.5) / 6.5) * 24;
 
+    }
 
-    } else if (bmi < 35) {
+    else if (bmi < 30) {
 
-        category = "Obesity Class I";
-
-        description =
-            "BMI berada pada kategori obesitas kelas I.";
-
-        resultClass =
-            "result-obesity";
-
-
-    } else if (bmi < 40) {
-
-        category = "Obesity Class II";
+        category = "Berat badan berlebih";
+        resultClass = "result-overweight";
 
         description =
-            "BMI berada pada kategori obesitas kelas II.";
+            "Nilai BMI berada di atas rentang yang umumnya dianggap normal untuk orang dewasa.";
 
-        resultClass =
-            "result-obesity";
+        scalePosition =
+            42 + ((bmi - 25) / 5) * 18;
 
+    }
 
-    } else {
+    else {
 
-        category = "Obesity Class III";
+        category = "Obesitas";
+        resultClass = "result-obesity";
 
         description =
-            "BMI berada pada kategori obesitas kelas III.";
+            "Nilai BMI berada pada kategori obesitas berdasarkan klasifikasi BMI orang dewasa.";
 
-        resultClass =
-            "result-obesity";
+        scalePosition =
+            60 + Math.min(((bmi - 30) / 10) * 18, 18);
 
     }
 
 
-    // =========================
-    // POSISI INDIKATOR
-    // =========================
-
-    let indicatorPosition;
-
-
-    if (bmi < 18.5) {
-
-        indicatorPosition = 10;
-
-    } else if (bmi < 25) {
-
-        indicatorPosition = 30;
-
-    } else if (bmi < 30) {
-
-        indicatorPosition = 50;
-
-    } else if (bmi < 35) {
-
-        indicatorPosition = 65;
-
-    } else if (bmi < 40) {
-
-        indicatorPosition = 80;
-
-    } else {
-
-        indicatorPosition = 95;
-
-    }
-
-
-    // =========================
-    // TAMPILKAN HASIL
-    // =========================
-
-    result.className =
-        `result ${resultClass}`;
+    result.className = `result ${resultClass}`;
 
 
     result.innerHTML = `
@@ -178,11 +113,9 @@ function calculateBMI() {
             HASIL BMI
         </div>
 
-
         <div class="bmi-number">
-            ${bmi.toFixed(1)}
+            ${bmiValue}
         </div>
-
 
         <div class="bmi-category">
             ${category}
@@ -192,21 +125,21 @@ function calculateBMI() {
         <div class="result-details">
 
             <p>
-                <strong>Berat badan:</strong>
-                ${weight} kg
+                Berat badan:
+                <strong>${weight.toFixed(1)} kg</strong>
             </p>
 
             <p>
-                <strong>Tinggi badan:</strong>
-                ${height} cm
+                Tinggi badan:
+                <strong>${heightCm.toFixed(1)} cm</strong>
             </p>
 
         </div>
 
 
-        <p class="result-description">
+        <div class="result-description">
             ${description}
-        </p>
+        </div>
 
 
         <div class="bmi-scale">
@@ -215,7 +148,7 @@ function calculateBMI() {
 
                 <div
                     class="scale-indicator"
-                    style="left: ${indicatorPosition}%"
+                    style="left: ${scalePosition}%"
                 ></div>
 
             </div>
@@ -224,27 +157,19 @@ function calculateBMI() {
             <div class="scale-labels">
 
                 <span>
-                    < 18.5
+                    Kurang
                 </span>
 
                 <span>
-                    18.5–24.9
+                    Normal
                 </span>
 
                 <span>
-                    25–29.9
+                    Berlebih
                 </span>
 
                 <span>
-                    30–34.9
-                </span>
-
-                <span>
-                    35–39.9
-                </span>
-
-                <span>
-                    ≥40
+                    Obesitas
                 </span>
 
             </div>
@@ -253,10 +178,9 @@ function calculateBMI() {
 
 
         <div class="bmi-note">
-
-            BMI merupakan alat skrining dan
-            bukan diagnosis medis.
-
+            BMI merupakan alat skrining dan tidak dapat
+            menggambarkan kondisi kesehatan seseorang
+            secara keseluruhan.
         </div>
 
     `;
@@ -264,7 +188,9 @@ function calculateBMI() {
 
 
 
-
+/* =========================
+   BMR & TDEE
+========================= */
 
 function calculateTDEE() {
 
@@ -272,22 +198,22 @@ function calculateTDEE() {
         document.getElementById("gender").value;
 
     const age =
-        Number(
+        parseFloat(
             document.getElementById("age").value
         );
 
     const weight =
-        Number(
+        parseFloat(
             document.getElementById("weightBMR").value
         );
 
     const height =
-        Number(
+        parseFloat(
             document.getElementById("heightBMR").value
         );
 
     const activity =
-        Number(
+        parseFloat(
             document.getElementById("activity").value
         );
 
@@ -295,16 +221,12 @@ function calculateTDEE() {
         document.getElementById("tdeeResult");
 
 
-    // =========================
-    // VALIDASI
-    // =========================
-
     if (
         !age ||
         !weight ||
         !height ||
-        age < 20 ||
-        age > 120 ||
+        !activity ||
+        age <= 0 ||
         weight <= 0 ||
         height <= 0
     ) {
@@ -314,11 +236,13 @@ function calculateTDEE() {
 
         result.innerHTML = `
 
-            <strong>Data belum lengkap</strong>
+            <div class="result-title">
+                PERHATIAN
+            </div>
 
             <p>
-                Masukkan umur 20 tahun atau lebih,
-                berat badan, dan tinggi badan yang valid.
+                Silakan lengkapi semua data
+                dengan nilai yang valid.
             </p>
 
         `;
@@ -327,13 +251,12 @@ function calculateTDEE() {
     }
 
 
-    // =========================
-    // BMR
-    // Mifflin-St Jeor
-    // =========================
-
     let bmr;
 
+
+    /*
+       Mifflin-St Jeor
+    */
 
     if (gender === "male") {
 
@@ -343,7 +266,9 @@ function calculateTDEE() {
             (5 * age) +
             5;
 
-    } else {
+    }
+
+    else {
 
         bmr =
             (10 * weight) +
@@ -354,30 +279,30 @@ function calculateTDEE() {
     }
 
 
-    // =========================
-    // TDEE
-    // =========================
-
     const tdee =
         bmr * activity;
 
 
-    // =========================
-    // HASIL
-    // =========================
+    const roundedBMR =
+        Math.round(bmr);
+
+    const roundedTDEE =
+        Math.round(tdee);
+
 
     result.className =
-        "result result-normal";
+        "result";
 
 
     result.innerHTML = `
 
         <div class="result-title">
-            HASIL KEBUTUHAN ENERGI
+            HASIL PERHITUNGAN
         </div>
 
 
         <div class="energy-result">
+
 
             <div class="energy-box">
 
@@ -386,11 +311,11 @@ function calculateTDEE() {
                 </span>
 
                 <strong>
-                    ${Math.round(bmr)}
+                    ${roundedBMR.toLocaleString("id-ID")}
                 </strong>
 
                 <small>
-                    kcal/hari
+                    kcal / hari
                 </small>
 
             </div>
@@ -403,34 +328,15 @@ function calculateTDEE() {
                 </span>
 
                 <strong>
-                    ${Math.round(tdee)}
+                    ${roundedTDEE.toLocaleString("id-ID")}
                 </strong>
 
                 <small>
-                    kcal/hari
+                    kcal / hari
                 </small>
 
             </div>
 
-        </div>
-
-
-        <div class="result-details">
-
-            <p>
-                <strong>Umur:</strong>
-                ${age} tahun
-            </p>
-
-            <p>
-                <strong>Berat badan:</strong>
-                ${weight} kg
-            </p>
-
-            <p>
-                <strong>Tinggi badan:</strong>
-                ${height} cm
-            </p>
 
         </div>
 
@@ -438,24 +344,16 @@ function calculateTDEE() {
         <div class="energy-explanation">
 
             <p>
-                <strong>BMR</strong> adalah estimasi energi
-                yang dibutuhkan tubuh saat istirahat.
+                <strong>BMR</strong> adalah estimasi
+                energi yang dibutuhkan tubuh saat
+                beristirahat.
             </p>
 
             <p>
-                <strong>TDEE</strong> adalah estimasi kebutuhan
-                energi harian setelah memperhitungkan
-                tingkat aktivitas.
+                <strong>TDEE</strong> adalah estimasi
+                kebutuhan energi harian setelah
+                memperhitungkan aktivitas.
             </p>
-
-        </div>
-
-
-        <div class="bmi-note">
-
-            Angka ini merupakan estimasi dan kebutuhan
-            energi sebenarnya dapat berbeda pada setiap
-            individu.
 
         </div>
 
@@ -464,66 +362,394 @@ function calculateTDEE() {
 
 
 
+/* =========================
+   MACRO CALCULATOR
+========================= */
 
-function calculateProtein() {
+function calculateMacros() {
 
-    const weight =
-        Number(
-            document.getElementById(
-                "proteinWeight"
-            ).value
+    const gender =
+        document.getElementById("macroGender").value;
+
+    const age =
+        parseFloat(
+            document.getElementById("macroAge").value
         );
 
+    const weight =
+        parseFloat(
+            document.getElementById("macroWeight").value
+        );
+
+    const height =
+        parseFloat(
+            document.getElementById("macroHeight").value
+        );
+
+    const activity =
+        parseFloat(
+            document.getElementById("macroActivity").value
+        );
 
     const goal =
-        document.getElementById("goal").value;
+        document.getElementById("macroGoal").value;
 
+    const result =
+        document.getElementById("macroResult");
+
+
+    /* VALIDASI */
 
     if (
+        !age ||
         !weight ||
-        weight <= 0
+        !height ||
+        !activity ||
+        age <= 0 ||
+        weight <= 0 ||
+        height <= 0
     ) {
 
-        document.getElementById(
-            "proteinResult"
-        ).innerHTML =
-            "Masukkan berat badan yang valid.";
+        result.className =
+            "result result-error";
+
+        result.innerHTML = `
+
+            <div class="result-title">
+                PERHATIAN
+            </div>
+
+            <p>
+                Silakan lengkapi umur, berat badan,
+                dan tinggi badan dengan benar.
+            </p>
+
+        `;
 
         return;
     }
 
 
-    let minProtein;
+    /*
+       Mifflin-St Jeor
+    */
 
-    let maxProtein;
+    let bmr;
 
 
-    if (goal === "maintenance") {
+    if (gender === "male") {
 
-        minProtein =
-            weight * 1.2;
+        bmr =
+            (10 * weight) +
+            (6.25 * height) -
+            (5 * age) +
+            5;
 
-        maxProtein =
-            weight * 1.6;
+    }
 
-    } else {
+    else {
 
-        minProtein =
-            weight * 1.6;
-
-        maxProtein =
-            weight * 2.2;
+        bmr =
+            (10 * weight) +
+            (6.25 * height) -
+            (5 * age) -
+            161;
 
     }
 
 
-    document.getElementById(
-        "proteinResult"
-    ).innerHTML =
+    /*
+       TDEE
+    */
 
-        `Estimasi protein:
-        ${Math.round(minProtein)}
-        -
-        ${Math.round(maxProtein)}
-        gram/hari`;
+    const tdee =
+        bmr * activity;
+
+
+    /*
+       TARGET KALORI
+
+       Maintenance = TDEE
+
+       Fat Loss = -15%
+
+       Muscle Gain = +10%
+    */
+
+    let targetCalories;
+
+
+    if (goal === "fatloss") {
+
+        targetCalories =
+            tdee * 0.85;
+
+    }
+
+    else if (goal === "muscle") {
+
+        targetCalories =
+            tdee * 1.10;
+
+    }
+
+    else {
+
+        targetCalories =
+            tdee;
+
+    }
+
+
+    /*
+       PROTEIN
+
+       Menggunakan kisaran sederhana
+       berdasarkan tujuan.
+    */
+
+    let proteinPerKg;
+
+
+    if (goal === "fatloss") {
+
+        proteinPerKg = 1.8;
+
+    }
+
+    else if (goal === "muscle") {
+
+        proteinPerKg = 1.8;
+
+    }
+
+    else {
+
+        proteinPerKg = 1.6;
+
+    }
+
+
+    const protein =
+        weight * proteinPerKg;
+
+
+    /*
+       LEMAK
+
+       Sekitar 25% dari total kalori.
+    */
+
+    const fatCalories =
+        targetCalories * 0.25;
+
+    const fat =
+        fatCalories / 9;
+
+
+    /*
+       KARBOHIDRAT
+
+       Sisa kalori setelah protein
+       dan lemak.
+    */
+
+    const proteinCalories =
+        protein * 4;
+
+    const remainingCalories =
+        targetCalories -
+        proteinCalories -
+        fatCalories;
+
+
+    const carbs =
+        Math.max(
+            remainingCalories / 4,
+            0
+        );
+
+
+    /*
+       PEMBULATAN
+    */
+
+    const caloriesRounded =
+        Math.round(targetCalories);
+
+    const proteinRounded =
+        Math.round(protein);
+
+    const fatRounded =
+        Math.round(fat);
+
+    const carbsRounded =
+        Math.round(carbs);
+
+
+    const bmrRounded =
+        Math.round(bmr);
+
+    const tdeeRounded =
+        Math.round(tdee);
+
+
+    let goalText;
+
+
+    if (goal === "fatloss") {
+
+        goalText =
+            "Menurunkan berat badan";
+
+    }
+
+    else if (goal === "muscle") {
+
+        goalText =
+            "Meningkatkan massa otot";
+
+    }
+
+    else {
+
+        goalText =
+            "Menjaga berat badan";
+
+    }
+
+
+    /*
+       TAMPILKAN HASIL
+    */
+
+    result.className =
+        "result";
+
+
+    result.innerHTML = `
+
+        <div class="macro-summary">
+
+            <div class="macro-calories-label">
+                TARGET KALORI HARIAN
+            </div>
+
+            <div class="macro-calories">
+                ${caloriesRounded.toLocaleString("id-ID")}
+            </div>
+
+            <div class="macro-unit">
+                kcal / hari
+            </div>
+
+        </div>
+
+
+        <div class="macro-grid">
+
+
+            <div class="macro-box">
+
+                <div class="macro-box-icon">
+                    💪
+                </div>
+
+                <div class="macro-box-title">
+                    PROTEIN
+                </div>
+
+                <div class="macro-box-value macro-protein">
+                    ${proteinRounded}
+                </div>
+
+                <div class="macro-box-unit">
+                    gram / hari
+                </div>
+
+            </div>
+
+
+            <div class="macro-box">
+
+                <div class="macro-box-icon">
+                    🥑
+                </div>
+
+                <div class="macro-box-title">
+                    LEMAK
+                </div>
+
+                <div class="macro-box-value macro-fat">
+                    ${fatRounded}
+                </div>
+
+                <div class="macro-box-unit">
+                    gram / hari
+                </div>
+
+            </div>
+
+
+            <div class="macro-box">
+
+                <div class="macro-box-icon">
+                    🍚
+                </div>
+
+                <div class="macro-box-title">
+                    KARBOHIDRAT
+                </div>
+
+                <div class="macro-box-value macro-carbs">
+                    ${carbsRounded}
+                </div>
+
+                <div class="macro-box-unit">
+                    gram / hari
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="macro-explanation">
+
+            <p>
+                <strong>Tujuan:</strong>
+                ${goalText}
+            </p>
+
+            <p>
+                <strong>BMR:</strong>
+                ${bmrRounded.toLocaleString("id-ID")} kcal/hari
+            </p>
+
+            <p>
+                <strong>TDEE:</strong>
+                ${tdeeRounded.toLocaleString("id-ID")} kcal/hari
+            </p>
+
+            <p>
+                Protein dihitung berdasarkan berat badan
+                dan tujuan, sedangkan lemak ditetapkan
+                sekitar 25% dari target energi. Karbohidrat
+                merupakan sisa energi setelah protein dan lemak.
+            </p>
+
+        </div>
+
+
+        <div class="bmi-note">
+
+            Hasil ini merupakan estimasi untuk tujuan
+            edukasi. Kebutuhan energi dan makronutrien
+            dapat berbeda berdasarkan kondisi dan kebutuhan
+            masing-masing individu.
+
+        </div>
+
+    `;
 }
