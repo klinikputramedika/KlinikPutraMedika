@@ -5,10 +5,7 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
@@ -23,20 +20,15 @@
 
 </head>
 
-
 <body>
 
-
-    <!-- =========================
-         NAVBAR
-    ========================== -->
+    <!-- NAVBAR -->
 
     <header class="navbar">
 
         <a href="/index.html" class="logo">
             Klinik <span>Putra Medika</span>
         </a>
-
 
         <nav>
 
@@ -61,10 +53,7 @@
     </header>
 
 
-
-    <!-- =========================
-         ARTIKEL
-    ========================== -->
+    <!-- ARTIKEL -->
 
     <main>
 
@@ -72,64 +61,38 @@
 
             <article class="article-container">
 
-
-                <!-- KATEGORI -->
-
-                {% if category %}
-
                 <span class="content-category">
                     {{ category }}
                 </span>
-
-                {% endif %}
-
-
-
-                <!-- JUDUL -->
 
                 <h1>
                     {{ title }}
                 </h1>
 
-
-
-                <!-- TANGGAL -->
-
-                {% if date %}
-
                 <p class="article-meta">
                     {{ date | readableDate }}
                 </p>
 
-                {% endif %}
-
-
-
-                <!-- GAMBAR -->
 
                 {% if image %}
 
                 <img
                     src="{{ image }}"
                     alt="{{ title }}"
-                    class="article-image"
+                    style="
+                        width:100%;
+                        max-height:450px;
+                        object-fit:cover;
+                        border-radius:15px;
+                        margin-bottom:30px;
+                    "
                 >
 
                 {% endif %}
 
 
+                {{ content | safe }}
 
-                <!-- ISI BERITA -->
-
-                <div class="article-content">
-
-                    {{ content | safe }}
-
-                </div>
-
-
-
-                <!-- KEMBALI -->
 
                 <a
                     href="/berita.html"
@@ -138,23 +101,34 @@
                     ← Kembali ke Berita
                 </a>
 
-
             </article>
+
+        </section>
+
+
+        <section class="disclaimer">
+
+            <h3>
+                ⚠️ Catatan penting
+            </h3>
+
+            <p>
+                Informasi pada website ini ditujukan untuk
+                edukasi kesehatan umum dan bukan pengganti
+                diagnosis atau konsultasi dengan tenaga
+                kesehatan profesional.
+            </p>
 
         </section>
 
     </main>
 
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    <!-- FOOTER -->
 
     <footer>
 
         <div class="footer-content">
-
 
             <div class="footer-info">
 
@@ -170,7 +144,6 @@
             </div>
 
 
-
             <div class="footer-contact">
 
                 <h4>
@@ -183,7 +156,6 @@
                     Jawa Barat 43292
                 </p>
 
-
                 <a
                     href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
                     target="_blank"
@@ -193,21 +165,17 @@
                     📍 Lihat Lokasi Klinik
                 </a>
 
-
                 <h4>
                     Telepon
                 </h4>
 
                 <p>
-
                     <a href="tel:087810353838">
                         0878-1035-3838
                     </a>
-
                 </p>
 
             </div>
-
 
 
             <div class="footer-copyright">
@@ -218,11 +186,9 @@
 
             </div>
 
-
         </div>
 
     </footer>
-
 
 </body>
 
