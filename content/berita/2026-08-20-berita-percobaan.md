@@ -7,3 +7,6 @@ description: ini lagi coba
 ---
 
 Ini adalah isi berita percobaan dari CMS Klinik Putra Medika.
+
+Kami sedang mengembangkan website agar informasi kesehatan
+dapat diakses dengan lebih mudah oleh masyarakat.
