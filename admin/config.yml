@@ -1,0 +1,9 @@
+backend:
+  name: github
+  repo: rezihere/Klinik-Putra-Medika
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: "/"
