@@ -1243,3 +1243,171 @@ footer {
     }
 
 }
+/* =========================
+   CALCULATOR PAGE
+========================= */
+
+.calculator-page-header {
+    padding: 80px 6%;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5f6eb,
+            #ffffff
+        );
+}
+
+.calculator-page-header .section-label {
+    margin-bottom: 10px;
+}
+
+.calculator-page-header h1 {
+    font-size: clamp(40px, 6vw, 65px);
+
+    line-height: 1.1;
+}
+
+.calculator-page-header > p:last-child {
+    max-width: 650px;
+
+    margin: 20px auto 0;
+
+    color: #637168;
+
+    font-size: 17px;
+}
+
+
+.calculator-note {
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background: #f4f8f5;
+
+    color: #68766e;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   MACRO RESULT
+========================= */
+
+.macro-result-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+
+.macro-box {
+    padding: 16px;
+
+    border-radius: 12px;
+
+    background: white;
+
+    border: 1px solid #dfe9e3;
+}
+
+
+.macro-box span {
+    display: block;
+
+    color: #718078;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.macro-box strong {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 24px;
+
+    color: #16804b;
+}
+
+
+.macro-total {
+    margin-bottom: 15px;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: #eaf7ef;
+
+    text-align: center;
+}
+
+
+.macro-total span {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #53635b;
+}
+
+
+.macro-total strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 35px;
+
+    color: #16804b;
+}
+
+
+.macro-explanation {
+    margin-top: 15px;
+
+    color: #68766e;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .calculator-page-header {
+        padding: 60px 5%;
+    }
+
+    .calculator-page-header h1 {
+        font-size: 42px;
+    }
+
+    .macro-result-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
