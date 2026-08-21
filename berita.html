@@ -1,121 +1,234 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Berita - Klinik Putra Medika</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Klinik Putra Medika</h1>
-        <p>Informasi Kesehatan Terpercaya</p>
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            Klinik <span>Putra Medika</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="kalkulator.html">Kalkulator</a>
+            <a href="berita.html">Berita</a>
+            <a href="edukasi.html">Edukasi</a>
+        </nav>
+
     </header>
 
-    <nav>
-        <a href="index.html">Beranda</a>
-        <a href="kalkulator.html">Kalkulator</a>
-        <a href="berita.html" class="active">Berita</a>
-        <a href="edukasi.html">Edukasi</a>
-    </nav>
 
-    <main>
+    <!-- =========================
+         HEADER BERITA
+    ========================= -->
 
-        <!-- Judul Halaman -->
-        <section class="hero">
-            <h2>Berita & Informasi Kesehatan</h2>
-            <p>
-                Informasi terbaru seputar kesehatan, pelayanan,
-                dan kegiatan Klinik Putra Medika.
-            </p>
-        </section>
+    <main class="news-page">
 
-        <!-- Daftar Berita -->
-        <section>
+        <section class="section">
 
-            <!-- Berita 1 -->
-            <article class="news-card">
-    <img src="images/berita-kesehatan.svg"
-         alt="Informasi kesehatan Klinik Putra Medika"
-         class="news-image">
-                <h3>
-                    Selamat Datang di Halaman Berita Klinik Putra Medika
-                </h3>
+            <div class="section-heading">
 
-                <p class="news-date">
-                    21 Agustus 2026
+                <p class="section-label">
+                    BERITA & INFORMASI
                 </p>
+
+                <h1>
+                    Informasi Kesehatan
+                </h1>
 
                 <p>
-                    Ikuti berbagai informasi terbaru mengenai kesehatan,
-                    pelayanan klinik, serta edukasi kesehatan dari
-                    Klinik Putra Medika.
+                    Temukan informasi terbaru seputar kesehatan,
+                    pelayanan, dan kegiatan Klinik Putra Medika.
                 </p>
 
-                <a href="artikel-1.html" class="read-more">
-                    Baca Selengkapnya →
-                </a>
-            </article>
+            </div>
 
 
-            <!-- Berita 2 -->
-            <article class="news-card">
-    <img src="images/berita-kesehatan.svg"
-         alt="Informasi kesehatan Klinik Putra Medika"
-         class="news-image">
-                <h3>
-                    Pentingnya Pemeriksaan Kesehatan Secara Berkala
-                </h3>
+            <!-- =========================
+                 DAFTAR BERITA
+            ========================= -->
 
-                <p class="news-date">
-                    20 Agustus 2026
-                </p>
-
-                <p>
-                    Pemeriksaan kesehatan secara berkala dapat membantu
-                    mengetahui kondisi tubuh lebih awal dan menjadi
-                    bagian penting dalam menjaga kesehatan.
-                </p>
-
-               <a href="artikel-2.html" class="read-more">
-    Baca Selengkapnya →
-</a>
-            </article>
+            <div class="news-grid">
 
 
-            <!-- Berita 3 -->
-            <article class="news-card">
-    <img src="images/berita-kesehatan.svg"
-         alt="Informasi kesehatan Klinik Putra Medika"
-         class="news-image">
-                <h3>
-                    Tips Menjaga Kesehatan dan Kebugaran Tubuh
-                </h3>
+                <!-- BERITA 1 -->
 
-                <p class="news-date">
-                    18 Agustus 2026
-                </p>
+                <article class="news-card">
 
-                <p>
-                    Menjaga pola makan, aktivitas fisik, istirahat yang
-                    cukup, dan menerapkan pola hidup sehat merupakan
-                    langkah sederhana untuk menjaga kebugaran tubuh.
-                </p>
+                    <div class="news-image">
+                        🏥
+                    </div>
 
-              <a href="artikel-3.html" class="read-more">
-    Baca Selengkapnya →
-</a>
-            </article>
+                    <div class="news-content">
+
+                        <p class="news-date">
+                            21 Agustus 2026
+                        </p>
+
+                        <h3>
+                            Selamat Datang di Halaman Berita
+                            Klinik Putra Medika
+                        </h3>
+
+                        <p>
+                            Ikuti berbagai informasi terbaru mengenai
+                            kesehatan, pelayanan klinik, serta edukasi
+                            kesehatan dari Klinik Putra Medika.
+                        </p>
+
+                        <a
+                            href="artikel-1.html"
+                            class="card-link">
+                            Baca Selengkapnya →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- BERITA 2 -->
+
+                <article class="news-card">
+
+                    <div class="news-image">
+                        🩺
+                    </div>
+
+                    <div class="news-content">
+
+                        <p class="news-date">
+                            20 Agustus 2026
+                        </p>
+
+                        <h3>
+                            Pentingnya Pemeriksaan Kesehatan
+                            Secara Berkala
+                        </h3>
+
+                        <p>
+                            Pemeriksaan kesehatan secara berkala
+                            dapat membantu mengetahui kondisi tubuh
+                            lebih awal dan menjaga kesehatan.
+                        </p>
+
+                        <a
+                            href="artikel-2.html"
+                            class="card-link">
+                            Baca Selengkapnya →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- BERITA 3 -->
+
+                <article class="news-card">
+
+                    <div class="news-image">
+                        ❤️
+                    </div>
+
+                    <div class="news-content">
+
+                        <p class="news-date">
+                            18 Agustus 2026
+                        </p>
+
+                        <h3>
+                            Tips Menjaga Kesehatan dan
+                            Kebugaran Tubuh
+                        </h3>
+
+                        <p>
+                            Pola makan seimbang, aktivitas fisik,
+                            istirahat cukup, dan pola hidup sehat
+                            merupakan bagian penting menjaga kebugaran.
+                        </p>
+
+                        <a
+                            href="artikel-3.html"
+                            class="card-link">
+                            Baca Selengkapnya →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
 
         </section>
 
     </main>
 
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
     <footer>
-        <p>&copy; 2026 Klinik Putra Medika</p>
+
+        <div class="footer-content">
+
+            <div class="footer-info">
+
+                <h3>
+                    Klinik Putra Medika
+                </h3>
+
+                <p>
+                    Informasi kesehatan terpercaya untuk
+                    masyarakat.
+                </p>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h4>
+                    Kontak
+                </h4>
+
+                <p>
+                    Klinik Putra Medika
+                </p>
+
+            </div>
+
+
+            <div class="footer-copyright">
+
+                <p>
+                    © 2026 Klinik Putra Medika
+                </p>
+
+            </div>
+
+        </div>
+
     </footer>
 
 </body>
+
 </html>
