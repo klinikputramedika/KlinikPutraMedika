@@ -1604,3 +1604,551 @@ footer {
     }
 
 }
+/* =========================
+   HOMEPAGE PREVIEW
+========================= */
+
+.calculator-preview-card {
+    padding: 35px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #e4eee8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+
+.calculator-preview-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 25px;
+}
+
+
+.calculator-preview-card p {
+    color: #68766e;
+
+    max-width: 650px;
+}
+
+
+
+/* =========================
+   HEALTH CONTENT
+========================= */
+
+.health-content {
+    background: white;
+}
+
+
+.health-content-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+
+.content-card {
+    padding: 28px;
+
+    background: #f8fbf9;
+
+    border: 1px solid #e4eee8;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    transition: 0.2s;
+}
+
+
+.content-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+
+.content-card-icon {
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #e5f6eb;
+
+    font-size: 25px;
+}
+
+
+.content-category {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #16804b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.content-card h3 {
+    font-size: 21px;
+
+    line-height: 1.3;
+
+    margin-bottom: 8px;
+}
+
+
+.content-card p {
+    color: #68766e;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.content-card .card-link {
+    display: inline-block;
+
+    margin-top: 10px;
+}
+
+
+
+/* =========================
+   CALCULATOR PAGE
+========================= */
+
+.calculator-page-header {
+    background:
+        linear-gradient(
+            135deg,
+            #e5f6eb,
+            #ffffff
+        );
+}
+
+
+.calculator-page-header h1,
+.education-header h1 {
+    font-size: clamp(40px, 6vw, 65px);
+
+    line-height: 1.1;
+}
+
+
+
+/* =========================
+   ENERGY RESULT
+========================= */
+
+.energy-result {
+    background: #eaf7ef;
+
+    border-color: #bfe4cc;
+}
+
+
+.energy-box {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+
+.energy-box > div {
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: white;
+
+    text-align: center;
+
+    border: 1px solid #d7e9dd;
+}
+
+
+.energy-box span {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    color: #637168;
+
+    letter-spacing: 1px;
+}
+
+
+.energy-box strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 30px;
+
+    color: #16804b;
+}
+
+
+.energy-box small {
+    color: #718078;
+
+    font-size: 12px;
+}
+
+
+.energy-explanation {
+    margin-top: 18px;
+
+    color: #5f6e66;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.activity-note {
+    margin-top: 10px;
+
+    color: #718078;
+
+    font-size: 13px;
+}
+
+
+
+/* =========================
+   MACRO RESULT
+========================= */
+
+.macro-result {
+    background: #f4f8f5;
+}
+
+
+.macro-calories {
+    margin-top: 12px;
+
+    padding: 20px;
+
+    background: #16804b;
+
+    color: white;
+
+    border-radius: 14px;
+
+    text-align: center;
+}
+
+
+.macro-calories span {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.macro-calories strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 38px;
+
+    line-height: 1.1;
+}
+
+
+.macro-calories small {
+    font-size: 12px;
+}
+
+
+.macro-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+
+.macro-box {
+    padding: 15px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    border: 1px solid #e0e9e3;
+}
+
+
+.macro-box span {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.macro-box strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 20px;
+}
+
+
+.macro-box small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #718078;
+
+    font-size: 11px;
+}
+
+
+.macro-box.protein {
+    border-top: 4px solid #d64545;
+}
+
+
+.macro-box.carbs {
+    border-top: 4px solid #e58b25;
+}
+
+
+.macro-box.fat {
+    border-top: 4px solid #d6aa16;
+}
+
+
+
+/* =========================
+   EDUCATION PAGE
+========================= */
+
+.education-header {
+    background:
+        linear-gradient(
+            135deg,
+            #e5f6eb,
+            #ffffff
+        );
+}
+
+
+.education-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+
+.education-card {
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    border: 1px solid #e4eee8;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+
+.education-card-icon {
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 15px;
+
+    background: #e5f6eb;
+
+    font-size: 26px;
+}
+
+
+.education-card h3 {
+    margin-bottom: 10px;
+
+    font-size: 24px;
+}
+
+
+.education-card > p {
+    color: #68766e;
+
+    font-size: 14px;
+}
+
+
+.education-details {
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #e4eee8;
+}
+
+
+.education-details h4 {
+    margin-bottom: 8px;
+
+    font-size: 15px;
+}
+
+
+.education-details p {
+    margin-bottom: 15px;
+
+    color: #68766e;
+
+    font-size: 14px;
+}
+
+
+.education-details ul {
+    padding-left: 20px;
+
+    color: #68766e;
+
+    font-size: 14px;
+}
+
+
+.education-details li {
+    margin-bottom: 7px;
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .calculator-preview-card {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .health-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .macro-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .energy-box {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .navbar nav {
+        gap: 10px;
+    }
+
+
+    .navbar nav a {
+        font-size: 11px;
+    }
+
+
+    .calculator-preview-card {
+        padding: 25px;
+    }
+
+
+    .education-card {
+        padding: 24px;
+    }
+
+}
