@@ -7,4 +7,8 @@ tags:
   - berita
 ---
 
-Ini adalah berita percobaan dari Klinik Putra Medika.
+Ini adalah isi berita percobaan dari Klinik Putra Medika.
+
+Berita ini dibuat melalui CMS untuk menguji sistem berita otomatis.
+
+Ke depannya, berita dapat dibuat langsung melalui CMS tanpa perlu membuat HTML secara manual.
