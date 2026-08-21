@@ -1,23 +1,24 @@
-
 /* =========================================================
    KLINIK PUTRA MEDIKA
-   WEBSITE STYLE
+   MAIN STYLESHEET
 ========================================================= */
 
 
 /* =========================================================
-   RESET
+   1. RESET
 ========================================================= */
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
+
 
 html {
     scroll-behavior: smooth;
 }
+
 
 body {
     font-family:
@@ -27,24 +28,33 @@ body {
 
     background: #f7faf8;
 
-    color: #24332b;
+    color: #263a30;
 
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
 
 img {
-    display: block;
     max-width: 100%;
+    display: block;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button,
+input,
+select {
+    font-family: inherit;
 }
 
 
 /* =========================================================
-   NAVBAR
+   2. NAVBAR
 ========================================================= */
 
 .navbar {
@@ -56,10 +66,10 @@ img {
 
     width: 100%;
 
-    min-height: 68px;
+    min-height: 76px;
 
     padding:
-        8px
+        10px
         6%;
 
     display: flex;
@@ -68,227 +78,186 @@ img {
 
     justify-content: space-between;
 
-    gap: 25px;
+    gap: 30px;
 
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.96);
 
     border-bottom:
-        1px solid #e5eee9;
+        1px solid #e6eee9;
 
-    box-shadow:
-        0 3px 15px
-        rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(12px);
 }
 
 
-/* =========================================================
-   LOGO
-========================================================= */
+/* LOGO */
 
 .logo {
     display: flex;
 
     align-items: center;
 
-    height: 45px;
-
     flex-shrink: 0;
 }
 
-.logo img {
-    width: 123px;
 
-    height: 48px;
+.logo img {
+    width: 135px;
+
+    height: 55px;
 
     object-fit: contain;
 }
 
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* NAVIGATION */
 
 .navbar nav {
     display: flex;
 
     align-items: center;
 
+    justify-content: flex-end;
+
     gap: 6px;
 }
 
+
 .navbar nav a {
+    position: relative;
+
     padding:
-        8px
+        9px
         13px;
 
-    border-radius: 9px;
-
-    color: #52635b;
+    color: #53645b;
 
     font-size: 14px;
 
     font-weight: 600;
 
+    border-radius: 9px;
+
     transition:
-        0.2s ease;
+        color 0.2s ease,
+        background 0.2s ease;
 }
+
 
 .navbar nav a:hover {
-    background: #edf7f1;
-
     color: #16804b;
+
+    background: #edf7f1;
 }
 
-.navbar nav a.active {
-    background: #e8f5ee;
 
+.navbar nav a.active {
     color: #16804b;
+
+    background: #edf7f1;
 }
 
 
 /* =========================================================
-   HERO
+   3. MAIN
 ========================================================= */
 
-.hero {
-    position: relative;
-
-    overflow: hidden;
-
-    min-height: 590px;
-
-    padding:
-        80px
-        6%;
-
-    display: flex;
-
-    align-items: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #effaf4 0%,
-            #ffffff 65%
-        );
+main {
+    width: 100%;
 }
 
-.hero::before {
-    content: "";
 
-    position: absolute;
-
-    width: 400px;
-
-    height: 400px;
-
-    right: -150px;
-
-    top: -150px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(22, 128, 75, 0.07);
-}
-
-.hero::after {
-    content: "";
-
-    position: absolute;
-
-    width: 250px;
-
-    height: 250px;
-
-    left: -100px;
-
-    bottom: -100px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(22, 128, 75, 0.05);
-}
-
-.hero-content {
-    position: relative;
-
-    z-index: 2;
-
+.section {
     width: 100%;
 
     max-width: 1180px;
 
     margin: 0 auto;
 
-    display: grid;
-
-    grid-template-columns:
-        1.5fr
-        0.8fr;
-
-    gap: 70px;
-
-    align-items: center;
+    padding:
+        80px 6%;
 }
 
 
 /* =========================================================
-   HERO TEXT
+   4. SECTION HEADING
 ========================================================= */
 
-.hero-text h1 {
+.section-heading {
     max-width: 760px;
+}
 
-    margin:
-        12px
-        0
-        20px;
+
+.section-label {
+    margin-bottom: 10px;
+
+    color: #16804b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+
+.section-heading h1 {
+    margin-bottom: 18px;
 
     color: #173d2a;
 
     font-size:
-        clamp(
-            38px,
-            5vw,
-            62px
-        );
+        clamp(36px, 5vw, 58px);
 
-    line-height: 1.12;
+    line-height: 1.08;
 
-    letter-spacing: -1.8px;
+    letter-spacing: -1.5px;
 }
 
-.section-label {
-    color: #16804b;
 
-    font-size: 12px;
+.section-heading h2 {
+    margin-bottom: 14px;
 
-    font-weight: 800;
+    color: #173d2a;
 
-    letter-spacing: 2px;
+    font-size:
+        clamp(28px, 4vw, 40px);
+
+    line-height: 1.2;
 }
 
-.hero-description {
-    max-width: 650px;
 
-    color: #64736c;
+.section-heading > p:not(.section-label) {
+    color: #69776f;
 
-    font-size: 17px;
+    font-size: 16px;
 
     line-height: 1.8;
 }
 
 
 /* =========================================================
-   HERO BUTTON
+   5. HERO BERANDA
 ========================================================= */
+
+.section:first-child {
+    padding-top: 90px;
+}
+
+
+.section:first-child .section-heading {
+    max-width: 780px;
+}
+
+
+.section:first-child .section-heading h1 {
+    max-width: 720px;
+}
+
+
+/* HERO BUTTON */
 
 .hero-buttons {
     display: flex;
-
-    align-items: center;
 
     flex-wrap: wrap;
 
@@ -296,6 +265,7 @@ img {
 
     margin-top: 28px;
 }
+
 
 .btn {
     display: inline-flex;
@@ -305,241 +275,158 @@ img {
     justify-content: center;
 
     padding:
-        13px
-        20px;
+        13px 21px;
 
-    border-radius: 10px;
+    border-radius: 11px;
 
     font-size: 14px;
 
     font-weight: 700;
 
     transition:
-        0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.btn-primary {
-    background: #16804b;
 
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.btn-primary {
     color: #ffffff;
 
+    background: #16804b;
+
     box-shadow:
-        0 6px 18px
+        0 8px 20px
         rgba(22, 128, 75, 0.18);
 }
 
-.btn-primary:hover {
-    background: #116b3f;
 
-    transform:
-        translateY(-2px);
+.btn-primary:hover {
+    box-shadow:
+        0 12px 25px
+        rgba(22, 128, 75, 0.25);
 }
+
 
 .btn-secondary {
+    color: #16804b;
+
     background: #edf7f1;
-
-    color: #16804b;
-}
-
-.btn-secondary:hover {
-    background: #dff1e7;
-
-    transform:
-        translateY(-2px);
 }
 
 
 /* =========================================================
-   HERO CARD
+   6. GENERAL CARD GRID
 ========================================================= */
 
-.hero-card {
-    min-height: 300px;
-
-    padding: 35px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    background: #ffffff;
-
-    border:
-        1px solid #e1ece6;
-
-    border-radius: 26px;
-
-    box-shadow:
-        0 15px 45px
-        rgba(25, 75, 48, 0.09);
-}
-
-.hero-icon {
-    width: 95px;
-
-    height: 95px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin-bottom: 22px;
-
-    background: #edf8f2;
-
-    border-radius: 28px;
-
-    font-size: 45px;
-}
-
-.hero-card p {
-    max-width: 230px;
-
-    margin-bottom: 10px;
-
-    color: #173d2a;
-
-    font-size: 18px;
-
-    font-weight: 700;
-
-    line-height: 1.4;
-}
-
-.hero-card span {
-    color: #16804b;
-
-    font-size: 13px;
-
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   GENERAL SECTION
-========================================================= */
-
-.section {
-    width: 100%;
-
-    max-width: 1180px;
-
-    margin:
-        0
-        auto;
-
-    padding:
-        80px
-        6%;
-}
-
-
-/* =========================================================
-   SECTION HEADING
-========================================================= */
-
-.section-heading {
-    margin-bottom: 38px;
-}
-
-.section-heading h2 {
-    margin:
-        8px
-        0
-        12px;
-
-    color: #173d2a;
-
-    font-size:
-        clamp(
-            28px,
-            4vw,
-            42px
-        );
-
-    line-height: 1.2;
-
-    letter-spacing: -0.8px;
-}
-
-.section-heading > p:not(.section-label) {
-    max-width: 700px;
-
-    color: #69776f;
-
-    font-size: 16px;
-}
-
-
-/* =========================================================
-   SERVICE GRID
-========================================================= */
-
-.service-grid {
+.education-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(
-            3,
-            minmax(0, 1fr)
-        );
+        repeat(3, minmax(0, 1fr));
 
-    gap: 22px;
+    gap: 24px;
 }
 
 
 /* =========================================================
-   SERVICE CARD
+   7. EDUCATION PAGE
 ========================================================= */
 
-.service-card {
-    min-height: 310px;
+.education-header {
+    padding-top: 70px;
 
-    padding: 30px;
+    padding-bottom: 35px;
+}
+
+
+.education-header .section-heading {
+    max-width: 760px;
+}
+
+
+/* EDUCATION CARD */
+
+.education-card {
+    position: relative;
 
     display: flex;
 
     flex-direction: column;
 
+    min-height: 430px;
+
+    padding: 0;
+
+    overflow: hidden;
+
     background: #ffffff;
 
     border:
-        1px solid #e4eee8;
+        1px solid #e3ece7;
 
-    border-radius: 20px;
+    border-radius: 22px;
 
     box-shadow:
-        0 8px 30px
-        rgba(27, 72, 48, 0.05);
+        0 8px 25px
+        rgba(23, 61, 42, 0.055);
 
     transition:
-        0.25s ease;
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
-.service-card:hover {
+
+.education-card:hover {
     transform:
-        translateY(-6px);
+        translateY(-7px);
 
     border-color:
-        #cce7d8;
+        #c8e4d3;
 
     box-shadow:
         0 18px 40px
-        rgba(27, 72, 48, 0.10);
+        rgba(23, 61, 42, 0.11);
 }
 
-.service-icon {
-    width: 58px;
 
-    height: 58px;
+/* CARD TOP VISUAL */
+
+.education-card::before {
+    content: "";
+
+    display: block;
+
+    height: 115px;
+
+    flex-shrink: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf8f0,
+            #d9f0e4
+        );
+}
+
+
+/* EDUCATION ICON */
+
+.education-card-icon {
+    position: absolute;
+
+    top: 70px;
+
+    left: 25px;
+
+    width: 68px;
+
+    height: 68px;
 
     display: flex;
 
@@ -547,16 +434,58 @@ img {
 
     justify-content: center;
 
-    margin-bottom: 22px;
+    background: #ffffff;
 
-    background: #edf8f2;
+    border:
+        5px solid #ffffff;
 
-    border-radius: 16px;
+    border-radius: 20px;
 
-    font-size: 27px;
+    font-size: 31px;
+
+    box-shadow:
+        0 7px 20px
+        rgba(23, 61, 42, 0.10);
 }
 
-.service-card h3 {
+
+/* CARD CONTENT */
+
+.education-card > .content-category,
+.education-card > h3,
+.education-card > p,
+.education-card > .education-details {
+    margin-left: 25px;
+
+    margin-right: 25px;
+}
+
+
+.education-card > .content-category {
+    margin-top: 40px;
+
+    margin-bottom: 9px;
+}
+
+
+/* CATEGORY */
+
+.content-category {
+    display: inline-block;
+
+    color: #16804b;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* TITLE */
+
+.education-card h3 {
     margin-bottom: 10px;
 
     color: #173d2a;
@@ -566,7 +495,10 @@ img {
     line-height: 1.3;
 }
 
-.service-card p {
+
+/* DESCRIPTION */
+
+.education-card > p {
     color: #69776f;
 
     font-size: 14px;
@@ -574,62 +506,90 @@ img {
     line-height: 1.7;
 }
 
-.service-card span {
-    margin-top: auto;
 
-    padding-top: 20px;
+/* DETAILS */
 
-    color: #16804b;
+.education-details {
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid #edf2ee;
+}
+
+
+.education-details h4 {
+    margin-bottom: 7px;
+
+    color: #34483d;
 
     font-size: 14px;
+}
 
-    font-weight: 700;
+
+.education-details p {
+    margin-bottom: 13px;
+
+    color: #69776f;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+.education-details ul {
+    margin:
+        8px 0 0 18px;
+
+    padding: 0;
+
+    color: #69776f;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+.education-details li {
+    margin-bottom: 6px;
 }
 
 
 /* =========================================================
-   ABOUT
+   8. CALCULATOR PAGE
 ========================================================= */
 
-.about-section {
-    padding-top: 30px;
+.calculator-hero {
+    padding:
+        75px 6% 45px;
+
+    text-align: center;
 }
 
-.about-card {
-    display: grid;
 
-    grid-template-columns:
-        90px
-        1fr;
+.calculator-hero-inner {
+    max-width: 760px;
 
-    gap: 30px;
-
-    align-items: start;
-
-    padding: 45px;
-
-    background: #ffffff;
-
-    border:
-        1px solid #e4eee8;
-
-    border-radius: 24px;
-
-    box-shadow:
-        0 8px 30px
-        rgba(27, 72, 48, 0.05);
+    margin: 0 auto;
 }
 
-.about-icon {
-    width: 75px;
 
-    height: 75px;
+.hero-icon {
+    width: 70px;
+
+    height: 70px;
 
     display: flex;
 
     align-items: center;
 
     justify-content: center;
+
+    margin:
+        0 auto 20px;
 
     background: #edf8f2;
 
@@ -638,895 +598,494 @@ img {
     font-size: 34px;
 }
 
-.about-content h2 {
-    margin:
-        8px
-        0
-        15px;
+
+.calculator-hero h1 {
+    margin-bottom: 14px;
 
     color: #173d2a;
 
-    font-size: 32px;
+    font-size:
+        clamp(34px, 5vw, 48px);
 
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
-.about-content p:not(.section-label) {
-    max-width: 760px;
 
-    margin-bottom: 12px;
+.calculator-hero-text {
+    max-width: 680px;
+
+    margin: 0 auto;
 
     color: #69776f;
 
     font-size: 15px;
+
+    line-height: 1.8;
 }
 
 
-/* =========================================================
-   WHATSAPP CTA
-========================================================= */
+/* QUICK NAV */
 
-.whatsapp-cta {
-    position: relative;
+.calculator-navigation {
+    width: 88%;
 
-    overflow: hidden;
+    max-width: 1050px;
 
-    padding:
-        55px
-        30px;
+    margin:
+        0 auto 40px;
 
-    text-align: center;
+    display: grid;
 
-    background:
-        linear-gradient(
-            135deg,
-            #16804b,
-            #116b3f
-        );
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    color: #ffffff;
+    gap: 15px;
+}
 
-    border-radius: 26px;
+
+.calculator-navigation a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 18px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e3ece7;
+
+    border-radius: 15px;
 
     box-shadow:
-        0 15px 40px
-        rgba(22, 128, 75, 0.20);
+        0 5px 18px
+        rgba(23, 61, 42, 0.04);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
 }
 
-.whatsapp-cta::before {
-    content: "";
 
-    position: absolute;
+.calculator-navigation a:hover {
+    transform:
+        translateY(-3px);
 
-    width: 260px;
-
-    height: 260px;
-
-    right: -100px;
-
-    top: -120px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.08);
+    border-color:
+        #bfe0cc;
 }
 
-.cta-label {
-    position: relative;
 
-    margin-bottom: 8px;
+.calculator-nav-icon {
+    width: 45px;
 
-    font-size: 12px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #edf8f2;
+
+    border-radius: 12px;
+
+    font-size: 22px;
+}
+
+
+.calculator-navigation strong {
+    display: block;
+
+    color: #173d2a;
+
+    font-size: 14px;
+}
+
+
+.calculator-navigation small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #78857e;
+
+    font-size: 11px;
+}
+
+
+/* CALCULATOR SECTION */
+
+.calculator-section {
+    width: 100%;
+
+    padding:
+        45px 6%;
+}
+
+
+.calculator-section-alt {
+    background: #f0f7f3;
+}
+
+
+.calculator-card {
+    width: 100%;
+
+    max-width: 1080px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        0.85fr 1.15fr;
+
+    gap: 45px;
+
+    padding: 42px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e1ebe5;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(23, 61, 42, 0.06);
+}
+
+
+/* CALCULATOR INFO */
+
+.calculator-info {
+    padding-top: 5px;
+}
+
+
+.calculator-number {
+    margin-bottom: 15px;
+
+    color: #b7c9bf;
+
+    font-size: 13px;
 
     font-weight: 800;
 
     letter-spacing: 2px;
 }
 
-.whatsapp-cta h2 {
-    position: relative;
 
-    margin-bottom: 12px;
+.calculator-info h2 {
+    margin-bottom: 15px;
 
-    font-size:
-        clamp(
-            27px,
-            4vw,
-            38px
-        );
+    color: #173d2a;
+
+    font-size: 31px;
 
     line-height: 1.2;
 }
 
-.whatsapp-cta > p:not(.cta-label) {
-    position: relative;
 
-    max-width: 600px;
-
-    margin:
-        0
-        auto
-        25px;
-
-    color: #e4f6eb;
-
-    font-size: 15px;
-}
-
-.btn-white {
-    position: relative;
-
-    background: #ffffff;
-
-    color: #16804b;
-}
-
-.btn-white:hover {
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 8px 20px
-        rgba(0, 0, 0, 0.12);
-}
-
-
-/* =========================================================
-   DISCLAIMER
-========================================================= */
-
-.disclaimer {
-    max-width: 950px;
-
-    margin:
-        0
-        auto
-        70px;
-
-    padding:
-        24px
-        30px;
-
-    background: #fffaf0;
-
-    border:
-        1px solid #f0e4c5;
-
-    border-radius: 16px;
-
-    color: #71664d;
-}
-
-.disclaimer h3 {
-    margin-bottom: 7px;
-
-    color: #65583c;
-
-    font-size: 16px;
-}
-
-.disclaimer p {
-    font-size: 13px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    background: #123326;
-
-    color: #ffffff;
-}
-
-.footer-content {
-    max-width: 1180px;
-
-    margin: 0 auto;
-
-    padding:
-        55px
-        6%;
-
-    display: grid;
-
-    grid-template-columns:
-        1.3fr
-        1fr
-        0.7fr;
-
-    gap: 50px;
-}
-
-.footer-logo {
-    width: 90px;
-
-    height: 42px;
-
-    object-fit: contain;
-
-    margin-bottom: 15px;
-}
-
-.footer-info p,
-.footer-contact p {
-    color: #b9cec3;
+.calculator-info > p:not(.section-label) {
+    color: #69776f;
 
     font-size: 14px;
 
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
-.footer-contact h4 {
-    margin-bottom: 10px;
 
-    font-size: 15px;
-}
+.calculator-tip {
+    margin-top: 25px;
 
-.footer-contact a {
-    display: inline-block;
+    padding: 15px 17px;
 
-    margin-top: 8px;
+    color: #53645b;
 
-    color: #bce8cd;
+    background: #f1f8f4;
 
-    font-weight: 600;
-}
+    border-left:
+        3px solid #16804b;
 
-.footer-contact a:hover {
-    color: #ffffff;
-}
-
-.footer-copyright {
-    display: flex;
-
-    align-items: flex-end;
-}
-
-.footer-copyright p {
-    color: #8eaaa0;
+    border-radius: 8px;
 
     font-size: 13px;
+
+    line-height: 1.6;
 }
 
 
-/* =========================================================
-   FORM SUPPORT
-========================================================= */
+/* CALCULATOR FORM */
 
-input,
-select,
-textarea,
-button {
-    font-family: inherit;
+.calculator-form {
+    padding: 25px;
+
+    background: #f8fbf9;
+
+    border:
+        1px solid #e5eee9;
+
+    border-radius: 18px;
 }
 
-input,
-select,
-textarea {
+
+.form-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 24px;
+}
+
+
+.form-title > span {
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eaf7f0;
+
+    border-radius: 12px;
+
+    font-size: 21px;
+}
+
+
+.form-title h3 {
+    color: #173d2a;
+
+    font-size: 17px;
+}
+
+
+.form-title p {
+    color: #78857e;
+
+    font-size: 12px;
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #40534a;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.form-group input,
+.form-group select {
     width: 100%;
 
+    height: 47px;
+
     padding:
-        12px
-        14px;
+        0 14px;
+
+    color: #263a30;
+
+    background: #ffffff;
 
     border:
         1px solid #dce8e1;
 
     border-radius: 10px;
 
-    background: #ffffff;
-
-    color: #24332b;
+    outline: none;
 
     font-size: 14px;
 
-    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #16804b;
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color:
+        #16804b;
 
     box-shadow:
         0 0 0 3px
-        rgba(22, 128, 75, 0.10);
+        rgba(22, 128, 75, 0.08);
 }
 
-button {
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .hero-content {
-        grid-template-columns:
-            1fr;
-
-        gap: 45px;
-    }
-
-    .hero-card {
-        max-width: 430px;
-
-        margin: 0 auto;
-
-        min-height: 230px;
-    }
-
-    .service-grid {
-        grid-template-columns:
-            1fr
-            1fr;
-    }
-
-    .footer-content {
-        grid-template-columns:
-            1fr
-            1fr;
-    }
-
-    .footer-copyright {
-        align-items:
-            flex-start;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 650px) {
-
-    .navbar {
-        min-height: 60px;
-
-        padding:
-            7px
-            4%;
-
-        gap: 8px;
-    }
-
-    .logo {
-        height: 36px;
-    }
-
-    .logo img {
-        width: 108px;
-
-        height: 42px;
-    }
-
-    .navbar nav {
-        gap: 1px;
-    }
-
-    .navbar nav a {
-        padding:
-            6px
-            6px;
-
-        font-size: 10px;
-
-        border-radius: 7px;
-    }
-
-
-    .hero {
-        min-height: 0;
-
-        padding:
-            65px
-            5%;
-    }
-
-    .hero-text h1 {
-        font-size: 37px;
-
-        letter-spacing: -1px;
-    }
-
-    .hero-description {
-        font-size: 15px;
-    }
-
-    .hero-buttons {
-        align-items:
-            stretch;
-
-        flex-direction:
-            column;
-    }
-
-    .hero-buttons .btn {
-        width: 100%;
-    }
-
-    .hero-card {
-        display: none;
-    }
-
-
-    .section {
-        padding:
-            60px
-            5%;
-    }
-
-
-    .section-heading {
-        margin-bottom: 28px;
-    }
-
-    .section-heading h2 {
-        font-size: 30px;
-    }
-
-
-    .service-grid {
-        grid-template-columns:
-            1fr;
-
-        gap: 18px;
-    }
-
-
-    .service-card {
-        min-height: 0;
-
-        padding: 25px;
-    }
-
-
-    .about-section {
-        padding-top: 20px;
-    }
-
-    .about-card {
-        grid-template-columns:
-            1fr;
-
-        gap: 20px;
-
-        padding: 28px;
-    }
-
-    .about-icon {
-        width: 60px;
-
-        height: 60px;
-
-        font-size: 28px;
-    }
-
-    .about-content h2 {
-        font-size: 27px;
-    }
-
-
-    .whatsapp-cta {
-        padding:
-            45px
-            22px;
-    }
-
-
-    .disclaimer {
-        margin:
-            0
-            5%
-            50px;
-
-        padding:
-            22px;
-    }
-
-
-    .footer-content {
-        grid-template-columns:
-            1fr;
-
-        gap: 30px;
-
-        padding:
-            45px
-            5%;
-    }
-
-    .footer-copyright {
-        align-items:
-            flex-start;
-    }
-
-    .footer-logo {
-        width: 80px;
-
-        height: 38px;
-    }
-
-}
-
-
-/* =========================================================
-   EXTRA SMALL PHONE
-========================================================= */
-
-@media (max-width: 400px) {
-
-    .navbar nav a {
-        padding:
-            5px
-            4px;
-
-        font-size: 9px;
-    }
-
-    .logo img {
-        width: 98px;
-
-        height: 40px;
-    }
-
-    .hero-text h1 {
-        font-size: 32px;
-    }
-
-}
-/* =========================================================
-   PERBAIKAN KHUSUS KALKULATOR
-   ========================================================= */
-
-.calculator-hero {
-    padding: 70px 6%;
-    background: linear-gradient(
-        135deg,
-        #effaf4,
-        #ffffff
-    );
-    text-align: center;
-}
-
-.calculator-hero-inner {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.calculator-hero .hero-icon {
-    margin: 0 auto 20px;
-}
-
-.calculator-hero h1 {
-    margin: 10px 0 15px;
-    color: #173d2a;
-    font-size: clamp(32px, 5vw, 48px);
-    line-height: 1.2;
-}
-
-.calculator-hero-text {
-    max-width: 650px;
-    margin: 0 auto;
-    color: #69776f;
-    font-size: 16px;
-}
-
-
-/* NAVIGASI KALKULATOR */
-
-.calculator-navigation {
-    max-width: 1000px;
-    margin: -25px auto 0;
-    padding: 0 20px;
-
-    position: relative;
-    z-index: 5;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.calculator-navigation a {
-    padding: 18px 20px;
-
-    display: flex;
-    align-items: center;
-    gap: 13px;
-
-    background: #ffffff;
-
-    border: 1px solid #e2ece6;
-    border-radius: 15px;
-
-    box-shadow: 0 8px 25px rgba(27, 72, 48, 0.06);
-
-    transition: 0.2s ease;
-}
-
-.calculator-navigation a:hover {
-    transform: translateY(-3px);
-    border-color: #cce7d8;
-}
-
-.calculator-nav-icon {
-    font-size: 25px;
-}
-
-.calculator-navigation strong {
-    display: block;
-    color: #173d2a;
-    font-size: 14px;
-}
-
-.calculator-navigation small {
-    display: block;
-    margin-top: 2px;
-    color: #7a8881;
-    font-size: 11px;
-}
-
-
-/* BAGIAN KALKULATOR */
-
-.calculator-section {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 80px 6%;
-}
-
-.calculator-section-alt {
-    background: #f1f8f4;
-    max-width: none;
-}
-
-.calculator-section-alt .calculator-card {
-    max-width: 1060px;
-    margin: 0 auto;
-}
-
-.calculator-card {
-    display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 45px;
-
-    padding: 40px;
-
-    background: #ffffff;
-
-    border: 1px solid #e3ece7;
-    border-radius: 24px;
-
-    box-shadow: 0 10px 35px rgba(27, 72, 48, 0.06);
-}
-
-.calculator-info {
-    padding: 10px;
-}
-
-.calculator-number {
-    margin-bottom: 12px;
-
-    color: #16804b;
-
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.calculator-info h2 {
-    margin: 8px 0 15px;
-
-    color: #173d2a;
-
-    font-size: 32px;
-    line-height: 1.2;
-}
-
-.calculator-info > p:not(.section-label) {
-    color: #69776f;
-    font-size: 15px;
-}
-
-.calculator-tip {
-    margin-top: 25px;
-    padding: 15px;
-
-    background: #edf8f2;
-
-    border-radius: 12px;
-
-    color: #426353;
-    font-size: 13px;
-}
-
-
-/* FORM KALKULATOR */
-
-.calculator-form {
-    padding: 28px;
-
-    background: #f8fbf9;
-
-    border: 1px solid #e4eee8;
-    border-radius: 18px;
-}
-
-.form-title {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-
-    margin-bottom: 25px;
-}
-
-.form-title > span {
-    width: 45px;
-    height: 45px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #e8f5ee;
-    border-radius: 12px;
-
-    font-size: 22px;
-}
-
-.form-title h3 {
-    color: #173d2a;
-    font-size: 17px;
-}
-
-.form-title p {
-    color: #84918b;
-    font-size: 12px;
-}
-
-
-.form-group {
-    margin-bottom: 17px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 7px;
-
-    color: #34483d;
-
-    font-size: 13px;
-    font-weight: 700;
-}
 
 .input-unit {
     position: relative;
 }
 
+
 .input-unit input {
-    padding-right: 55px;
+    padding-right: 65px;
 }
+
 
 .input-unit span {
     position: absolute;
 
-    right: 14px;
     top: 50%;
 
-    transform: translateY(-50%);
+    right: 14px;
 
-    color: #7a8981;
+    transform:
+        translateY(-50%);
 
-    font-size: 13px;
-    font-weight: 600;
+    color: #7b8982;
+
+    font-size: 12px;
+
+    font-weight: 700;
 }
 
-.calculator-form select {
-    min-height: 45px;
-}
 
 .activity-note {
-    margin: -5px 0 18px;
+    margin:
+        -4px 0 17px;
 
-    color: #84918b;
+    color: #7a8781;
 
     font-size: 11px;
 }
 
 
-/* TOMBOL KALKULATOR */
+/* BUTTON */
 
 .calculator-button {
     width: 100%;
 
-    padding: 13px 18px;
+    min-height: 49px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    border: none;
-    border-radius: 10px;
+    padding:
+        0 17px;
 
-    background: #16804b;
     color: #ffffff;
 
-    font-size: 14px;
-    font-weight: 700;
+    background: #16804b;
+
+    border: none;
+
+    border-radius: 10px;
 
     cursor: pointer;
 
-    transition: 0.2s ease;
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
+
 
 .calculator-button:hover {
-    background: #116b3f;
-    transform: translateY(-1px);
+    background: #116b3e;
+
+    transform:
+        translateY(-1px);
 }
 
 
-/* HASIL */
+/* RESULT */
 
 .result {
     margin-top: 18px;
 
-    min-height: 80px;
+    padding: 17px;
 
-    padding: 18px;
+    min-height: 82px;
 
     background: #ffffff;
 
-    border: 1px solid #e0ebe5;
+    border:
+        1px solid #e0ebe4;
+
     border-radius: 12px;
 }
 
+
 .result-placeholder {
     display: flex;
+
     align-items: center;
-    gap: 13px;
+
+    gap: 12px;
+
+    color: #69776f;
 }
 
+
 .result-placeholder > span {
-    font-size: 24px;
+    font-size: 25px;
 }
+
 
 .result-placeholder strong {
     display: block;
 
-    color: #30473b;
+    color: #34483d;
 
     font-size: 13px;
 }
 
+
 .result-placeholder small {
     display: block;
 
-    margin-top: 3px;
+    margin-top: 2px;
 
-    color: #8a9790;
+    color: #89948e;
 
     font-size: 11px;
 }
 
 
 /* =========================================================
-   PERBAIKAN KHUSUS CONTACT US
-   ========================================================= */
+   9. CONTACT PAGE
+========================================================= */
 
 .calculator-page-header {
     padding-top: 70px;
-    padding-bottom: 40px;
+
+    padding-bottom: 35px;
 }
+
 
 .contact-grid {
     display: grid;
@@ -1537,38 +1096,52 @@ button {
     gap: 18px;
 }
 
+
 .contact-card {
+    display: flex;
+
+    flex-direction: column;
+
     min-height: 300px;
 
     padding: 25px;
 
-    display: flex;
-    flex-direction: column;
-
     background: #ffffff;
 
-    border: 1px solid #e3ece7;
+    border:
+        1px solid #e3ece7;
+
     border-radius: 20px;
 
-    box-shadow: 0 8px 25px rgba(27, 72, 48, 0.05);
+    box-shadow:
+        0 8px 24px
+        rgba(23, 61, 42, 0.05);
 
-    transition: 0.2s ease;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
+
 
 .contact-card:hover {
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
 
-    border-color: #cce7d8;
-
-    box-shadow: 0 15px 35px rgba(27, 72, 48, 0.09);
+    box-shadow:
+        0 15px 35px
+        rgba(23, 61, 42, 0.10);
 }
+
 
 .contact-icon {
     width: 55px;
+
     height: 55px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     margin-bottom: 18px;
@@ -1576,90 +1149,117 @@ button {
     border-radius: 15px;
 }
 
+
 .contact-icon svg {
     width: 27px;
+
     height: 27px;
 }
 
+
 .whatsapp-icon {
-    background: #e9f8ef;
-    color: #16804b;
+    color: #ffffff;
+
+    background: #25d366;
 }
+
 
 .instagram-icon {
-    background: #f7edf4;
-    color: #b33f82;
+    color: #ffffff;
+
+    background: #d62976;
 }
+
 
 .tiktok-icon {
-    background: #edf0f1;
-    color: #111111;
+    color: #ffffff;
+
+    background: #111111;
 }
 
+
 .facebook-icon {
-    background: #edf3fc;
-    color: #287be0;
+    color: #ffffff;
+
+    background: #1877f2;
 }
+
 
 .contact-card h3 {
     margin-bottom: 8px;
 
     color: #173d2a;
 
-    font-size: 18px;
+    font-size: 19px;
 }
 
+
 .contact-card p {
+    flex-grow: 1;
+
     color: #69776f;
 
     font-size: 13px;
 
-    line-height: 1.65;
+    line-height: 1.7;
 }
 
+
 .contact-card strong {
-    margin-top: 12px;
+    margin-top: 15px;
 
     color: #34483d;
 
     font-size: 13px;
 }
 
+
 .contact-link {
-    margin-top: auto;
-    padding-top: 18px;
+    margin-top: 10px;
 
     color: #16804b;
 
     font-size: 13px;
+
     font-weight: 700;
 }
 
-.contact-location {
-    display: grid;
 
-    grid-template-columns:
-        70px
-        1fr;
+/* LOCATION */
+
+.contact-location {
+    display: flex;
+
+    align-items: flex-start;
 
     gap: 22px;
 
-    padding: 35px;
+    padding: 30px;
 
     background: #ffffff;
 
-    border: 1px solid #e3ece7;
+    border:
+        1px solid #e3ece7;
+
     border-radius: 20px;
 
-    box-shadow: 0 8px 25px rgba(27, 72, 48, 0.05);
+    box-shadow:
+        0 8px 25px
+        rgba(23, 61, 42, 0.05);
 }
 
+
 .contact-location-icon {
-    width: 60px;
-    height: 60px;
+    width: 58px;
+
+    height: 58px;
+
+    flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     background: #edf8f2;
@@ -1669,98 +1269,462 @@ button {
     font-size: 27px;
 }
 
+
 .contact-location h2 {
-    margin: 8px 0 10px;
+    margin-bottom: 8px;
 
     color: #173d2a;
 
-    font-size: 28px;
+    font-size: 27px;
 }
 
-.contact-location p:not(.section-label) {
+
+.contact-location p {
     color: #69776f;
 
     font-size: 14px;
+
+    line-height: 1.7;
 }
+
 
 .card-link {
     display: inline-block;
 
-    margin-top: 15px;
+    margin-top: 12px;
 
     color: #16804b;
 
     font-size: 13px;
+
     font-weight: 700;
 }
 
 
 /* =========================================================
-   MOBILE KALKULATOR + CONTACT
-   ========================================================= */
+   10. DISCLAIMER
+========================================================= */
 
-@media (max-width: 900px) {
+.disclaimer {
+    width: 88%;
+
+    max-width: 1050px;
+
+    margin:
+        40px auto 70px;
+
+    padding: 22px 25px;
+
+    background: #fff9e9;
+
+    border:
+        1px solid #f0e1b7;
+
+    border-radius: 15px;
+}
+
+
+.disclaimer h3 {
+    margin-bottom: 7px;
+
+    color: #735d20;
+
+    font-size: 14px;
+}
+
+
+.disclaimer p {
+    color: #766f5b;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   11. FOOTER
+========================================================= */
+
+footer {
+    margin-top: 30px;
+
+    background: #173d2a;
+
+    color: #ffffff;
+}
+
+
+.footer-content {
+    width: 88%;
+
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    padding:
+        50px 0;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 1fr 0.6fr;
+
+    gap: 50px;
+}
+
+
+.footer-info h3 {
+    margin-bottom: 10px;
+
+    font-size: 20px;
+}
+
+
+.footer-info p,
+.footer-contact p {
+    color: #c8d8cf;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+.footer-contact h4 {
+    margin-bottom: 8px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+
+.footer-contact h4:not(:first-child) {
+    margin-top: 20px;
+}
+
+
+.footer-contact a {
+    color: #c8d8cf;
+
+    font-size: 13px;
+}
+
+
+.footer-contact a:hover {
+    color: #ffffff;
+}
+
+
+.footer-logo {
+    width: 135px;
+
+    height: 55px;
+
+    object-fit: contain;
+
+    object-position: left center;
+
+    margin-bottom: 10px;
+}
+
+
+.footer-copyright {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: flex-end;
+}
+
+
+.footer-copyright p {
+    color: #a9beb2;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   12. RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding:
+            10px 4%;
+    }
+
+
+    .section {
+        padding-left: 4%;
+
+        padding-right: 4%;
+    }
+
+
+    .education-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
 
     .calculator-card {
         grid-template-columns: 1fr;
-        gap: 25px;
+
+        gap: 30px;
     }
+
 
     .contact-grid {
         grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .footer-content {
+        grid-template-columns:
             1fr 1fr;
+    }
+
+
+    .footer-copyright {
+        justify-content: flex-start;
     }
 
 }
 
 
-@media (max-width: 650px) {
+/* =========================================================
+   13. RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* NAVBAR */
+
+    .navbar {
+        min-height: auto;
+
+        padding:
+            10px 18px;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+    .logo img {
+        width: 120px;
+
+        height: 48px;
+    }
+
+
+    .navbar nav {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 2px;
+    }
+
+
+    .navbar nav a {
+        padding:
+            7px 8px;
+
+        font-size: 12px;
+    }
+
+
+    /* SECTION */
+
+    .section {
+        padding:
+            55px 18px;
+    }
+
+
+    .section:first-child {
+        padding-top: 60px;
+    }
+
+
+    .section-heading h1 {
+        font-size: 38px;
+    }
+
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+
+
+    .section-heading > p:not(.section-label) {
+        font-size: 14px;
+    }
+
+
+    /* HERO */
+
+    .hero-buttons {
+        width: 100%;
+    }
+
+
+    .btn {
+        width: 100%;
+    }
+
+
+    /* EDUCATION */
+
+    .education-header {
+        padding-top: 55px;
+    }
+
+
+    .education-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .education-card {
+        min-height: auto;
+    }
+
+
+    .education-card h3 {
+        font-size: 19px;
+    }
+
+
+    /* CALCULATOR */
 
     .calculator-hero {
         padding:
-            55px 5%;
+            55px 18px 35px;
     }
+
 
     .calculator-navigation {
+        width: calc(100% - 36px);
+
         grid-template-columns: 1fr;
 
-        margin-top: 0;
-
-        padding:
-            20px 5%;
+        margin-bottom: 25px;
     }
+
 
     .calculator-section {
         padding:
-            50px 5%;
+            25px 18px;
     }
+
 
     .calculator-card {
-        padding: 20px;
+        padding: 22px;
 
-        border-radius: 18px;
+        border-radius: 19px;
     }
+
 
     .calculator-form {
-        padding: 20px;
+        padding: 18px;
     }
 
+
     .calculator-info h2 {
-        font-size: 28px;
+        font-size: 27px;
     }
+
+
+    /* CONTACT */
 
     .contact-grid {
         grid-template-columns: 1fr;
     }
 
-    .contact-card {
-        min-height: 260px;
-    }
 
     .contact-location {
+        flex-direction: column;
+
+        padding: 24px;
+    }
+
+
+    .contact-location h2 {
+        font-size: 24px;
+    }
+
+
+    /* DISCLAIMER */
+
+    .disclaimer {
+        width: calc(100% - 36px);
+
+        margin:
+            25px auto 50px;
+
+        padding: 20px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-content {
+        width: calc(100% - 36px);
+
+        padding:
+            40px 0;
+
         grid-template-columns: 1fr;
 
-        padding: 25px;
+        gap: 30px;
+    }
+
+
+    .footer-copyright {
+        justify-content: flex-start;
+    }
+
+}
+
+
+/* =========================================================
+   14. VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .navbar nav a {
+        padding:
+            6px 6px;
+
+        font-size: 11px;
+    }
+
+
+    .section-heading h1 {
+        font-size: 33px;
+    }
+
+
+    .education-card {
+        border-radius: 18px;
+    }
+
+
+    .calculator-card {
+        padding: 17px;
     }
 
 }
