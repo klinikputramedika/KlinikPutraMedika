@@ -6,4 +6,46 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-site_url: "/"
+site_url: "https://eloquent-pithivier-a49657.netlify.app"
+
+collections:
+  - name: "berita"
+    label: "Berita"
+    folder: "content/berita"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+
+    fields:
+
+      - label: "Judul Berita"
+        name: "title"
+        widget: "string"
+
+      - label: "Tanggal"
+        name: "date"
+        widget: "datetime"
+        format: "DD MMMM YYYY"
+        date_format: "DD MMMM YYYY"
+        time_format: false
+
+      - label: "Kategori"
+        name: "category"
+        widget: "select"
+        options:
+          - "Berita Klinik"
+          - "Informasi Kesehatan"
+          - "Tips Kesehatan"
+          - "Pengumuman"
+
+      - label: "Gambar Utama"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Ringkasan"
+        name: "description"
+        widget: "text"
+
+      - label: "Isi Berita"
+        name: "body"
+        widget: "markdown"
