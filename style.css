@@ -1,12 +1,11 @@
 /* =========================================================
    KLINIK PUTRA MEDIKA
-   MAIN STYLESHEET
-   ========================================================= */
+   STYLE.CSS - VERSI FINAL
+========================================================= */
 
-
-/* =========================================================
+/* =========================
    RESET
-   ========================================================= */
+========================= */
 
 * {
     margin: 0;
@@ -37,7 +36,7 @@ img {
 
 /* =========================================================
    NAVBAR
-   ========================================================= */
+========================================================= */
 
 .navbar {
     position: sticky;
@@ -62,9 +61,7 @@ img {
 .logo {
     font-size: 23px;
     font-weight: 800;
-
-    color: #16794a;
-
+    color: #16804b;
     white-space: nowrap;
 }
 
@@ -72,42 +69,41 @@ img {
     color: #18352a;
 }
 
-.navbar nav {
+.nav-menu {
     display: flex;
     align-items: center;
-
-    gap: 25px;
+    gap: 28px;
 }
 
-.navbar nav a {
+.nav-menu a {
     position: relative;
 
-    padding: 5px 0;
-
-    font-size: 14px;
-    font-weight: 600;
+    padding: 6px 0;
 
     color: #53635b;
+
+    font-size: 14px;
+    font-weight: 700;
 
     transition: 0.2s;
 }
 
-.navbar nav a:hover {
-    color: #16794a;
+.nav-menu a:hover {
+    color: #16804b;
 }
 
-.navbar nav a.active {
-    color: #16794a;
+.nav-menu a.active {
+    color: #16804b;
 }
 
-.navbar nav a.active::after {
+.nav-menu a.active::after {
     content: "";
 
     position: absolute;
 
     left: 0;
     right: 0;
-    bottom: -7px;
+    bottom: -6px;
 
     height: 2px;
 
@@ -119,7 +115,7 @@ img {
 
 /* =========================================================
    HERO
-   ========================================================= */
+========================================================= */
 
 .hero {
     min-height: 85vh;
@@ -196,11 +192,6 @@ img {
     margin-top: 30px;
 }
 
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
-
 .button {
     display: inline-block;
 
@@ -209,8 +200,6 @@ img {
     border-radius: 10px;
 
     font-weight: 700;
-
-    transition: 0.2s;
 }
 
 .button.primary {
@@ -221,8 +210,6 @@ img {
 
 .button.primary:hover {
     background: #11683d;
-
-    transform: translateY(-2px);
 }
 
 .button.secondary {
@@ -233,14 +220,10 @@ img {
     border: 1px solid #cfe2d7;
 }
 
-.button.secondary:hover {
-    background: #f1f8f4;
-}
-
 
 /* =========================================================
    HERO CARD
-   ========================================================= */
+========================================================= */
 
 .hero-card {
     padding: 35px;
@@ -272,9 +255,9 @@ img {
 }
 
 .hero-card h3 {
-    margin-bottom: 10px;
-
     font-size: 25px;
+
+    margin-bottom: 10px;
 }
 
 .hero-card p {
@@ -284,7 +267,7 @@ img {
 
 /* =========================================================
    INTRO
-   ========================================================= */
+========================================================= */
 
 .intro {
     display: grid;
@@ -317,7 +300,7 @@ img {
 
 /* =========================================================
    GENERAL SECTION
-   ========================================================= */
+========================================================= */
 
 .section {
     padding: 90px 6%;
@@ -343,15 +326,9 @@ img {
 .section-heading h2 {
     margin-top: 10px;
 
-    line-height: 1.15;
-}
-
-.section-heading h1 {
-    font-size: clamp(40px, 6vw, 65px);
-}
-
-.section-heading h2 {
     font-size: 42px;
+
+    line-height: 1.15;
 }
 
 .section-heading > p:last-child {
@@ -363,7 +340,7 @@ img {
 
 /* =========================================================
    CALCULATOR CARDS
-   ========================================================= */
+========================================================= */
 
 .calculator-grid {
     display: grid;
@@ -412,25 +389,21 @@ img {
 }
 
 .calculator-card h3 {
-    margin-bottom: 10px;
-
     font-size: 24px;
+
+    margin-bottom: 10px;
 }
 
 .calculator-card p {
-    margin-bottom: 20px;
-
     color: #68766e;
+
+    margin-bottom: 20px;
 }
 
 .card-link {
-    display: inline-block;
-
     color: #16804b;
 
     font-weight: 800;
-
-    transition: 0.2s;
 }
 
 .card-link:hover {
@@ -439,8 +412,50 @@ img {
 
 
 /* =========================================================
-   CALCULATOR SECTIONS
-   ========================================================= */
+   CALCULATOR PAGE
+========================================================= */
+
+.calculator-page-header {
+    padding: 80px 6%;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5f6eb,
+            #ffffff
+        );
+}
+
+.calculator-page-header .section-label {
+    margin-bottom: 10px;
+}
+
+.calculator-page-header h1,
+.education-header h1,
+.news-page h1 {
+    font-size: clamp(40px, 6vw, 65px);
+
+    line-height: 1.1;
+}
+
+.calculator-page-header > p:last-child,
+.education-header > p:last-child,
+.news-page > p:last-child {
+    max-width: 650px;
+
+    margin: 20px auto 0;
+
+    color: #637168;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   CALCULATOR SECTION
+========================================================= */
 
 .calculator-section {
     padding: 90px 6%;
@@ -483,7 +498,7 @@ img {
 
 /* =========================================================
    FORM
-   ========================================================= */
+========================================================= */
 
 .form-card {
     padding: 30px;
@@ -500,6 +515,7 @@ label {
     display: block;
 
     margin-top: 18px;
+
     margin-bottom: 7px;
 
     font-size: 14px;
@@ -556,8 +572,6 @@ button {
     font-weight: 800;
 
     cursor: pointer;
-
-    transition: 0.2s;
 }
 
 button:hover {
@@ -567,7 +581,7 @@ button:hover {
 
 /* =========================================================
    RESULT
-   ========================================================= */
+========================================================= */
 
 .result {
     min-height: 20px;
@@ -583,6 +597,8 @@ button:hover {
     color: #18352a;
 
     border: 1px solid #dfe9e3;
+
+    transition: 0.3s;
 }
 
 .result-placeholder {
@@ -590,32 +606,34 @@ button:hover {
 
     font-size: 14px;
 
+    font-weight: 400;
+
     text-align: center;
 }
 
 .result-title {
-    margin-bottom: 5px;
-
     font-size: 12px;
 
     font-weight: 800;
 
     letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
 }
 
 
 /* =========================================================
    BMI
-   ========================================================= */
+========================================================= */
 
 .bmi-number {
-    margin: 5px 0;
-
     font-size: 48px;
 
     font-weight: 800;
 
     line-height: 1.1;
+
+    margin: 5px 0;
 }
 
 .bmi-category {
@@ -655,7 +673,7 @@ button:hover {
 
 /* =========================================================
    BMI SCALE
-   ========================================================= */
+========================================================= */
 
 .bmi-scale {
     margin-top: 22px;
@@ -733,7 +751,7 @@ button:hover {
 
 /* =========================================================
    BMI COLORS
-   ========================================================= */
+========================================================= */
 
 .result-normal {
     background: #eaf7ef;
@@ -801,11 +819,19 @@ button:hover {
 
 
 /* =========================================================
-   ENERGY / BMR / TDEE
-   ========================================================= */
+   BMR & TDEE
+========================================================= */
 
 .energy-result {
     margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background: #eaf7ef;
+
+    border: 1px solid #bfe4cc;
 }
 
 .energy-box {
@@ -881,15 +907,18 @@ button:hover {
 
 /* =========================================================
    MACRO
-   ========================================================= */
+========================================================= */
 
 .macro-result {
+    padding: 20px;
+
+    border-radius: 14px;
+
     background: #f4f8f5;
 }
 
-.macro-total,
 .macro-calories {
-    margin-bottom: 15px;
+    margin-top: 12px;
 
     padding: 20px;
 
@@ -902,7 +931,6 @@ button:hover {
     text-align: center;
 }
 
-.macro-total span,
 .macro-calories span {
     display: block;
 
@@ -913,7 +941,6 @@ button:hover {
     letter-spacing: 1px;
 }
 
-.macro-total strong,
 .macro-calories strong {
     display: block;
 
@@ -924,7 +951,6 @@ button:hover {
     line-height: 1.1;
 }
 
-.macro-total small,
 .macro-calories small {
     font-size: 12px;
 }
@@ -1000,28 +1026,177 @@ button:hover {
     line-height: 1.6;
 }
 
+.calculator-note {
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background: #f4f8f5;
+
+    color: #68766e;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CALCULATOR PREVIEW
+========================================================= */
+
+.calculator-preview {
+    background: white;
+}
+
+.calculator-preview-card {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 35px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #e4eee8;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.calculator-preview-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 25px;
+}
+
+.calculator-preview-card p {
+    max-width: 650px;
+
+    color: #68766e;
+}
+
+
+/* =========================================================
+   HEALTH CONTENT
+========================================================= */
+
+.health-content {
+    background: white;
+}
+
+.health-content-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.content-card {
+    padding: 28px;
+
+    background: #f8fbf9;
+
+    border: 1px solid #e4eee8;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    transition: 0.2s;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+.content-card-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #e5f6eb;
+
+    font-size: 25px;
+}
+
+.content-category {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #16804b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.content-card h3 {
+    font-size: 21px;
+
+    line-height: 1.3;
+
+    margin-bottom: 8px;
+}
+
+.content-card p {
+    color: #68766e;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.content-card .card-link {
+    display: inline-block;
+
+    margin-top: 10px;
+}
+
 
 /* =========================================================
    EDUCATION
-   ========================================================= */
+========================================================= */
 
 .education {
     background: #eaf7ef;
 }
 
 .education-header {
+    padding: 80px 6%;
+
+    text-align: center;
+
     background:
         linear-gradient(
             135deg,
             #e5f6eb,
             #ffffff
         );
-}
-
-.education-header h1 {
-    font-size: clamp(40px, 6vw, 65px);
-
-    line-height: 1.1;
 }
 
 .education-grid {
@@ -1112,166 +1287,58 @@ button:hover {
 
 
 /* =========================================================
-   HEALTH CONTENT
-   ========================================================= */
-
-.health-content {
-    background: white;
-}
-
-.health-content-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-.content-card {
-    padding: 28px;
-
-    background: #f8fbf9;
-
-    border: 1px solid #e4eee8;
-
-    border-radius: 18px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 18px;
-
-    transition: 0.2s;
-}
-
-.content-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.06);
-}
-
-.content-card-icon {
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 14px;
-
-    background: #e5f6eb;
-
-    font-size: 25px;
-}
-
-.content-category {
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    color: #16804b;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-}
-
-.content-card h3 {
-    margin-bottom: 8px;
-
-    font-size: 21px;
-
-    line-height: 1.3;
-}
-
-.content-card p {
-    color: #68766e;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-}
-
-
-/* =========================================================
-   CALCULATOR PREVIEW
-   ========================================================= */
-
-.calculator-preview {
-    background: white;
-}
-
-.calculator-preview-card {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 30px;
-
-    padding: 35px;
-
-    background: white;
-
-    border-radius: 20px;
-
-    border: 1px solid #e4eee8;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.calculator-preview-card h3 {
-    margin-bottom: 8px;
-
-    font-size: 25px;
-}
-
-.calculator-preview-card p {
-    max-width: 650px;
-
-    color: #68766e;
-}
-
-
-/* =========================================================
-   NEWS / BERITA
-   ========================================================= */
+   BERITA
+========================================================= */
 
 .news-page {
     background: #f5faf7;
 
-    min-height: calc(100vh - 80px);
+    padding: 80px 6%;
 }
 
-.news-section {
-    background: white;
+.news-page-header {
+    max-width: 800px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+.news-page-header .section-label {
+    margin-bottom: 10px;
+}
+
+.news-page-header h1 {
+    font-size: clamp(40px, 6vw, 65px);
+
+    line-height: 1.1;
+}
+
+.news-page-header p {
+    max-width: 650px;
+
+    margin: 20px auto 0;
+
+    color: #637168;
+
+    font-size: 17px;
 }
 
 .news-grid {
+    max-width: 1200px;
+
+    margin: auto;
+
     display: grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
     gap: 24px;
-
-    max-width: 1200px;
 }
 
 .news-card {
     overflow: hidden;
-
-    display: flex;
-
-    flex-direction: column;
 
     background: white;
 
@@ -1282,7 +1349,7 @@ button:hover {
     box-shadow:
         0 8px 25px rgba(0, 0, 0, 0.04);
 
-    transition: 0.25s;
+    transition: 0.2s;
 }
 
 .news-card:hover {
@@ -1312,15 +1379,18 @@ button:hover {
     color: #16804b;
 
     font-size: 55px;
+
+    object-fit: cover;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
 }
 
 .news-content {
-    display: flex;
-
-    flex-direction: column;
-
-    flex: 1;
-
     padding: 25px;
 }
 
@@ -1350,33 +1420,31 @@ button:hover {
     line-height: 1.6;
 }
 
-.news-content .card-link {
+.news-content .card-link,
+.read-more {
     display: inline-block;
 
-    margin-top: auto;
+    margin-top: 5px;
 
     color: #16804b;
 
     font-weight: 800;
-
-    transition: 0.2s;
 }
 
-.news-content .card-link:hover {
+.news-content .card-link:hover,
+.read-more:hover {
     color: #11683d;
 }
 
 
 /* =========================================================
-   NEWS ARTICLE
-   ========================================================= */
+   ARTIKEL BERITA
+========================================================= */
 
 .article-page {
+    padding: 80px 6%;
+
     background: #f5faf7;
-
-    min-height: calc(100vh - 80px);
-
-    padding-bottom: 80px;
 }
 
 .article-container {
@@ -1384,31 +1452,27 @@ button:hover {
 
     margin: auto;
 
-    padding: 70px 6%;
-}
-
-.article-card {
-    padding: 45px;
+    padding: 40px;
 
     background: white;
 
-    border: 1px solid #e4eee8;
-
     border-radius: 20px;
+
+    border: 1px solid #e4eee8;
 
     box-shadow:
         0 10px 35px rgba(0, 0, 0, 0.05);
 }
 
-.article-card h1 {
-    margin-bottom: 12px;
+.article-container h1 {
+    margin-bottom: 10px;
 
     font-size: clamp(32px, 5vw, 52px);
 
     line-height: 1.15;
 }
 
-.article-card .article-date {
+.article-date {
     margin-bottom: 30px;
 
     color: #718078;
@@ -1416,34 +1480,58 @@ button:hover {
     font-size: 14px;
 }
 
-.article-card p {
-    margin-bottom: 20px;
+.article-container p {
+    margin-bottom: 18px;
 
     color: #53635b;
-
-    font-size: 16px;
 
     line-height: 1.8;
 }
 
-.article-back {
+.article-container h2 {
+    margin-top: 30px;
+
+    margin-bottom: 12px;
+
+    color: #18352a;
+}
+
+.article-container ul {
+    margin-bottom: 20px;
+
+    padding-left: 25px;
+
+    color: #53635b;
+}
+
+.article-container li {
+    margin-bottom: 8px;
+}
+
+.back-button {
     display: inline-block;
 
     margin-top: 20px;
 
-    color: #16804b;
+    padding: 12px 18px;
 
-    font-weight: 800;
+    border-radius: 9px;
+
+    background: #16804b;
+
+    color: white;
+
+    font-weight: 700;
 }
 
-.article-back:hover {
-    color: #11683d;
+.back-button:hover {
+    background: #11683d;
 }
 
 
 /* =========================================================
    DISCLAIMER
-   ========================================================= */
+========================================================= */
 
 .disclaimer {
     margin: 60px 6%;
@@ -1464,7 +1552,7 @@ button:hover {
 
 /* =========================================================
    MAPS BUTTON
-   ========================================================= */
+========================================================= */
 
 .maps-button {
     display: inline-block;
@@ -1495,7 +1583,7 @@ button:hover {
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 footer {
     padding: 50px 6%;
@@ -1519,9 +1607,9 @@ footer {
 }
 
 .footer-info h3 {
-    margin-bottom: 10px;
-
     font-size: 24px;
+
+    margin-bottom: 10px;
 }
 
 .footer-contact h4 {
@@ -1546,80 +1634,40 @@ footer {
     color: white;
 }
 
-.footer-content p {
-    color: #bcd2c5;
-}
-
 .footer-copyright {
     display: flex;
 
     align-items: flex-end;
 }
 
-
-/* =========================================================
-   CALCULATOR PAGE HEADER
-   ========================================================= */
-
-.calculator-page-header {
-    padding: 80px 6%;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e5f6eb,
-            #ffffff
-        );
-}
-
-.calculator-page-header .section-label {
-    margin-bottom: 10px;
-}
-
-.calculator-page-header h1 {
-    font-size: clamp(40px, 6vw, 65px);
-
-    line-height: 1.1;
-}
-
-.calculator-page-header > p:last-child {
-    max-width: 650px;
-
-    margin: 20px auto 0;
-
-    color: #637168;
-
-    font-size: 17px;
-}
-
-.calculator-note {
-    margin-top: 20px;
-
-    padding: 15px;
-
-    border-radius: 10px;
-
-    background: #f4f8f5;
-
-    color: #68766e;
-
-    font-size: 14px;
+.footer-content p {
+    color: #bcd2c5;
 }
 
 
 /* =========================================================
-   MOBILE — TABLET
-   ========================================================= */
+   MOBILE - TABLET
+========================================================= */
 
 @media (max-width: 900px) {
 
-    .news-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding: 70px 5%;
+
+        gap: 40px;
     }
 
+    .intro {
+        grid-template-columns: 1fr;
+
+        padding: 70px 5%;
+
+        gap: 30px;
+    }
+
+    .calculator-grid,
     .education-grid {
         grid-template-columns:
             repeat(2, 1fr);
@@ -1630,33 +1678,47 @@ footer {
             repeat(2, 1fr);
     }
 
+    .news-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .calculator-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 
 /* =========================================================
-   MOBILE — 800px
-   ========================================================= */
+   MOBILE
+========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
 
     .navbar {
         padding: 15px 5%;
     }
 
-    .navbar nav {
+    .logo {
+        font-size: 18px;
+    }
+
+    .nav-menu {
         gap: 14px;
     }
 
-    .navbar nav a {
+    .nav-menu a {
         font-size: 12px;
     }
 
     .hero {
-        grid-template-columns: 1fr;
-
         padding: 60px 5%;
-
-        gap: 35px;
     }
 
     .hero h1 {
@@ -1664,11 +1726,7 @@ footer {
     }
 
     .intro {
-        grid-template-columns: 1fr;
-
         padding: 60px 5%;
-
-        gap: 25px;
     }
 
     .intro h2 {
@@ -1679,26 +1737,29 @@ footer {
         padding: 60px 5%;
     }
 
-    .section-heading h2 {
+    .section-heading h1,
+    .section-heading h2,
+    .calculator-container h2 {
         font-size: 34px;
     }
 
-    .calculator-grid {
+    .calculator-grid,
+    .education-grid,
+    .health-content-grid,
+    .news-grid {
         grid-template-columns: 1fr;
     }
 
-    .calculator-container {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
+    .calculator-page-header,
+    .education-header,
+    .news-page {
+        padding: 60px 5%;
     }
 
-    .energy-box {
-        grid-template-columns: 1fr;
-    }
-
-    .macro-grid {
-        grid-template-columns: 1fr;
+    .calculator-page-header h1,
+    .education-header h1,
+    .news-page-header h1 {
+        font-size: 42px;
     }
 
     .calculator-preview-card {
@@ -1707,28 +1768,12 @@ footer {
         align-items: stretch;
     }
 
-    .health-content-grid {
+    .energy-box {
         grid-template-columns: 1fr;
     }
 
-    .education-grid {
+    .macro-grid {
         grid-template-columns: 1fr;
-    }
-
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .news-image {
-        height: 200px;
-    }
-
-    .article-container {
-        padding: 50px 5%;
-    }
-
-    .article-card {
-        padding: 30px;
     }
 
     .disclaimer {
@@ -1745,22 +1790,21 @@ footer {
         display: block;
     }
 
-    .calculator-page-header {
-        padding: 60px 5%;
+    .article-page {
+        padding: 50px 5%;
     }
 
-    .calculator-page-header h1 {
-        font-size: 42px;
+    .article-container {
+        padding: 25px;
     }
-
 }
 
 
 /* =========================================================
-   MOBILE — SMALL
-   ========================================================= */
+   SMALL MOBILE
+========================================================= */
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
 
     .navbar {
         flex-direction: column;
@@ -1770,26 +1814,20 @@ footer {
         padding: 14px 5%;
     }
 
-    .navbar nav {
+    .logo {
+        font-size: 19px;
+    }
+
+    .nav-menu {
         width: 100%;
 
         justify-content: center;
 
-        gap: 16px;
-
-        flex-wrap: wrap;
+        gap: 15px;
     }
 
-    .navbar nav a {
+    .nav-menu a {
         font-size: 12px;
-    }
-
-    .navbar nav a.active::after {
-        bottom: -4px;
-    }
-
-    .logo {
-        font-size: 21px;
     }
 
     .hero h1 {
@@ -1814,8 +1852,7 @@ footer {
         font-size: 42px;
     }
 
-    .macro-calories strong,
-    .macro-total strong {
+    .macro-calories strong {
         font-size: 34px;
     }
 
@@ -1827,16 +1864,8 @@ footer {
         padding: 24px;
     }
 
-    .news-content {
-        padding: 22px;
-    }
-
-    .news-content h3 {
-        font-size: 20px;
-    }
-
-    .article-card {
-        padding: 25px 20px;
+    .news-image {
+        height: 190px;
     }
 
 }
