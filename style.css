@@ -1,59 +1,40 @@
-```
+```css
 /* =========================================================
    KLINIK PUTRA MEDIKA
-   MAIN WEBSITE STYLESHEET
-========================================================= */
-
-
-/* =========================================================
-   RESET
+   GLOBAL STYLE
 ========================================================= */
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
-
 
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
     background: #f7faf8;
-
-    color: #17231d;
-
+    color: #1d2a23;
     line-height: 1.6;
-
-    min-height: 100vh;
 }
-
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
 
 a {
     color: inherit;
     text-decoration: none;
 }
 
+p {
+    margin-top: 0;
+}
 
-button,
-input,
-select,
-textarea {
-    font: inherit;
+h1,
+h2,
+h3,
+h4 {
+    margin-top: 0;
+    line-height: 1.25;
 }
 
 
@@ -63,77 +44,51 @@ textarea {
 
 .navbar {
     width: 100%;
-
     min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     padding: 0 6%;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 30px;
-
     background: #ffffff;
 
-    border-bottom: 1px solid #e7eee9;
+    border-bottom: 1px solid #e6eee9;
 
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
 }
 
-
-/* LOGO */
-
 .logo {
-    font-size: 21px;
-
+    font-size: 20px;
     font-weight: 800;
-
     color: #17231d;
-
     white-space: nowrap;
 }
-
 
 .logo span {
     color: #16804b;
 }
 
-
-/* NAVIGATION */
-
 .navbar nav {
     display: flex;
-
     align-items: center;
-
-    gap: 8px;
+    gap: 6px;
 }
-
 
 .navbar nav a {
     display: inline-flex;
-
     align-items: center;
 
-    justify-content: center;
+    padding: 9px 14px;
 
-    min-height: 42px;
+    border-radius: 8px;
 
-    padding: 9px 15px;
-
-    border-radius: 10px;
-
-    color: #526159;
+    color: #536158;
 
     font-size: 14px;
-
     font-weight: 600;
 
     transition:
@@ -141,18 +96,14 @@ textarea {
         color 0.2s ease;
 }
 
-
 .navbar nav a:hover {
-    background: #edf7f1;
-
+    background: #eef7f2;
     color: #16804b;
 }
 
-
 .navbar nav a.active {
-    background: #16804b;
-
-    color: #ffffff;
+    background: #eaf6ef;
+    color: #16804b;
 }
 
 
@@ -166,12 +117,11 @@ main {
 
 
 /* =========================================================
-   GENERAL SECTION
+   SECTION
 ========================================================= */
 
 .section {
     width: 100%;
-
     max-width: 1180px;
 
     margin: 0 auto;
@@ -179,46 +129,29 @@ main {
     padding: 70px 6%;
 }
 
-
 .section-heading {
-    max-width: 760px;
-
-    margin-bottom: 40px;
+    max-width: 780px;
 }
 
-
 .section-heading h1 {
-    margin-bottom: 14px;
+    margin-bottom: 18px;
 
     font-size: clamp(34px, 5vw, 52px);
 
-    line-height: 1.15;
-
     color: #17231d;
 }
-
 
 .section-heading h2 {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 
-    font-size: clamp(27px, 4vw, 38px);
-
-    line-height: 1.2;
+    font-size: 32px;
 
     color: #17231d;
 }
 
-
 .section-heading p {
-    color: #68766e;
-
-    font-size: 16px;
-
-    line-height: 1.75;
+    color: #647269;
 }
-
-
-/* LABEL */
 
 .section-label {
     margin-bottom: 10px;
@@ -226,7 +159,6 @@ main {
     color: #16804b !important;
 
     font-size: 12px !important;
-
     font-weight: 800 !important;
 
     letter-spacing: 1.5px;
@@ -236,885 +168,11 @@ main {
 
 
 /* =========================================================
-   PAGE HEADER
+   CALCULATOR HEADER
 ========================================================= */
 
 .calculator-page-header {
-    max-width: none;
-
-    padding-top: 80px;
-
-    padding-bottom: 65px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f2faf5,
-            #ffffff
-        );
-
-    border-bottom: 1px solid #e5eee8;
-}
-
-
-.calculator-page-header .section-heading {
-    max-width: 900px;
-
-    margin-left: auto;
-
-    margin-right: auto;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   BUTTON
-========================================================= */
-
-.card-link {
-    display: inline-block;
-
-    color: #16804b;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    transition: color 0.2s ease;
-}
-
-
-.card-link:hover {
-    color: #0d5e36;
-}
-
-
-/* =========================================================
-   NEWS
-========================================================= */
-
-.news-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 24px;
-}
-
-
-.news-card {
-    background: #ffffff;
-
-    border: 1px solid #e5eee8;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.04);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-.news-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 35px
-        rgba(0, 0, 0, 0.08);
-}
-
-
-.news-image {
-    width: 100%;
-
-    height: 210px;
-
-    object-fit: cover;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #edf7f1;
-
-    color: #16804b;
-
-    font-size: 42px;
-}
-
-
-.news-content {
-    padding: 24px;
-}
-
-
-.content-category {
-    display: inline-block;
-
-    margin-bottom: 9px;
-
-    color: #16804b;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.8px;
-}
-
-
-.news-date {
-    margin-bottom: 9px;
-
-    color: #8a968f;
-
-    font-size: 12px;
-}
-
-
-.news-content h3 {
-    margin-bottom: 10px;
-
-    color: #17231d;
-
-    font-size: 20px;
-
-    line-height: 1.35;
-}
-
-
-.news-content p {
-    margin-bottom: 16px;
-
-    color: #68766e;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   CONTACT US
-========================================================= */
-
-.contact-grid {
-    width: 100%;
-
-    max-width: 1100px;
-
-    margin: 0 auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 24px;
-}
-
-
-/* CONTACT CARD */
-
-.contact-card {
-    display: block;
-
-    padding: 28px;
-
-    background: #ffffff;
-
-    border: 1px solid #e3ece6;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.04);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-.contact-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 35px
-        rgba(0, 0, 0, 0.08);
-}
-
-
-/* =========================================================
-   CONTACT ICON
-========================================================= */
-
-/*
-   PENTING:
-   Ukuran container ikon sengaja dibuat kecil.
-*/
-
-.contact-icon {
-    width: 52px !important;
-
-    height: 52px !important;
-
-    min-width: 52px !important;
-
-    max-width: 52px !important;
-
-    min-height: 52px !important;
-
-    max-height: 52px !important;
-
-    padding: 0 !important;
-
-    margin: 0 0 18px 0 !important;
-
-    display: flex !important;
-
-    align-items: center !important;
-
-    justify-content: center !important;
-
-    border-radius: 14px;
-
-    overflow: hidden;
-
-    box-sizing: border-box !important;
-
-    font-size: 0 !important;
-}
-
-
-/*
-   UKURAN SVG
-*/
-
-.contact-icon svg {
-    display: block !important;
-
-    width: 25px !important;
-
-    height: 25px !important;
-
-    min-width: 25px !important;
-
-    max-width: 25px !important;
-
-    min-height: 25px !important;
-
-    max-height: 25px !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    flex: 0 0 25px !important;
-}
-
-
-/* ICON COLORS */
-
-.whatsapp-icon {
-    background: #e5f8ed;
-
-    color: #25d366;
-}
-
-
-.instagram-icon {
-    background: #f8e8f1;
-
-    color: #d62976;
-}
-
-
-.tiktok-icon {
-    background: #eeeeee;
-
-    color: #111111;
-}
-
-
-.facebook-icon {
-    background: #e8f0ff;
-
-    color: #1877f2;
-}
-
-
-/* CONTACT TEXT */
-
-.contact-card h3 {
-    margin-bottom: 9px;
-
-    color: #17231d;
-
-    font-size: 21px;
-
-    line-height: 1.3;
-}
-
-
-.contact-card p {
-    margin-bottom: 13px;
-
-    color: #68766e;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-.contact-card strong {
-    display: block;
-
-    margin-bottom: 12px;
-
-    color: #17231d;
-
-    font-size: 14px;
-}
-
-
-.contact-link {
-    display: inline-block;
-
-    color: #16804b;
-
-    font-size: 14px;
-
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   CONTACT LOCATION
-========================================================= */
-
-.contact-location {
-    width: 100%;
-
-    max-width: 1100px;
-
-    margin: 0 auto;
-
-    padding: 30px;
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 20px;
-
-    background: #f1f8f4;
-
-    border: 1px solid #dcebe1;
-
-    border-radius: 20px;
-}
-
-
-.contact-location-icon {
-    width: 52px;
-
-    height: 52px;
-
-    min-width: 52px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #ffffff;
-
-    border-radius: 14px;
-
-    font-size: 25px;
-}
-
-
-.contact-location h2 {
-    margin-bottom: 8px;
-
-    color: #17231d;
-
-    font-size: 27px;
-}
-
-
-.contact-location p {
-    margin-bottom: 12px;
-
-    color: #68766e;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   CALCULATOR
-========================================================= */
-
-.calculator {
-    width: 100%;
-
-    max-width: 760px;
-
-    margin: 0 auto;
-
-    padding: 30px;
-
-    background: #ffffff;
-
-    border: 1px solid #e3ece6;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.04);
-}
-
-
-.calculator label {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: #35433b;
-
-    font-size: 14px;
-
-    font-weight: 700;
-}
-
-
-.calculator input,
-.calculator select {
-    width: 100%;
-
-    padding: 13px 14px;
-
-    margin-bottom: 18px;
-
-    background: #ffffff;
-
-    border: 1px solid #d9e4dd;
-
-    border-radius: 10px;
-
-    outline: none;
-}
-
-
-.calculator input:focus,
-.calculator select:focus {
-    border-color: #16804b;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(22, 128, 75, 0.1);
-}
-
-
-.calculator button {
-    width: 100%;
-
-    padding: 13px 18px;
-
-    border: 0;
-
-    border-radius: 10px;
-
-    background: #16804b;
-
-    color: #ffffff;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: background 0.2s ease;
-}
-
-
-.calculator button:hover {
-    background: #0d663b;
-}
-
-
-/* =========================================================
-   EDUKASI
-========================================================= */
-
-.education-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 24px;
-}
-
-
-.education-card {
-    padding: 26px;
-
-    background: #ffffff;
-
-    border: 1px solid #e3ece6;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.04);
-}
-
-
-.education-card h3 {
-    margin-bottom: 10px;
-
-    font-size: 20px;
-}
-
-
-.education-card p {
-    color: #68766e;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   DISCLAIMER
-========================================================= */
-
-.disclaimer {
-    width: 100%;
-
-    max-width: 1100px;
-
-    margin: 30px auto 60px;
-
-    padding: 25px 6%;
-
-    background: #fff9e8;
-
-    border: 1px solid #f1e4bb;
-
-    border-radius: 15px;
-}
-
-
-.disclaimer h3 {
-    margin-bottom: 8px;
-
-    font-size: 17px;
-}
-
-
-.disclaimer p {
-    color: #756d59;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    margin-top: 40px;
-
-    background: #17231d;
-
-    color: #ffffff;
-}
-
-
-.footer-content {
-    width: 100%;
-
-    max-width: 1180px;
-
-    margin: 0 auto;
-
-    padding: 50px 6%;
-
-    display: grid;
-
-    grid-template-columns:
-        1.5fr 1fr 1fr;
-
-    gap: 40px;
-}
-
-
-.footer-info h3 {
-    margin-bottom: 10px;
-
-    font-size: 21px;
-}
-
-
-.footer-info p,
-.footer-contact p {
-    color: #b8c5be;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-.footer-contact h4 {
-    margin-bottom: 7px;
-
-    color: #ffffff;
-
-    font-size: 14px;
-}
-
-
-.footer-contact a {
-    color: #ffffff;
-
-    text-decoration: underline;
-
-    text-underline-offset: 3px;
-}
-
-
-.footer-copyright {
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: flex-end;
-}
-
-
-.footer-copyright p {
-    color: #9eaaa3;
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 800px) {
-
-
-    /* NAVBAR */
-
-    .navbar {
-        padding: 14px 5%;
-
-        flex-direction: column;
-
-        gap: 12px;
-    }
-
-
-    .navbar nav {
-        width: 100%;
-
-        justify-content: center;
-
-        flex-wrap: wrap;
-    }
-
-
-    .navbar nav a {
-        padding: 8px 10px;
-
-        font-size: 13px;
-    }
-
-
-    /* SECTIONS */
-
-    .section {
-        padding: 55px 5%;
-    }
-
-
-    /* NEWS */
-
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    /* EDUCATION */
-
-    .education-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    /* CONTACT */
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-    }
-
-
-    .contact-card {
-        padding: 24px;
-    }
-
-
-    /* LOCATION */
-
-    .contact-location {
-        padding: 24px;
-
-        flex-direction: column;
-    }
-
-
-    /* FOOTER */
-
-    .footer-content {
-        grid-template-columns: 1fr;
-
-        gap: 25px;
-
-        padding: 40px 5%;
-    }
-
-
-    .footer-copyright {
-        justify-content: flex-start;
-
-        align-items: flex-start;
-    }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 480px) {
-
-
-    .logo {
-        font-size: 19px;
-    }
-
-
-    .navbar nav {
-        gap: 4px;
-    }
-
-
-    .navbar nav a {
-        min-height: 38px;
-
-        padding: 7px 8px;
-
-        font-size: 12px;
-    }
-
-
-    .section-heading h1 {
-        font-size: 34px;
-    }
-
-
-    .section-heading h2 {
-        font-size: 27px;
-    }
-
-
-    /*
-       Contact icon dibuat lebih kecil
-       pada layar HP.
-    */
-
-    .contact-icon {
-        width: 48px !important;
-
-        height: 48px !important;
-
-        min-width: 48px !important;
-
-        max-width: 48px !important;
-
-        min-height: 48px !important;
-
-        max-height: 48px !important;
-    }
-
-
-    .contact-icon svg {
-        width: 23px !important;
-
-        height: 23px !important;
-
-        min-width: 23px !important;
-
-        max-width: 23px !important;
-
-        min-height: 23px !important;
-
-        max-height: 23px !important;
-
-        flex: 0 0 23px !important;
-    }
-
-
-    .contact-location-icon {
-        width: 48px;
-
-        height: 48px;
-
-        min-width: 48px;
-
-        font-size: 22px;
-    }
-
-
-}
-```css
-/* =========================================================
-   KALKULATOR KESEHATAN
-========================================================= */
-
-.calculator-page-header {
-    text-align: center;
+    padding-bottom: 30px;
 }
 
 .calculator-page-header .section-heading {
@@ -1122,136 +180,175 @@ footer {
 }
 
 
-/* CONTAINER KALKULATOR */
+/* =========================================================
+   CALCULATOR SECTION
+========================================================= */
 
 .calculator-section {
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto 35px;
+
+    padding: 70px 6%;
+
+    background: #f7faf8;
+}
+
+.calculator-section.white {
+    background: #ffffff;
+}
+
+.calculator-container {
+    width: 100%;
+    max-width: 1080px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
+
+    gap: 55px;
+
+    align-items: start;
 }
 
 
-/* KARTU KALKULATOR */
+/* =========================================================
+   CALCULATOR DESCRIPTION
+========================================================= */
 
-.calculator-card {
+.calculator-container > div:first-child {
+    padding-top: 10px;
+}
+
+.calculator-container h2 {
+    margin-bottom: 18px;
+
+    font-size: 30px;
+
+    color: #17231d;
+}
+
+.calculator-container > div:first-child > p:not(.section-label) {
+    color: #647269;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+.calculator-note {
+    margin-top: 20px;
+
+    padding: 15px 17px;
+
+    background: #eef7f2;
+
+    border-left: 4px solid #16804b;
+
+    border-radius: 8px;
+
+    color: #526158 !important;
+
+    font-size: 14px !important;
+}
+
+.activity-note {
+    margin-top: -5px;
+
+    color: #7a857f;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.form-card {
     width: 100%;
-    padding: 32px;
-    margin-bottom: 28px;
+
+    padding: 30px;
 
     background: #ffffff;
 
-    border: 1px solid #e3ece6;
+    border: 1px solid #e2ebe5;
 
-    border-radius: 20px;
+    border-radius: 18px;
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.04);
+        0 10px 30px rgba(23, 35, 29, 0.06);
 }
 
-
-.calculator-card:hover {
-    box-shadow:
-        0 12px 32px rgba(0, 0, 0, 0.07);
-}
-
-
-/* JUDUL */
-
-.calculator-card h2 {
-    margin-bottom: 10px;
-
-    color: #17231d;
-
-    font-size: 26px;
-
-    line-height: 1.3;
-}
-
-
-.calculator-card h3 {
-    margin-bottom: 8px;
-
-    color: #17231d;
-}
-
-
-.calculator-card > p {
-    margin-bottom: 22px;
-
-    color: #68766e;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* LABEL */
-
-.calculator-card label {
+.form-card label {
     display: block;
 
     margin-bottom: 7px;
 
-    color: #35433b;
+    color: #35423a;
 
-    font-size: 14px;
+    font-size: 13px;
 
     font-weight: 700;
 }
 
+.form-card input,
+.form-card select {
+    display: block;
 
-/* INPUT */
-
-.calculator-card input,
-.calculator-card select {
     width: 100%;
 
-    min-height: 46px;
+    height: 46px;
 
-    padding: 11px 13px;
+    margin-bottom: 18px;
 
-    margin-bottom: 17px;
+    padding: 0 13px;
 
     background: #ffffff;
 
-    border: 1px solid #d9e4dd;
+    border: 1px solid #d8e3dc;
 
-    border-radius: 10px;
+    border-radius: 9px;
 
-    color: #17231d;
+    color: #1d2a23;
+
+    font-family: inherit;
+
+    font-size: 14px;
 
     outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-
-.calculator-card input:focus,
-.calculator-card select:focus {
+.form-card input:focus,
+.form-card select:focus {
     border-color: #16804b;
 
     box-shadow:
         0 0 0 3px rgba(22, 128, 75, 0.1);
 }
 
-
-/* BUTTON */
-
-.calculator-card button {
+.form-card button {
     width: 100%;
 
     min-height: 46px;
 
-    padding: 11px 18px;
-
     margin-top: 5px;
+
+    padding: 11px 18px;
 
     border: 0;
 
-    border-radius: 10px;
+    border-radius: 9px;
 
     background: #16804b;
 
     color: #ffffff;
+
+    font-family: inherit;
 
     font-size: 14px;
 
@@ -1264,109 +361,377 @@ footer {
         transform 0.2s ease;
 }
 
-
-.calculator-card button:hover {
+.form-card button:hover {
     background: #0d663b;
 
     transform: translateY(-1px);
 }
 
 
-/* HASIL */
+/* =========================================================
+   CALCULATOR RESULT
+========================================================= */
 
-.calculator-result {
-    margin-top: 22px;
+.result {
+    width: 100%;
 
-    padding: 18px;
+    min-height: 75px;
+
+    margin-top: 20px;
+
+    padding: 17px;
 
     background: #f1f8f4;
 
     border: 1px solid #dcebe1;
 
-    border-radius: 12px;
+    border-radius: 11px;
 
-    color: #35433b;
+    color: #35423a;
 
     font-size: 14px;
 
     line-height: 1.7;
 }
 
+.result-placeholder {
+    color: #7b867f;
 
-/* =========================================================
-   JIKA KALKULATOR MENGGUNAKAN ID HASIL
-========================================================= */
-
-#bmiResult,
-#bmrResult,
-#tdeeResult,
-#macroResult,
-#hasilBMI,
-#hasilBMR,
-#hasilTDEE,
-#hasilMakro {
-    margin-top: 20px;
-
-    padding: 18px;
-
-    background: #f1f8f4;
-
-    border: 1px solid #dcebe1;
-
-    border-radius: 12px;
-
-    color: #35433b;
-
-    line-height: 1.7;
+    font-size: 13px;
 }
 
 
 /* =========================================================
-   GRID FORM
+   HOME / EDUCATION CARDS
 ========================================================= */
 
-.calculator-form {
+.education-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(3, 1fr);
 
-    gap: 0 20px;
+    gap: 22px;
+
+    margin-top: 35px;
 }
 
+.education-card {
+    display: block;
 
-.calculator-form button,
-.calculator-form .calculator-result {
-    grid-column: 1 / -1;
+    padding: 28px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ece6;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(23, 35, 29, 0.04);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(23, 35, 29, 0.08);
+}
+
+.education-card h3 {
+    margin-bottom: 10px;
+
+    color: #17231d;
+
+    font-size: 20px;
+}
+
+.education-card p {
+    color: #68756d;
+
+    font-size: 14px;
 }
 
 
 /* =========================================================
-   MOBILE
+   CONTACT LOCATION
 ========================================================= */
 
-@media (max-width: 700px) {
+.contact-location {
+    display: grid;
 
-    .calculator-card {
-        padding: 23px;
+    grid-template-columns: 90px 1fr;
+
+    gap: 25px;
+
+    align-items: start;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ece6;
+
+    border-radius: 18px;
+}
+
+.contact-location-icon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef7f2;
+
+    border-radius: 16px;
+
+    font-size: 30px;
+}
+
+
+/* =========================================================
+   DISCLAIMER
+========================================================= */
+
+.disclaimer {
+    max-width: 1080px;
+
+    margin: 0 auto 50px;
+
+    padding: 22px 25px;
+
+    background: #fff9e8;
+
+    border: 1px solid #f0dfad;
+
+    border-radius: 12px;
+}
+
+.disclaimer h3 {
+    margin-bottom: 8px;
+
+    font-size: 16px;
+
+    color: #795f19;
+}
+
+.disclaimer p {
+    margin-bottom: 0;
+
+    color: #766b4d;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: #17231d;
+
+    color: #ffffff;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    padding: 50px 6%;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 1fr 0.7fr;
+
+    gap: 40px;
+}
+
+.footer-info h3 {
+    margin-bottom: 10px;
+
+    color: #ffffff;
+}
+
+.footer-info p,
+.footer-contact p {
+    color: #b9c6be;
+
+    font-size: 13px;
+}
+
+.footer-contact h4 {
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+.footer-contact a {
+    color: #ccebd9;
+}
+
+.footer-contact a:hover {
+    color: #ffffff;
+}
+
+.maps-button {
+    display: inline-block;
+
+    margin-bottom: 20px;
+}
+
+.footer-copyright {
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
+}
+
+.footer-copyright p {
+    color: #91a098;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .calculator-container {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .education-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .footer-copyright {
+        justify-content: flex-start;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .navbar {
+        min-height: auto;
+
+        padding: 16px 5%;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 13px;
+    }
+
+    .navbar nav {
+        width: 100%;
+
+        display: flex;
+
+        gap: 3px;
+
+        overflow-x: auto;
+    }
+
+    .navbar nav a {
+        padding: 8px 10px;
+
+        white-space: nowrap;
+
+        font-size: 12px;
     }
 
 
-    .calculator-card h2 {
-        font-size: 23px;
+    .section {
+        padding: 50px 5%;
+    }
+
+    .section-heading h1 {
+        font-size: 34px;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
     }
 
 
-    .calculator-form {
+    .calculator-section {
+        padding: 50px 5%;
+    }
+
+    .calculator-container {
+        gap: 25px;
+    }
+
+    .calculator-container h2 {
+        font-size: 27px;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+
+
+    .education-grid {
         grid-template-columns: 1fr;
     }
 
 
-    .calculator-form button,
-    .calculator-form .calculator-result {
-        grid-column: auto;
+    .contact-location {
+        grid-template-columns: 1fr;
+
+        padding: 25px;
+    }
+
+
+    .footer-content {
+        grid-template-columns: 1fr;
+
+        padding: 40px 5%;
+
+        gap: 25px;
+    }
+
+    .footer-copyright {
+        display: block;
+    }
+
+
+    .disclaimer {
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
 }
 ```
-
