@@ -1,3 +1,13 @@
+/* =========================================================
+   KLINIK PUTRA MEDIKA
+   MAIN STYLESHEET
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -20,31 +30,42 @@ a {
     color: inherit;
 }
 
+img {
+    max-width: 100%;
+}
 
-/* =========================
+
+/* =========================================================
    NAVBAR
-========================= */
+   ========================================================= */
 
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+
+    width: 100%;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     padding: 18px 6%;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.97);
 
     border-bottom: 1px solid #e5eee9;
+
+    backdrop-filter: blur(10px);
 }
 
 .logo {
     font-size: 23px;
     font-weight: 800;
+
     color: #16794a;
+
+    white-space: nowrap;
 }
 
 .logo span {
@@ -53,23 +74,52 @@ a {
 
 .navbar nav {
     display: flex;
+    align-items: center;
+
     gap: 25px;
 }
 
 .navbar nav a {
+    position: relative;
+
+    padding: 5px 0;
+
     font-size: 14px;
     font-weight: 600;
+
     color: #53635b;
+
+    transition: 0.2s;
 }
 
 .navbar nav a:hover {
     color: #16794a;
 }
 
+.navbar nav a.active {
+    color: #16794a;
+}
 
-/* =========================
+.navbar nav a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -7px;
+
+    height: 2px;
+
+    border-radius: 10px;
+
+    background: #16804b;
+}
+
+
+/* =========================================================
    HERO
-========================= */
+   ========================================================= */
 
 .hero {
     min-height: 85vh;
@@ -77,6 +127,7 @@ a {
     padding: 80px 6%;
 
     display: grid;
+
     grid-template-columns: 1.4fr 0.6fr;
 
     gap: 60px;
@@ -121,6 +172,7 @@ a {
 
 .hero h1 span {
     display: block;
+
     color: #16804b;
 }
 
@@ -144,6 +196,11 @@ a {
     margin-top: 30px;
 }
 
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
 .button {
     display: inline-block;
 
@@ -152,15 +209,20 @@ a {
     border-radius: 10px;
 
     font-weight: 700;
+
+    transition: 0.2s;
 }
 
 .button.primary {
     background: #16804b;
+
     color: white;
 }
 
 .button.primary:hover {
     background: #11683d;
+
+    transform: translateY(-2px);
 }
 
 .button.secondary {
@@ -171,10 +233,14 @@ a {
     border: 1px solid #cfe2d7;
 }
 
+.button.secondary:hover {
+    background: #f1f8f4;
+}
 
-/* =========================
+
+/* =========================================================
    HERO CARD
-========================= */
+   ========================================================= */
 
 .hero-card {
     padding: 35px;
@@ -192,6 +258,7 @@ a {
     height: 60px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -205,9 +272,9 @@ a {
 }
 
 .hero-card h3 {
-    font-size: 25px;
-
     margin-bottom: 10px;
+
+    font-size: 25px;
 }
 
 .hero-card p {
@@ -215,9 +282,9 @@ a {
 }
 
 
-/* =========================
+/* =========================================================
    INTRO
-========================= */
+   ========================================================= */
 
 .intro {
     display: grid;
@@ -242,15 +309,15 @@ a {
 }
 
 .intro > p {
-    color: #637168;
-
     max-width: 600px;
+
+    color: #637168;
 }
 
 
-/* =========================
+/* =========================================================
    GENERAL SECTION
-========================= */
+   ========================================================= */
 
 .section {
     padding: 90px 6%;
@@ -272,12 +339,19 @@ a {
     letter-spacing: 1.5px;
 }
 
+.section-heading h1,
 .section-heading h2 {
     margin-top: 10px;
 
-    font-size: 42px;
-
     line-height: 1.15;
+}
+
+.section-heading h1 {
+    font-size: clamp(40px, 6vw, 65px);
+}
+
+.section-heading h2 {
+    font-size: 42px;
 }
 
 .section-heading > p:last-child {
@@ -287,9 +361,9 @@ a {
 }
 
 
-/* =========================
+/* =========================================================
    CALCULATOR CARDS
-========================= */
+   ========================================================= */
 
 .calculator-grid {
     display: grid;
@@ -324,6 +398,7 @@ a {
     height: 55px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -337,27 +412,35 @@ a {
 }
 
 .calculator-card h3 {
-    font-size: 24px;
-
     margin-bottom: 10px;
+
+    font-size: 24px;
 }
 
 .calculator-card p {
-    color: #68766e;
-
     margin-bottom: 20px;
+
+    color: #68766e;
 }
 
 .card-link {
+    display: inline-block;
+
     color: #16804b;
 
     font-weight: 800;
+
+    transition: 0.2s;
+}
+
+.card-link:hover {
+    color: #11683d;
 }
 
 
-/* =========================
+/* =========================================================
    CALCULATOR SECTIONS
-========================= */
+   ========================================================= */
 
 .calculator-section {
     padding: 90px 6%;
@@ -376,8 +459,7 @@ a {
 
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 60px;
 
@@ -399,9 +481,9 @@ a {
 }
 
 
-/* =========================
+/* =========================================================
    FORM
-========================= */
+   ========================================================= */
 
 .form-card {
     padding: 30px;
@@ -417,8 +499,8 @@ a {
 label {
     display: block;
 
-    margin-bottom: 7px;
     margin-top: 18px;
+    margin-bottom: 7px;
 
     font-size: 14px;
 
@@ -474,6 +556,8 @@ button {
     font-weight: 800;
 
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 button:hover {
@@ -481,9 +565,9 @@ button:hover {
 }
 
 
-/* =========================
+/* =========================================================
    RESULT
-========================= */
+   ========================================================= */
 
 .result {
     min-height: 20px;
@@ -499,8 +583,6 @@ button:hover {
     color: #18352a;
 
     border: 1px solid #dfe9e3;
-
-    transition: 0.3s;
 }
 
 .result-placeholder {
@@ -508,34 +590,32 @@ button:hover {
 
     font-size: 14px;
 
-    font-weight: 400;
-
     text-align: center;
 }
 
 .result-title {
+    margin-bottom: 5px;
+
     font-size: 12px;
 
     font-weight: 800;
 
     letter-spacing: 1.5px;
-
-    margin-bottom: 5px;
 }
 
 
-/* =========================
+/* =========================================================
    BMI
-========================= */
+   ========================================================= */
 
 .bmi-number {
+    margin: 5px 0;
+
     font-size: 48px;
 
     font-weight: 800;
 
     line-height: 1.1;
-
-    margin: 5px 0;
 }
 
 .bmi-category {
@@ -562,8 +642,6 @@ button:hover {
     margin: 5px 0;
 
     font-size: 14px;
-
-    font-weight: 400;
 }
 
 .result-description {
@@ -572,14 +650,12 @@ button:hover {
     font-size: 14px;
 
     line-height: 1.6;
-
-    font-weight: 400;
 }
 
 
-/* =========================
+/* =========================================================
    BMI SCALE
-========================= */
+   ========================================================= */
 
 .bmi-scale {
     margin-top: 22px;
@@ -655,9 +731,9 @@ button:hover {
 }
 
 
-/* =========================
+/* =========================================================
    BMI COLORS
-========================= */
+   ========================================================= */
 
 .result-normal {
     background: #eaf7ef;
@@ -723,39 +799,33 @@ button:hover {
     color: #9b2c2c;
 }
 
-.result-error p {
-    margin-top: 5px;
 
-    font-weight: 400;
-
-    font-size: 14px;
-}
-
-
-/* =========================
-   BMR & TDEE
-========================= */
+/* =========================================================
+   ENERGY / BMR / TDEE
+   ========================================================= */
 
 .energy-result {
+    margin-top: 20px;
+}
+
+.energy-box {
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
     gap: 12px;
-
-    margin-top: 20px;
 }
 
-.energy-box {
+.energy-box > div {
     padding: 18px;
 
     border-radius: 12px;
 
-    background: #f1f6f3;
+    background: white;
 
     text-align: center;
 
-    border: 1px solid #dce8e0;
+    border: 1px solid #d7e9dd;
 }
 
 .energy-box span {
@@ -765,9 +835,9 @@ button:hover {
 
     font-weight: 800;
 
-    letter-spacing: 1px;
-
     color: #637168;
+
+    letter-spacing: 1px;
 }
 
 .energy-box strong {
@@ -777,31 +847,13 @@ button:hover {
 
     font-size: 30px;
 
-    line-height: 1.2;
-
-    color: #18352a;
+    color: #16804b;
 }
 
 .energy-box small {
-    display: block;
-
-    margin-top: 3px;
-
     color: #718078;
 
     font-size: 12px;
-}
-
-.energy-box.featured {
-    background: #16804b;
-
-    border-color: #16804b;
-}
-
-.energy-box.featured span,
-.energy-box.featured strong,
-.energy-box.featured small {
-    color: white;
 }
 
 .energy-explanation {
@@ -810,66 +862,70 @@ button:hover {
     padding-top: 15px;
 
     border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
 
-.energy-explanation p {
-    margin: 7px 0;
+    color: #5f6e66;
 
-    font-size: 13px;
+    font-size: 14px;
 
     line-height: 1.6;
-
-    color: #5f6d65;
-
-    font-weight: 400;
 }
 
 .activity-note {
-    margin-top: 8px;
+    margin-top: 10px;
 
     color: #718078;
 
-    font-size: 11px;
-
-    line-height: 1.5;
+    font-size: 13px;
 }
 
 
-/* =========================
-   MACRO RESULT
-========================= */
+/* =========================================================
+   MACRO
+   ========================================================= */
 
-.macro-summary {
-    margin-bottom: 20px;
+.macro-result {
+    background: #f4f8f5;
+}
+
+.macro-total,
+.macro-calories {
+    margin-bottom: 15px;
+
+    padding: 20px;
+
+    background: #16804b;
+
+    color: white;
+
+    border-radius: 14px;
 
     text-align: center;
 }
 
-.macro-calories-label {
-    color: #637168;
+.macro-total span,
+.macro-calories span {
+    display: block;
 
     font-size: 12px;
 
-    font-weight: 800;
+    font-weight: 700;
 
     letter-spacing: 1px;
 }
 
-.macro-calories {
-    margin-top: 4px;
+.macro-total strong,
+.macro-calories strong {
+    display: block;
 
-    color: #16804b;
+    margin-top: 5px;
 
-    font-size: 42px;
-
-    font-weight: 800;
+    font-size: 38px;
 
     line-height: 1.1;
 }
 
-.macro-unit {
-    color: #718078;
-
+.macro-total small,
+.macro-calories small {
     font-size: 12px;
 }
 
@@ -881,96 +937,91 @@ button:hover {
 
     gap: 10px;
 
-    margin-top: 18px;
+    margin-top: 15px;
 }
 
 .macro-box {
-    padding: 15px 8px;
-
-    border-radius: 12px;
+    padding: 15px;
 
     background: white;
 
-    border: 1px solid #dfe9e3;
+    border-radius: 12px;
 
     text-align: center;
+
+    border: 1px solid #e0e9e3;
 }
 
-.macro-box-icon {
+.macro-box span {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.macro-box strong {
+    display: block;
+
+    margin-top: 5px;
+
     font-size: 20px;
 }
 
-.macro-box-title {
-    margin-top: 5px;
+.macro-box small {
+    display: block;
 
-    color: #637168;
-
-    font-size: 11px;
-
-    font-weight: 800;
-}
-
-.macro-box-value {
     margin-top: 3px;
 
-    font-size: 24px;
-
-    font-weight: 800;
-}
-
-.macro-box-unit {
     color: #718078;
 
-    font-size: 10px;
+    font-size: 11px;
 }
 
-.macro-protein {
-    color: #16804b;
+.macro-box.protein {
+    border-top: 4px solid #d64545;
 }
 
-.macro-fat {
-    color: #d58b17;
+.macro-box.carbs {
+    border-top: 4px solid #e58b25;
 }
 
-.macro-carbs {
-    color: #4779c5;
+.macro-box.fat {
+    border-top: 4px solid #d6aa16;
 }
 
 .macro-explanation {
-    margin-top: 18px;
+    margin-top: 15px;
 
-    padding-top: 15px;
-
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.macro-explanation p {
-    margin: 6px 0;
-
-    color: #5f6d65;
+    color: #68766e;
 
     font-size: 13px;
 
     line-height: 1.6;
 }
 
-.calculator-note {
-    margin-top: 12px;
 
-    color: #6c7971;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-}
-
-
-/* =========================
+/* =========================================================
    EDUCATION
-========================= */
+   ========================================================= */
 
 .education {
     background: #eaf7ef;
+}
+
+.education-header {
+    background:
+        linear-gradient(
+            135deg,
+            #e5f6eb,
+            #ffffff
+        );
+}
+
+.education-header h1 {
+    font-size: clamp(40px, 6vw, 65px);
+
+    line-height: 1.1;
 }
 
 .education-grid {
@@ -982,28 +1033,417 @@ button:hover {
     gap: 22px;
 }
 
-.education-grid article {
+.education-card {
     padding: 30px;
 
     background: white;
 
     border-radius: 18px;
+
+    border: 1px solid #e4eee8;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.04);
 }
 
-.education-grid h3 {
+.education-card-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 15px;
+
+    background: #e5f6eb;
+
+    font-size: 26px;
+}
+
+.education-card h3 {
     margin-bottom: 10px;
 
-    font-size: 22px;
+    font-size: 24px;
 }
 
-.education-grid p {
+.education-card > p {
+    color: #68766e;
+
+    font-size: 14px;
+}
+
+.education-details {
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #e4eee8;
+}
+
+.education-details h4 {
+    margin-bottom: 8px;
+
+    font-size: 15px;
+}
+
+.education-details p {
+    margin-bottom: 15px;
+
+    color: #68766e;
+
+    font-size: 14px;
+}
+
+.education-details ul {
+    padding-left: 20px;
+
+    color: #68766e;
+
+    font-size: 14px;
+}
+
+.education-details li {
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   HEALTH CONTENT
+   ========================================================= */
+
+.health-content {
+    background: white;
+}
+
+.health-content-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.content-card {
+    padding: 28px;
+
+    background: #f8fbf9;
+
+    border: 1px solid #e4eee8;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    transition: 0.2s;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+.content-card-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #e5f6eb;
+
+    font-size: 25px;
+}
+
+.content-category {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #16804b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.content-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 21px;
+
+    line-height: 1.3;
+}
+
+.content-card p {
+    color: #68766e;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CALCULATOR PREVIEW
+   ========================================================= */
+
+.calculator-preview {
+    background: white;
+}
+
+.calculator-preview-card {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 35px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #e4eee8;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.calculator-preview-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 25px;
+}
+
+.calculator-preview-card p {
+    max-width: 650px;
+
     color: #68766e;
 }
 
 
-/* =========================
+/* =========================================================
+   NEWS / BERITA
+   ========================================================= */
+
+.news-page {
+    background: #f5faf7;
+
+    min-height: calc(100vh - 80px);
+}
+
+.news-section {
+    background: white;
+}
+
+.news-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 24px;
+
+    max-width: 1200px;
+}
+
+.news-card {
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: white;
+
+    border: 1px solid #e4eee8;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.04);
+
+    transition: 0.25s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.news-image {
+    width: 100%;
+
+    height: 220px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5f6eb,
+            #ffffff
+        );
+
+    color: #16804b;
+
+    font-size: 55px;
+}
+
+.news-content {
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    padding: 25px;
+}
+
+.news-date {
+    margin-bottom: 8px;
+
+    color: #718078;
+
+    font-size: 13px;
+}
+
+.news-content h3 {
+    margin-bottom: 10px;
+
+    font-size: 22px;
+
+    line-height: 1.3;
+}
+
+.news-content > p:not(.news-date) {
+    margin-bottom: 18px;
+
+    color: #68766e;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.news-content .card-link {
+    display: inline-block;
+
+    margin-top: auto;
+
+    color: #16804b;
+
+    font-weight: 800;
+
+    transition: 0.2s;
+}
+
+.news-content .card-link:hover {
+    color: #11683d;
+}
+
+
+/* =========================================================
+   NEWS ARTICLE
+   ========================================================= */
+
+.article-page {
+    background: #f5faf7;
+
+    min-height: calc(100vh - 80px);
+
+    padding-bottom: 80px;
+}
+
+.article-container {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 70px 6%;
+}
+
+.article-card {
+    padding: 45px;
+
+    background: white;
+
+    border: 1px solid #e4eee8;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.05);
+}
+
+.article-card h1 {
+    margin-bottom: 12px;
+
+    font-size: clamp(32px, 5vw, 52px);
+
+    line-height: 1.15;
+}
+
+.article-card .article-date {
+    margin-bottom: 30px;
+
+    color: #718078;
+
+    font-size: 14px;
+}
+
+.article-card p {
+    margin-bottom: 20px;
+
+    color: #53635b;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+.article-back {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: #16804b;
+
+    font-weight: 800;
+}
+
+.article-back:hover {
+    color: #11683d;
+}
+
+
+/* =========================================================
    DISCLAIMER
-========================= */
+   ========================================================= */
 
 .disclaimer {
     margin: 60px 6%;
@@ -1022,9 +1462,9 @@ button:hover {
 }
 
 
-/* =========================
+/* =========================================================
    MAPS BUTTON
-========================= */
+   ========================================================= */
 
 .maps-button {
     display: inline-block;
@@ -1053,9 +1493,9 @@ button:hover {
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+   ========================================================= */
 
 footer {
     padding: 50px 6%;
@@ -1079,15 +1519,15 @@ footer {
 }
 
 .footer-info h3 {
-    font-size: 24px;
-
     margin-bottom: 10px;
+
+    font-size: 24px;
 }
 
 .footer-contact h4 {
     margin-bottom: 5px;
 
-    color: #ffffff;
+    color: white;
 }
 
 .footer-contact p {
@@ -1106,146 +1546,20 @@ footer {
     color: white;
 }
 
+.footer-content p {
+    color: #bcd2c5;
+}
+
 .footer-copyright {
     display: flex;
 
     align-items: flex-end;
 }
 
-.footer-content p {
-    color: #bcd2c5;
-}
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 800px) {
-
-    .navbar {
-        padding: 15px 5%;
-    }
-
-    .navbar nav {
-        gap: 12px;
-    }
-
-    .navbar nav a {
-        font-size: 12px;
-    }
-
-    .hero {
-        grid-template-columns: 1fr;
-
-        padding: 60px 5%;
-
-        gap: 35px;
-    }
-
-    .hero h1 {
-        font-size: 50px;
-    }
-
-    .intro {
-        grid-template-columns: 1fr;
-
-        padding: 60px 5%;
-
-        gap: 25px;
-    }
-
-    .intro h2 {
-        font-size: 34px;
-    }
-
-    .section {
-        padding: 60px 5%;
-    }
-
-    .section-heading h2,
-    .calculator-container h2 {
-        font-size: 34px;
-    }
-
-    .calculator-grid,
-    .education-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .calculator-container {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-    }
-
-    .energy-result {
-        grid-template-columns: 1fr;
-    }
-
-    .macro-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .disclaimer {
-        margin: 40px 5%;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-
-        gap: 30px;
-    }
-
-    .footer-copyright {
-        display: block;
-    }
-
-    .scale-labels {
-        font-size: 8px;
-    }
-
-}
-
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media (max-width: 450px) {
-
-    .navbar nav a:nth-child(3) {
-        display: none;
-    }
-
-    .hero h1 {
-        font-size: 43px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
-
-    .button {
-        text-align: center;
-    }
-
-    .form-card {
-        padding: 22px;
-    }
-
-    .bmi-number {
-        font-size: 42px;
-    }
-
-    .macro-calories {
-        font-size: 36px;
-    }
-
-}
-/* =========================
-   CALCULATOR PAGE
-========================= */
+/* =========================================================
+   CALCULATOR PAGE HEADER
+   ========================================================= */
 
 .calculator-page-header {
     padding: 80px 6%;
@@ -1280,7 +1594,6 @@ footer {
     font-size: 17px;
 }
 
-
 .calculator-note {
     margin-top: 20px;
 
@@ -1296,1085 +1609,9 @@ footer {
 }
 
 
-/* =========================
-   MACRO RESULT
-========================= */
-
-.macro-result-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 12px;
-
-    margin-top: 15px;
-}
-
-
-.macro-box {
-    padding: 16px;
-
-    border-radius: 12px;
-
-    background: white;
-
-    border: 1px solid #dfe9e3;
-}
-
-
-.macro-box span {
-    display: block;
-
-    color: #718078;
-
-    font-size: 12px;
-
-    font-weight: 700;
-}
-
-
-.macro-box strong {
-    display: block;
-
-    margin-top: 4px;
-
-    font-size: 24px;
-
-    color: #16804b;
-}
-
-
-.macro-total {
-    margin-bottom: 15px;
-
-    padding: 18px;
-
-    border-radius: 12px;
-
-    background: #eaf7ef;
-
-    text-align: center;
-}
-
-
-.macro-total span {
-    display: block;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    color: #53635b;
-}
-
-
-.macro-total strong {
-    display: block;
-
-    margin-top: 5px;
-
-    font-size: 35px;
-
-    color: #16804b;
-}
-
-
-.macro-explanation {
-    margin-top: 15px;
-
-    color: #68766e;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 800px) {
-
-    .calculator-page-header {
-        padding: 60px 5%;
-    }
-
-    .calculator-page-header h1 {
-        font-size: 42px;
-    }
-
-    .macro-result-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-/* =========================
-   CALCULATOR PREVIEW
-========================= */
-
-.calculator-preview {
-    background: white;
-}
-
-
-.calculator-preview-card {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 40px;
-
-    padding: 35px;
-
-    background: #eaf7ef;
-
-    border: 1px solid #cfe6d8;
-
-    border-radius: 20px;
-
-}
-
-
-.calculator-preview-card h3 {
-
-    margin-bottom: 8px;
-
-    font-size: 26px;
-
-}
-
-
-.calculator-preview-card p {
-
-    max-width: 650px;
-
-    color: #65736a;
-
-}
-
-
-.calculator-preview-card .card-icon {
-
-    margin-bottom: 15px;
-
-}
-
-
-/* =========================
-   HEALTH CONTENT
-========================= */
-
-.health-content {
-
-    background: #f5faf7;
-
-}
-
-
-.health-content-grid {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 22px;
-
-}
-
-
-.content-card {
-
-    display: flex;
-
-    gap: 22px;
-
-    padding: 30px;
-
-    background: white;
-
-    border: 1px solid #e4eee8;
-
-    border-radius: 18px;
-
-    transition: 0.2s;
-
-}
-
-
-.content-card:hover {
-
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.07);
-
-}
-
-
-.content-card-icon {
-
-    min-width: 60px;
-
-    height: 60px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #e5f6eb;
-
-    border-radius: 14px;
-
-    font-size: 27px;
-
-}
-
-
-.content-category {
-
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    color: #16804b;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.2px;
-
-}
-
-
-.content-card h3 {
-
-    margin-bottom: 10px;
-
-    font-size: 22px;
-
-}
-
-
-.content-card p {
-
-    margin-bottom: 15px;
-
-    color: #68766e;
-
-    font-size: 14px;
-
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 800px) {
-
-    .calculator-preview-card {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-    }
-
-
-    .health-content-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .content-card {
-
-        flex-direction: column;
-
-    }
-
-}
-/* =========================
-   HOMEPAGE PREVIEW
-========================= */
-
-.calculator-preview-card {
-    padding: 35px;
-
-    background: white;
-
-    border-radius: 20px;
-
-    border: 1px solid #e4eee8;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 30px;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-
-.calculator-preview-card h3 {
-    margin-bottom: 8px;
-
-    font-size: 25px;
-}
-
-
-.calculator-preview-card p {
-    color: #68766e;
-
-    max-width: 650px;
-}
-
-
-
-/* =========================
-   HEALTH CONTENT
-========================= */
-
-.health-content {
-    background: white;
-}
-
-
-.health-content-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-
-.content-card {
-    padding: 28px;
-
-    background: #f8fbf9;
-
-    border: 1px solid #e4eee8;
-
-    border-radius: 18px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 18px;
-
-    transition: 0.2s;
-}
-
-
-.content-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.06);
-}
-
-
-.content-card-icon {
-    width: 55px;
-
-    height: 55px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 14px;
-
-    background: #e5f6eb;
-
-    font-size: 25px;
-}
-
-
-.content-category {
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    color: #16804b;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-}
-
-
-.content-card h3 {
-    font-size: 21px;
-
-    line-height: 1.3;
-
-    margin-bottom: 8px;
-}
-
-
-.content-card p {
-    color: #68766e;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-}
-
-
-.content-card .card-link {
-    display: inline-block;
-
-    margin-top: 10px;
-}
-
-
-
-/* =========================
-   CALCULATOR PAGE
-========================= */
-
-.calculator-page-header {
-    background:
-        linear-gradient(
-            135deg,
-            #e5f6eb,
-            #ffffff
-        );
-}
-
-
-.calculator-page-header h1,
-.education-header h1 {
-    font-size: clamp(40px, 6vw, 65px);
-
-    line-height: 1.1;
-}
-
-
-
-/* =========================
-   ENERGY RESULT
-========================= */
-
-.energy-result {
-    background: #eaf7ef;
-
-    border-color: #bfe4cc;
-}
-
-
-.energy-box {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
-
-    margin-top: 15px;
-}
-
-
-.energy-box > div {
-    padding: 18px;
-
-    border-radius: 12px;
-
-    background: white;
-
-    text-align: center;
-
-    border: 1px solid #d7e9dd;
-}
-
-
-.energy-box span {
-    display: block;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    color: #637168;
-
-    letter-spacing: 1px;
-}
-
-
-.energy-box strong {
-    display: block;
-
-    margin-top: 5px;
-
-    font-size: 30px;
-
-    color: #16804b;
-}
-
-
-.energy-box small {
-    color: #718078;
-
-    font-size: 12px;
-}
-
-
-.energy-explanation {
-    margin-top: 18px;
-
-    color: #5f6e66;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-}
-
-
-.activity-note {
-    margin-top: 10px;
-
-    color: #718078;
-
-    font-size: 13px;
-}
-
-
-
-/* =========================
-   MACRO RESULT
-========================= */
-
-.macro-result {
-    background: #f4f8f5;
-}
-
-
-.macro-calories {
-    margin-top: 12px;
-
-    padding: 20px;
-
-    background: #16804b;
-
-    color: white;
-
-    border-radius: 14px;
-
-    text-align: center;
-}
-
-
-.macro-calories span {
-    display: block;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-}
-
-
-.macro-calories strong {
-    display: block;
-
-    margin-top: 5px;
-
-    font-size: 38px;
-
-    line-height: 1.1;
-}
-
-
-.macro-calories small {
-    font-size: 12px;
-}
-
-
-.macro-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin-top: 15px;
-}
-
-
-.macro-box {
-    padding: 15px;
-
-    background: white;
-
-    border-radius: 12px;
-
-    text-align: center;
-
-    border: 1px solid #e0e9e3;
-}
-
-
-.macro-box span {
-    display: block;
-
-    font-size: 12px;
-
-    font-weight: 800;
-}
-
-
-.macro-box strong {
-    display: block;
-
-    margin-top: 5px;
-
-    font-size: 20px;
-}
-
-
-.macro-box small {
-    display: block;
-
-    margin-top: 3px;
-
-    color: #718078;
-
-    font-size: 11px;
-}
-
-
-.macro-box.protein {
-    border-top: 4px solid #d64545;
-}
-
-
-.macro-box.carbs {
-    border-top: 4px solid #e58b25;
-}
-
-
-.macro-box.fat {
-    border-top: 4px solid #d6aa16;
-}
-
-
-
-/* =========================
-   EDUCATION PAGE
-========================= */
-
-.education-header {
-    background:
-        linear-gradient(
-            135deg,
-            #e5f6eb,
-            #ffffff
-        );
-}
-
-
-.education-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-
-.education-card {
-    padding: 30px;
-
-    background: white;
-
-    border-radius: 18px;
-
-    border: 1px solid #e4eee8;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.04);
-}
-
-
-.education-card-icon {
-    width: 58px;
-
-    height: 58px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin-bottom: 18px;
-
-    border-radius: 15px;
-
-    background: #e5f6eb;
-
-    font-size: 26px;
-}
-
-
-.education-card h3 {
-    margin-bottom: 10px;
-
-    font-size: 24px;
-}
-
-
-.education-card > p {
-    color: #68766e;
-
-    font-size: 14px;
-}
-
-
-.education-details {
-    margin-top: 20px;
-
-    padding-top: 18px;
-
-    border-top: 1px solid #e4eee8;
-}
-
-
-.education-details h4 {
-    margin-bottom: 8px;
-
-    font-size: 15px;
-}
-
-
-.education-details p {
-    margin-bottom: 15px;
-
-    color: #68766e;
-
-    font-size: 14px;
-}
-
-
-.education-details ul {
-    padding-left: 20px;
-
-    color: #68766e;
-
-    font-size: 14px;
-}
-
-
-.education-details li {
-    margin-bottom: 7px;
-}
-
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 800px) {
-
-    .calculator-preview-card {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-
-    .health-content-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .education-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .macro-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .energy-box {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-
-@media (max-width: 450px) {
-
-    .navbar nav {
-        gap: 10px;
-    }
-
-
-    .navbar nav a {
-        font-size: 11px;
-    }
-
-
-    .calculator-preview-card {
-        padding: 25px;
-    }
-
-
-    .education-card {
-        padding: 24px;
-    }
-
-}
-/* =========================
-   BERITA TERBARU
-========================= */
-
-.news-section {
-    background: white;
-}
-
-.news-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-.news-card {
-    overflow: hidden;
-
-    background: white;
-
-    border-radius: 18px;
-
-    border: 1px solid #e4eee8;
-
-    transition: 0.2s;
-}
-
-.news-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.07);
-}
-
-.news-image {
-    height: 210px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #dff3e6,
-            #f4faf6
-        );
-
-    color: #16804b;
-
-    font-size: 45px;
-}
-
-.news-content {
-    padding: 25px;
-}
-
-.news-date {
-    margin-top: 8px;
-
-    color: #7a8780;
-
-    font-size: 13px;
-}
-
-.news-content h3 {
-    margin-top: 10px;
-
-    margin-bottom: 10px;
-
-    font-size: 22px;
-
-    line-height: 1.3;
-}
-
-.news-content > p:not(.news-date) {
-    margin-bottom: 18px;
-
-    color: #68766e;
-
-    font-size: 14px;
-}
-
-.news-content .card-link {
-    display: inline-block;
-
-    margin-top: 5px;
-}
-@media (max-width: 900px) {
-
-    .news-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .news-image {
-        height: 190px;
-    }
-
-}
-/* =========================
-   BERITA
-========================= */
-
-.news-page {
-    background: #f5faf7;
-}
-
-.news-page .section-heading h1 {
-    font-size: clamp(40px, 6vw, 65px);
-    line-height: 1.1;
-}
-
-.news-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 24px;
-
-    max-width: 1200px;
-}
-
-.news-card {
-    overflow: hidden;
-
-    background: white;
-
-    border: 1px solid #e4eee8;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.04);
-
-    transition: 0.2s;
-}
-
-.news-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.08);
-}
-
-.news-image {
-    height: 220px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e5f6eb,
-            #ffffff
-        );
-
-    color: #16804b;
-
-    font-size: 55px;
-}
-
-.news-content {
-    padding: 25px;
-}
-
-.news-date {
-    margin-bottom: 8px;
-
-    color: #718078;
-
-    font-size: 13px;
-}
-
-.news-content h3 {
-    margin-bottom: 10px;
-
-    font-size: 22px;
-
-    line-height: 1.3;
-}
-
-.news-content > p:not(.news-date) {
-    margin-bottom: 18px;
-
-    color: #68766e;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-}
-
-.news-content .card-link {
-    display: inline-block;
-
-    color: #16804b;
-
-    font-weight: 800;
-}
-
-.news-content .card-link:hover {
-    color: #11683d;
-}
-
-
-/* =========================
-   BERITA - TABLET
-========================= */
+/* =========================================================
+   MOBILE — TABLET
+   ========================================================= */
 
 @media (max-width: 900px) {
 
@@ -2383,14 +1620,100 @@ footer {
             repeat(2, 1fr);
     }
 
+    .education-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .health-content-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
 }
 
 
-/* =========================
-   BERITA - MOBILE
-========================= */
+/* =========================================================
+   MOBILE — 800px
+   ========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+
+    .navbar {
+        padding: 15px 5%;
+    }
+
+    .navbar nav {
+        gap: 14px;
+    }
+
+    .navbar nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding: 60px 5%;
+
+        gap: 35px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+
+        padding: 60px 5%;
+
+        gap: 25px;
+    }
+
+    .intro h2 {
+        font-size: 34px;
+    }
+
+    .section {
+        padding: 60px 5%;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+    .calculator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-container {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .energy-box {
+        grid-template-columns: 1fr;
+    }
+
+    .macro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-preview-card {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .health-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
 
     .news-grid {
         grid-template-columns: 1fr;
@@ -2400,51 +1723,120 @@ footer {
         height: 200px;
     }
 
-}
-/* =========================
-   HALAMAN BERITA
-   ========================= */
+    .article-container {
+        padding: 50px 5%;
+    }
 
-.news-card {
-    background: #ffffff;
-    padding: 24px;
-    margin: 20px auto;
-    max-width: 800px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    .article-card {
+        padding: 30px;
+    }
+
+    .disclaimer {
+        margin: 40px 5%;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .footer-copyright {
+        display: block;
+    }
+
+    .calculator-page-header {
+        padding: 60px 5%;
+    }
+
+    .calculator-page-header h1 {
+        font-size: 42px;
+    }
+
 }
 
-.news-card h3 {
-    margin-top: 0;
-    margin-bottom: 8px;
-    color: #1f2937;
-}
 
-.news-date {
-    font-size: 14px;
-    color: #6b7280;
-    margin-bottom: 15px;
-}
+/* =========================================================
+   MOBILE — SMALL
+   ========================================================= */
 
-.news-card p {
-    line-height: 1.7;
-}
+@media (max-width: 500px) {
 
-.read-more {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    font-weight: 600;
-}
-/* =========================
-   GAMBAR BERITA
-   ========================= */
+    .navbar {
+        flex-direction: column;
 
-.news-image {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 18px;
-    display: block;
+        gap: 12px;
+
+        padding: 14px 5%;
+    }
+
+    .navbar nav {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 16px;
+
+        flex-wrap: wrap;
+    }
+
+    .navbar nav a {
+        font-size: 12px;
+    }
+
+    .navbar nav a.active::after {
+        bottom: -4px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+
+    .bmi-number {
+        font-size: 42px;
+    }
+
+    .macro-calories strong,
+    .macro-total strong {
+        font-size: 34px;
+    }
+
+    .calculator-preview-card {
+        padding: 25px;
+    }
+
+    .education-card {
+        padding: 24px;
+    }
+
+    .news-content {
+        padding: 22px;
+    }
+
+    .news-content h3 {
+        font-size: 20px;
+    }
+
+    .article-card {
+        padding: 25px 20px;
+    }
+
 }
