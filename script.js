@@ -753,3 +753,253 @@ function calculateMacros() {
 
     `;
 }
+/* =========================
+   MACRO CALCULATOR
+========================= */
+
+function calculateMacros() {
+
+    const gender = document.getElementById("macroGender").value;
+
+    const age = parseFloat(
+        document.getElementById("macroAge").value
+    );
+
+    const weight = parseFloat(
+        document.getElementById("macroWeight").value
+    );
+
+    const height = parseFloat(
+        document.getElementById("macroHeight").value
+    );
+
+    const activity = parseFloat(
+        document.getElementById("macroActivity").value
+    );
+
+    const goal = document.getElementById("macroGoal").value;
+
+    const result = document.getElementById("macroResult");
+
+
+    /* VALIDASI */
+
+    if (
+        !age ||
+        !weight ||
+        !height ||
+        !activity
+    ) {
+
+        result.innerHTML = `
+            <div class="result-error">
+                <strong>Data belum lengkap</strong>
+                <p>
+                    Silakan isi umur, berat badan,
+                    tinggi badan dan aktivitas.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    /* BMR MIFflin-St Jeor */
+
+    let bmr;
+
+
+    if (gender === "male") {
+
+        bmr =
+            (10 * weight) +
+            (6.25 * height) -
+            (5 * age) +
+            5;
+
+    } else {
+
+        bmr =
+            (10 * weight) +
+            (6.25 * height) -
+            (5 * age) -
+            161;
+
+    }
+
+
+    /* TDEE */
+
+    let tdee = bmr * activity;
+
+
+    /* PENYESUAIAN TUJUAN */
+
+    let calorieTarget;
+
+
+    if (goal === "fatloss") {
+
+        calorieTarget = tdee * 0.85;
+
+    } else if (goal === "bulking") {
+
+        calorieTarget = tdee * 1.10;
+
+    } else {
+
+        calorieTarget = tdee;
+
+    }
+
+
+    calorieTarget = Math.round(calorieTarget);
+
+
+    /* PROTEIN */
+
+    let proteinPerKg;
+
+
+    if (goal === "fatloss") {
+
+        proteinPerKg = 2.0;
+
+    } else if (goal === "bulking") {
+
+        proteinPerKg = 1.8;
+
+    } else {
+
+        proteinPerKg = 1.6;
+
+    }
+
+
+    const protein =
+        Math.round(weight * proteinPerKg);
+
+
+    /* LEMAK */
+
+    const fat =
+        Math.round(weight * 0.8);
+
+
+    /* KALORI DARI PROTEIN */
+
+    const proteinCalories =
+        protein * 4;
+
+
+    /* KALORI DARI LEMAK */
+
+    const fatCalories =
+        fat * 9;
+
+
+    /* SISA KALORI UNTUK KARBOHIDRAT */
+
+    const remainingCalories =
+        calorieTarget -
+        proteinCalories -
+        fatCalories;
+
+
+    const carbs =
+        Math.max(
+            0,
+            Math.round(remainingCalories / 4)
+        );
+
+
+    /* HASIL */
+
+    result.innerHTML = `
+
+        <div class="macro-total">
+
+            <span>
+                TARGET KALORI HARIAN
+            </span>
+
+            <strong>
+                ${calorieTarget.toLocaleString("id-ID")} kcal
+            </strong>
+
+        </div>
+
+
+        <div class="macro-result-grid">
+
+            <div class="macro-box">
+
+                <span>
+                    PROTEIN
+                </span>
+
+                <strong>
+                    ${protein} g
+                </strong>
+
+            </div>
+
+
+            <div class="macro-box">
+
+                <span>
+                    KARBOHIDRAT
+                </span>
+
+                <strong>
+                    ${carbs} g
+                </strong>
+
+            </div>
+
+
+            <div class="macro-box">
+
+                <span>
+                    LEMAK
+                </span>
+
+                <strong>
+                    ${fat} g
+                </strong>
+
+            </div>
+
+
+            <div class="macro-box">
+
+                <span>
+                    BMR
+                </span>
+
+                <strong>
+                    ${Math.round(bmr)} kcal
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <p class="macro-explanation">
+
+            Estimasi ini menggunakan BMR dan TDEE sebagai
+            dasar perhitungan. Target kalori disesuaikan
+            berdasarkan tujuan ${goal === "fatloss"
+                ? "fat loss"
+                : goal === "bulking"
+                ? "muscle gain"
+                : "maintenance"}.
+
+        </p>
+
+    `;
+
+}
+
