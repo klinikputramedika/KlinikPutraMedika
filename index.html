@@ -358,128 +358,166 @@
              BMR PLACEHOLDER
         ========================== -->
 
-        <section
-            id="bmr"
-            class="calculator-section white"
-        >
+      <section
+    id="bmr"
+    class="calculator-section white"
+>
 
-            <div class="calculator-container">
+    <div class="calculator-container">
 
-                <div>
+        <div>
 
-                    <p class="section-label">
-                        BMR & TDEE
-                    </p>
+            <p class="section-label">
+                BMR & TDEE
+            </p>
 
-                    <h2>
-                        Ketahui kebutuhan energi tubuh
-                    </h2>
+            <h2>
+                Ketahui kebutuhan energi tubuh
+            </h2>
 
-                    <p>
-                        BMR menunjukkan estimasi energi
-                        yang dibutuhkan tubuh saat istirahat.
-                        TDEE memperhitungkan aktivitas harian.
-                    </p>
+            <p>
+                Masukkan data dasar dan tingkat aktivitas
+                untuk mendapatkan estimasi BMR dan TDEE.
+            </p>
 
-                </div>
+            <p class="calculator-note">
+                Kalkulator ini ditujukan untuk orang dewasa.
+                Hasil merupakan estimasi dan bukan pengganti
+                pemeriksaan atau konsultasi medis.
+            </p>
 
-
-                <div class="form-card">
-
-                    <label>
-                        Jenis kelamin
-                    </label>
-
-                    <select id="gender">
-
-                        <option value="male">
-                            Pria
-                        </option>
-
-                        <option value="female">
-                            Wanita
-                        </option>
-
-                    </select>
+        </div>
 
 
-                    <label>
-                        Umur (tahun)
-                    </label>
+        <div class="form-card">
 
-                    <input
-                        type="number"
-                        id="age"
-                        placeholder="Contoh: 25"
-                    >
+            <!-- JENIS KELAMIN -->
 
+            <label for="gender">
+                Jenis kelamin
+            </label>
 
-                    <label>
-                        Berat badan (kg)
-                    </label>
+            <select id="gender">
 
-                    <input
-                        type="number"
-                        id="weightBMR"
-                        placeholder="Contoh: 70"
-                    >
+                <option value="male">
+                    Pria
+                </option>
 
+                <option value="female">
+                    Wanita
+                </option>
 
-                    <label>
-                        Tinggi badan (cm)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="heightBMR"
-                        placeholder="Contoh: 170"
-                    >
+            </select>
 
 
-                    <label>
-                        Tingkat aktivitas
-                    </label>
+            <!-- UMUR -->
 
-                    <select id="activity">
+            <label for="age">
+                Umur (tahun)
+            </label>
 
-                        <option value="1.2">
-                            Sangat jarang olahraga
-                        </option>
-
-                        <option value="1.375">
-                            Aktivitas ringan
-                        </option>
-
-                        <option value="1.55">
-                            Aktivitas sedang
-                        </option>
-
-                        <option value="1.725">
-                            Aktivitas berat
-                        </option>
-
-                        <option value="1.9">
-                            Sangat aktif
-                        </option>
-
-                    </select>
+            <input
+                type="number"
+                id="age"
+                placeholder="Contoh: 25"
+                min="20"
+                max="120"
+                step="1"
+            >
 
 
-                    <button onclick="calculateTDEE()">
-                        Hitung BMR & TDEE
-                    </button>
+            <!-- BERAT -->
+
+            <label for="weightBMR">
+                Berat badan (kg)
+            </label>
+
+            <input
+                type="number"
+                id="weightBMR"
+                placeholder="Contoh: 70"
+                min="1"
+                step="0.1"
+            >
 
 
-                    <div
-                        id="tdeeResult"
-                        class="result"
-                    ></div>
+            <!-- TINGGI -->
 
+            <label for="heightBMR">
+                Tinggi badan (cm)
+            </label>
+
+            <input
+                type="number"
+                id="heightBMR"
+                placeholder="Contoh: 170"
+                min="1"
+                step="0.1"
+            >
+
+
+            <!-- AKTIVITAS -->
+
+            <label for="activity">
+                Tingkat aktivitas
+            </label>
+
+            <select id="activity">
+
+                <option value="1.2">
+                    Sedentary — sangat sedikit aktivitas
+                </option>
+
+                <option value="1.375">
+                    Light — olahraga ringan 1–3 hari/minggu
+                </option>
+
+                <option value="1.55">
+                    Moderate — olahraga sedang 3–5 hari/minggu
+                </option>
+
+                <option value="1.725">
+                    Active — olahraga berat 6–7 hari/minggu
+                </option>
+
+                <option value="1.9">
+                    Very Active — aktivitas fisik sangat tinggi
+                </option>
+
+            </select>
+
+
+            <p class="activity-note">
+                Pilih tingkat aktivitas yang paling mendekati
+                rutinitas harian Anda.
+            </p>
+
+
+            <button
+                onclick="calculateTDEE()"
+            >
+                Hitung BMR & TDEE
+            </button>
+
+
+            <!-- HASIL -->
+
+            <div
+                id="tdeeResult"
+                class="result"
+            >
+
+                <div class="result-placeholder">
+                    Hasil BMR dan TDEE akan muncul di sini.
                 </div>
 
             </div>
 
-        </section>
+        </div>
+
+    </div>
+
+</section>
 
 
 
