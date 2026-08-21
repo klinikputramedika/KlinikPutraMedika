@@ -482,7 +482,7 @@ button:hover {
 
 
 /* =========================
-   HASIL KALKULATOR
+   RESULT
 ========================= */
 
 .result {
@@ -578,27 +578,6 @@ button:hover {
 
 
 /* =========================
-   BMI NOTE
-========================= */
-
-.bmi-note {
-    margin-top: 15px;
-
-    padding-top: 12px;
-
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-
-    color: #6c7971;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-
-    font-weight: 400;
-}
-
-
-/* =========================
    BMI SCALE
 ========================= */
 
@@ -642,7 +621,6 @@ button:hover {
     top: 50%;
 
     width: 20px;
-
     height: 20px;
 
     transform:
@@ -678,7 +656,7 @@ button:hover {
 
 
 /* =========================
-   BMI NORMAL
+   BMI COLORS
 ========================= */
 
 .result-normal {
@@ -695,11 +673,6 @@ button:hover {
     color: white;
 }
 
-
-/* =========================
-   BMI UNDERWEIGHT
-========================= */
-
 .result-underweight {
     background: #fff8df;
 
@@ -713,11 +686,6 @@ button:hover {
 
     color: white;
 }
-
-
-/* =========================
-   BMI OVERWEIGHT
-========================= */
 
 .result-overweight {
     background: #fff1df;
@@ -733,11 +701,6 @@ button:hover {
     color: white;
 }
 
-
-/* =========================
-   BMI OBESITY
-========================= */
-
 .result-obesity {
     background: #ffebeb;
 
@@ -751,11 +714,6 @@ button:hover {
 
     color: white;
 }
-
-
-/* =========================
-   ERROR
-========================= */
 
 .result-error {
     background: #fff1f1;
@@ -838,8 +796,6 @@ button:hover {
     background: #16804b;
 
     border-color: #16804b;
-
-    color: white;
 }
 
 .energy-box.featured span,
@@ -880,15 +836,130 @@ button:hover {
 
 
 /* =========================
-   CALCULATOR NOTE
+   MACRO RESULT
 ========================= */
+
+.macro-summary {
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+.macro-calories-label {
+    color: #637168;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.macro-calories {
+    margin-top: 4px;
+
+    color: #16804b;
+
+    font-size: 42px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+}
+
+.macro-unit {
+    color: #718078;
+
+    font-size: 12px;
+}
+
+.macro-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+.macro-box {
+    padding: 15px 8px;
+
+    border-radius: 12px;
+
+    background: white;
+
+    border: 1px solid #dfe9e3;
+
+    text-align: center;
+}
+
+.macro-box-icon {
+    font-size: 20px;
+}
+
+.macro-box-title {
+    margin-top: 5px;
+
+    color: #637168;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+.macro-box-value {
+    margin-top: 3px;
+
+    font-size: 24px;
+
+    font-weight: 800;
+}
+
+.macro-box-unit {
+    color: #718078;
+
+    font-size: 10px;
+}
+
+.macro-protein {
+    color: #16804b;
+}
+
+.macro-fat {
+    color: #d58b17;
+}
+
+.macro-carbs {
+    color: #4779c5;
+}
+
+.macro-explanation {
+    margin-top: 18px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.macro-explanation p {
+    margin: 6px 0;
+
+    color: #5f6d65;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
 
 .calculator-note {
     margin-top: 12px;
 
-    font-size: 12px;
-
     color: #6c7971;
+
+    font-size: 12px;
 
     line-height: 1.5;
 }
@@ -1112,6 +1183,10 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .macro-grid {
+        grid-template-columns: 1fr;
+    }
+
     .disclaimer {
         margin: 40px 5%;
     }
@@ -1161,6 +1236,10 @@ footer {
 
     .bmi-number {
         font-size: 42px;
+    }
+
+    .macro-calories {
+        font-size: 36px;
     }
 
 }
