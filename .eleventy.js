@@ -29,7 +29,6 @@ module.exports = function (eleventyConfig) {
         },
 
         templateFormats: [
-            "html",
             "njk",
             "md"
         ]
