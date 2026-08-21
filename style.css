@@ -537,24 +537,72 @@ button:hover {
 /* FOOTER */
 
 footer {
-    padding: 40px 6%;
+    padding: 50px 6%;
 
     background: #123c29;
 
     color: white;
 }
 
+
 .footer-content {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 1fr 0.7fr;
+
+    gap: 50px;
+}
+
+
+.footer-info h3 {
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+
+.footer-contact h4 {
+    margin-bottom: 5px;
+
+    color: #ffffff;
+}
+
+
+.footer-contact p {
+    margin-bottom: 18px;
+
+    color: #bcd2c5;
+}
+
+
+.footer-contact a {
+    color: #bcd2c5;
+
+    transition: 0.2s;
+}
+
+
+.footer-contact a:hover {
+    color: white;
+}
+
+
+.footer-copyright {
     display: flex;
 
-    justify-content: space-between;
-
-    gap: 30px;
+    align-items: flex-end;
 }
+
 
 .footer-content p {
     color: #bcd2c5;
 }
+
 
 
 /* MOBILE */
@@ -622,10 +670,42 @@ footer {
     }
 
     .footer-content {
-        flex-direction: column;
-    }
+    .footer-content {
+    grid-template-columns: 1fr;
 
+    gap: 30px;
 }
+
+.footer-copyright {
+    display: block;
+}
+        .maps-button {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    background: #16804b;
+
+    color: white !important;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.maps-button:hover {
+    background: #1a9659;
+
+    transform: translateY(-2px);
+}
+
+
 
 @media (max-width: 450px) {
 
