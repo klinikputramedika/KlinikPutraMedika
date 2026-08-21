@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 
@@ -15,7 +16,9 @@
         content="Kalkulator kesehatan Klinik Putra Medika untuk menghitung BMI, BMR, TDEE dan kebutuhan makronutrien."
     >
 
-    <title>Kalkulator Kesehatan - Klinik Putra Medika</title>
+    <title>
+        Kalkulator Kesehatan - Klinik Putra Medika
+    </title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -25,44 +28,65 @@
 <body>
 
 
-    <!-- =========================
+    <!-- =====================================================
          NAVBAR
-    ========================== -->
+    ====================================================== -->
 
     <header class="navbar">
 
-       <nav>
+        <a
+            href="index.html"
+            class="logo"
+        >
+            Klinik <span>Putra Medika</span>
+        </a>
 
-    <a href="index.html" class="active">
-  <a href="index.html">Beranda</a>
 
-<a href="kalkulator.html">Kalkulator</a>
+        <nav>
 
-<a href="edukasi.html">Edukasi</a>
+            <a href="index.html">
+                Beranda
+            </a>
 
-<a href="contact.html" class="active">Contact Us</a>
-    </a>
+            <a
+                href="kalkulator.html"
+                class="active"
+            >
+                Kalkulator
+            </a>
 
-</nav>
+            <a href="edukasi.html">
+                Edukasi
+            </a>
+
+            <a href="contact.html">
+                Contact Us
+            </a>
+
+        </nav>
 
     </header>
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          MAIN
-    ========================== -->
+    ====================================================== -->
 
     <main>
 
 
-        <!-- =========================
-             PAGE HEADER
-        ========================== -->
+        <!-- =================================================
+             HEADER
+        ================================================== -->
 
-        <section class="section calculator-page-header">
+        <section class="calculator-hero">
 
-            <div class="section-heading">
+            <div class="calculator-hero-inner">
+
+                <div class="hero-icon">
+                    🧮
+                </div>
 
                 <p class="section-label">
                     HEALTH CALCULATOR
@@ -72,10 +96,10 @@
                     Kalkulator Kesehatan
                 </h1>
 
-                <p>
-                    Gunakan berbagai kalkulator berikut
-                    sebagai estimasi awal untuk membantu
-                    memahami kebutuhan tubuh.
+                <p class="calculator-hero-text">
+                    Gunakan kalkulator kesehatan berikut untuk
+                    mendapatkan estimasi BMI, kebutuhan energi
+                    dan kebutuhan makronutrien Anda.
                 </p>
 
             </div>
@@ -84,81 +108,187 @@
 
 
 
-        <!-- =========================
+        <!-- =================================================
+             QUICK NAVIGATION
+        ================================================== -->
+
+        <section class="calculator-navigation">
+
+            <a href="#bmi">
+
+                <span class="calculator-nav-icon">
+                    ⚖️
+                </span>
+
+                <span>
+                    <strong>
+                        BMI
+                    </strong>
+
+                    <small>
+                        Indeks massa tubuh
+                    </small>
+                </span>
+
+            </a>
+
+
+            <a href="#bmr">
+
+                <span class="calculator-nav-icon">
+                    🔥
+                </span>
+
+                <span>
+                    <strong>
+                        BMR & TDEE
+                    </strong>
+
+                    <small>
+                        Kebutuhan energi
+                    </small>
+                </span>
+
+            </a>
+
+
+            <a href="#macro">
+
+                <span class="calculator-nav-icon">
+                    🥗
+                </span>
+
+                <span>
+                    <strong>
+                        Makronutrien
+                    </strong>
+
+                    <small>
+                        Protein, karbo & lemak
+                    </small>
+                </span>
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================================
              BMI
-        ========================== -->
+        ================================================== -->
 
         <section
             id="bmi"
             class="calculator-section"
         >
 
-            <div class="calculator-container">
+            <div class="calculator-card">
 
 
-                <!-- PENJELASAN -->
+                <div class="calculator-info">
 
-                <div>
+                    <div class="calculator-number">
+                        01
+                    </div>
 
                     <p class="section-label">
                         BMI CALCULATOR
                     </p>
 
                     <h2>
-                        Hitung Body Mass Index
+                        Body Mass Index
                     </h2>
 
                     <p>
-                        BMI atau Body Mass Index merupakan
-                        salah satu indikator sederhana untuk
-                        melihat hubungan antara berat dan
-                        tinggi badan.
+                        BMI merupakan indikator sederhana yang
+                        digunakan untuk melihat hubungan antara
+                        berat badan dan tinggi badan.
                     </p>
 
-                    <p class="calculator-note">
-                        Masukkan berat dan tinggi badan Anda
+                    <div class="calculator-tip">
+                        💡 Masukkan berat dan tinggi badan Anda
                         untuk mendapatkan estimasi BMI.
-                    </p>
+                    </div>
 
                 </div>
 
 
 
-                <!-- FORM -->
+                <div class="calculator-form">
 
-                <div class="form-card">
+                    <div class="form-title">
+                        <span>⚖️</span>
 
-                    <label for="weight">
-                        Berat badan (kg)
-                    </label>
+                        <div>
+                            <h3>
+                                Masukkan data
+                            </h3>
 
-                    <input
-                        type="number"
-                        id="weight"
-                        placeholder="Contoh: 70"
-                        min="1"
-                        step="0.1"
-                    >
+                            <p>
+                                Gunakan data terbaru Anda.
+                            </p>
+                        </div>
+                    </div>
 
 
-                    <label for="height">
-                        Tinggi badan (cm)
-                    </label>
+                    <div class="form-group">
 
-                    <input
-                        type="number"
-                        id="height"
-                        placeholder="Contoh: 170"
-                        min="1"
-                        step="0.1"
-                    >
+                        <label for="weight">
+                            Berat badan
+                        </label>
+
+                        <div class="input-unit">
+
+                            <input
+                                type="number"
+                                id="weight"
+                                placeholder="Contoh: 70"
+                                min="1"
+                                step="0.1"
+                            >
+
+                            <span>
+                                kg
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="height">
+                            Tinggi badan
+                        </label>
+
+                        <div class="input-unit">
+
+                            <input
+                                type="number"
+                                id="height"
+                                placeholder="Contoh: 170"
+                                min="1"
+                                step="0.1"
+                            >
+
+                            <span>
+                                cm
+                            </span>
+
+                        </div>
+
+                    </div>
 
 
                     <button
                         type="button"
+                        class="calculator-button"
                         onclick="calculateBMI()"
                     >
                         Hitung BMI
+                        <span>→</span>
                     </button>
 
 
@@ -168,7 +298,21 @@
                     >
 
                         <div class="result-placeholder">
-                            Hasil perhitungan BMI akan muncul di sini.
+
+                            <span>
+                                📊
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Hasil BMI
+                                </strong>
+
+                                <small>
+                                    Hasil perhitungan akan muncul di sini.
+                                </small>
+                            </div>
+
                         </div>
 
                     </div>
@@ -181,155 +325,213 @@
 
 
 
-        <!-- =========================
+        <!-- =================================================
              BMR & TDEE
-        ========================== -->
+        ================================================== -->
 
         <section
             id="bmr"
-            class="calculator-section white"
+            class="calculator-section calculator-section-alt"
         >
 
-            <div class="calculator-container">
+            <div class="calculator-card">
 
 
-                <!-- PENJELASAN -->
+                <div class="calculator-info">
 
-                <div>
+                    <div class="calculator-number">
+                        02
+                    </div>
 
                     <p class="section-label">
                         BMR & TDEE
                     </p>
 
                     <h2>
-                        Ketahui kebutuhan energi tubuh
+                        Kebutuhan Energi
                     </h2>
 
                     <p>
-                        Estimasi kebutuhan energi berdasarkan
-                        jenis kelamin, umur, berat badan,
-                        tinggi badan dan tingkat aktivitas.
+                        Hitung estimasi kebutuhan energi tubuh
+                        berdasarkan jenis kelamin, umur, berat,
+                        tinggi badan dan aktivitas.
                     </p>
 
-                    <p class="calculator-note">
-                        Gunakan data yang paling mendekati
-                        kondisi Anda untuk mendapatkan estimasi
-                        yang lebih relevan.
-                    </p>
+                    <div class="calculator-tip">
+                        💡 Pilih tingkat aktivitas yang paling
+                        mendekati rutinitas Anda sehari-hari.
+                    </div>
 
                 </div>
 
 
 
-                <!-- FORM -->
+                <div class="calculator-form">
 
-                <div class="form-card">
+                    <div class="form-title">
 
+                        <span>
+                            🔥
+                        </span>
 
-                    <label for="gender">
-                        Jenis kelamin
-                    </label>
+                        <div>
 
-                    <select id="gender">
+                            <h3>
+                                Data tubuh & aktivitas
+                            </h3>
 
-                        <option value="male">
-                            Pria
-                        </option>
+                            <p>
+                                Isi semua data berikut.
+                            </p>
 
-                        <option value="female">
-                            Wanita
-                        </option>
+                        </div>
 
-                    </select>
-
-
-
-                    <label for="age">
-                        Umur (tahun)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="age"
-                        placeholder="Contoh: 25"
-                        min="18"
-                        max="120"
-                    >
+                    </div>
 
 
+                    <div class="form-group">
 
-                    <label for="weightBMR">
-                        Berat badan (kg)
-                    </label>
+                        <label for="gender">
+                            Jenis kelamin
+                        </label>
 
-                    <input
-                        type="number"
-                        id="weightBMR"
-                        placeholder="Contoh: 70"
-                        min="1"
-                        step="0.1"
-                    >
+                        <select id="gender">
 
+                            <option value="male">
+                                Pria
+                            </option>
 
+                            <option value="female">
+                                Wanita
+                            </option>
 
-                    <label for="heightBMR">
-                        Tinggi badan (cm)
-                    </label>
+                        </select>
 
-                    <input
-                        type="number"
-                        id="heightBMR"
-                        placeholder="Contoh: 170"
-                        min="1"
-                        step="0.1"
-                    >
+                    </div>
 
 
+                    <div class="form-group">
 
-                    <label for="activity">
-                        Tingkat aktivitas
-                    </label>
+                        <label for="age">
+                            Umur
+                        </label>
 
-                    <select id="activity">
+                        <div class="input-unit">
 
-                        <option value="1.2">
-                            Sedentary — sangat sedikit aktivitas
-                        </option>
+                            <input
+                                type="number"
+                                id="age"
+                                placeholder="Contoh: 25"
+                                min="18"
+                                max="120"
+                            >
 
-                        <option value="1.375">
-                            Light — olahraga ringan 1–3 hari/minggu
-                        </option>
+                            <span>
+                                tahun
+                            </span>
 
-                        <option value="1.55">
-                            Moderate — olahraga sedang 3–5 hari/minggu
-                        </option>
+                        </div>
 
-                        <option value="1.725">
-                            Active — olahraga berat 6–7 hari/minggu
-                        </option>
+                    </div>
 
-                        <option value="1.9">
-                            Very Active — aktivitas fisik sangat tinggi
-                        </option>
 
-                    </select>
+                    <div class="form-group">
 
+                        <label for="weightBMR">
+                            Berat badan
+                        </label>
+
+                        <div class="input-unit">
+
+                            <input
+                                type="number"
+                                id="weightBMR"
+                                placeholder="Contoh: 70"
+                                min="1"
+                                step="0.1"
+                            >
+
+                            <span>
+                                kg
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="heightBMR">
+                            Tinggi badan
+                        </label>
+
+                        <div class="input-unit">
+
+                            <input
+                                type="number"
+                                id="heightBMR"
+                                placeholder="Contoh: 170"
+                                min="1"
+                                step="0.1"
+                            >
+
+                            <span>
+                                cm
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="activity">
+                            Tingkat aktivitas
+                        </label>
+
+                        <select id="activity">
+
+                            <option value="1.2">
+                                Sedentary — sangat sedikit aktivitas
+                            </option>
+
+                            <option value="1.375">
+                                Light — olahraga ringan 1–3 hari/minggu
+                            </option>
+
+                            <option value="1.55">
+                                Moderate — olahraga sedang 3–5 hari/minggu
+                            </option>
+
+                            <option value="1.725">
+                                Active — olahraga berat 6–7 hari/minggu
+                            </option>
+
+                            <option value="1.9">
+                                Very Active — aktivitas fisik sangat tinggi
+                            </option>
+
+                        </select>
+
+                    </div>
 
 
                     <p class="activity-note">
-                        Pilih tingkat aktivitas yang paling
-                        mendekati rutinitas harian Anda.
+                        Pilih aktivitas yang paling mendekati
+                        rutinitas harian Anda.
                     </p>
-
 
 
                     <button
                         type="button"
+                        class="calculator-button"
                         onclick="calculateTDEE()"
                     >
                         Hitung BMR & TDEE
+                        <span>→</span>
                     </button>
-
 
 
                     <div
@@ -338,7 +540,23 @@
                     >
 
                         <div class="result-placeholder">
-                            Hasil BMR dan TDEE akan muncul di sini.
+
+                            <span>
+                                🔥
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Hasil BMR & TDEE
+                                </strong>
+
+                                <small>
+                                    Hasil perhitungan akan muncul di sini.
+                                </small>
+
+                            </div>
+
                         </div>
 
                     </div>
@@ -351,170 +569,232 @@
 
 
 
-        <!-- =========================
+        <!-- =================================================
              MACRO
-        ========================== -->
+        ================================================== -->
 
         <section
             id="macro"
             class="calculator-section"
         >
 
-            <div class="calculator-container">
+            <div class="calculator-card">
 
 
-                <!-- PENJELASAN -->
+                <div class="calculator-info">
 
-                <div>
+                    <div class="calculator-number">
+                        03
+                    </div>
 
                     <p class="section-label">
                         MACRO CALCULATOR
                     </p>
 
                     <h2>
-                        Hitung kebutuhan makros harian
+                        Kebutuhan Makronutrien
                     </h2>
 
                     <p>
-                        Estimasi kebutuhan kalori dan pembagian
-                        protein, karbohidrat serta lemak
-                        berdasarkan kebutuhan energi dan tujuan.
+                        Dapatkan estimasi kebutuhan kalori,
+                        protein, karbohidrat dan lemak berdasarkan
+                        kebutuhan energi dan tujuan Anda.
                     </p>
 
-                    <p class="calculator-note">
-                        Pilih tujuan yang paling sesuai dengan
-                        kebutuhan Anda untuk mendapatkan estimasi
-                        pembagian makronutrien.
-                    </p>
+                    <div class="calculator-tip">
+                        💡 Pilih tujuan yang sesuai untuk mendapatkan
+                        estimasi pembagian makronutrien.
+                    </div>
 
                 </div>
 
 
 
-                <!-- FORM -->
+                <div class="calculator-form">
 
-                <div class="form-card">
+                    <div class="form-title">
 
+                        <span>
+                            🥗
+                        </span>
 
-                    <label for="macroGender">
-                        Jenis kelamin
-                    </label>
+                        <div>
 
-                    <select id="macroGender">
+                            <h3>
+                                Data & tujuan
+                            </h3>
 
-                        <option value="male">
-                            Pria
-                        </option>
+                            <p>
+                                Isi data tubuh dan pilih tujuan.
+                            </p>
 
-                        <option value="female">
-                            Wanita
-                        </option>
+                        </div>
 
-                    </select>
-
-
-
-                    <label for="macroAge">
-                        Umur (tahun)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="macroAge"
-                        placeholder="Contoh: 25"
-                        min="18"
-                        max="120"
-                    >
+                    </div>
 
 
+                    <div class="form-group">
 
-                    <label for="macroWeight">
-                        Berat badan (kg)
-                    </label>
+                        <label for="macroGender">
+                            Jenis kelamin
+                        </label>
 
-                    <input
-                        type="number"
-                        id="macroWeight"
-                        placeholder="Contoh: 70"
-                        min="1"
-                        step="0.1"
-                    >
+                        <select id="macroGender">
 
+                            <option value="male">
+                                Pria
+                            </option>
 
+                            <option value="female">
+                                Wanita
+                            </option>
 
-                    <label for="macroHeight">
-                        Tinggi badan (cm)
-                    </label>
+                        </select>
 
-                    <input
-                        type="number"
-                        id="macroHeight"
-                        placeholder="Contoh: 170"
-                        min="1"
-                        step="0.1"
-                    >
+                    </div>
 
 
+                    <div class="form-group">
 
-                    <label for="macroActivity">
-                        Tingkat aktivitas
-                    </label>
+                        <label for="macroAge">
+                            Umur
+                        </label>
 
-                    <select id="macroActivity">
+                        <div class="input-unit">
 
-                        <option value="1.2">
-                            Sedentary — sangat sedikit aktivitas
-                        </option>
+                            <input
+                                type="number"
+                                id="macroAge"
+                                placeholder="Contoh: 25"
+                                min="18"
+                                max="120"
+                            >
 
-                        <option value="1.375">
-                            Light — olahraga ringan
-                        </option>
+                            <span>
+                                tahun
+                            </span>
 
-                        <option value="1.55">
-                            Moderate — olahraga sedang
-                        </option>
+                        </div>
 
-                        <option value="1.725">
-                            Active — olahraga berat
-                        </option>
-
-                        <option value="1.9">
-                            Very Active — aktivitas sangat tinggi
-                        </option>
-
-                    </select>
+                    </div>
 
 
+                    <div class="form-group">
 
-                    <label for="macroGoal">
-                        Tujuan
-                    </label>
+                        <label for="macroWeight">
+                            Berat badan
+                        </label>
 
-                    <select id="macroGoal">
+                        <div class="input-unit">
 
-                        <option value="maintenance">
-                            Maintenance
-                        </option>
+                            <input
+                                type="number"
+                                id="macroWeight"
+                                placeholder="Contoh: 70"
+                                min="1"
+                                step="0.1"
+                            >
 
-                        <option value="fatloss">
-                            Fat Loss
-                        </option>
+                            <span>
+                                kg
+                            </span>
 
-                        <option value="bulking">
-                            Muscle Gain / Bulking
-                        </option>
+                        </div>
 
-                    </select>
+                    </div>
 
+
+                    <div class="form-group">
+
+                        <label for="macroHeight">
+                            Tinggi badan
+                        </label>
+
+                        <div class="input-unit">
+
+                            <input
+                                type="number"
+                                id="macroHeight"
+                                placeholder="Contoh: 170"
+                                min="1"
+                                step="0.1"
+                            >
+
+                            <span>
+                                cm
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="macroActivity">
+                            Tingkat aktivitas
+                        </label>
+
+                        <select id="macroActivity">
+
+                            <option value="1.2">
+                                Sedentary — sangat sedikit aktivitas
+                            </option>
+
+                            <option value="1.375">
+                                Light — olahraga ringan
+                            </option>
+
+                            <option value="1.55">
+                                Moderate — olahraga sedang
+                            </option>
+
+                            <option value="1.725">
+                                Active — olahraga berat
+                            </option>
+
+                            <option value="1.9">
+                                Very Active — aktivitas sangat tinggi
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="macroGoal">
+                            Tujuan
+                        </label>
+
+                        <select id="macroGoal">
+
+                            <option value="maintenance">
+                                Maintenance
+                            </option>
+
+                            <option value="fatloss">
+                                Fat Loss
+                            </option>
+
+                            <option value="bulking">
+                                Muscle Gain / Bulking
+                            </option>
+
+                        </select>
+
+                    </div>
 
 
                     <button
                         type="button"
+                        class="calculator-button"
                         onclick="calculateMacros()"
                     >
                         Hitung Kebutuhan Makros
+                        <span>→</span>
                     </button>
-
 
 
                     <div
@@ -523,7 +803,23 @@
                     >
 
                         <div class="result-placeholder">
-                            Hasil kebutuhan makros akan muncul di sini.
+
+                            <span>
+                                🥗
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Hasil Makronutrien
+                                </strong>
+
+                                <small>
+                                    Hasil perhitungan akan muncul di sini.
+                                </small>
+
+                            </div>
+
                         </div>
 
                     </div>
@@ -536,9 +832,9 @@
 
 
 
-        <!-- =========================
+        <!-- =================================================
              DISCLAIMER
-        ========================== -->
+        ================================================== -->
 
         <section class="disclaimer">
 
@@ -555,13 +851,14 @@
 
         </section>
 
+
     </main>
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          FOOTER
-    ========================== -->
+    ====================================================== -->
 
     <footer>
 
@@ -582,7 +879,6 @@
             </div>
 
 
-
             <div class="footer-contact">
 
                 <h4>
@@ -595,31 +891,15 @@
                     Jawa Barat 43292
                 </p>
 
-
                 <a
                     href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="maps-button"
                 >
                     📍 Lihat Lokasi Klinik
                 </a>
 
-
-                <h4>
-                    Telepon
-                </h4>
-
-                <p>
-
-                    <a href="tel:087810353838">
-                        0878-1035-3838
-                    </a>
-
-                </p>
-
             </div>
-
 
 
             <div class="footer-copyright">
@@ -637,12 +917,13 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================== -->
+    ====================================================== -->
 
     <script src="script.js"></script>
 
 </body>
 
 </html>
+```
