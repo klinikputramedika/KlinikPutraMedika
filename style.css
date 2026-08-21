@@ -1184,3 +1184,583 @@ button {
     }
 
 }
+/* =========================================================
+   PERBAIKAN KHUSUS KALKULATOR
+   ========================================================= */
+
+.calculator-hero {
+    padding: 70px 6%;
+    background: linear-gradient(
+        135deg,
+        #effaf4,
+        #ffffff
+    );
+    text-align: center;
+}
+
+.calculator-hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.calculator-hero .hero-icon {
+    margin: 0 auto 20px;
+}
+
+.calculator-hero h1 {
+    margin: 10px 0 15px;
+    color: #173d2a;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+}
+
+.calculator-hero-text {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #69776f;
+    font-size: 16px;
+}
+
+
+/* NAVIGASI KALKULATOR */
+
+.calculator-navigation {
+    max-width: 1000px;
+    margin: -25px auto 0;
+    padding: 0 20px;
+
+    position: relative;
+    z-index: 5;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.calculator-navigation a {
+    padding: 18px 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2ece6;
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(27, 72, 48, 0.06);
+
+    transition: 0.2s ease;
+}
+
+.calculator-navigation a:hover {
+    transform: translateY(-3px);
+    border-color: #cce7d8;
+}
+
+.calculator-nav-icon {
+    font-size: 25px;
+}
+
+.calculator-navigation strong {
+    display: block;
+    color: #173d2a;
+    font-size: 14px;
+}
+
+.calculator-navigation small {
+    display: block;
+    margin-top: 2px;
+    color: #7a8881;
+    font-size: 11px;
+}
+
+
+/* BAGIAN KALKULATOR */
+
+.calculator-section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 80px 6%;
+}
+
+.calculator-section-alt {
+    background: #f1f8f4;
+    max-width: none;
+}
+
+.calculator-section-alt .calculator-card {
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+.calculator-card {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 45px;
+
+    padding: 40px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ece7;
+    border-radius: 24px;
+
+    box-shadow: 0 10px 35px rgba(27, 72, 48, 0.06);
+}
+
+.calculator-info {
+    padding: 10px;
+}
+
+.calculator-number {
+    margin-bottom: 12px;
+
+    color: #16804b;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.calculator-info h2 {
+    margin: 8px 0 15px;
+
+    color: #173d2a;
+
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.calculator-info > p:not(.section-label) {
+    color: #69776f;
+    font-size: 15px;
+}
+
+.calculator-tip {
+    margin-top: 25px;
+    padding: 15px;
+
+    background: #edf8f2;
+
+    border-radius: 12px;
+
+    color: #426353;
+    font-size: 13px;
+}
+
+
+/* FORM KALKULATOR */
+
+.calculator-form {
+    padding: 28px;
+
+    background: #f8fbf9;
+
+    border: 1px solid #e4eee8;
+    border-radius: 18px;
+}
+
+.form-title {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 25px;
+}
+
+.form-title > span {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e8f5ee;
+    border-radius: 12px;
+
+    font-size: 22px;
+}
+
+.form-title h3 {
+    color: #173d2a;
+    font-size: 17px;
+}
+
+.form-title p {
+    color: #84918b;
+    font-size: 12px;
+}
+
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+
+    color: #34483d;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.input-unit {
+    position: relative;
+}
+
+.input-unit input {
+    padding-right: 55px;
+}
+
+.input-unit span {
+    position: absolute;
+
+    right: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #7a8981;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.calculator-form select {
+    min-height: 45px;
+}
+
+.activity-note {
+    margin: -5px 0 18px;
+
+    color: #84918b;
+
+    font-size: 11px;
+}
+
+
+/* TOMBOL KALKULATOR */
+
+.calculator-button {
+    width: 100%;
+
+    padding: 13px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #16804b;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.calculator-button:hover {
+    background: #116b3f;
+    transform: translateY(-1px);
+}
+
+
+/* HASIL */
+
+.result {
+    margin-top: 18px;
+
+    min-height: 80px;
+
+    padding: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #e0ebe5;
+    border-radius: 12px;
+}
+
+.result-placeholder {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.result-placeholder > span {
+    font-size: 24px;
+}
+
+.result-placeholder strong {
+    display: block;
+
+    color: #30473b;
+
+    font-size: 13px;
+}
+
+.result-placeholder small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #8a9790;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   PERBAIKAN KHUSUS CONTACT US
+   ========================================================= */
+
+.calculator-page-header {
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.contact-card {
+    min-height: 300px;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ece7;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(27, 72, 48, 0.05);
+
+    transition: 0.2s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #cce7d8;
+
+    box-shadow: 0 15px 35px rgba(27, 72, 48, 0.09);
+}
+
+.contact-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 15px;
+}
+
+.contact-icon svg {
+    width: 27px;
+    height: 27px;
+}
+
+.whatsapp-icon {
+    background: #e9f8ef;
+    color: #16804b;
+}
+
+.instagram-icon {
+    background: #f7edf4;
+    color: #b33f82;
+}
+
+.tiktok-icon {
+    background: #edf0f1;
+    color: #111111;
+}
+
+.facebook-icon {
+    background: #edf3fc;
+    color: #287be0;
+}
+
+.contact-card h3 {
+    margin-bottom: 8px;
+
+    color: #173d2a;
+
+    font-size: 18px;
+}
+
+.contact-card p {
+    color: #69776f;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+.contact-card strong {
+    margin-top: 12px;
+
+    color: #34483d;
+
+    font-size: 13px;
+}
+
+.contact-link {
+    margin-top: auto;
+    padding-top: 18px;
+
+    color: #16804b;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.contact-location {
+    display: grid;
+
+    grid-template-columns:
+        70px
+        1fr;
+
+    gap: 22px;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ece7;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(27, 72, 48, 0.05);
+}
+
+.contact-location-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf8f2;
+
+    border-radius: 16px;
+
+    font-size: 27px;
+}
+
+.contact-location h2 {
+    margin: 8px 0 10px;
+
+    color: #173d2a;
+
+    font-size: 28px;
+}
+
+.contact-location p:not(.section-label) {
+    color: #69776f;
+
+    font-size: 14px;
+}
+
+.card-link {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: #16804b;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MOBILE KALKULATOR + CONTACT
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .calculator-card {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .contact-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .calculator-hero {
+        padding:
+            55px 5%;
+    }
+
+    .calculator-navigation {
+        grid-template-columns: 1fr;
+
+        margin-top: 0;
+
+        padding:
+            20px 5%;
+    }
+
+    .calculator-section {
+        padding:
+            50px 5%;
+    }
+
+    .calculator-card {
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+    .calculator-form {
+        padding: 20px;
+    }
+
+    .calculator-info h2 {
+        font-size: 28px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        min-height: 260px;
+    }
+
+    .contact-location {
+        grid-template-columns: 1fr;
+
+        padding: 25px;
+    }
+
+}
