@@ -1,4 +1,4 @@
-```css
+```
 /* =========================================================
    KLINIK PUTRA MEDIKA
    MAIN WEBSITE STYLESHEET
@@ -1108,4 +1108,265 @@ footer {
 
 
 }
+```css
+/* =========================================================
+   KALKULATOR KESEHATAN
+========================================================= */
+
+.calculator-page-header {
+    text-align: center;
+}
+
+.calculator-page-header .section-heading {
+    max-width: 800px;
+}
+
+
+/* CONTAINER KALKULATOR */
+
+.calculator-section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 35px;
+}
+
+
+/* KARTU KALKULATOR */
+
+.calculator-card {
+    width: 100%;
+    padding: 32px;
+    margin-bottom: 28px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ece6;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+
+.calculator-card:hover {
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.07);
+}
+
+
+/* JUDUL */
+
+.calculator-card h2 {
+    margin-bottom: 10px;
+
+    color: #17231d;
+
+    font-size: 26px;
+
+    line-height: 1.3;
+}
+
+
+.calculator-card h3 {
+    margin-bottom: 8px;
+
+    color: #17231d;
+}
+
+
+.calculator-card > p {
+    margin-bottom: 22px;
+
+    color: #68766e;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* LABEL */
+
+.calculator-card label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #35433b;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* INPUT */
+
+.calculator-card input,
+.calculator-card select {
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 11px 13px;
+
+    margin-bottom: 17px;
+
+    background: #ffffff;
+
+    border: 1px solid #d9e4dd;
+
+    border-radius: 10px;
+
+    color: #17231d;
+
+    outline: none;
+}
+
+
+.calculator-card input:focus,
+.calculator-card select:focus {
+    border-color: #16804b;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 128, 75, 0.1);
+}
+
+
+/* BUTTON */
+
+.calculator-card button {
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 11px 18px;
+
+    margin-top: 5px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: #16804b;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.calculator-card button:hover {
+    background: #0d663b;
+
+    transform: translateY(-1px);
+}
+
+
+/* HASIL */
+
+.calculator-result {
+    margin-top: 22px;
+
+    padding: 18px;
+
+    background: #f1f8f4;
+
+    border: 1px solid #dcebe1;
+
+    border-radius: 12px;
+
+    color: #35433b;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   JIKA KALKULATOR MENGGUNAKAN ID HASIL
+========================================================= */
+
+#bmiResult,
+#bmrResult,
+#tdeeResult,
+#macroResult,
+#hasilBMI,
+#hasilBMR,
+#hasilTDEE,
+#hasilMakro {
+    margin-top: 20px;
+
+    padding: 18px;
+
+    background: #f1f8f4;
+
+    border: 1px solid #dcebe1;
+
+    border-radius: 12px;
+
+    color: #35433b;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   GRID FORM
+========================================================= */
+
+.calculator-form {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 0 20px;
+}
+
+
+.calculator-form button,
+.calculator-form .calculator-result {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .calculator-card {
+        padding: 23px;
+    }
+
+
+    .calculator-card h2 {
+        font-size: 23px;
+    }
+
+
+    .calculator-form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .calculator-form button,
+    .calculator-form .calculator-result {
+        grid-column: auto;
+    }
+
+}
 ```
+
