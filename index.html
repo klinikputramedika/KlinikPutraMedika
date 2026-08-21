@@ -2,6 +2,7 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,16 +10,704 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="Website edukasi kesehatan dan kalkulator kesehatan Klinik Sehat."
+    >
+
     <title>Klinik Sehat</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <h1>Selamat Datang di Klinik Sehat</h1>
 
-    <p>
-        Website edukasi dan kalkulator kesehatan.
-    </p>
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header class="navbar">
+
+        <a href="#home" class="logo">
+            Klinik<span>Sehat</span>
+        </a>
+
+
+        <nav>
+
+            <a href="#home">
+                Beranda
+            </a>
+
+            <a href="#kalkulator">
+                Kalkulator
+            </a>
+
+            <a href="#edukasi">
+                Edukasi
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    ❤️ PEDULI KESEHATAN
+                </div>
+
+
+                <h1>
+                    Mulai Hidup
+                    <span>Lebih Sehat.</span>
+                </h1>
+
+
+                <p>
+                    Kenali tubuhmu, pahami kebutuhanmu,
+                    dan mulai membangun kebiasaan hidup
+                    sehat dari sekarang.
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#kalkulator"
+                        class="button primary"
+                    >
+                        Mulai Kalkulator
+                    </a>
+
+
+                    <a
+                        href="#edukasi"
+                        class="button secondary"
+                    >
+                        Pelajari Hidup Sehat
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <div class="heart">
+                    ❤️
+                </div>
+
+                <h3>
+                    Kesehatan adalah investasi
+                </h3>
+
+                <p>
+                    Perubahan kecil yang dilakukan
+                    secara konsisten dapat membantu
+                    membangun pola hidup yang lebih sehat.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             INTRO
+        ========================== -->
+
+        <section class="intro">
+
+            <div>
+
+                <p class="section-label">
+                    TENTANG KAMI
+                </p>
+
+                <h2>
+                    Informasi kesehatan
+                    yang mudah dipahami.
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Klinik Sehat menyediakan informasi
+                kesehatan dan alat bantu sederhana
+                untuk membantu masyarakat memahami
+                kondisi tubuh dan pola hidup sehat.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             KALKULATOR
+        ========================== -->
+
+        <section
+            id="kalkulator"
+            class="section"
+        >
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    HEALTH CALCULATOR
+                </p>
+
+                <h2>
+                    Kenali kebutuhan tubuhmu
+                </h2>
+
+                <p>
+                    Gunakan kalkulator sederhana
+                    berikut sebagai informasi awal.
+                </p>
+
+            </div>
+
+
+            <div class="calculator-grid">
+
+
+                <!-- BMI -->
+
+                <article class="calculator-card">
+
+                    <div class="card-icon">
+                        ⚖️
+                    </div>
+
+                    <h3>
+                        BMI Calculator
+                    </h3>
+
+                    <p>
+                        Menghitung indeks massa tubuh
+                        berdasarkan berat dan tinggi badan.
+                    </p>
+
+                    <a
+                        href="#bmi"
+                        class="card-link"
+                    >
+                        Hitung BMI →
+                    </a>
+
+                </article>
+
+
+
+                <!-- BMR -->
+
+                <article class="calculator-card">
+
+                    <div class="card-icon">
+                        🔥
+                    </div>
+
+                    <h3>
+                        BMR & TDEE
+                    </h3>
+
+                    <p>
+                        Estimasi kebutuhan energi tubuh
+                        berdasarkan karakteristik dan
+                        tingkat aktivitas.
+                    </p>
+
+                    <a
+                        href="#bmr"
+                        class="card-link"
+                    >
+                        Hitung BMR →
+                    </a>
+
+                </article>
+
+
+
+                <!-- PROTEIN -->
+
+                <article class="calculator-card">
+
+                    <div class="card-icon">
+                        💪
+                    </div>
+
+                    <h3>
+                        Protein
+                    </h3>
+
+                    <p>
+                        Estimasi kebutuhan protein harian
+                        berdasarkan berat badan dan tujuan.
+                    </p>
+
+                    <a
+                        href="#protein"
+                        class="card-link"
+                    >
+                        Hitung Protein →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             BMI PLACEHOLDER
+        ========================== -->
+
+        <section
+            id="bmi"
+            class="calculator-section"
+        >
+
+            <div class="calculator-container">
+
+                <div>
+
+                    <p class="section-label">
+                        BMI CALCULATOR
+                    </p>
+
+                    <h2>
+                        Hitung Body Mass Index
+                    </h2>
+
+                    <p>
+                        Masukkan berat dan tinggi badan
+                        untuk mendapatkan estimasi BMI.
+                    </p>
+
+                </div>
+
+
+                <div class="form-card">
+
+                    <label>
+                        Berat badan (kg)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="weight"
+                        placeholder="Contoh: 70"
+                    >
+
+
+                    <label>
+                        Tinggi badan (cm)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="height"
+                        placeholder="Contoh: 170"
+                    >
+
+
+                    <button onclick="calculateBMI()">
+                        Hitung BMI
+                    </button>
+
+
+                    <div
+                        id="bmiResult"
+                        class="result"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             BMR PLACEHOLDER
+        ========================== -->
+
+        <section
+            id="bmr"
+            class="calculator-section white"
+        >
+
+            <div class="calculator-container">
+
+                <div>
+
+                    <p class="section-label">
+                        BMR & TDEE
+                    </p>
+
+                    <h2>
+                        Ketahui kebutuhan energi tubuh
+                    </h2>
+
+                    <p>
+                        BMR menunjukkan estimasi energi
+                        yang dibutuhkan tubuh saat istirahat.
+                        TDEE memperhitungkan aktivitas harian.
+                    </p>
+
+                </div>
+
+
+                <div class="form-card">
+
+                    <label>
+                        Jenis kelamin
+                    </label>
+
+                    <select id="gender">
+
+                        <option value="male">
+                            Pria
+                        </option>
+
+                        <option value="female">
+                            Wanita
+                        </option>
+
+                    </select>
+
+
+                    <label>
+                        Umur (tahun)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        placeholder="Contoh: 25"
+                    >
+
+
+                    <label>
+                        Berat badan (kg)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="weightBMR"
+                        placeholder="Contoh: 70"
+                    >
+
+
+                    <label>
+                        Tinggi badan (cm)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="heightBMR"
+                        placeholder="Contoh: 170"
+                    >
+
+
+                    <label>
+                        Tingkat aktivitas
+                    </label>
+
+                    <select id="activity">
+
+                        <option value="1.2">
+                            Sangat jarang olahraga
+                        </option>
+
+                        <option value="1.375">
+                            Aktivitas ringan
+                        </option>
+
+                        <option value="1.55">
+                            Aktivitas sedang
+                        </option>
+
+                        <option value="1.725">
+                            Aktivitas berat
+                        </option>
+
+                        <option value="1.9">
+                            Sangat aktif
+                        </option>
+
+                    </select>
+
+
+                    <button onclick="calculateTDEE()">
+                        Hitung BMR & TDEE
+                    </button>
+
+
+                    <div
+                        id="tdeeResult"
+                        class="result"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PROTEIN
+        ========================== -->
+
+        <section
+            id="protein"
+            class="calculator-section"
+        >
+
+            <div class="calculator-container">
+
+                <div>
+
+                    <p class="section-label">
+                        PROTEIN CALCULATOR
+                    </p>
+
+                    <h2>
+                        Berapa kebutuhan proteinmu?
+                    </h2>
+
+                    <p>
+                        Dapatkan estimasi kebutuhan protein
+                        berdasarkan berat badan dan tujuan.
+                    </p>
+
+                </div>
+
+
+                <div class="form-card">
+
+                    <label>
+                        Berat badan (kg)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="proteinWeight"
+                        placeholder="Contoh: 70"
+                    >
+
+
+                    <label>
+                        Tujuan
+                    </label>
+
+                    <select id="goal">
+
+                        <option value="maintenance">
+                            Maintenance
+                        </option>
+
+                        <option value="fatloss">
+                            Fat Loss
+                        </option>
+
+                        <option value="bulking">
+                            Muscle Gain / Bulking
+                        </option>
+
+                    </select>
+
+
+                    <button onclick="calculateProtein()">
+                        Hitung Protein
+                    </button>
+
+
+                    <div
+                        id="proteinResult"
+                        class="result"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             EDUKASI
+        ========================== -->
+
+        <section
+            id="edukasi"
+            class="section education"
+        >
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    HEALTHY LIFESTYLE
+                </p>
+
+                <h2>
+                    Edukasi hidup sehat
+                </h2>
+
+                <p>
+                    Informasi sederhana untuk membantu
+                    membangun kebiasaan sehat.
+                </p>
+
+            </div>
+
+
+            <div class="education-grid">
+
+
+                <article>
+
+                    <div class="card-icon">
+                        🥗
+                    </div>
+
+                    <h3>
+                        Pola Makan Seimbang
+                    </h3>
+
+                    <p>
+                        Kenali pentingnya mengonsumsi
+                        makanan yang beragam dan bergizi.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <div class="card-icon">
+                        🏃
+                    </div>
+
+                    <h3>
+                        Aktivitas Fisik
+                    </h3>
+
+                    <p>
+                        Aktivitas fisik secara rutin
+                        merupakan bagian penting dari
+                        gaya hidup sehat.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <div class="card-icon">
+                        😴
+                    </div>
+
+                    <h3>
+                        Tidur Berkualitas
+                    </h3>
+
+                    <p>
+                        Tidur yang cukup membantu tubuh
+                        melakukan proses pemulihan.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             DISCLAIMER
+        ========================== -->
+
+        <section class="disclaimer">
+
+            <h3>
+                ⚠️ Catatan penting
+            </h3>
+
+            <p>
+                Hasil kalkulator pada website ini
+                merupakan estimasi untuk tujuan edukasi
+                dan tidak dimaksudkan sebagai diagnosis
+                atau pengganti konsultasi dengan tenaga
+                kesehatan profesional.
+            </p>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+
+                <h3>
+                    Klinik Sehat
+                </h3>
+
+                <p>
+                    Edukasi kesehatan untuk masyarakat.
+                </p>
+
+            </div>
+
+
+            <p>
+                © 2026 Klinik Sehat
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
 
 </body>
 
