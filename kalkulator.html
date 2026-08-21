@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="Kalkulator kesehatan Klinik Putra Medika."
+        content="Kalkulator kesehatan Klinik Putra Medika untuk menghitung BMI, BMR, TDEE dan kebutuhan makronutrien."
     >
 
     <title>Kalkulator Kesehatan - Klinik Putra Medika</title>
@@ -29,28 +29,46 @@
          NAVBAR
     ========================== -->
 
-  <nav class="navbar">
-    <div class="logo">
-        Klinik <span>Putra Medika</span>
-    </div>
+    <header class="navbar">
 
-    <div class="nav-menu">
-        <a href="index.html" class="active">Beranda</a>
-        <a href="kalkulator.html">Kalkulator</a>
-        <a href="berita.html">Berita</a>
-        <a href="edukasi.html">Edukasi</a>
-    </div>
-</nav>
+        <a href="index.html" class="logo">
+            Klinik <span>Putra Medika</span>
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Beranda
+            </a>
+
+            <a href="kalkulator.html" class="active">
+                Kalkulator
+            </a>
+
+            <a href="berita.html">
+                Berita
+            </a>
+
+            <a href="edukasi.html">
+                Edukasi
+            </a>
+
+        </nav>
 
     </header>
 
 
 
+    <!-- =========================
+         MAIN
+    ========================== -->
+
     <main>
 
 
         <!-- =========================
-             HEADER
+             PAGE HEADER
         ========================== -->
 
         <section class="section calculator-page-header">
@@ -88,6 +106,9 @@
 
             <div class="calculator-container">
 
+
+                <!-- PENJELASAN -->
+
                 <div>
 
                     <p class="section-label">
@@ -99,13 +120,22 @@
                     </h2>
 
                     <p>
-                        BMI digunakan sebagai salah satu
-                        indikator sederhana untuk melihat
-                        hubungan antara berat dan tinggi badan.
+                        BMI atau Body Mass Index merupakan
+                        salah satu indikator sederhana untuk
+                        melihat hubungan antara berat dan
+                        tinggi badan.
+                    </p>
+
+                    <p class="calculator-note">
+                        Masukkan berat dan tinggi badan Anda
+                        untuk mendapatkan estimasi BMI.
                     </p>
 
                 </div>
 
+
+
+                <!-- FORM -->
 
                 <div class="form-card">
 
@@ -135,7 +165,10 @@
                     >
 
 
-                    <button onclick="calculateBMI()">
+                    <button
+                        type="button"
+                        onclick="calculateBMI()"
+                    >
                         Hitung BMI
                     </button>
 
@@ -160,7 +193,7 @@
 
 
         <!-- =========================
-             BMR TDEE
+             BMR & TDEE
         ========================== -->
 
         <section
@@ -169,6 +202,9 @@
         >
 
             <div class="calculator-container">
+
+
+                <!-- PENJELASAN -->
 
                 <div>
 
@@ -182,12 +218,21 @@
 
                     <p>
                         Estimasi kebutuhan energi berdasarkan
-                        jenis kelamin, umur, berat, tinggi
-                        dan tingkat aktivitas.
+                        jenis kelamin, umur, berat badan,
+                        tinggi badan dan tingkat aktivitas.
+                    </p>
+
+                    <p class="calculator-note">
+                        Gunakan data yang paling mendekati
+                        kondisi Anda untuk mendapatkan estimasi
+                        yang lebih relevan.
                     </p>
 
                 </div>
 
+
+
+                <!-- FORM -->
 
                 <div class="form-card">
 
@@ -289,7 +334,10 @@
 
 
 
-                    <button onclick="calculateTDEE()">
+                    <button
+                        type="button"
+                        onclick="calculateTDEE()"
+                    >
                         Hitung BMR & TDEE
                     </button>
 
@@ -325,6 +373,9 @@
 
             <div class="calculator-container">
 
+
+                <!-- PENJELASAN -->
+
                 <div>
 
                     <p class="section-label">
@@ -336,14 +387,22 @@
                     </h2>
 
                     <p>
-                        Estimasi kebutuhan kalori dan
-                        pembagian protein, karbohidrat
-                        serta lemak berdasarkan kebutuhan
-                        energi dan tujuan.
+                        Estimasi kebutuhan kalori dan pembagian
+                        protein, karbohidrat serta lemak
+                        berdasarkan kebutuhan energi dan tujuan.
+                    </p>
+
+                    <p class="calculator-note">
+                        Pilih tujuan yang paling sesuai dengan
+                        kebutuhan Anda untuk mendapatkan estimasi
+                        pembagian makronutrien.
                     </p>
 
                 </div>
 
+
+
+                <!-- FORM -->
 
                 <div class="form-card">
 
@@ -415,23 +474,23 @@
                     <select id="macroActivity">
 
                         <option value="1.2">
-                            Sedentary
+                            Sedentary — sangat sedikit aktivitas
                         </option>
 
                         <option value="1.375">
-                            Light
+                            Light — olahraga ringan
                         </option>
 
                         <option value="1.55">
-                            Moderate
+                            Moderate — olahraga sedang
                         </option>
 
                         <option value="1.725">
-                            Active
+                            Active — olahraga berat
                         </option>
 
                         <option value="1.9">
-                            Very Active
+                            Very Active — aktivitas sangat tinggi
                         </option>
 
                     </select>
@@ -460,7 +519,10 @@
 
 
 
-                    <button onclick="calculateMacros()">
+                    <button
+                        type="button"
+                        onclick="calculateMacros()"
+                    >
                         Hitung Kebutuhan Makros
                     </button>
 
@@ -496,10 +558,10 @@
             </h3>
 
             <p>
-                Hasil kalkulator merupakan estimasi
-                untuk tujuan edukasi dan bukan diagnosis
-                medis. Kebutuhan energi dan nutrisi setiap
-                orang dapat berbeda.
+                Hasil kalkulator merupakan estimasi untuk
+                tujuan edukasi dan bukan diagnosis medis.
+                Kebutuhan energi dan nutrisi setiap orang
+                dapat berbeda.
             </p>
 
         </section>
@@ -531,6 +593,7 @@
             </div>
 
 
+
             <div class="footer-contact">
 
                 <h4>
@@ -559,12 +622,15 @@
                 </h4>
 
                 <p>
+
                     <a href="tel:087810353838">
                         0878-1035-3838
                     </a>
+
                 </p>
 
             </div>
+
 
 
             <div class="footer-copyright">
@@ -581,6 +647,10 @@
     </footer>
 
 
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script src="script.js"></script>
 
