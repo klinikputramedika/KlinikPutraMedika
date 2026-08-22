@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -16,37 +14,47 @@
         content="Klinik Putra Medika - Informasi, edukasi dan layanan kesehatan untuk masyarakat."
     >
 
-    <title>
-        Klinik Putra Medika
-    </title>
+    <meta
+        name="theme-color"
+        content="#0f766e"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>Klinik Putra Medika</title>
 
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
 
 
 <body>
 
-
-    <!-- =========================
-         NAVBAR
-    ========================== -->
+    <!-- ========================================
+         HEADER / NAVBAR
+    ========================================= -->
 
     <header class="navbar">
 
-        <a href="index.html" class="logo">
-
+        <a
+            href="index.html"
+            class="logo"
+            aria-label="Klinik Putra Medika - Beranda"
+        >
             <img
                 src="logo.png"
-                alt="Klinik Putra Medika"
+                alt="Logo Klinik Putra Medika"
             >
-
         </a>
 
 
-        <nav>
+        <nav aria-label="Navigasi utama">
 
-            <a href="index.html" class="active">
+            <a
+                href="index.html"
+                class="active"
+                aria-current="page"
+            >
                 Beranda
             </a>
 
@@ -67,21 +75,22 @@
     </header>
 
 
-
-    <!-- =========================
-         MAIN
-    ========================== -->
+    <!-- ========================================
+         MAIN CONTENT
+    ========================================= -->
 
     <main>
 
 
-        <!-- =========================
+        <!-- ====================================
              HERO
-        ========================== -->
+        ===================================== -->
 
         <section class="hero">
 
             <div class="hero-content">
+
+                <!-- Hero Text -->
 
                 <div class="hero-text">
 
@@ -102,7 +111,6 @@
                         lebih baik.
                     </p>
 
-
                     <div class="hero-buttons">
 
                         <a
@@ -112,17 +120,19 @@
                             Coba Kalkulator →
                         </a>
 
-
-                      
-
                     </div>
 
                 </div>
 
 
+                <!-- Hero Information Card -->
+
                 <div class="hero-card">
 
-                    <div class="hero-icon">
+                    <div
+                        class="hero-icon"
+                        aria-hidden="true"
+                    >
                         🏥
                     </div>
 
@@ -142,10 +152,9 @@
         </section>
 
 
-
-        <!-- =========================
-             LAYANAN
-        ========================== -->
+        <!-- ====================================
+             LAYANAN DIGITAL
+        ===================================== -->
 
         <section class="section">
 
@@ -171,107 +180,127 @@
             <div class="service-grid">
 
 
-                <!-- KALKULATOR -->
+                <!-- Kalkulator -->
 
                 <a
                     href="kalkulator.html"
                     class="service-card"
                 >
 
-                    <div class="service-icon">
+                    <div
+                        class="service-icon"
+                        aria-hidden="true"
+                    >
                         🧮
                     </div>
 
-                    <h3>
-                        Kalkulator Kesehatan
-                    </h3>
+                    <div class="service-content">
 
-                    <p>
-                        Gunakan berbagai kalkulator kesehatan
-                        sederhana untuk membantu memahami
-                        kondisi tubuh Anda.
-                    </p>
+                        <h3>
+                            Kalkulator Kesehatan
+                        </h3>
 
-                    <span>
-                        Buka Kalkulator →
-                    </span>
+                        <p>
+                            Gunakan berbagai kalkulator kesehatan
+                            sederhana untuk membantu memahami
+                            kondisi tubuh Anda.
+                        </p>
+
+                        <span class="service-link">
+                            Buka Kalkulator →
+                        </span>
+
+                    </div>
 
                 </a>
 
 
-
-                <!-- EDUKASI -->
+                <!-- Edukasi -->
 
                 <a
                     href="edukasi.html"
                     class="service-card"
                 >
 
-                    <div class="service-icon">
+                    <div
+                        class="service-icon"
+                        aria-hidden="true"
+                    >
                         📚
                     </div>
 
-                    <h3>
-                        Edukasi Kesehatan
-                    </h3>
+                    <div class="service-content">
 
-                    <p>
-                        Pelajari berbagai informasi kesehatan
-                        dengan bahasa yang sederhana dan mudah
-                        dipahami.
-                    </p>
+                        <h3>
+                            Edukasi Kesehatan
+                        </h3>
 
-                    <span>
-                        Lihat Edukasi →
-                    </span>
+                        <p>
+                            Pelajari berbagai informasi kesehatan
+                            dengan bahasa yang sederhana dan mudah
+                            dipahami.
+                        </p>
+
+                        <span class="service-link">
+                            Lihat Edukasi →
+                        </span>
+
+                    </div>
 
                 </a>
 
 
-
-                <!-- CONTACT -->
+                <!-- Contact -->
 
                 <a
                     href="contact.html"
                     class="service-card"
                 >
 
-                    <div class="service-icon">
+                    <div
+                        class="service-icon"
+                        aria-hidden="true"
+                    >
                         💬
                     </div>
 
-                    <h3>
-                        Hubungi Kami
-                    </h3>
+                    <div class="service-content">
 
-                    <p>
-                        Hubungi Klinik Putra Medika melalui
-                        WhatsApp dan berbagai media sosial
-                        resmi kami.
-                    </p>
+                        <h3>
+                            Hubungi Kami
+                        </h3>
 
-                    <span>
-                        Contact Us →
-                    </span>
+                        <p>
+                            Hubungi Klinik Putra Medika melalui
+                            WhatsApp dan berbagai media sosial
+                            resmi kami.
+                        </p>
+
+                        <span class="service-link">
+                            Contact Us →
+                        </span>
+
+                    </div>
 
                 </a>
-
 
             </div>
 
         </section>
 
 
-
-        <!-- =========================
+        <!-- ====================================
              TENTANG KLINIK
-        ========================== -->
+        ===================================== -->
 
         <section class="section about-section">
 
             <div class="about-card">
 
-                <div class="about-icon">
+                <div
+                    class="about-icon"
+                    aria-hidden="true"
+                >
                     🏥
                 </div>
 
@@ -306,10 +335,9 @@
         </section>
 
 
-
-        <!-- =========================
+        <!-- ====================================
              WHATSAPP CTA
-        ========================== -->
+        ===================================== -->
 
         <section class="section">
 
@@ -329,7 +357,6 @@
                     melalui WhatsApp.
                 </p>
 
-
                 <a
                     href="https://wa.me/628745655446"
                     target="_blank"
@@ -344,12 +371,14 @@
         </section>
 
 
-
-        <!-- =========================
+        <!-- ====================================
              DISCLAIMER
-        ========================== -->
+        ===================================== -->
 
-        <section class="disclaimer">
+        <section
+            class="disclaimer"
+            aria-label="Catatan penting"
+        >
 
             <h3>
                 ⚠️ Catatan penting
@@ -365,25 +394,25 @@
 
         </section>
 
-
     </main>
 
 
-
-    <!-- =========================
+    <!-- ========================================
          FOOTER
-    ========================== -->
+    ========================================= -->
 
     <footer>
 
         <div class="footer-content">
 
 
+            <!-- Footer Info -->
+
             <div class="footer-info">
 
                 <img
                     src="logo.png"
-                    alt="Klinik Putra Medika"
+                    alt="Logo Klinik Putra Medika"
                     class="footer-logo"
                 >
 
@@ -394,6 +423,8 @@
 
             </div>
 
+
+            <!-- Footer Contact -->
 
             <div class="footer-contact">
 
@@ -407,9 +438,7 @@
                     Jawa Barat 43292
                 </p>
 
-
                 <p>
-
                     <a
                         href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
                         target="_blank"
@@ -417,11 +446,12 @@
                     >
                         📍 Lihat Lokasi Klinik
                     </a>
-
                 </p>
 
             </div>
 
+
+            <!-- Copyright -->
 
             <div class="footer-copyright">
 
@@ -431,7 +461,6 @@
 
             </div>
 
-
         </div>
 
     </footer>
@@ -440,4 +469,3 @@
 </body>
 
 </html>
-```
