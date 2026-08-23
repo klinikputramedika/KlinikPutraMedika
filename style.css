@@ -1,60 +1,108 @@
 /* =========================================================
    KLINIK PUTRA MEDIKA
    MAIN STYLESHEET
+   Version: 2026
 ========================================================= */
 
 
 /* =========================================================
-   1. RESET
+   01. RESET & GLOBAL
 ========================================================= */
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
-
 
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
+    margin: 0;
+
     font-family:
-        Arial,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
         Helvetica,
+        Arial,
         sans-serif;
 
-    background: #f7faf8;
+    color: #0f172a;
 
-    color: #263a30;
+    background: #ffffff;
 
     line-height: 1.6;
-}
 
+    -webkit-font-smoothing: antialiased;
+}
 
 img {
     max-width: 100%;
     display: block;
 }
 
-
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
-
 
 button,
 input,
-select {
-    font-family: inherit;
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
 }
 
 
 /* =========================================================
-   2. NAVBAR
+   02. VARIABLES
+========================================================= */
+
+:root {
+
+    --primary: #0f766e;
+    --primary-dark: #115e59;
+    --primary-light: #14b8a6;
+
+    --green-light: #ecfdf5;
+    --green-soft: #f0fdf4;
+
+    --text: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+
+    --border: #e2e8f0;
+
+    --background: #ffffff;
+    --background-soft: #f8fafc;
+
+    --danger: #dc2626;
+    --warning: #f97316;
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --radius-xl: 28px;
+
+    --shadow-sm:
+        0 4px 15px rgba(15, 23, 42, 0.05);
+
+    --shadow-md:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+
+    --shadow-lg:
+        0 20px 50px rgba(15, 23, 42, 0.10);
+}
+
+
+/* =========================================================
+   03. NAVBAR
 ========================================================= */
 
 .navbar {
@@ -68,9 +116,7 @@ select {
 
     min-height: 76px;
 
-    padding:
-        10px
-        6%;
+    padding: 10px 5vw;
 
     display: flex;
 
@@ -80,16 +126,12 @@ select {
 
     gap: 30px;
 
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.94);
 
-    border-bottom:
-        1px solid #e6eee9;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
 }
-
-
-/* LOGO */
 
 .logo {
     display: flex;
@@ -99,17 +141,15 @@ select {
     flex-shrink: 0;
 }
 
-
 .logo img {
-    width: 135px;
+    width: auto;
 
-    height: 55px;
+    height: 50px;
+
+    max-width: 210px;
 
     object-fit: contain;
 }
-
-
-/* NAVIGATION */
 
 .navbar nav {
     display: flex;
@@ -118,154 +158,63 @@ select {
 
     justify-content: flex-end;
 
-    gap: 6px;
+    gap: 8px;
 }
-
 
 .navbar nav a {
     position: relative;
 
-    padding:
-        9px
-        13px;
+    padding: 10px 14px;
 
-    color: #53645b;
+    border-radius: 10px;
 
     font-size: 14px;
 
     font-weight: 600;
 
-    border-radius: 9px;
+    color: #475569;
 
     transition:
         color 0.2s ease,
         background 0.2s ease;
 }
 
-
 .navbar nav a:hover {
-    color: #16804b;
+    color: var(--primary);
 
-    background: #edf7f1;
+    background: var(--green-light);
 }
-
 
 .navbar nav a.active {
-    color: #16804b;
+    color: var(--primary);
 
-    background: #edf7f1;
+    background: var(--green-light);
+}
+
+.navbar nav a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 3px;
+
+    width: 20px;
+
+    height: 3px;
+
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+
+    background: var(--primary);
 }
 
 
 /* =========================================================
-   3. MAIN
+   04. GLOBAL BUTTON
 ========================================================= */
-
-main {
-    width: 100%;
-}
-
-
-.section {
-    width: 100%;
-
-    max-width: 1180px;
-
-    margin: 0 auto;
-
-    padding:
-        80px 6%;
-}
-
-
-/* =========================================================
-   4. SECTION HEADING
-========================================================= */
-
-.section-heading {
-    max-width: 760px;
-}
-
-
-.section-label {
-    margin-bottom: 10px;
-
-    color: #16804b;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.8px;
-}
-
-
-.section-heading h1 {
-    margin-bottom: 18px;
-
-    color: #173d2a;
-
-    font-size:
-        clamp(36px, 5vw, 58px);
-
-    line-height: 1.08;
-
-    letter-spacing: -1.5px;
-}
-
-
-.section-heading h2 {
-    margin-bottom: 14px;
-
-    color: #173d2a;
-
-    font-size:
-        clamp(28px, 4vw, 40px);
-
-    line-height: 1.2;
-}
-
-
-.section-heading > p:not(.section-label) {
-    color: #69776f;
-
-    font-size: 16px;
-
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   5. HERO BERANDA
-========================================================= */
-
-.section:first-child {
-    padding-top: 90px;
-}
-
-
-.section:first-child .section-heading {
-    max-width: 780px;
-}
-
-
-.section:first-child .section-heading h1 {
-    max-width: 720px;
-}
-
-
-/* HERO BUTTON */
-
-.hero-buttons {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 12px;
-
-    margin-top: 28px;
-}
-
 
 .btn {
     display: inline-flex;
@@ -274,10 +223,11 @@ main {
 
     justify-content: center;
 
-    padding:
-        13px 21px;
+    min-height: 46px;
 
-    border-radius: 11px;
+    padding: 0 20px;
+
+    border-radius: 12px;
 
     font-size: 14px;
 
@@ -285,338 +235,220 @@ main {
 
     transition:
         transform 0.2s ease,
-        box-shadow 0.2s ease;
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
-
 
 .btn:hover {
     transform: translateY(-2px);
 }
 
-
 .btn-primary {
     color: #ffffff;
 
-    background: #16804b;
+    background: var(--primary);
 
     box-shadow:
-        0 8px 20px
-        rgba(22, 128, 75, 0.18);
+        0 8px 20px rgba(15, 118, 110, 0.18);
 }
-
 
 .btn-primary:hover {
-    box-shadow:
-        0 12px 25px
-        rgba(22, 128, 75, 0.25);
+    background: var(--primary-dark);
 }
 
+.btn-white {
+    color: var(--primary);
 
-.btn-secondary {
-    color: #16804b;
-
-    background: #edf7f1;
+    background: #ffffff;
 }
 
-
-/* =========================================================
-   6. GENERAL CARD GRID
-========================================================= */
-
-.education-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 24px;
+.btn-white:hover {
+    box-shadow: var(--shadow-md);
 }
 
 
 /* =========================================================
-   7. EDUCATION PAGE
+   05. SECTION LABEL
 ========================================================= */
 
-.education-header {
-    padding-top: 70px;
+.section-label {
+    margin: 0;
 
-    padding-bottom: 35px;
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+
+    color: var(--primary);
 }
 
 
-.education-header .section-heading {
-    max-width: 760px;
-}
+/* =========================================================
+   06. HERO - HOME
+========================================================= */
 
-
-/* EDUCATION CARD */
-
-.education-card {
+.hero {
     position: relative;
-
-    display: flex;
-
-    flex-direction: column;
-
-    min-height: 430px;
-
-    padding: 0;
 
     overflow: hidden;
 
-    background: #ffffff;
-
-    border:
-        1px solid #e3ece7;
-
-    border-radius: 22px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(23, 61, 42, 0.055);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-}
-
-
-.education-card:hover {
-    transform:
-        translateY(-7px);
-
-    border-color:
-        #c8e4d3;
-
-    box-shadow:
-        0 18px 40px
-        rgba(23, 61, 42, 0.11);
-}
-
-
-/* CARD TOP VISUAL */
-
-.education-card::before {
-    content: "";
-
-    display: block;
-
-    height: 115px;
-
-    flex-shrink: 0;
+    padding: 90px 5vw;
 
     background:
         linear-gradient(
             135deg,
-            #eaf8f0,
-            #d9f0e4
+            #ecfdf5 0%,
+            #f8fafc 55%,
+            #ffffff 100%
         );
 }
 
+.hero::before {
+    content: "";
 
-/* EDUCATION ICON */
-
-.education-card-icon {
     position: absolute;
 
-    top: 70px;
+    width: 350px;
+    height: 350px;
 
-    left: 25px;
+    top: -170px;
+    right: -120px;
 
-    width: 68px;
+    border-radius: 50%;
 
-    height: 68px;
+    background: rgba(20, 184, 166, 0.09);
+}
 
-    display: flex;
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.4fr)
+        minmax(280px, 0.6fr);
 
     align-items: center;
 
-    justify-content: center;
-
-    background: #ffffff;
-
-    border:
-        5px solid #ffffff;
-
-    border-radius: 20px;
-
-    font-size: 31px;
-
-    box-shadow:
-        0 7px 20px
-        rgba(23, 61, 42, 0.10);
+    gap: 70px;
 }
 
+.hero-text h1 {
+    max-width: 760px;
 
-/* CARD CONTENT */
+    margin: 12px 0 20px;
 
-.education-card > .content-category,
-.education-card > h3,
-.education-card > p,
-.education-card > .education-details {
-    margin-left: 25px;
+    font-size: clamp(38px, 5vw, 64px);
 
-    margin-right: 25px;
+    line-height: 1.05;
+
+    letter-spacing: -1.8px;
 }
 
+.hero-description {
+    max-width: 650px;
 
-.education-card > .content-category {
-    margin-top: 40px;
+    margin: 0 0 28px;
 
-    margin-bottom: 9px;
+    color: var(--text-secondary);
+
+    font-size: 16px;
+
+    line-height: 1.8;
 }
 
+.hero-buttons {
+    display: flex;
 
-/* CATEGORY */
+    flex-wrap: wrap;
 
-.content-category {
-    display: inline-block;
-
-    color: #16804b;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
+    gap: 12px;
 }
 
+.hero-card {
+    padding: 40px 30px;
 
-/* TITLE */
+    border: 1px solid rgba(226, 232, 240, 0.9);
 
-.education-card h3 {
-    margin-bottom: 10px;
+    border-radius: 28px;
 
-    color: #173d2a;
+    background: rgba(255, 255, 255, 0.9);
 
-    font-size: 20px;
-
-    line-height: 1.3;
-}
-
-
-/* DESCRIPTION */
-
-.education-card > p {
-    color: #69776f;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* DETAILS */
-
-.education-details {
-    margin-top: 20px;
-
-    padding-top: 18px;
-
-    border-top:
-        1px solid #edf2ee;
-}
-
-
-.education-details h4 {
-    margin-bottom: 7px;
-
-    color: #34483d;
-
-    font-size: 14px;
-}
-
-
-.education-details p {
-    margin-bottom: 13px;
-
-    color: #69776f;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-}
-
-
-.education-details ul {
-    margin:
-        8px 0 0 18px;
-
-    padding: 0;
-
-    color: #69776f;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-}
-
-
-.education-details li {
-    margin-bottom: 6px;
-}
-
-
-/* =========================================================
-   8. CALCULATOR PAGE
-========================================================= */
-
-.calculator-hero {
-    padding:
-        75px 6% 45px;
+    box-shadow: var(--shadow-lg);
 
     text-align: center;
 }
 
-
-.calculator-hero-inner {
-    max-width: 760px;
-
-    margin: 0 auto;
-}
-
-
 .hero-icon {
-    width: 70px;
+    width: 78px;
+    height: 78px;
 
-    height: 70px;
+    margin: 0 auto 20px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    margin:
-        0 auto 20px;
+    border-radius: 24px;
 
-    background: #edf8f2;
+    background: var(--green-light);
 
-    border-radius: 20px;
+    font-size: 38px;
+}
 
-    font-size: 34px;
+.hero-card p {
+    margin: 0 0 8px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+.hero-card span {
+    color: var(--text-muted);
+
+    font-size: 13px;
 }
 
 
-.calculator-hero h1 {
-    margin-bottom: 14px;
+/* =========================================================
+   07. GENERAL SECTION
+========================================================= */
 
-    color: #173d2a;
-
-    font-size:
-        clamp(34px, 5vw, 48px);
-
-    line-height: 1.1;
-}
-
-
-.calculator-hero-text {
-    max-width: 680px;
+.section {
+    max-width: 1180px;
 
     margin: 0 auto;
 
-    color: #69776f;
+    padding: 80px 20px;
+}
+
+.section-heading {
+    max-width: 720px;
+
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    margin: 8px 0 12px;
+
+    font-size: clamp(28px, 4vw, 40px);
+
+    line-height: 1.15;
+}
+
+.section-heading p:last-child {
+    margin: 0;
+
+    color: var(--text-muted);
 
     font-size: 15px;
 
@@ -624,218 +456,455 @@ main {
 }
 
 
-/* QUICK NAV */
+/* =========================================================
+   08. SERVICE CARDS
+========================================================= */
+
+.service-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.service-card {
+    padding: 28px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    background: #ffffff;
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.service-icon {
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    background: var(--green-light);
+
+    font-size: 28px;
+}
+
+.service-card h3 {
+    margin: 0 0 10px;
+
+    font-size: 20px;
+
+    line-height: 1.3;
+}
+
+.service-card p {
+    margin: 0 0 18px;
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.service-card > span {
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: var(--primary);
+}
+
+
+/* =========================================================
+   09. ABOUT
+========================================================= */
+
+.about-section {
+    padding-top: 20px;
+}
+
+.about-card {
+    display: grid;
+
+    grid-template-columns: 100px minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 40px;
+
+    border-radius: 26px;
+
+    background: var(--background-soft);
+
+    border: 1px solid var(--border);
+}
+
+.about-icon {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 25px;
+
+    background: var(--green-light);
+
+    font-size: 40px;
+}
+
+.about-content h2 {
+    margin: 8px 0 12px;
+
+    font-size: 32px;
+}
+
+.about-content p {
+    margin: 0 0 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   10. WHATSAPP CTA
+========================================================= */
+
+.whatsapp-cta {
+    padding: 55px 30px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color: #ffffff;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(15, 118, 110, 0.18);
+}
+
+.cta-label {
+    margin: 0;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+
+    color: rgba(255,255,255,0.75);
+}
+
+.whatsapp-cta h2 {
+    margin: 10px 0 12px;
+
+    font-size: 34px;
+}
+
+.whatsapp-cta p:not(.cta-label) {
+    max-width: 600px;
+
+    margin: 0 auto 24px;
+
+    color: rgba(255,255,255,0.88);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   11. DISCLAIMER
+========================================================= */
+
+.disclaimer {
+    max-width: 1000px;
+
+    margin: 0 auto 60px;
+
+    padding: 20px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    background: var(--background-soft);
+}
+
+.disclaimer h3 {
+    margin: 0 0 8px;
+
+    font-size: 14px;
+}
+
+.disclaimer p {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   12. CALCULATOR HERO
+========================================================= */
+
+.calculator-hero {
+    padding: 70px 20px 60px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ecfdf5,
+            #ffffff
+        );
+}
+
+.calculator-hero-inner {
+    max-width: 800px;
+
+    margin: 0 auto;
+}
+
+.calculator-hero .hero-icon {
+    margin-bottom: 18px;
+}
+
+.calculator-hero h1 {
+    margin: 8px 0 15px;
+
+    font-size: clamp(36px, 5vw, 54px);
+
+    line-height: 1.1;
+}
+
+.calculator-hero-text {
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    color: var(--text-secondary);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   13. CALCULATOR NAVIGATION
+========================================================= */
 
 .calculator-navigation {
-    width: 88%;
+    max-width: 900px;
 
-    max-width: 1050px;
+    margin: -25px auto 0;
 
-    margin:
-        0 auto 40px;
+    padding: 0 20px;
+
+    position: relative;
+
+    z-index: 10;
 
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3, minmax(0, 1fr));
 
-    gap: 15px;
+    gap: 12px;
 }
-
 
 .calculator-navigation a {
     display: flex;
 
     align-items: center;
 
-    gap: 13px;
+    gap: 12px;
 
-    padding: 18px;
+    padding: 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
 
     background: #ffffff;
 
-    border:
-        1px solid #e3ece7;
+    box-shadow: var(--shadow-sm);
 
-    border-radius: 15px;
-
-    box-shadow:
-        0 5px 18px
-        rgba(23, 61, 42, 0.04);
-
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease;
+    transition: transform 0.2s ease;
 }
-
 
 .calculator-navigation a:hover {
-    transform:
-        translateY(-3px);
-
-    border-color:
-        #bfe0cc;
+    transform: translateY(-3px);
 }
 
-
 .calculator-nav-icon {
-    width: 45px;
+    width: 42px;
+    height: 42px;
 
-    height: 45px;
-
-    flex-shrink: 0;
+    flex: 0 0 42px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
-
-    background: #edf8f2;
 
     border-radius: 12px;
 
-    font-size: 22px;
-}
+    background: var(--green-light);
 
+    font-size: 20px;
+}
 
 .calculator-navigation strong {
     display: block;
 
-    color: #173d2a;
-
-    font-size: 14px;
+    font-size: 13px;
 }
-
 
 .calculator-navigation small {
     display: block;
 
     margin-top: 2px;
 
-    color: #78857e;
+    color: var(--text-muted);
 
     font-size: 11px;
 }
 
 
-/* CALCULATOR SECTION */
+/* =========================================================
+   14. CALCULATOR SECTION
+========================================================= */
 
 .calculator-section {
-    width: 100%;
-
-    padding:
-        45px 6%;
-}
-
-
-.calculator-section-alt {
-    background: #f0f7f3;
-}
-
-
-.calculator-card {
-    width: 100%;
-
-    max-width: 1080px;
+    max-width: 1180px;
 
     margin: 0 auto;
 
+    padding: 75px 20px 20px;
+}
+
+.calculator-section-alt {
+    padding-top: 60px;
+}
+
+.calculator-card {
     display: grid;
 
     grid-template-columns:
-        0.85fr 1.15fr;
+        minmax(260px, 0.8fr)
+        minmax(0, 1.2fr);
 
-    gap: 45px;
+    gap: 50px;
 
-    padding: 42px;
+    padding: 40px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 28px;
 
     background: #ffffff;
 
-    border:
-        1px solid #e1ebe5;
-
-    border-radius: 25px;
-
-    box-shadow:
-        0 12px 35px
-        rgba(23, 61, 42, 0.06);
+    box-shadow: var(--shadow-sm);
 }
-
-
-/* CALCULATOR INFO */
 
 .calculator-info {
-    padding-top: 5px;
+    padding-top: 8px;
 }
-
 
 .calculator-number {
     margin-bottom: 15px;
 
-    color: #b7c9bf;
-
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: 800;
 
-    letter-spacing: 2px;
+    color: var(--primary);
 }
 
-
 .calculator-info h2 {
-    margin-bottom: 15px;
+    margin: 8px 0 15px;
 
-    color: #173d2a;
-
-    font-size: 31px;
+    font-size: 32px;
 
     line-height: 1.2;
 }
 
-
 .calculator-info > p:not(.section-label) {
-    color: #69776f;
+    margin: 0;
+
+    color: var(--text-secondary);
 
     font-size: 14px;
 
     line-height: 1.8;
 }
 
-
 .calculator-tip {
-    margin-top: 25px;
+    margin-top: 22px;
 
-    padding: 15px 17px;
+    padding: 14px 16px;
 
-    color: #53645b;
+    border-radius: 14px;
 
-    background: #f1f8f4;
+    background: var(--green-soft);
 
-    border-left:
-        3px solid #16804b;
+    color: #166534;
 
-    border-radius: 8px;
-
-    font-size: 13px;
+    font-size: 12px;
 
     line-height: 1.6;
 }
 
 
-/* CALCULATOR FORM */
+/* =========================================================
+   15. CALCULATOR FORM
+========================================================= */
 
 .calculator-form {
-    padding: 25px;
-
-    background: #f8fbf9;
-
-    border:
-        1px solid #e5eee9;
-
-    border-radius: 18px;
+    min-width: 0;
 }
-
 
 .form-title {
     display: flex;
@@ -844,201 +913,182 @@ main {
 
     gap: 12px;
 
-    margin-bottom: 24px;
+    margin-bottom: 25px;
 }
 
-
 .form-title > span {
-    width: 45px;
+    width: 42px;
+    height: 42px;
 
-    height: 45px;
+    flex: 0 0 42px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
-
-    background: #eaf7f0;
 
     border-radius: 12px;
 
-    font-size: 21px;
+    background: var(--green-light);
+
+    font-size: 20px;
 }
 
-
 .form-title h3 {
-    color: #173d2a;
+    margin: 0;
 
     font-size: 17px;
 }
 
-
 .form-title p {
-    color: #78857e;
+    margin: 2px 0 0;
+
+    color: var(--text-muted);
 
     font-size: 12px;
 }
 
-
-/* FORM GROUP */
-
 .form-group {
     margin-bottom: 17px;
 }
-
 
 .form-group label {
     display: block;
 
     margin-bottom: 7px;
 
-    color: #40534a;
-
     font-size: 13px;
 
     font-weight: 700;
 }
 
-
 .form-group input,
 .form-group select {
     width: 100%;
 
-    height: 47px;
+    min-height: 48px;
 
-    padding:
-        0 14px;
+    padding: 0 14px;
 
-    color: #263a30;
+    border: 1px solid #cbd5e1;
 
-    background: #ffffff;
-
-    border:
-        1px solid #dce8e1;
-
-    border-radius: 10px;
+    border-radius: 11px;
 
     outline: none;
 
-    font-size: 14px;
+    background: #ffffff;
+
+    color: var(--text);
 
     transition:
-        border-color 0.2s ease,
+        border 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-
 .form-group input:focus,
 .form-group select:focus {
-    border-color:
-        #16804b;
+    border-color: var(--primary);
 
     box-shadow:
-        0 0 0 3px
-        rgba(22, 128, 75, 0.08);
+        0 0 0 3px rgba(20, 184, 166, 0.12);
 }
-
 
 .input-unit {
     position: relative;
 }
 
-
 .input-unit input {
-    padding-right: 65px;
+    padding-right: 55px;
 }
-
 
 .input-unit span {
     position: absolute;
 
     top: 50%;
+    right: 15px;
 
-    right: 14px;
+    transform: translateY(-50%);
 
-    transform:
-        translateY(-50%);
-
-    color: #7b8982;
+    color: var(--text-muted);
 
     font-size: 12px;
 
-    font-weight: 700;
+    pointer-events: none;
 }
 
-
 .activity-note {
-    margin:
-        -4px 0 17px;
+    margin: -5px 0 18px;
 
-    color: #7a8781;
+    color: var(--text-muted);
 
     font-size: 11px;
 }
 
 
-/* BUTTON */
+/* =========================================================
+   16. CALCULATOR BUTTON
+========================================================= */
 
 .calculator-button {
     width: 100%;
 
-    min-height: 49px;
+    min-height: 50px;
 
     display: flex;
 
     align-items: center;
+    justify-content: center;
 
-    justify-content: space-between;
+    gap: 8px;
 
-    padding:
-        0 17px;
+    border: 0;
+
+    border-radius: 12px;
+
+    background: var(--primary);
 
     color: #ffffff;
-
-    background: #16804b;
-
-    border: none;
-
-    border-radius: 10px;
-
-    cursor: pointer;
 
     font-size: 14px;
 
     font-weight: 700;
 
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-}
+    box-shadow:
+        0 8px 20px rgba(15, 118, 110, 0.16);
 
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
 
 .calculator-button:hover {
-    background: #116b3e;
+    background: var(--primary-dark);
 
-    transform:
-        translateY(-1px);
+    transform: translateY(-2px);
+}
+
+.calculator-button span {
+    font-size: 18px;
 }
 
 
-/* RESULT */
+/* =========================================================
+   17. CALCULATOR RESULT
+========================================================= */
 
 .result {
     margin-top: 18px;
 
-    padding: 17px;
+    min-height: 90px;
 
-    min-height: 82px;
+    padding: 18px;
 
-    background: #ffffff;
+    border: 1px solid var(--border);
 
-    border:
-        1px solid #e0ebe4;
+    border-radius: 16px;
 
-    border-radius: 12px;
+    background: var(--background-soft);
 }
-
 
 .result-placeholder {
     display: flex;
@@ -1047,954 +1097,1199 @@ main {
 
     gap: 12px;
 
-    color: #69776f;
+    color: var(--text-muted);
 }
-
 
 .result-placeholder > span {
-    font-size: 25px;
-}
+    width: 42px;
+    height: 42px;
 
+    flex: 0 0 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    font-size: 20px;
+}
 
 .result-placeholder strong {
     display: block;
 
-    color: #34483d;
+    color: var(--text);
 
     font-size: 13px;
 }
-
 
 .result-placeholder small {
     display: block;
 
     margin-top: 2px;
 
-    color: #89948e;
-
     font-size: 11px;
 }
 
 
 /* =========================================================
-   9. CONTACT PAGE
+   18. NUTRITION CONSULTATION
 ========================================================= */
 
-.calculator-page-header {
-    padding-top: 70px;
+.nutrition-consultation {
+    width: 100%;
 
-    padding-bottom: 35px;
-}
+    margin-top: 18px;
 
+    padding: 16px 18px;
 
-.contact-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 18px;
-}
-
-
-.contact-card {
-    display: flex;
-
-    flex-direction: column;
-
-    min-height: 300px;
-
-    padding: 25px;
-
-    background: #ffffff;
-
-    border:
-        1px solid #e3ece7;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 8px 24px
-        rgba(23, 61, 42, 0.05);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-
-.contact-card:hover {
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 15px 35px
-        rgba(23, 61, 42, 0.10);
-}
-
-
-.contact-icon {
-    width: 55px;
-
-    height: 55px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin-bottom: 18px;
-
-    border-radius: 15px;
-}
-
-
-.contact-icon svg {
-    width: 27px;
-
-    height: 27px;
-}
-
-
-.whatsapp-icon {
-    color: #ffffff;
-
-    background: #25d366;
-}
-
-
-.instagram-icon {
-    color: #ffffff;
-
-    background: #d62976;
-}
-
-
-.tiktok-icon {
-    color: #ffffff;
-
-    background: #111111;
-}
-
-
-.facebook-icon {
-    color: #ffffff;
-
-    background: #1877f2;
-}
-
-
-.contact-card h3 {
-    margin-bottom: 8px;
-
-    color: #173d2a;
-
-    font-size: 19px;
-}
-
-
-.contact-card p {
-    flex-grow: 1;
-
-    color: #69776f;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-}
-
-
-.contact-card strong {
-    margin-top: 15px;
-
-    color: #34483d;
-
-    font-size: 13px;
-}
-
-
-.contact-link {
-    margin-top: 10px;
-
-    color: #16804b;
-
-    font-size: 13px;
-
-    font-weight: 700;
-}
-
-
-/* LOCATION */
-
-.contact-location {
     display: flex;
 
     align-items: flex-start;
 
-    gap: 22px;
+    gap: 14px;
 
-    padding: 30px;
+    border: 1px solid #bbf7d0;
 
-    background: #ffffff;
+    border-radius: 16px;
 
-    border:
-        1px solid #e3ece7;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(23, 61, 42, 0.05);
+    background: #f0fdf4;
 }
 
+.nutrition-consultation-icon {
+    width: 42px;
+    height: 42px;
 
-.contact-location-icon {
-    width: 58px;
-
-    height: 58px;
-
-    flex-shrink: 0;
+    flex: 0 0 42px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    background: #edf8f2;
+    border-radius: 12px;
 
-    border-radius: 16px;
+    background: #dcfce7;
 
-    font-size: 27px;
+    font-size: 20px;
 }
 
+.nutrition-consultation-content {
+    flex: 1;
 
-.contact-location h2 {
-    margin-bottom: 8px;
-
-    color: #173d2a;
-
-    font-size: 27px;
+    min-width: 0;
 }
 
+.nutrition-consultation-content strong {
+    display: block;
 
-.contact-location p {
-    color: #69776f;
+    margin-bottom: 5px;
 
     font-size: 14px;
-
-    line-height: 1.7;
 }
 
+.nutrition-consultation-content p {
+    margin: 0;
 
-.card-link {
-    display: inline-block;
-
-    margin-top: 12px;
-
-    color: #16804b;
+    color: #475569;
 
     font-size: 13px;
 
-    font-weight: 700;
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   10. DISCLAIMER
+   19. EDUCATION HERO
 ========================================================= */
 
-.disclaimer {
-    width: 88%;
+.education-hero {
+    position: relative;
 
-    max-width: 1050px;
+    overflow: hidden;
 
-    margin:
-        40px auto 70px;
+    padding: 85px 20px 90px;
 
-    padding: 22px 25px;
+    background:
+        linear-gradient(
+            135deg,
+            #ecfdf5 0%,
+            #f8fafc 55%,
+            #ffffff 100%
+        );
+}
 
-    background: #fff9e9;
+.education-hero::before {
+    content: "";
 
-    border:
-        1px solid #f0e1b7;
+    position: absolute;
 
-    border-radius: 15px;
+    width: 320px;
+    height: 320px;
+
+    top: -140px;
+    right: -110px;
+
+    border-radius: 50%;
+
+    background: rgba(20, 184, 166, 0.10);
+}
+
+.education-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    left: -80px;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(16, 185, 129, 0.08);
+}
+
+.education-hero-inner {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.education-hero-icon {
+    width: 82px;
+    height: 82px;
+
+    margin: 0 auto 24px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 26px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 15px 40px rgba(15, 118, 110, 0.12);
+
+    font-size: 38px;
+}
+
+.education-hero h1 {
+    margin: 10px 0 18px;
+
+    font-size: clamp(38px, 5vw, 58px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+}
+
+.education-hero-inner > p:last-child {
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    color: var(--text-secondary);
+
+    font-size: 16px;
+
+    line-height: 1.8;
 }
 
 
-.disclaimer h3 {
-    margin-bottom: 7px;
+/* =========================================================
+   20. EDUCATION INTRO
+========================================================= */
 
-    color: #735d20;
+.education-intro {
+    padding: 75px 20px 45px;
+}
 
-    font-size: 14px;
+.education-intro-content {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.education-intro h2 {
+    max-width: 700px;
+
+    margin: 10px auto 18px;
+
+    font-size: clamp(28px, 4vw, 40px);
+
+    line-height: 1.15;
+
+    letter-spacing: -0.8px;
+}
+
+.education-intro-content > p:last-child {
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    color: var(--text-muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
 }
 
 
-.disclaimer p {
-    color: #766f5b;
+/* =========================================================
+   21. EDUCATION SECTION
+========================================================= */
 
-    font-size: 12px;
+.education-section {
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    padding: 35px 20px 80px;
+}
+
+.education-section-heading {
+    margin-bottom: 38px;
+
+    text-align: center;
+}
+
+.education-section-heading h2 {
+    margin: 8px 0 12px;
+
+    font-size: clamp(28px, 4vw, 38px);
+
+    line-height: 1.15;
+
+    letter-spacing: -0.7px;
+}
+
+.education-section-heading p:last-child {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: var(--text-muted);
+
+    font-size: 15px;
 
     line-height: 1.7;
 }
 
 
 /* =========================================================
-   11. FOOTER
+   22. EDUCATION GRID
+========================================================= */
+
+.education-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   23. EDUCATION CARD
+========================================================= */
+
+.education-card {
+    position: relative;
+
+    grid-column: span 4;
+
+    min-width: 0;
+
+    padding: 28px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    border-radius: 26px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 30px rgba(15, 23, 42, 0.05);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.education-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: var(--primary-light);
+}
+
+.education-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #cbd5e1;
+
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.10);
+}
+
+
+/* =========================================================
+   24. EDUCATION ICON
+========================================================= */
+
+.education-card-icon {
+    width: 62px;
+    height: 62px;
+
+    margin-bottom: 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 19px;
+
+    background: var(--green-light);
+
+    font-size: 30px;
+}
+
+.education-category {
+    margin: 0 0 8px;
+
+    color: var(--primary);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+.education-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 21px;
+
+    line-height: 1.3;
+
+    letter-spacing: -0.3px;
+}
+
+.education-card > p:not(.education-category) {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   25. EDUCATION DETAILS
+========================================================= */
+
+.education-card h4 {
+    margin: 22px 0 10px;
+
+    color: #334155;
+
+    font-size: 13px;
+}
+
+.education-card ul {
+    margin: 0;
+
+    padding-left: 19px;
+}
+
+.education-card li {
+    margin-bottom: 7px;
+
+    color: #475569;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+.education-card li:last-child {
+    margin-bottom: 0;
+}
+
+.education-highlight {
+    margin-top: 20px;
+
+    padding: 14px 16px;
+
+    border-radius: 15px;
+
+    background: #f0fdf4;
+
+    color: #166534;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   26. EDUCATION CARD COLORS
+========================================================= */
+
+/* Air putih */
+
+.education-card:nth-child(1)::before {
+    background: #0ea5e9;
+}
+
+.education-card:nth-child(1) .education-card-icon {
+    background: #e0f2fe;
+}
+
+
+/* Gizi */
+
+.education-card:nth-child(2)::before {
+    background: #22c55e;
+}
+
+.education-card:nth-child(2) .education-card-icon {
+    background: #dcfce7;
+}
+
+
+/* Rokok */
+
+.education-card:nth-child(3)::before {
+    background: #f97316;
+}
+
+.education-card:nth-child(3) .education-card-icon {
+    background: #ffedd5;
+}
+
+
+/* Mental */
+
+.education-card:nth-child(4)::before {
+    background: #8b5cf6;
+}
+
+.education-card:nth-child(4) .education-card-icon {
+    background: #ede9fe;
+}
+
+
+/* Kesehatan seksual */
+
+.education-card:nth-child(5)::before {
+    background: #ec4899;
+}
+
+.education-card:nth-child(5) .education-card-icon {
+    background: #fce7f3;
+}
+
+
+/* Tips sehat */
+
+.education-card:nth-child(6)::before {
+    background: #14b8a6;
+}
+
+.education-card:nth-child(6) .education-card-icon {
+    background: #ccfbf1;
+}
+
+
+/* =========================================================
+   27. WARNING CARD
+========================================================= */
+
+.education-card-warning {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #fffaf5 100%
+        );
+}
+
+
+/* =========================================================
+   28. EDUCATION CTA
+========================================================= */
+
+.education-cta {
+    position: relative;
+
+    max-width: 1140px;
+
+    margin: 0 auto 70px;
+
+    padding: 65px 30px;
+
+    overflow: hidden;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f766e 0%,
+            #115e59 100%
+        );
+
+    color: #ffffff;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(15, 118, 110, 0.20);
+}
+
+.education-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -100px;
+    top: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.08);
+}
+
+.education-cta::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    left: -80px;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.06);
+}
+
+.education-cta-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+}
+
+.education-cta .section-label {
+    color: rgba(255,255,255,0.75);
+}
+
+.education-cta h2 {
+    margin: 10px 0 15px;
+
+    font-size: clamp(28px, 4vw, 40px);
+
+    line-height: 1.15;
+}
+
+.education-cta p:not(.section-label) {
+    max-width: 650px;
+
+    margin: 0 auto 28px;
+
+    color: rgba(255,255,255,0.88);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   29. FOOTER
 ========================================================= */
 
 footer {
     margin-top: 30px;
 
-    background: #173d2a;
+    background: #0f172a;
 
     color: #ffffff;
 }
 
-
 .footer-content {
-    width: 88%;
-
     max-width: 1180px;
 
     margin: 0 auto;
 
-    padding:
-        50px 0;
+    padding: 55px 20px 30px;
 
     display: grid;
 
     grid-template-columns:
-        1.2fr 1fr 0.6fr;
+        1.3fr
+        1fr
+        auto;
 
     gap: 50px;
+
+    align-items: start;
 }
 
+.footer-logo {
+    width: auto;
 
-.footer-info h3 {
-    margin-bottom: 10px;
+    height: 50px;
 
-    font-size: 20px;
+    max-width: 190px;
+
+    margin-bottom: 15px;
 }
 
+.footer-info p {
+    max-width: 300px;
 
-.footer-info p,
-.footer-contact p {
-    color: #c8d8cf;
+    margin: 0;
+
+    color: #94a3b8;
 
     font-size: 13px;
 
     line-height: 1.7;
 }
 
-
 .footer-contact h4 {
-    margin-bottom: 8px;
+    margin: 0 0 10px;
 
-    color: #ffffff;
+    font-size: 14px;
+}
+
+.footer-contact p {
+    max-width: 320px;
+
+    margin: 0 0 10px;
+
+    color: #94a3b8;
 
     font-size: 13px;
+
+    line-height: 1.7;
 }
-
-
-.footer-contact h4:not(:first-child) {
-    margin-top: 20px;
-}
-
 
 .footer-contact a {
-    color: #c8d8cf;
+    color: #5eead4;
 
     font-size: 13px;
+
+    font-weight: 600;
 }
-
-
-.footer-contact a:hover {
-    color: #ffffff;
-}
-
-
-.footer-logo {
-    width: 135px;
-
-    height: 55px;
-
-    object-fit: contain;
-
-    object-position: left center;
-
-    margin-bottom: 10px;
-}
-
 
 .footer-copyright {
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: flex-end;
+    align-self: end;
 }
 
-
 .footer-copyright p {
-    color: #a9beb2;
+    margin: 0;
+
+    color: #64748b;
 
     font-size: 12px;
 }
 
 
 /* =========================================================
-   12. RESPONSIVE TABLET
+   30. MOBILE NAVIGATION
 ========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
 
     .navbar {
-        padding:
-            10px 4%;
+        min-height: 68px;
+
+        padding: 8px 16px;
+
+        gap: 10px;
     }
 
+    .logo img {
+        height: 42px;
+
+        max-width: 160px;
+    }
+
+    .navbar nav {
+        gap: 2px;
+    }
+
+    .navbar nav a {
+        padding: 8px 7px;
+
+        font-size: 11px;
+    }
+
+    .navbar nav a.active::after {
+        bottom: 1px;
+
+        width: 15px;
+    }
+
+
+    /* =====================================================
+       HOME MOBILE
+    ====================================================== */
+
+    .hero {
+        padding: 55px 20px 60px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .hero-text h1 {
+        font-size: 38px;
+
+        letter-spacing: -1px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .hero-card {
+        padding: 30px 20px;
+    }
+
+    .hero-icon {
+        width: 65px;
+        height: 65px;
+
+        border-radius: 20px;
+
+        font-size: 30px;
+    }
+
+
+    /* =====================================================
+       SERVICE MOBILE
+    ====================================================== */
 
     .section {
-        padding-left: 4%;
+        padding: 55px 16px;
+    }
 
-        padding-right: 4%;
+    .service-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .service-card {
+        padding: 23px;
+
+        border-radius: 19px;
+    }
+
+    .service-card:hover {
+        transform: none;
     }
 
 
-    .education-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+    /* =====================================================
+       ABOUT MOBILE
+    ====================================================== */
+
+    .about-card {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        padding: 28px;
+
+        border-radius: 22px;
     }
 
+    .about-icon {
+        width: 65px;
+        height: 65px;
+
+        border-radius: 19px;
+
+        font-size: 30px;
+    }
+
+    .about-content h2 {
+        font-size: 27px;
+    }
+
+
+    /* =====================================================
+       CTA MOBILE
+    ====================================================== */
+
+    .whatsapp-cta {
+        padding: 42px 20px;
+
+        border-radius: 23px;
+    }
+
+    .whatsapp-cta h2 {
+        font-size: 28px;
+    }
+
+
+    /* =====================================================
+       CALCULATOR MOBILE
+    ====================================================== */
+
+    .calculator-hero {
+        padding: 50px 20px 45px;
+
+        text-align: left;
+    }
+
+    .calculator-hero-inner {
+        text-align: left;
+    }
+
+    .calculator-hero .hero-icon {
+        margin: 0 0 18px;
+
+        width: 62px;
+        height: 62px;
+    }
+
+    .calculator-hero h1 {
+        font-size: 36px;
+    }
+
+    .calculator-hero-text {
+        margin: 0;
+
+        font-size: 14px;
+    }
+
+    .calculator-navigation {
+        margin-top: -15px;
+
+        grid-template-columns: 1fr;
+
+        padding: 0 16px;
+    }
+
+    .calculator-navigation a {
+        padding: 13px;
+    }
+
+    .calculator-section,
+    .calculator-section-alt {
+        padding: 45px 16px 10px;
+    }
 
     .calculator-card {
         grid-template-columns: 1fr;
 
         gap: 30px;
+
+        padding: 23px;
+
+        border-radius: 22px;
     }
-
-
-    .contact-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-
-    .footer-content {
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-
-    .footer-copyright {
-        justify-content: flex-start;
-    }
-
-}
-
-
-/* =========================================================
-   13. RESPONSIVE MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-    /* NAVBAR */
-
-    .navbar {
-        min-height: auto;
-
-        padding:
-            10px 18px;
-
-        flex-direction: column;
-
-        gap: 8px;
-    }
-
-
-    .logo img {
-        width: 120px;
-
-        height: 48px;
-    }
-
-
-    .navbar nav {
-        width: 100%;
-
-        justify-content: center;
-
-        flex-wrap: wrap;
-
-        gap: 2px;
-    }
-
-
-    .navbar nav a {
-        padding:
-            7px 8px;
-
-        font-size: 12px;
-    }
-
-
-    /* SECTION */
-
-    .section {
-        padding:
-            55px 18px;
-    }
-
-
-    .section:first-child {
-        padding-top: 60px;
-    }
-
-
-    .section-heading h1 {
-        font-size: 38px;
-    }
-
-
-    .section-heading h2 {
-        font-size: 29px;
-    }
-
-
-    .section-heading > p:not(.section-label) {
-        font-size: 14px;
-    }
-
-
-    /* HERO */
-
-    .hero-buttons {
-        width: 100%;
-    }
-
-
-    .btn {
-        width: 100%;
-    }
-
-
-    /* EDUCATION */
-
-    .education-header {
-        padding-top: 55px;
-    }
-
-
-    .education-grid {
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-    }
-
-
-    .education-card {
-        min-height: auto;
-    }
-
-
-    .education-card h3 {
-        font-size: 19px;
-    }
-
-
-    /* CALCULATOR */
-
-    .calculator-hero {
-        padding:
-            55px 18px 35px;
-    }
-
-
-    .calculator-navigation {
-        width: calc(100% - 36px);
-
-        grid-template-columns: 1fr;
-
-        margin-bottom: 25px;
-    }
-
-
-    .calculator-section {
-        padding:
-            25px 18px;
-    }
-
-
-    .calculator-card {
-        padding: 22px;
-
-        border-radius: 19px;
-    }
-
-
-    .calculator-form {
-        padding: 18px;
-    }
-
 
     .calculator-info h2 {
         font-size: 27px;
     }
 
-
-    /* CONTACT */
-
-    .contact-grid {
-        grid-template-columns: 1fr;
+    .calculator-info > p:not(.section-label) {
+        font-size: 13px;
     }
 
-
-    .contact-location {
-        flex-direction: column;
-
-        padding: 24px;
+    .form-title {
+        margin-bottom: 20px;
     }
 
+    .nutrition-consultation {
+        padding: 15px;
 
-    .contact-location h2 {
-        font-size: 24px;
-    }
-
-
-    /* DISCLAIMER */
-
-    .disclaimer {
-        width: calc(100% - 36px);
-
-        margin:
-            25px auto 50px;
-
-        padding: 20px;
-    }
-
-
-    /* FOOTER */
-
-    .footer-content {
-        width: calc(100% - 36px);
-
-        padding:
-            40px 0;
-
-        grid-template-columns: 1fr;
-
-        gap: 30px;
-    }
-
-
-    .footer-copyright {
-        justify-content: flex-start;
-    }
-
-}
-
-
-/* =========================================================
-   14. VERY SMALL SCREEN
-========================================================= */
-
-@media (max-width: 400px) {
-
-    .navbar nav a {
-        padding:
-            6px 6px;
-
-        font-size: 11px;
-    }
-
-
-    .section-heading h1 {
-        font-size: 33px;
-    }
-
-
-    .education-card {
-        border-radius: 18px;
-    }
-
-
-    .calculator-card {
-        padding: 17px;
-    }
-
-}
-/* =========================================================
-   MOBILE HOMEPAGE - KLINIK PUTRA MEDIKA
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    /* ---------- DASAR ---------- */
-
-    body {
-        overflow-x: hidden;
-    }
-
-    main {
-        width: 100%;
-    }
-
-    /* ---------- NAVBAR ---------- */
-
-    .navbar {
-        height: auto;
-        min-height: 68px;
-        padding: 10px 18px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         gap: 12px;
+
+        border-radius: 15px;
     }
 
-    .logo img {
-        width: 145px;
-        height: auto;
-        display: block;
-    }
+    .nutrition-consultation-icon {
+        width: 38px;
+        height: 38px;
 
-    .navbar nav {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-        max-width: 65%;
-    }
+        flex-basis: 38px;
 
-    .navbar nav::-webkit-scrollbar {
-        display: none;
-    }
-
-    .navbar nav a {
-        white-space: nowrap;
-        padding: 9px 11px;
-        font-size: 12px;
         border-radius: 10px;
+
+        font-size: 18px;
+    }
+
+    .nutrition-consultation-content strong {
+        font-size: 13px;
+    }
+
+    .nutrition-consultation-content p {
+        font-size: 12px;
+
+        line-height: 1.55;
     }
 
 
-    /* ---------- HERO ---------- */
+    /* =====================================================
+       EDUCATION MOBILE
+    ====================================================== */
 
-    .hero {
-        padding: 42px 20px 34px;
-        min-height: auto;
-    }
+    .education-hero {
+        padding: 55px 20px 60px;
 
-    .hero-content {
-        display: flex;
-        flex-direction: column;
-        gap: 28px;
-        width: 100%;
-    }
-
-    .hero-text {
-        width: 100%;
         text-align: left;
     }
 
-    .section-label {
-        font-size: 11px;
-        letter-spacing: 1.5px;
-        margin-bottom: 10px;
+    .education-hero-inner {
+        text-align: left;
     }
 
-    .hero h1 {
-        font-size: clamp(32px, 9vw, 44px);
-        line-height: 1.08;
+    .education-hero-icon {
+        width: 62px;
+        height: 62px;
+
+        margin: 0 0 20px;
+
+        border-radius: 19px;
+
+        font-size: 29px;
+    }
+
+    .education-hero h1 {
+        font-size: 37px;
+
         letter-spacing: -1px;
-        margin: 0 0 16px;
     }
 
-    .hero-description {
-        font-size: 15px;
+    .education-hero-inner > p:last-child {
+        margin: 0;
+
+        font-size: 14px;
+
         line-height: 1.7;
-        max-width: 100%;
-        margin-bottom: 22px;
+    }
+
+    .education-intro {
+        padding: 50px 20px 30px;
+    }
+
+    .education-intro-content {
+        text-align: left;
+    }
+
+    .education-intro h2 {
+        margin-left: 0;
+        margin-right: 0;
+
+        font-size: 28px;
+    }
+
+    .education-intro-content > p:last-child {
+        margin-left: 0;
+        margin-right: 0;
+
+        font-size: 14px;
+    }
+
+    .education-section {
+        padding: 35px 16px 55px;
+    }
+
+    .education-section-heading {
+        margin-bottom: 28px;
+
+        text-align: left;
+    }
+
+    .education-section-heading h2 {
+        font-size: 27px;
+    }
+
+    .education-section-heading p:last-child {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .education-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .education-card {
+        grid-column: span 1;
+
+        padding: 23px;
+
+        border-radius: 21px;
+    }
+
+    .education-card:hover {
+        transform: none;
+
+        box-shadow:
+            0 8px 25px rgba(15, 23, 42, 0.05);
+    }
+
+    .education-card-icon {
+        width: 55px;
+        height: 55px;
+
+        margin-bottom: 18px;
+
+        border-radius: 17px;
+
+        font-size: 26px;
+    }
+
+    .education-card h3 {
+        font-size: 20px;
+    }
+
+    .education-card > p:not(.education-category) {
+        font-size: 13px;
+    }
+
+    .education-card li {
+        font-size: 12.5px;
+    }
+
+    .education-highlight {
+        font-size: 12px;
+    }
+
+    .education-cta {
+        margin: 0 16px 50px;
+
+        padding: 45px 20px;
+
+        border-radius: 24px;
+    }
+
+    .education-cta h2 {
+        font-size: 28px;
+    }
+
+    .education-cta p:not(.section-label) {
+        font-size: 13px;
+    }
+
+
+    /* =====================================================
+       FOOTER MOBILE
+    ====================================================== */
+
+    .footer-content {
+        grid-template-columns: 1fr;
+
+        gap: 28px;
+
+        padding: 45px 20px 25px;
+    }
+
+    .footer-copyright {
+        align-self: auto;
+
+        padding-top: 10px;
+
+        border-top: 1px solid rgba(148,163,184,0.15);
+    }
+
+}
+
+
+/* =========================================================
+   31. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .navbar nav a {
+        padding: 7px 5px;
+
+        font-size: 10px;
+    }
+
+    .logo img {
+        height: 38px;
+
+        max-width: 135px;
+    }
+
+    .hero-text h1 {
+        font-size: 34px;
+    }
+
+    .education-hero h1 {
+        font-size: 34px;
+    }
+
+    .calculator-hero h1 {
+        font-size: 33px;
+    }
+
+    .btn {
+        width: 100%;
     }
 
     .hero-buttons {
-        display: flex;
         width: 100%;
     }
 
     .hero-buttons .btn {
         width: 100%;
-        text-align: center;
-        padding: 14px 20px;
-        border-radius: 14px;
-        font-size: 14px;
-        font-weight: 700;
     }
 
-
-    /* ---------- HERO CARD ---------- */
-
-    .hero-card {
-        width: 100%;
-        min-height: 190px;
-        padding: 28px 24px;
-        border-radius: 24px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        box-sizing: border-box;
-    }
-
-    .hero-icon {
-        font-size: 42px;
-        margin-bottom: 12px;
-    }
-
-    .hero-card p {
-        font-size: 16px;
-        line-height: 1.5;
-        margin: 0 0 8px;
-    }
-
-    .hero-card span {
-        font-size: 12px;
-    }
-
-
-    /* ---------- SECTION ---------- */
-
-    .section {
-        padding: 48px 20px;
-    }
-
-    .section-heading {
-        text-align: left;
-        margin-bottom: 26px;
-    }
-
-    .section-heading h2 {
-        font-size: 27px;
-        line-height: 1.2;
-        margin-bottom: 10px;
-    }
-
-    .section-heading > p:last-child {
-        font-size: 14px;
-        line-height: 1.7;
-    }
-
-
-    /* ---------- SERVICE CARDS ---------- */
-
-    .service-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
-
-    .service-card {
-        padding: 22px;
-        border-radius: 20px;
-        display: grid;
-        grid-template-columns: 54px 1fr;
-        column-gap: 16px;
-        align-items: center;
-        text-decoration: none;
-        transition: transform 0.2s ease;
-    }
-
-    .service-card:active {
-        transform: scale(0.98);
-    }
-
-    .service-icon {
-        width: 54px;
-        height: 54px;
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 25px;
-        grid-row: span 2;
-    }
-
-    .service-card h3 {
-        font-size: 17px;
-        line-height: 1.3;
-        margin: 0 0 5px;
-    }
-
-    .service-card p {
-        font-size: 13px;
-        line-height: 1.55;
-        margin: 0;
-    }
-
-
-    /* ---------- TOUCH FRIENDLY ---------- */
-
-    a,
-    button {
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .service-card,
-    .btn,
-    .navbar nav a {
-        min-height: 44px;
-    }
-
-
-    /* ---------- JARAK BAWAH ---------- */
-
-    section:last-child {
-        padding-bottom: 60px;
-    }
-}
-
-
-/* =========================================================
-   HP KECIL
-   ========================================================= */
-
-@media (max-width: 390px) {
-
-    .navbar {
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .logo img {
-        width: 125px;
-    }
-
-    .navbar nav {
-        max-width: 58%;
-    }
-
-    .navbar nav a {
-        padding: 8px 9px;
-        font-size: 11px;
-    }
-
-    .hero {
-        padding-left: 17px;
-        padding-right: 17px;
-    }
-
-    .hero h1 {
-        font-size: 31px;
-    }
-
-    .section {
-        padding-left: 17px;
-        padding-right: 17px;
-    }
 }
