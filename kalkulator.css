@@ -1,0 +1,1309 @@
+```css
+/* =========================================================
+   KLINIK PUTRA MEDIKA
+   KALKULATOR KESEHATAN
+   CSS KHUSUS HALAMAN KALKULATOR
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+.kal-main *,
+.kal-main *::before,
+.kal-main *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.kal-main {
+    width: 100%;
+
+    background: #f6f9fc;
+
+    color: #172033;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.kal-hero {
+    padding: 70px 20px 45px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f6fbfa 100%
+        );
+}
+
+
+.kal-hero-inner {
+    width: min(780px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+.kal-hero-icon {
+    width: 64px;
+    height: 64px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #e7f7f3;
+
+    font-size: 31px;
+
+    box-shadow:
+        0 8px 24px rgba(15, 157, 138, 0.12);
+}
+
+
+.kal-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 13px;
+
+    margin-bottom: 15px;
+
+    border-radius: 999px;
+
+    background: #e7f7f3;
+
+    color: #0c8b79;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.1px;
+}
+
+
+.kal-hero h1 {
+    margin: 0;
+
+    color: #142033;
+
+    font-size: clamp(32px, 5vw, 48px);
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -1.2px;
+}
+
+
+.kal-hero p {
+    max-width: 680px;
+
+    margin: 17px auto 0;
+
+    color: #66758a;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CONTENT WIDTH
+   ========================================================= */
+
+.kal-navigation,
+.kal-section,
+.kal-disclaimer {
+    width: min(1120px, calc(100% - 40px));
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   QUICK NAVIGATION
+   ========================================================= */
+
+.kal-navigation {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 8px;
+
+    margin-bottom: 45px;
+}
+
+
+.kal-nav-card {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 17px;
+
+    border: 1px solid #e2ebef;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    color: #172033;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 6px 20px rgba(30, 60, 90, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.kal-nav-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #c8e5df;
+
+    box-shadow:
+        0 12px 28px rgba(30, 60, 90, 0.09);
+}
+
+
+.kal-nav-icon {
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #edf9f7;
+
+    font-size: 22px;
+
+    line-height: 1;
+}
+
+
+.kal-nav-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.kal-nav-content strong {
+    color: #172033;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+
+    font-weight: 800;
+}
+
+
+.kal-nav-content small {
+    color: #7a8797;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+.kal-nav-arrow {
+    margin-left: auto;
+
+    color: #0f9d8a;
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.kal-section {
+    margin-bottom: 30px;
+}
+
+
+.kal-section-alt {
+    width: 100%;
+
+    padding: 30px 0;
+
+    background: #eef7f5;
+}
+
+
+.kal-section-alt .kal-card {
+    width: min(1120px, calc(100% - 40px));
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.kal-card {
+    display: grid;
+
+    grid-template-columns:
+        minmax(260px, 0.8fr)
+        minmax(0, 1.2fr);
+
+    gap: 45px;
+
+    padding: 38px;
+
+    border: 1px solid #e2ebef;
+
+    border-radius: 24px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 10px 35px rgba(30, 60, 90, 0.07);
+}
+
+
+/* =========================================================
+   INFO
+   ========================================================= */
+
+.kal-info {
+    min-width: 0;
+
+    padding-top: 4px;
+}
+
+
+.kal-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 17px;
+
+    border-radius: 12px;
+
+    background: #e7f7f3;
+
+    color: #0b8978;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.kal-label {
+    margin-bottom: 9px;
+
+    color: #0c8b79;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.kal-info h2 {
+    margin: 0 0 13px;
+
+    color: #172033;
+
+    font-size: 28px;
+
+    line-height: 1.25;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+.kal-info > p {
+    margin: 0;
+
+    color: #66758a;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   TIP
+   ========================================================= */
+
+.kal-tip {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-top: 24px;
+
+    padding: 15px;
+
+    border: 1px solid #dcefeb;
+
+    border-radius: 13px;
+
+    background: #f2faf8;
+
+    color: #547068;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+}
+
+
+.kal-tip span:first-child {
+    flex: 0 0 auto;
+
+    font-size: 16px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.kal-form {
+    min-width: 0;
+
+    padding: 26px;
+
+    border: 1px solid #e8eef2;
+
+    border-radius: 19px;
+
+    background: #fbfcfd;
+}
+
+
+/* =========================================================
+   FORM HEADER
+   ========================================================= */
+
+.kal-form-header {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #e7edf1;
+}
+
+
+.kal-form-icon {
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #e7f7f3;
+
+    font-size: 23px;
+}
+
+
+.kal-form-header h3 {
+    margin: 0;
+
+    color: #263449;
+
+    font-size: 15px;
+
+    line-height: 1.4;
+
+    font-weight: 800;
+}
+
+
+.kal-form-header p {
+    margin: 3px 0 0;
+
+    color: #8290a0;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.kal-form-group {
+    margin-bottom: 17px;
+}
+
+
+.kal-form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #344256;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   INPUT & SELECT
+   ========================================================= */
+
+.kal-form input,
+.kal-form select {
+    width: 100%;
+
+    min-height: 48px;
+
+    border: 1px solid #dce4e9;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #263449;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.kal-form input {
+    padding: 12px 13px;
+}
+
+
+.kal-form select {
+    padding: 10px 38px 10px 13px;
+
+    cursor: pointer;
+}
+
+
+.kal-form input::placeholder {
+    color: #a0acb8;
+}
+
+
+.kal-form input:focus,
+.kal-form select:focus {
+    border-color: #0f9d8a;
+
+    box-shadow:
+        0 0 0 3px rgba(15, 157, 138, 0.10);
+}
+
+
+/* =========================================================
+   INPUT + UNIT
+   ========================================================= */
+
+.kal-input-unit {
+    position: relative;
+}
+
+
+.kal-input-unit input {
+    padding-right: 68px;
+}
+
+
+.kal-input-unit span {
+    position: absolute;
+
+    top: 50%;
+    right: 13px;
+
+    transform: translateY(-50%);
+
+    color: #7c8998;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ACTIVITY NOTE
+   ========================================================= */
+
+.kal-activity-note {
+    margin: -5px 0 18px;
+
+    color: #8592a1;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.kal-button {
+    width: 100%;
+
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 7px;
+
+    padding: 12px 18px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    background: #0f9d8a;
+
+    color: #ffffff;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px rgba(15, 157, 138, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.kal-button span {
+    font-size: 17px;
+
+    line-height: 1;
+}
+
+
+.kal-button:hover {
+    background: #0b8978;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 24px rgba(15, 157, 138, 0.25);
+}
+
+
+.kal-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESULT
+   ========================================================= */
+
+.kal-result {
+    min-height: 100px;
+
+    margin-top: 18px;
+
+    padding: 18px;
+
+    border: 1px dashed #d5e0e5;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+}
+
+
+/* PLACEHOLDER */
+
+.kal-result-placeholder {
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.kal-result-icon {
+    width: 44px;
+    height: 44px;
+
+    flex: 0 0 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f0f6f5;
+
+    font-size: 21px;
+}
+
+
+.kal-result-placeholder strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #364356;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.kal-result-placeholder small {
+    display: block;
+
+    color: #8995a3;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CONSULTATION
+   ========================================================= */
+
+.kal-consultation {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+    padding: 16px;
+
+    border: 1px solid #dcefeb;
+
+    border-radius: 14px;
+
+    background: #f2faf8;
+}
+
+
+.kal-consultation-icon {
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #dff4ef;
+
+    font-size: 17px;
+}
+
+
+.kal-consultation strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #2e514b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.kal-consultation p {
+    margin: 0;
+
+    color: #607a74;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   DISCLAIMER
+   ========================================================= */
+
+.kal-disclaimer {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-top: 45px;
+    margin-bottom: 70px;
+
+    padding: 22px 24px;
+
+    border: 1px solid #f0dfb5;
+
+    border-radius: 17px;
+
+    background: #fffaf0;
+}
+
+
+.kal-disclaimer-icon {
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #fff0c7;
+
+    font-size: 20px;
+}
+
+
+.kal-disclaimer h3 {
+    margin: 0 0 4px;
+
+    color: #5e4a24;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    font-weight: 800;
+}
+
+
+.kal-disclaimer p {
+    margin: 0;
+
+    color: #796a48;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .kal-navigation,
+    .kal-section,
+    .kal-disclaimer {
+        width: min(100% - 30px, 720px);
+    }
+
+
+    .kal-navigation {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    .kal-card {
+        grid-template-columns: 1fr;
+
+        gap: 28px;
+
+        padding: 28px;
+    }
+
+
+    .kal-section-alt .kal-card {
+        width: min(100% - 30px, 720px);
+    }
+
+
+    .kal-info {
+        max-width: 620px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+    .kal-hero {
+        padding: 45px 12px 30px;
+    }
+
+
+    .kal-hero-icon {
+        width: 56px;
+        height: 56px;
+
+        margin-bottom: 14px;
+
+        border-radius: 15px;
+
+        font-size: 27px;
+    }
+
+
+    .kal-hero-badge {
+        font-size: 9px;
+
+        letter-spacing: 0.9px;
+    }
+
+
+    .kal-hero h1 {
+        font-size: 31px;
+
+        letter-spacing: -0.7px;
+    }
+
+
+    .kal-hero p {
+        margin-top: 13px;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+
+    .kal-navigation,
+    .kal-section,
+    .kal-disclaimer {
+        width: calc(100% - 24px);
+    }
+
+
+    .kal-navigation {
+        margin-bottom: 28px;
+    }
+
+
+    .kal-nav-card {
+        padding: 14px;
+
+        border-radius: 14px;
+    }
+
+
+    .kal-nav-icon {
+        width: 42px;
+        height: 42px;
+
+        flex-basis: 42px;
+
+        border-radius: 11px;
+
+        font-size: 20px;
+    }
+
+
+    .kal-nav-content strong {
+        font-size: 12px;
+    }
+
+
+    .kal-nav-content small {
+        font-size: 10px;
+    }
+
+
+    .kal-section {
+        margin-bottom: 16px;
+    }
+
+
+    .kal-section-alt {
+        padding: 16px 0;
+    }
+
+
+    .kal-section-alt .kal-card {
+        width: calc(100% - 24px);
+    }
+
+
+    .kal-card {
+        gap: 22px;
+
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+
+    .kal-number {
+        width: 38px;
+        height: 38px;
+
+        margin-bottom: 13px;
+
+        border-radius: 10px;
+
+        font-size: 11px;
+    }
+
+
+    .kal-label {
+        font-size: 9px;
+    }
+
+
+    .kal-info h2 {
+        font-size: 22px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .kal-info > p {
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+
+    .kal-tip {
+        margin-top: 18px;
+
+        padding: 12px;
+
+        font-size: 11px;
+    }
+
+
+    .kal-form {
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+
+    .kal-form-header {
+        margin-bottom: 20px;
+
+        padding-bottom: 17px;
+    }
+
+
+    .kal-form-icon {
+        width: 43px;
+        height: 43px;
+
+        flex-basis: 43px;
+
+        border-radius: 11px;
+
+        font-size: 20px;
+    }
+
+
+    .kal-form-header h3 {
+        font-size: 13px;
+    }
+
+
+    .kal-form-header p {
+        font-size: 10px;
+    }
+
+
+    .kal-form-group {
+        margin-bottom: 14px;
+    }
+
+
+    .kal-form-group label {
+        font-size: 11px;
+
+        margin-bottom: 6px;
+    }
+
+
+    .kal-form input,
+    .kal-form select {
+        min-height: 45px;
+
+        font-size: 12px;
+
+        border-radius: 10px;
+    }
+
+
+    .kal-form input {
+        padding: 11px;
+    }
+
+
+    .kal-form select {
+        padding: 9px 34px 9px 11px;
+    }
+
+
+    .kal-input-unit input {
+        padding-right: 62px;
+    }
+
+
+    .kal-input-unit span {
+        right: 11px;
+
+        font-size: 10px;
+    }
+
+
+    .kal-activity-note {
+        font-size: 10px;
+    }
+
+
+    .kal-button {
+        min-height: 47px;
+
+        font-size: 12px;
+
+        border-radius: 10px;
+    }
+
+
+    .kal-result {
+        padding: 14px;
+
+        border-radius: 12px;
+    }
+
+
+    .kal-result-placeholder {
+        gap: 10px;
+    }
+
+
+    .kal-result-icon {
+        width: 38px;
+        height: 38px;
+
+        flex-basis: 38px;
+
+        border-radius: 10px;
+
+        font-size: 18px;
+    }
+
+
+    .kal-result-placeholder strong {
+        font-size: 11px;
+    }
+
+
+    .kal-result-placeholder small {
+        font-size: 10px;
+    }
+
+
+    .kal-consultation {
+        gap: 9px;
+
+        padding: 13px;
+
+        border-radius: 12px;
+    }
+
+
+    .kal-consultation-icon {
+        width: 34px;
+        height: 34px;
+
+        flex-basis: 34px;
+
+        border-radius: 9px;
+
+        font-size: 15px;
+    }
+
+
+    .kal-consultation strong {
+        font-size: 11px;
+    }
+
+
+    .kal-consultation p {
+        font-size: 10px;
+    }
+
+
+    .kal-disclaimer {
+        gap: 10px;
+
+        margin-top: 30px;
+        margin-bottom: 45px;
+
+        padding: 16px;
+
+        border-radius: 14px;
+    }
+
+
+    .kal-disclaimer-icon {
+        width: 36px;
+        height: 36px;
+
+        flex-basis: 36px;
+
+        border-radius: 9px;
+
+        font-size: 17px;
+    }
+
+
+    .kal-disclaimer h3 {
+        font-size: 12px;
+    }
+
+
+    .kal-disclaimer p {
+        font-size: 10.5px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .kal-hero h1 {
+        font-size: 28px;
+    }
+
+
+    .kal-card {
+        padding: 17px;
+    }
+
+
+    .kal-form {
+        padding: 15px;
+    }
+
+
+    .kal-nav-arrow {
+        font-size: 15px;
+    }
+
+}
+```
