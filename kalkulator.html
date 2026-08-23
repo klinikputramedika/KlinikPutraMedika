@@ -15,11 +15,19 @@
         content="Kalkulator kesehatan Klinik Putra Medika untuk menghitung BMI, BMR, TDEE dan kebutuhan makronutrien."
     >
 
+    <meta
+        name="theme-color"
+        content="#0f766e"
+    >
+
     <title>
         Kalkulator Kesehatan - Klinik Putra Medika
     </title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
@@ -33,14 +41,21 @@
 
     <header class="navbar">
 
-    <a href="index.html" class="logo">
-    <img
-        src="logo.png"
-        alt="Klinik Putra Medika"
-    >
-</a>
+        <a
+            href="index.html"
+            class="logo"
+            aria-label="Klinik Putra Medika - Beranda"
+        >
 
-        <nav>
+            <img
+                src="logo.png"
+                alt="Logo Klinik Putra Medika"
+            >
+
+        </a>
+
+
+        <nav aria-label="Navigasi utama">
 
             <a href="index.html">
                 Beranda
@@ -49,6 +64,7 @@
             <a
                 href="kalkulator.html"
                 class="active"
+                aria-current="page"
             >
                 Kalkulator
             </a>
@@ -75,14 +91,17 @@
 
 
         <!-- =================================================
-             HEADER
+             HEADER KALKULATOR
         ================================================== -->
 
         <section class="calculator-hero">
 
             <div class="calculator-hero-inner">
 
-                <div class="hero-icon">
+                <div
+                    class="hero-icon"
+                    aria-hidden="true"
+                >
                     🧮
                 </div>
 
@@ -110,15 +129,22 @@
              QUICK NAVIGATION
         ================================================== -->
 
-        <section class="calculator-navigation">
+        <section
+            class="calculator-navigation"
+            aria-label="Navigasi kalkulator"
+        >
 
             <a href="#bmi">
 
-                <span class="calculator-nav-icon">
+                <span
+                    class="calculator-nav-icon"
+                    aria-hidden="true"
+                >
                     ⚖️
                 </span>
 
                 <span>
+
                     <strong>
                         BMI
                     </strong>
@@ -126,6 +152,7 @@
                     <small>
                         Indeks massa tubuh
                     </small>
+
                 </span>
 
             </a>
@@ -133,11 +160,15 @@
 
             <a href="#bmr">
 
-                <span class="calculator-nav-icon">
+                <span
+                    class="calculator-nav-icon"
+                    aria-hidden="true"
+                >
                     🔥
                 </span>
 
                 <span>
+
                     <strong>
                         BMR & TDEE
                     </strong>
@@ -145,6 +176,7 @@
                     <small>
                         Kebutuhan energi
                     </small>
+
                 </span>
 
             </a>
@@ -152,11 +184,15 @@
 
             <a href="#macro">
 
-                <span class="calculator-nav-icon">
+                <span
+                    class="calculator-nav-icon"
+                    aria-hidden="true"
+                >
                     🥗
                 </span>
 
                 <span>
+
                     <strong>
                         Makronutrien
                     </strong>
@@ -164,6 +200,7 @@
                     <small>
                         Protein, karbo & lemak
                     </small>
+
                 </span>
 
             </a>
@@ -173,7 +210,7 @@
 
 
         <!-- =================================================
-             BMI
+             01 - BMI
         ================================================== -->
 
         <section
@@ -183,6 +220,8 @@
 
             <div class="calculator-card">
 
+
+                <!-- INFORMASI BMI -->
 
                 <div class="calculator-info">
 
@@ -212,13 +251,18 @@
                 </div>
 
 
+                <!-- FORM BMI -->
 
                 <div class="calculator-form">
 
                     <div class="form-title">
-                        <span>⚖️</span>
+
+                        <span aria-hidden="true">
+                            ⚖️
+                        </span>
 
                         <div>
+
                             <h3>
                                 Masukkan data
                             </h3>
@@ -226,9 +270,13 @@
                             <p>
                                 Gunakan data terbaru Anda.
                             </p>
+
                         </div>
+
                     </div>
 
+
+                    <!-- BERAT -->
 
                     <div class="form-group">
 
@@ -255,6 +303,8 @@
                     </div>
 
 
+                    <!-- TINGGI -->
+
                     <div class="form-group">
 
                         <label for="height">
@@ -280,6 +330,8 @@
                     </div>
 
 
+                    <!-- TOMBOL -->
+
                     <button
                         type="button"
                         class="calculator-button"
@@ -290,6 +342,8 @@
                     </button>
 
 
+                    <!-- HASIL -->
+
                     <div
                         id="bmiResult"
                         class="result"
@@ -297,11 +351,12 @@
 
                         <div class="result-placeholder">
 
-                            <span>
+                            <span aria-hidden="true">
                                 📊
                             </span>
 
                             <div>
+
                                 <strong>
                                     Hasil BMI
                                 </strong>
@@ -309,7 +364,36 @@
                                 <small>
                                     Hasil perhitungan akan muncul di sini.
                                 </small>
+
                             </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KONSULTASI GIZI -->
+
+                    <div class="nutrition-consultation">
+
+                        <div
+                            class="nutrition-consultation-icon"
+                            aria-hidden="true"
+                        >
+                            💚
+                        </div>
+
+                        <div class="nutrition-consultation-content">
+
+                            <strong>
+                                Butuh informasi lebih lanjut?
+                            </strong>
+
+                            <p>
+                                Untuk informasi lebih lanjut dan konsultasi
+                                mengenai gizi, silakan berkunjung ke
+                                Klinik Putra Medika.
+                            </p>
 
                         </div>
 
@@ -324,7 +408,7 @@
 
 
         <!-- =================================================
-             BMR & TDEE
+             02 - BMR & TDEE
         ================================================== -->
 
         <section
@@ -334,6 +418,8 @@
 
             <div class="calculator-card">
 
+
+                <!-- INFORMASI BMR -->
 
                 <div class="calculator-info">
 
@@ -363,12 +449,13 @@
                 </div>
 
 
+                <!-- FORM BMR -->
 
                 <div class="calculator-form">
 
                     <div class="form-title">
 
-                        <span>
+                        <span aria-hidden="true">
                             🔥
                         </span>
 
@@ -386,6 +473,8 @@
 
                     </div>
 
+
+                    <!-- JENIS KELAMIN -->
 
                     <div class="form-group">
 
@@ -407,6 +496,8 @@
 
                     </div>
 
+
+                    <!-- UMUR -->
 
                     <div class="form-group">
 
@@ -433,6 +524,8 @@
                     </div>
 
 
+                    <!-- BERAT -->
+
                     <div class="form-group">
 
                         <label for="weightBMR">
@@ -458,6 +551,8 @@
                     </div>
 
 
+                    <!-- TINGGI -->
+
                     <div class="form-group">
 
                         <label for="heightBMR">
@@ -482,6 +577,8 @@
 
                     </div>
 
+
+                    <!-- AKTIVITAS -->
 
                     <div class="form-group">
 
@@ -522,6 +619,8 @@
                     </p>
 
 
+                    <!-- TOMBOL -->
+
                     <button
                         type="button"
                         class="calculator-button"
@@ -532,6 +631,8 @@
                     </button>
 
 
+                    <!-- HASIL -->
+
                     <div
                         id="tdeeResult"
                         class="result"
@@ -539,7 +640,7 @@
 
                         <div class="result-placeholder">
 
-                            <span>
+                            <span aria-hidden="true">
                                 🔥
                             </span>
 
@@ -559,6 +660,34 @@
 
                     </div>
 
+
+                    <!-- KONSULTASI GIZI -->
+
+                    <div class="nutrition-consultation">
+
+                        <div
+                            class="nutrition-consultation-icon"
+                            aria-hidden="true"
+                        >
+                            💚
+                        </div>
+
+                        <div class="nutrition-consultation-content">
+
+                            <strong>
+                                Butuh informasi lebih lanjut?
+                            </strong>
+
+                            <p>
+                                Untuk informasi lebih lanjut dan konsultasi
+                                mengenai gizi, silakan berkunjung ke
+                                Klinik Putra Medika.
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -568,7 +697,7 @@
 
 
         <!-- =================================================
-             MACRO
+             03 - MAKRONUTRIEN
         ================================================== -->
 
         <section
@@ -578,6 +707,8 @@
 
             <div class="calculator-card">
 
+
+                <!-- INFORMASI MAKRO -->
 
                 <div class="calculator-info">
 
@@ -607,12 +738,13 @@
                 </div>
 
 
+                <!-- FORM MAKRO -->
 
                 <div class="calculator-form">
 
                     <div class="form-title">
 
-                        <span>
+                        <span aria-hidden="true">
                             🥗
                         </span>
 
@@ -630,6 +762,8 @@
 
                     </div>
 
+
+                    <!-- JENIS KELAMIN -->
 
                     <div class="form-group">
 
@@ -651,6 +785,8 @@
 
                     </div>
 
+
+                    <!-- UMUR -->
 
                     <div class="form-group">
 
@@ -677,6 +813,8 @@
                     </div>
 
 
+                    <!-- BERAT -->
+
                     <div class="form-group">
 
                         <label for="macroWeight">
@@ -702,6 +840,8 @@
                     </div>
 
 
+                    <!-- TINGGI -->
+
                     <div class="form-group">
 
                         <label for="macroHeight">
@@ -726,6 +866,8 @@
 
                     </div>
 
+
+                    <!-- AKTIVITAS -->
 
                     <div class="form-group">
 
@@ -760,6 +902,8 @@
                     </div>
 
 
+                    <!-- TUJUAN -->
+
                     <div class="form-group">
 
                         <label for="macroGoal">
@@ -785,6 +929,8 @@
                     </div>
 
 
+                    <!-- TOMBOL -->
+
                     <button
                         type="button"
                         class="calculator-button"
@@ -795,6 +941,8 @@
                     </button>
 
 
+                    <!-- HASIL -->
+
                     <div
                         id="macroResult"
                         class="result"
@@ -802,7 +950,7 @@
 
                         <div class="result-placeholder">
 
-                            <span>
+                            <span aria-hidden="true">
                                 🥗
                             </span>
 
@@ -817,6 +965,34 @@
                                 </small>
 
                             </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KONSULTASI GIZI -->
+
+                    <div class="nutrition-consultation">
+
+                        <div
+                            class="nutrition-consultation-icon"
+                            aria-hidden="true"
+                        >
+                            💚
+                        </div>
+
+                        <div class="nutrition-consultation-content">
+
+                            <strong>
+                                Butuh informasi lebih lanjut?
+                            </strong>
+
+                            <p>
+                                Untuk informasi lebih lanjut dan konsultasi
+                                mengenai gizi, silakan berkunjung ke
+                                Klinik Putra Medika.
+                            </p>
 
                         </div>
 
@@ -863,6 +1039,8 @@
         <div class="footer-content">
 
 
+            <!-- FOOTER INFO -->
+
             <div class="footer-info">
 
                 <h3>
@@ -876,6 +1054,8 @@
 
             </div>
 
+
+            <!-- FOOTER CONTACT -->
 
             <div class="footer-contact">
 
@@ -900,6 +1080,8 @@
             </div>
 
 
+            <!-- COPYRIGHT -->
+
             <div class="footer-copyright">
 
                 <p>
@@ -920,6 +1102,7 @@
     ====================================================== -->
 
     <script src="script.js"></script>
+
 
 </body>
 
