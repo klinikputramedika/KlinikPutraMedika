@@ -1,0 +1,800 @@
+/* =========================================================
+   KLINIK PUTRA MEDIKA
+   CONTACT PAGE
+   CSS KHUSUS HALAMAN CONTACT
+   ========================================================= */
+
+
+/* =========================================================
+   RESET KHUSUS CONTACT
+   ========================================================= */
+
+.ct-main,
+.ct-main *,
+.ct-main *::before,
+.ct-main *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.ct-main {
+    width: 100%;
+
+    margin: 0;
+
+    background: #f6f9fc;
+
+    color: #172033;
+
+    font-family: "Inter", Arial, sans-serif;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.ct-hero {
+    padding: 65px 20px 45px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f5fbfa 100%
+        );
+}
+
+
+.ct-hero-inner {
+    width: min(760px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+.ct-hero-icon {
+    width: 64px;
+    height: 64px;
+
+    margin: 0 auto 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #e7f7f3;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    box-shadow:
+        0 8px 25px rgba(15, 157, 138, 0.10);
+}
+
+
+.ct-hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 13px;
+
+    margin-bottom: 14px;
+
+    border-radius: 999px;
+
+    background: #e7f7f3;
+
+    color: #0b8978;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.ct-hero h1 {
+    margin: 0;
+
+    color: #142033;
+
+    font-size: clamp(32px, 5vw, 47px);
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+.ct-hero p {
+    max-width: 650px;
+
+    margin: 16px auto 0;
+
+    color: #69788b;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.ct-section {
+    width: min(1120px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 48px 0;
+}
+
+
+.ct-section-heading {
+    max-width: 700px;
+
+    margin: 0 auto 30px;
+
+    text-align: center;
+}
+
+
+.ct-section-label {
+    margin-bottom: 9px;
+
+    color: #0b8978;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.ct-section-heading h2 {
+    margin: 0 0 10px;
+
+    color: #172033;
+
+    font-size: 27px;
+
+    line-height: 1.3;
+
+    font-weight: 800;
+
+    letter-spacing: -0.4px;
+}
+
+
+.ct-section-heading p {
+    margin: 0;
+
+    color: #718095;
+
+    font-size: 13px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   SOCIAL GRID
+   ========================================================= */
+
+.ct-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   SOCIAL CARD
+   ========================================================= */
+
+.ct-card {
+    min-width: 0;
+
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 22px;
+
+    border: 1px solid #e2ebef;
+
+    border-radius: 19px;
+
+    background: #ffffff;
+
+    color: #172033;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 7px 25px rgba(30, 60, 90, 0.055);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.ct-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #c8e6e0;
+
+    box-shadow:
+        0 14px 32px rgba(30, 60, 90, 0.10);
+}
+
+
+/* =========================================================
+   ICON CONTAINER
+   ========================================================= */
+
+.ct-icon {
+    width: 56px;
+    height: 56px;
+
+    flex: 0 0 56px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 15px;
+
+    font-size: 0;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   FORCE SVG SIZE
+   AGAR TIDAK TERPENGARUH STYLE.CSS
+   ========================================================= */
+
+.ct-icon svg {
+    display: block;
+
+    width: 28px !important;
+    height: 28px !important;
+
+    min-width: 28px !important;
+    min-height: 28px !important;
+
+    max-width: 28px !important;
+    max-height: 28px !important;
+
+    flex: 0 0 28px;
+
+    margin: 0;
+
+    padding: 0;
+
+    overflow: visible;
+
+    position: static;
+
+    transform: none;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   WHATSAPP
+   ========================================================= */
+
+.ct-whatsapp {
+    background: #e7f8ef;
+
+    color: #20a968;
+}
+
+
+/* =========================================================
+   INSTAGRAM
+   ========================================================= */
+
+.ct-instagram {
+    background: #f8eafa;
+
+    color: #c13584;
+}
+
+
+/* =========================================================
+   TIKTOK
+   ========================================================= */
+
+.ct-tiktok {
+    background: #edf1f5;
+
+    color: #111827;
+}
+
+
+/* =========================================================
+   FACEBOOK
+   ========================================================= */
+
+.ct-facebook {
+    background: #e9f0ff;
+
+    color: #1877f2;
+}
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.ct-card-body {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.ct-card-body h3 {
+    margin: 0 0 9px;
+
+    color: #1d2a3c;
+
+    font-size: 16px;
+
+    line-height: 1.4;
+
+    font-weight: 800;
+}
+
+
+.ct-card-body p {
+    margin: 0 0 14px;
+
+    color: #738196;
+
+    font-size: 11.5px;
+
+    line-height: 1.7;
+}
+
+
+.ct-card-body strong {
+    display: block;
+
+    color: #37465a;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   CARD LINK
+   ========================================================= */
+
+.ct-card-link {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-top: 19px;
+
+    padding-top: 14px;
+
+    border-top: 1px solid #edf1f3;
+
+    color: #0b8978;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+
+.ct-card-link span {
+    font-size: 16px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   LOCATION
+   ========================================================= */
+
+.ct-location-section {
+    padding-top: 5px;
+
+    padding-bottom: 70px;
+}
+
+
+.ct-location {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding: 28px;
+
+    border: 1px solid #dcefeb;
+
+    border-radius: 21px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f2faf8 100%
+        );
+
+    box-shadow:
+        0 8px 26px rgba(30, 60, 90, 0.05);
+}
+
+
+.ct-location-icon {
+    width: 54px;
+    height: 54px;
+
+    flex: 0 0 54px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #e2f5f0;
+
+    font-size: 25px;
+
+    line-height: 1;
+}
+
+
+.ct-location-content {
+    min-width: 0;
+}
+
+
+.ct-location-content .ct-section-label {
+    margin-bottom: 7px;
+}
+
+
+.ct-location-content h2 {
+    margin: 0 0 8px;
+
+    color: #172033;
+
+    font-size: 22px;
+
+    line-height: 1.35;
+
+    font-weight: 800;
+}
+
+
+.ct-location-content p {
+    max-width: 700px;
+
+    margin: 0;
+
+    color: #68778a;
+
+    font-size: 12px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   LOCATION LINK
+   ========================================================= */
+
+.ct-location-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 15px;
+
+    color: #0b8978;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+
+.ct-location-link:hover {
+    text-decoration: underline;
+}
+
+
+.ct-location-link span {
+    font-size: 15px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .ct-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .ct-hero {
+        padding: 45px 12px 30px;
+    }
+
+
+    .ct-hero-icon {
+        width: 56px;
+        height: 56px;
+
+        margin-bottom: 14px;
+
+        border-radius: 15px;
+
+        font-size: 27px;
+    }
+
+
+    .ct-hero-badge {
+        font-size: 9px;
+
+        letter-spacing: 0.9px;
+    }
+
+
+    .ct-hero h1 {
+        font-size: 31px;
+
+        letter-spacing: -0.7px;
+    }
+
+
+    .ct-hero p {
+        margin-top: 13px;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+
+    .ct-section {
+        width: calc(100% - 24px);
+
+        padding: 35px 0;
+    }
+
+
+    .ct-section-heading {
+        margin-bottom: 23px;
+    }
+
+
+    .ct-section-heading h2 {
+        font-size: 21px;
+    }
+
+
+    .ct-section-heading p {
+        font-size: 11.5px;
+
+        line-height: 1.7;
+    }
+
+
+    .ct-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .ct-card {
+        min-height: auto;
+
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+
+    .ct-icon {
+        width: 48px;
+        height: 48px;
+
+        flex-basis: 48px;
+
+        margin-bottom: 14px;
+
+        border-radius: 13px;
+    }
+
+
+    .ct-icon svg {
+        width: 25px !important;
+        height: 25px !important;
+
+        min-width: 25px !important;
+        min-height: 25px !important;
+
+        max-width: 25px !important;
+        max-height: 25px !important;
+
+        flex-basis: 25px;
+    }
+
+
+    .ct-card-body h3 {
+        font-size: 14px;
+    }
+
+
+    .ct-card-body p {
+        font-size: 11px;
+
+        line-height: 1.65;
+    }
+
+
+    .ct-card-body strong {
+        font-size: 10.5px;
+    }
+
+
+    .ct-card-link {
+        margin-top: 15px;
+
+        padding-top: 12px;
+
+        font-size: 10.5px;
+    }
+
+
+    .ct-location-section {
+        padding-top: 0;
+
+        padding-bottom: 45px;
+    }
+
+
+    .ct-location {
+        gap: 13px;
+
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+
+    .ct-location-icon {
+        width: 43px;
+        height: 43px;
+
+        flex-basis: 43px;
+
+        border-radius: 11px;
+
+        font-size: 20px;
+    }
+
+
+    .ct-location-content h2 {
+        font-size: 18px;
+    }
+
+
+    .ct-location-content p {
+        font-size: 10.5px;
+
+        line-height: 1.7;
+    }
+
+
+    .ct-location-link {
+        margin-top: 12px;
+
+        font-size: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .ct-card {
+        padding: 16px;
+    }
+
+
+    .ct-location {
+        padding: 15px;
+    }
+
+
+    .ct-location-icon {
+        width: 39px;
+        height: 39px;
+
+        flex-basis: 39px;
+
+        font-size: 18px;
+    }
+
+}
