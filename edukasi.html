@@ -12,12 +12,22 @@
 
     <meta
         name="description"
-        content="Edukasi kesehatan Klinik Putra Medika."
+        content="Edukasi kesehatan Klinik Putra Medika mengenai hidrasi, gizi seimbang, stunting, rokok dan vape, kesehatan mental, kesehatan seksual dan tips hidup sehat."
     >
 
-    <title>Edukasi Kesehatan - Klinik Putra Medika</title>
+    <meta
+        name="theme-color"
+        content="#0f766e"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>
+        Edukasi Kesehatan - Klinik Putra Medika
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
@@ -25,23 +35,27 @@
 <body>
 
 
-    <!-- =========================
+    <!-- =====================================================
          NAVBAR
-    ========================== -->
+    ====================================================== -->
 
     <header class="navbar">
 
-        <a href="index.html" class="logo">
+        <a
+            href="index.html"
+            class="logo"
+            aria-label="Klinik Putra Medika - Beranda"
+        >
 
             <img
                 src="logo.png"
-                alt="Klinik Putra Medika"
+                alt="Logo Klinik Putra Medika"
             >
 
         </a>
 
 
-        <nav>
+        <nav aria-label="Navigasi utama">
 
             <a href="index.html">
                 Beranda
@@ -54,6 +68,7 @@
             <a
                 href="edukasi.html"
                 class="active"
+                aria-current="page"
             >
                 Edukasi
             </a>
@@ -68,20 +83,27 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          MAIN
-    ========================== -->
+    ====================================================== -->
 
     <main>
 
 
-        <!-- =========================
-             HEADER EDUKASI
-        ========================== -->
+        <!-- =================================================
+             HERO EDUKASI
+        ================================================== -->
 
-        <section class="section education-header">
+        <section class="education-hero">
 
-            <div class="section-heading">
+            <div class="education-hero-inner">
+
+                <div
+                    class="education-hero-icon"
+                    aria-hidden="true"
+                >
+                    📚
+                </div>
 
                 <p class="section-label">
                     HEALTH EDUCATION
@@ -92,9 +114,9 @@
                 </h1>
 
                 <p>
-                    Informasi kesehatan sederhana untuk membantu
-                    masyarakat memahami tubuh dan membangun
-                    kebiasaan hidup yang lebih sehat.
+                    Informasi kesehatan yang sederhana,
+                    praktis dan mudah dipahami untuk membantu
+                    Anda membangun kebiasaan hidup yang lebih sehat.
                 </p>
 
             </div>
@@ -103,270 +125,125 @@
 
 
 
-        <!-- =========================
-             ARTIKEL EDUKASI
-        ========================== -->
+        <!-- =================================================
+             INTRO
+        ================================================== -->
 
-        <section class="section education">
+        <section class="education-intro">
+
+            <div class="education-intro-content">
+
+                <p class="section-label">
+                    KLINIK PUTRA MEDIKA
+                </p>
+
+                <h2>
+                    Kenali kesehatan Anda,
+                    mulai dari hal sederhana.
+                </h2>
+
+                <p>
+                    Kesehatan tidak hanya ditentukan oleh
+                    pengobatan ketika sakit. Pola makan,
+                    cukup minum, aktivitas fisik, kesehatan
+                    mental dan perilaku sehari-hari juga
+                    berperan penting.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EDUKASI GRID
+        ================================================== -->
+
+        <section class="education-section">
+
+            <div class="education-section-heading">
+
+                <p class="section-label">
+                    TOPIK EDUKASI
+                </p>
+
+                <h2>
+                    Pilih topik yang ingin Anda pelajari
+                </h2>
+
+                <p>
+                    Pelajari informasi kesehatan yang relevan
+                    untuk remaja, dewasa dan keluarga.
+                </p>
+
+            </div>
+
 
             <div class="education-grid">
 
 
-                <!-- ARTIKEL 1 -->
+                <!-- =================================================
+                     01 AIR PUTIH
+                ================================================== -->
 
                 <article class="education-card">
 
-                    <div class="education-card-icon">
-                        🥗
-                    </div>
-
-                    <span class="content-category">
-                        NUTRISI
-                    </span>
-
-                    <h3>
-                        Pola Makan Seimbang
-                    </h3>
-
-                    <p>
-                        Pola makan seimbang membantu tubuh
-                        mendapatkan berbagai zat gizi yang
-                        dibutuhkan untuk menjalankan fungsi
-                        tubuh sehari-hari.
-                    </p>
-
-                    <div class="education-details">
-
-                        <h4>
-                            Apa yang dimaksud pola makan seimbang?
-                        </h4>
-
-                        <p>
-                            Pola makan seimbang adalah pola konsumsi
-                            makanan yang beragam dengan jumlah dan
-                            proporsi yang sesuai kebutuhan tubuh.
-                        </p>
-
-                        <h4>
-                            Beberapa prinsip sederhana
-                        </h4>
-
-                        <ul>
-
-                            <li>
-                                Konsumsi berbagai jenis makanan.
-                            </li>
-
-                            <li>
-                                Perbanyak sayur dan buah.
-                            </li>
-
-                            <li>
-                                Pilih sumber protein yang beragam.
-                            </li>
-
-                            <li>
-                                Batasi konsumsi gula, garam dan lemak
-                                secara berlebihan.
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ARTIKEL 2 -->
-
-                <article class="education-card">
-
-                    <div class="education-card-icon">
-                        💪
-                    </div>
-
-                    <span class="content-category">
-                        NUTRISI
-                    </span>
-
-                    <h3>
-                        Pentingnya Protein
-                    </h3>
-
-                    <p>
-                        Protein merupakan salah satu zat gizi
-                        penting yang berperan dalam pembentukan
-                        dan pemeliharaan jaringan tubuh.
-                    </p>
-
-                    <div class="education-details">
-
-                        <h4>
-                            Sumber protein
-                        </h4>
-
-                        <p>
-                            Protein dapat diperoleh dari berbagai
-                            sumber seperti telur, ikan, daging,
-                            susu, kacang-kacangan dan produk olahannya.
-                        </p>
-
-                        <h4>
-                            Mengapa protein penting?
-                        </h4>
-
-                        <p>
-                            Protein membantu mempertahankan massa
-                            otot dan mendukung berbagai proses
-                            penting di dalam tubuh.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ARTIKEL 3 -->
-
-                <article class="education-card">
-
-                    <div class="education-card-icon">
-                        🏃
-                    </div>
-
-                    <span class="content-category">
-                        AKTIVITAS FISIK
-                    </span>
-
-                    <h3>
-                        Aktivitas Fisik
-                    </h3>
-
-                    <p>
-                        Aktivitas fisik secara rutin merupakan
-                        bagian penting dari gaya hidup sehat.
-                    </p>
-
-                    <div class="education-details">
-
-                        <h4>
-                            Tidak harus selalu olahraga berat
-                        </h4>
-
-                        <p>
-                            Berjalan kaki, bersepeda, membersihkan
-                            rumah dan aktivitas fisik lainnya juga
-                            dapat membantu meningkatkan aktivitas
-                            harian.
-                        </p>
-
-                        <h4>
-                            Mulai secara bertahap
-                        </h4>
-
-                        <p>
-                            Pilih aktivitas yang sesuai dengan
-                            kemampuan dan lakukan secara konsisten.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ARTIKEL 4 -->
-
-                <article class="education-card">
-
-                    <div class="education-card-icon">
-                        😴
-                    </div>
-
-                    <span class="content-category">
-                        GAYA HIDUP
-                    </span>
-
-                    <h3>
-                        Tidur Berkualitas
-                    </h3>
-
-                    <p>
-                        Tidur merupakan bagian penting dari
-                        proses pemulihan tubuh.
-                    </p>
-
-                    <div class="education-details">
-
-                        <h4>
-                            Kebiasaan tidur yang baik
-                        </h4>
-
-                        <ul>
-
-                            <li>
-                                Usahakan jadwal tidur konsisten.
-                            </li>
-
-                            <li>
-                                Kurangi penggunaan perangkat
-                                elektronik sebelum tidur.
-                            </li>
-
-                            <li>
-                                Ciptakan lingkungan tidur yang nyaman.
-                            </li>
-
-                            <li>
-                                Hindari konsumsi kafein terlalu dekat
-                                dengan waktu tidur.
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ARTIKEL 5 -->
-
-                <article class="education-card">
-
-                    <div class="education-card-icon">
+                    <div
+                        class="education-card-icon"
+                        aria-hidden="true"
+                    >
                         💧
                     </div>
 
-                    <span class="content-category">
+                    <p class="education-category">
                         HIDRASI
-                    </span>
+                    </p>
 
                     <h3>
-                        Pentingnya Cukup Minum
+                        Pentingnya Minum Air Putih
                     </h3>
 
                     <p>
-                        Air membantu berbagai fungsi penting
-                        dalam tubuh dan berperan dalam menjaga
-                        keseimbangan cairan.
+                        Air dibutuhkan tubuh untuk berbagai
+                        fungsi penting dan membantu menjaga
+                        keseimbangan cairan tubuh.
                     </p>
 
-                    <div class="education-details">
 
-                        <p>
+                    <h4>
+                        Mengapa cukup minum penting?
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            Membantu menjaga keseimbangan cairan
+                            tubuh.
+                        </li>
+
+                        <li>
+                            Mendukung fungsi tubuh sehari-hari.
+                        </li>
+
+                        <li>
+                            Membantu mencegah kekurangan cairan.
+                        </li>
+
+                        <li>
                             Kebutuhan cairan dapat berbeda
-                            berdasarkan aktivitas, lingkungan,
-                            kondisi tubuh dan faktor lainnya.
-                        </p>
+                            tergantung aktivitas, lingkungan
+                            dan kondisi tubuh.
+                        </li>
 
-                        <p>
-                            Biasakan minum secara teratur dan
-                            perhatikan tanda-tanda tubuh ketika
-                            membutuhkan cairan.
-                        </p>
+                    </ul>
+
+
+                    <div class="education-highlight">
+
+                        💡
+                        Biasakan minum secara teratur dan
+                        jangan menunggu sampai merasa sangat haus.
 
                     </div>
 
@@ -374,35 +251,380 @@
 
 
 
-                <!-- ARTIKEL 6 -->
+                <!-- =================================================
+                     02 GIZI & STUNTING
+                ================================================== -->
 
                 <article class="education-card">
 
-                    <div class="education-card-icon">
-                        🧠
+                    <div
+                        class="education-card-icon"
+                        aria-hidden="true"
+                    >
+                        🥗
                     </div>
 
-                    <span class="content-category">
-                        KESEHATAN
-                    </span>
+                    <p class="education-category">
+                        GIZI SEIMBANG
+                    </p>
 
                     <h3>
-                        Menjaga Kesehatan Secara Menyeluruh
+                        Gizi Seimbang untuk Mencegah Stunting
                     </h3>
 
                     <p>
-                        Hidup sehat bukan hanya tentang makanan,
-                        tetapi juga aktivitas fisik, tidur,
-                        kesehatan mental dan pemeriksaan kesehatan.
+                        Pemenuhan gizi yang baik sejak dini
+                        berperan penting dalam pertumbuhan dan
+                        perkembangan anak.
                     </p>
 
-                    <div class="education-details">
 
-                        <p>
-                            Perubahan kecil yang dilakukan secara
-                            konsisten dapat menjadi bagian dari
-                            kebiasaan hidup sehat.
-                        </p>
+                    <h4>
+                        Apa yang perlu diperhatikan?
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            Konsumsi makanan yang beragam.
+                        </li>
+
+                        <li>
+                            Perbanyak sayur dan buah.
+                        </li>
+
+                        <li>
+                            Pastikan sumber protein cukup,
+                            termasuk protein hewani dan nabati.
+                        </li>
+
+                        <li>
+                            Batasi makanan dan minuman tinggi
+                            gula, garam dan lemak.
+                        </li>
+
+                        <li>
+                            Perhatikan kebersihan, sanitasi
+                            dan akses terhadap pelayanan kesehatan.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="education-highlight">
+
+                        🥗
+                        Gizi yang baik pada masa remaja juga
+                        merupakan bagian penting dari upaya
+                        pencegahan stunting pada generasi berikutnya.
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     03 ROKOK & VAPE
+                ================================================== -->
+
+                <article class="education-card education-card-warning">
+
+                    <div
+                        class="education-card-icon"
+                        aria-hidden="true"
+                    >
+                        🚭
+                    </div>
+
+                    <p class="education-category">
+                        TEMBAKAU & NIKOTIN
+                    </p>
+
+                    <h3>
+                        Bahaya Rokok dan Vape
+                    </h3>
+
+                    <p>
+                        Rokok maupun produk rokok elektronik
+                        bukan pilihan yang bebas risiko.
+                        Nikotin dapat menyebabkan ketergantungan.
+                    </p>
+
+
+                    <h4>
+                        Mengapa perlu dihindari?
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            Nikotin dapat menyebabkan kecanduan.
+                        </li>
+
+                        <li>
+                            Paparan nikotin pada remaja dapat
+                            mengganggu perkembangan otak.
+                        </li>
+
+                        <li>
+                            Aerosol vape dapat mengandung nikotin
+                            dan zat lain yang berbahaya.
+                        </li>
+
+                        <li>
+                            Penggunaan vape bukan berarti bebas
+                            dari risiko kesehatan.
+                        </li>
+
+                        <li>
+                            Menggunakan rokok dan vape secara
+                            bersamaan bukan pilihan yang aman.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="education-highlight">
+
+                        🚭
+                        Pilihan paling aman adalah tidak
+                        menggunakan rokok maupun produk
+                        nikotin lainnya.
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     04 MENTAL HEALTH
+                ================================================== -->
+
+                <article class="education-card">
+
+                    <div
+                        class="education-card-icon"
+                        aria-hidden="true"
+                    >
+                        🧠
+                    </div>
+
+                    <p class="education-category">
+                        KESEHATAN MENTAL
+                    </p>
+
+                    <h3>
+                        Pentingnya Menjaga Kesehatan Mental
+                    </h3>
+
+                    <p>
+                        Kesehatan mental merupakan bagian penting
+                        dari kesehatan secara keseluruhan.
+                        Merawat kesehatan mental bukan berarti
+                        tanda kelemahan.
+                    </p>
+
+
+                    <h4>
+                        Kebiasaan yang dapat membantu
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            Tidur dengan cukup dan menjaga jadwal
+                            tidur yang teratur.
+                        </li>
+
+                        <li>
+                            Melakukan aktivitas fisik secara rutin.
+                        </li>
+
+                        <li>
+                            Menjaga hubungan dengan keluarga,
+                            teman atau orang yang dipercaya.
+                        </li>
+
+                        <li>
+                            Belajar mengenali dan mengelola emosi.
+                        </li>
+
+                        <li>
+                            Kurangi tekanan dengan membagi masalah
+                            menjadi langkah-langkah kecil.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="education-highlight">
+
+                        🧠
+                        Jika masalah emosional terasa berat,
+                        berlangsung lama atau mengganggu aktivitas,
+                        jangan ragu mencari bantuan profesional.
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     05 SEKSUAL & IMS
+                ================================================== -->
+
+                <article class="education-card">
+
+                    <div
+                        class="education-card-icon"
+                        aria-hidden="true"
+                    >
+                        ❤️
+                    </div>
+
+                    <p class="education-category">
+                        KESEHATAN REPRODUKSI
+                    </p>
+
+                    <h3>
+                        Edukasi Seksual dan Pencegahan IMS
+                    </h3>
+
+                    <p>
+                        Pengetahuan mengenai kesehatan seksual
+                        penting agar remaja dan dewasa dapat
+                        mengambil keputusan yang bertanggung jawab
+                        dan mengurangi risiko infeksi menular seksual.
+                    </p>
+
+
+                    <h4>
+                        Hal penting yang perlu diketahui
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            IMS dapat ditularkan melalui aktivitas
+                            seksual tertentu.
+                        </li>
+
+                        <li>
+                            Sebagian IMS dapat tidak menimbulkan
+                            gejala pada awalnya.
+                        </li>
+
+                        <li>
+                            Penggunaan kondom secara benar dan
+                            konsisten dapat membantu mengurangi
+                            risiko beberapa IMS.
+                        </li>
+
+                        <li>
+                            Hindari berganti-ganti pasangan seksual
+                            dan pertimbangkan hubungan yang saling
+                            setia dan bertanggung jawab.
+                        </li>
+
+                        <li>
+                            Pemeriksaan dan pengobatan diperlukan
+                            bila terdapat risiko atau gejala.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="education-highlight">
+
+                        ❤️
+                        Jika memiliki kekhawatiran mengenai
+                        IMS atau kesehatan reproduksi, konsultasikan
+                        dengan tenaga kesehatan.
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     06 TIPS SEHAT
+                ================================================== -->
+
+                <article class="education-card">
+
+                    <div
+                        class="education-card-icon"
+                        aria-hidden="true"
+                    >
+                        🏃
+                    </div>
+
+                    <p class="education-category">
+                        GAYA HIDUP
+                    </p>
+
+                    <h3>
+                        Tips Menjaga Kesehatan
+                    </h3>
+
+                    <p>
+                        Hidup sehat tidak harus dimulai dengan
+                        perubahan besar. Kebiasaan kecil yang
+                        dilakukan secara konsisten dapat memberikan
+                        manfaat dalam jangka panjang.
+                    </p>
+
+
+                    <h4>
+                        Mulai dari kebiasaan sederhana
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            Konsumsi makanan yang beragam dan
+                            bergizi seimbang.
+                        </li>
+
+                        <li>
+                            Minum cukup sesuai kebutuhan tubuh.
+                        </li>
+
+                        <li>
+                            Aktif bergerak dan berolahraga secara
+                            rutin.
+                        </li>
+
+                        <li>
+                            Tidur cukup dan teratur.
+                        </li>
+
+                        <li>
+                            Hindari rokok, vape dan paparan asap
+                            rokok.
+                        </li>
+
+                        <li>
+                            Jaga kesehatan mental dan hubungan sosial.
+                        </li>
+
+                        <li>
+                            Lakukan pemeriksaan kesehatan bila
+                            diperlukan.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="education-highlight">
+
+                        🌱
+                        Tidak perlu menunggu sakit untuk mulai
+                        menjaga kesehatan.
 
                     </div>
 
@@ -415,9 +637,47 @@
 
 
 
-        <!-- =========================
+        <!-- =================================================
+             CTA KLINIK
+        ================================================== -->
+
+        <section class="education-cta">
+
+            <div class="education-cta-content">
+
+                <p class="section-label">
+                    BUTUH INFORMASI LEBIH LANJUT?
+                </p>
+
+                <h2>
+                    Konsultasikan kesehatan Anda
+                    dengan tenaga kesehatan.
+                </h2>
+
+                <p>
+                    Jika Anda membutuhkan informasi lebih lanjut
+                    atau memiliki pertanyaan mengenai gizi,
+                    kesehatan umum, kesehatan reproduksi,
+                    maupun kondisi kesehatan lainnya, silakan
+                    berkunjung ke Klinik Putra Medika.
+                </p>
+
+                <a
+                    href="contact.html"
+                    class="btn btn-primary"
+                >
+                    Hubungi Klinik Putra Medika →
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
              DISCLAIMER
-        ========================== -->
+        ================================================== -->
 
         <section class="disclaimer">
 
@@ -426,10 +686,10 @@
             </h3>
 
             <p>
-                Informasi edukasi pada halaman ini ditujukan
-                untuk pengetahuan kesehatan umum dan bukan
-                pengganti diagnosis, pemeriksaan atau konsultasi
-                dengan tenaga kesehatan profesional.
+                Informasi pada halaman ini ditujukan untuk
+                edukasi kesehatan umum dan bukan pengganti
+                diagnosis, pemeriksaan atau konsultasi dengan
+                tenaga kesehatan profesional.
             </p>
 
         </section>
@@ -438,9 +698,9 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          FOOTER
-    ========================== -->
+    ====================================================== -->
 
     <footer>
 
@@ -451,7 +711,7 @@
 
                 <img
                     src="logo.png"
-                    alt="Klinik Putra Medika"
+                    alt="Logo Klinik Putra Medika"
                     class="footer-logo"
                 >
 
@@ -466,7 +726,7 @@
             <div class="footer-contact">
 
                 <h4>
-                    Alamat
+                    Alamat Klinik
                 </h4>
 
                 <p>
@@ -475,24 +735,16 @@
                     Jawa Barat 43292
                 </p>
 
-
-                <a
-                    href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    📍 Lihat Lokasi Klinik
-                </a>
-
-
-                <h4>
-                    Telepon
-                </h4>
-
                 <p>
-                    <a href="tel:087810353838">
-                        0878-1035-3838
+
+                    <a
+                        href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        📍 Lihat Lokasi Klinik
                     </a>
+
                 </p>
 
             </div>
@@ -505,7 +757,6 @@
                 </p>
 
             </div>
-
 
         </div>
 
