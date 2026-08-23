@@ -15,9 +15,47 @@
         content="Hubungi Klinik Putra Medika melalui WhatsApp dan media sosial resmi."
     >
 
+    <meta
+        name="theme-color"
+        content="#0f766e"
+    >
+
     <title>Contact Us - Klinik Putra Medika</title>
 
-    <link rel="stylesheet" href="style.css">
+
+    <!-- FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS GLOBAL -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+
+    <!-- CSS KHUSUS CONTACT -->
+
+    <link
+        rel="stylesheet"
+        href="contact.css"
+    >
 
 </head>
 
@@ -25,29 +63,47 @@
 <body>
 
 
-    <!-- =========================
+    <!-- =====================================================
          NAVBAR
-    ========================== -->
+    ====================================================== -->
 
     <header class="navbar">
 
-        <a href="index.html" class="logo">
-    <img
-        src="logo.png"
-        alt="Klinik Putra Medika"
-    >
-</a>
+        <a
+            href="index.html"
+            class="logo"
+            aria-label="Klinik Putra Medika - Beranda"
+        >
+
+            <img
+                src="logo.png"
+                alt="Logo Klinik Putra Medika"
+            >
+
+        </a>
 
 
-        <nav>
+        <nav aria-label="Navigasi utama">
 
-            <a href="index.html">Beranda</a>
+            <a href="index.html">
+                Beranda
+            </a>
 
-<a href="kalkulator.html">Kalkulator</a>
+            <a href="kalkulator.html">
+                Kalkulator
+            </a>
 
-<a href="edukasi.html">Edukasi</a>
+            <a href="edukasi.html">
+                Edukasi
+            </a>
 
-<a href="contact.html" class="active">Contact Us</a>
+            <a
+                href="contact.html"
+                class="active"
+                aria-current="page"
+            >
+                Contact Us
+            </a>
 
         </nav>
 
@@ -55,22 +111,31 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          MAIN
-    ========================== -->
+    ====================================================== -->
 
-    <main>
+    <main class="ct-main">
 
 
-        <!-- HEADER -->
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
-        <section class="section calculator-page-header">
+        <section class="ct-hero">
 
-            <div class="section-heading">
+            <div class="ct-hero-inner">
 
-                <p class="section-label">
+                <div
+                    class="ct-hero-icon"
+                    aria-hidden="true"
+                >
+                    💬
+                </div>
+
+                <div class="ct-hero-badge">
                     HUBUNGI KAMI
-                </p>
+                </div>
 
                 <h1>
                     Contact Us
@@ -87,17 +152,17 @@
 
 
 
-        <!-- =========================
-             MEDIA SOSIAL
-        ========================== -->
+        <!-- =================================================
+             SOCIAL MEDIA
+        ================================================== -->
 
-        <section class="section">
+        <section class="ct-section">
 
-            <div class="section-heading">
+            <div class="ct-section-heading">
 
-                <p class="section-label">
+                <div class="ct-section-label">
                     MEDIA SOSIAL
-                </p>
+                </div>
 
                 <h2>
                     Terhubung dengan Klinik Putra Medika
@@ -111,21 +176,27 @@
             </div>
 
 
-            <div class="contact-grid">
+            <div class="ct-grid">
 
 
-                <!-- WHATSAPP -->
+                <!-- =================================================
+                     WHATSAPP
+                ================================================== -->
 
                 <a
                     href="https://wa.me/628745655446"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="contact-card"
+                    class="ct-card"
                 >
 
-                    <div class="contact-icon whatsapp-icon">
+                    <div class="ct-icon ct-whatsapp">
 
-                        <svg viewBox="0 0 24 24">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                        >
 
                             <path
                                 fill="currentColor"
@@ -137,43 +208,55 @@
                     </div>
 
 
-                    <h3>
-                        WhatsApp
-                    </h3>
+                    <div class="ct-card-body">
 
-                    <p>
-                        Hubungi kami secara langsung melalui
-                        WhatsApp untuk informasi dan pertanyaan.
-                    </p>
+                        <h3>
+                            WhatsApp
+                        </h3>
 
-                    <strong>
-                        087-4565-5446
-                    </strong>
+                        <p>
+                            Hubungi kami secara langsung melalui
+                            WhatsApp untuk informasi dan pertanyaan.
+                        </p>
 
-                    <span class="contact-link">
-                        Chat Sekarang →
+                        <strong>
+                            087-4565-5446
+                        </strong>
+
+                    </div>
+
+
+                    <span class="ct-card-link">
+                        Chat Sekarang
+                        <span aria-hidden="true">→</span>
                     </span>
 
                 </a>
 
 
 
-                <!-- INSTAGRAM -->
+                <!-- =================================================
+                     INSTAGRAM
+                ================================================== -->
 
                 <a
                     href="https://www.instagram.com/klinikputramedika/?hl=en"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="contact-card"
+                    class="ct-card"
                 >
 
-                    <div class="contact-icon instagram-icon">
+                    <div class="ct-icon ct-instagram">
 
-                        <svg viewBox="0 0 24 24">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                        >
 
                             <path
                                 fill="currentColor"
-                                d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6ZM17.25 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-0-6Z"
+                                d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6ZM17.25 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"
                             />
 
                         </svg>
@@ -181,39 +264,51 @@
                     </div>
 
 
-                    <h3>
-                        Instagram
-                    </h3>
+                    <div class="ct-card-body">
 
-                    <p>
-                        Ikuti akun Instagram Klinik Putra Medika
-                        untuk melihat informasi dan kegiatan klinik.
-                    </p>
+                        <h3>
+                            Instagram
+                        </h3>
 
-                    <strong>
-                        @klinikputramedika
-                    </strong>
+                        <p>
+                            Ikuti akun Instagram Klinik Putra Medika
+                            untuk melihat informasi dan kegiatan klinik.
+                        </p>
 
-                    <span class="contact-link">
-                        Kunjungi Instagram →
+                        <strong>
+                            @klinikputramedika
+                        </strong>
+
+                    </div>
+
+
+                    <span class="ct-card-link">
+                        Kunjungi Instagram
+                        <span aria-hidden="true">→</span>
                     </span>
 
                 </a>
 
 
 
-                <!-- TIKTOK -->
+                <!-- =================================================
+                     TIKTOK
+                ================================================== -->
 
                 <a
                     href="https://www.tiktok.com/@klinik.putra.medika"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="contact-card"
+                    class="ct-card"
                 >
 
-                    <div class="contact-icon tiktok-icon">
+                    <div class="ct-icon ct-tiktok">
 
-                        <svg viewBox="0 0 24 24">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                        >
 
                             <path
                                 fill="currentColor"
@@ -225,39 +320,51 @@
                     </div>
 
 
-                    <h3>
-                        TikTok
-                    </h3>
+                    <div class="ct-card-body">
 
-                    <p>
-                        Saksikan video dan informasi kesehatan
-                        Klinik Putra Medika di TikTok.
-                    </p>
+                        <h3>
+                            TikTok
+                        </h3>
 
-                    <strong>
-                        @klinik.putra.medika
-                    </strong>
+                        <p>
+                            Saksikan video dan informasi kesehatan
+                            Klinik Putra Medika di TikTok.
+                        </p>
 
-                    <span class="contact-link">
-                        Kunjungi TikTok →
+                        <strong>
+                            @klinik.putra.medika
+                        </strong>
+
+                    </div>
+
+
+                    <span class="ct-card-link">
+                        Kunjungi TikTok
+                        <span aria-hidden="true">→</span>
                     </span>
 
                 </a>
 
 
 
-                <!-- FACEBOOK -->
+                <!-- =================================================
+                     FACEBOOK
+                ================================================== -->
 
                 <a
                     href="https://www.facebook.com/roby.aldi.94/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="contact-card"
+                    class="ct-card"
                 >
 
-                    <div class="contact-icon facebook-icon">
+                    <div class="ct-icon ct-facebook">
 
-                        <svg viewBox="0 0 24 24">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                        >
 
                             <path
                                 fill="currentColor"
@@ -269,25 +376,30 @@
                     </div>
 
 
-                    <h3>
-                        Facebook
-                    </h3>
+                    <div class="ct-card-body">
 
-                    <p>
-                        Temukan informasi dan aktivitas
-                        Klinik Putra Medika di Facebook.
-                    </p>
+                        <h3>
+                            Facebook
+                        </h3>
 
-                    <strong>
-                        Klinik Putra Medika
-                    </strong>
+                        <p>
+                            Temukan informasi dan aktivitas
+                            Klinik Putra Medika di Facebook.
+                        </p>
 
-                    <span class="contact-link">
-                        Kunjungi Facebook →
+                        <strong>
+                            Klinik Putra Medika
+                        </strong>
+
+                    </div>
+
+
+                    <span class="ct-card-link">
+                        Kunjungi Facebook
+                        <span aria-hidden="true">→</span>
                     </span>
 
                 </a>
-
 
             </div>
 
@@ -295,23 +407,27 @@
 
 
 
-        <!-- =========================
+        <!-- =================================================
              LOKASI
-        ========================== -->
+        ================================================== -->
 
-        <section class="section">
+        <section class="ct-section ct-location-section">
 
-            <div class="contact-location">
+            <div class="ct-location">
 
-                <div class="contact-location-icon">
+                <div
+                    class="ct-location-icon"
+                    aria-hidden="true"
+                >
                     📍
                 </div>
 
-                <div>
 
-                    <p class="section-label">
+                <div class="ct-location-content">
+
+                    <div class="ct-section-label">
                         LOKASI KLINIK
-                    </p>
+                    </div>
 
                     <h2>
                         Klinik Putra Medika
@@ -327,9 +443,10 @@
                         href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="card-link"
+                        class="ct-location-link"
                     >
-                        Lihat Lokasi di Google Maps →
+                        Lihat Lokasi di Google Maps
+                        <span aria-hidden="true">→</span>
                     </a>
 
                 </div>
@@ -343,9 +460,9 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          FOOTER
-    ========================== -->
+    ====================================================== -->
 
     <footer>
 
@@ -392,8 +509,6 @@
 
     </footer>
 
-
 </body>
 
 </html>
-```
