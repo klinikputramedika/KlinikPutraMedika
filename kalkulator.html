@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 
@@ -20,13 +21,41 @@
         content="#0f766e"
     >
 
-    <title>
-        Kalkulator Kesehatan - Klinik Putra Medika
-    </title>
+    <title>Kalkulator Kesehatan - Klinik Putra Medika</title>
+
+
+    <!-- FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS GLOBAL -->
 
     <link
         rel="stylesheet"
         href="style.css"
+    >
+
+
+    <!-- CSS KHUSUS KALKULATOR -->
+
+    <link
+        rel="stylesheet"
+        href="kalkulator.css"
     >
 
 </head>
@@ -87,35 +116,35 @@
          MAIN
     ====================================================== -->
 
-    <main>
+    <main class="kal-main">
 
 
         <!-- =================================================
-             HEADER KALKULATOR
+             HERO
         ================================================== -->
 
-        <section class="calculator-hero">
+        <section class="kal-hero">
 
-            <div class="calculator-hero-inner">
+            <div class="kal-hero-inner">
 
                 <div
-                    class="hero-icon"
+                    class="kal-hero-icon"
                     aria-hidden="true"
                 >
                     🧮
                 </div>
 
-                <p class="section-label">
+                <div class="kal-hero-badge">
                     HEALTH CALCULATOR
-                </p>
+                </div>
 
                 <h1>
                     Kalkulator Kesehatan
                 </h1>
 
-                <p class="calculator-hero-text">
+                <p>
                     Gunakan kalkulator kesehatan berikut untuk
-                    mendapatkan estimasi BMI, kebutuhan energi
+                    mendapatkan estimasi BMI, kebutuhan energi,
                     dan kebutuhan makronutrien Anda.
                 </p>
 
@@ -130,20 +159,23 @@
         ================================================== -->
 
         <section
-            class="calculator-navigation"
+            class="kal-navigation"
             aria-label="Navigasi kalkulator"
         >
 
-            <a href="#bmi">
+            <a
+                href="#bmi"
+                class="kal-nav-card"
+            >
 
                 <span
-                    class="calculator-nav-icon"
+                    class="kal-nav-icon"
                     aria-hidden="true"
                 >
                     ⚖️
                 </span>
 
-                <span>
+                <span class="kal-nav-content">
 
                     <strong>
                         BMI
@@ -155,19 +187,29 @@
 
                 </span>
 
+                <span
+                    class="kal-nav-arrow"
+                    aria-hidden="true"
+                >
+                    →
+                </span>
+
             </a>
 
 
-            <a href="#bmr">
+            <a
+                href="#bmr"
+                class="kal-nav-card"
+            >
 
                 <span
-                    class="calculator-nav-icon"
+                    class="kal-nav-icon"
                     aria-hidden="true"
                 >
                     🔥
                 </span>
 
-                <span>
+                <span class="kal-nav-content">
 
                     <strong>
                         BMR & TDEE
@@ -179,19 +221,29 @@
 
                 </span>
 
+                <span
+                    class="kal-nav-arrow"
+                    aria-hidden="true"
+                >
+                    →
+                </span>
+
             </a>
 
 
-            <a href="#macro">
+            <a
+                href="#macro"
+                class="kal-nav-card"
+            >
 
                 <span
-                    class="calculator-nav-icon"
+                    class="kal-nav-icon"
                     aria-hidden="true"
                 >
                     🥗
                 </span>
 
-                <span>
+                <span class="kal-nav-content">
 
                     <strong>
                         Makronutrien
@@ -201,6 +253,13 @@
                         Protein, karbo & lemak
                     </small>
 
+                </span>
+
+                <span
+                    class="kal-nav-arrow"
+                    aria-hidden="true"
+                >
+                    →
                 </span>
 
             </a>
@@ -215,23 +274,23 @@
 
         <section
             id="bmi"
-            class="calculator-section"
+            class="kal-section"
         >
 
-            <div class="calculator-card">
+            <div class="kal-card">
 
 
-                <!-- INFORMASI BMI -->
+                <!-- INFORMASI -->
 
-                <div class="calculator-info">
+                <div class="kal-info">
 
-                    <div class="calculator-number">
+                    <div class="kal-number">
                         01
                     </div>
 
-                    <p class="section-label">
+                    <div class="kal-label">
                         BMI CALCULATOR
-                    </p>
+                    </div>
 
                     <h2>
                         Body Mass Index
@@ -243,23 +302,34 @@
                         berat badan dan tinggi badan.
                     </p>
 
-                    <div class="calculator-tip">
-                        💡 Masukkan berat dan tinggi badan Anda
-                        untuk mendapatkan estimasi BMI.
+                    <div class="kal-tip">
+
+                        <span aria-hidden="true">
+                            💡
+                        </span>
+
+                        <span>
+                            Masukkan berat dan tinggi badan Anda
+                            untuk mendapatkan estimasi BMI.
+                        </span>
+
                     </div>
 
                 </div>
 
 
-                <!-- FORM BMI -->
+                <!-- FORM -->
 
-                <div class="calculator-form">
+                <div class="kal-form">
 
-                    <div class="form-title">
+                    <div class="kal-form-header">
 
-                        <span aria-hidden="true">
+                        <div
+                            class="kal-form-icon"
+                            aria-hidden="true"
+                        >
                             ⚖️
-                        </span>
+                        </div>
 
                         <div>
 
@@ -278,13 +348,13 @@
 
                     <!-- BERAT -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="weight">
                             Berat badan
                         </label>
 
-                        <div class="input-unit">
+                        <div class="kal-input-unit">
 
                             <input
                                 type="number"
@@ -305,13 +375,13 @@
 
                     <!-- TINGGI -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="height">
                             Tinggi badan
                         </label>
 
-                        <div class="input-unit">
+                        <div class="kal-input-unit">
 
                             <input
                                 type="number"
@@ -330,28 +400,35 @@
                     </div>
 
 
-                    <!-- TOMBOL -->
+                    <!-- BUTTON -->
 
                     <button
                         type="button"
-                        class="calculator-button"
+                        class="kal-button"
                         onclick="calculateBMI()"
                     >
                         Hitung BMI
-                        <span>→</span>
+
+                        <span aria-hidden="true">
+                            →
+                        </span>
+
                     </button>
 
 
-                    <!-- HASIL -->
+                    <!-- RESULT -->
 
                     <div
                         id="bmiResult"
-                        class="result"
+                        class="kal-result"
                     >
 
-                        <div class="result-placeholder">
+                        <div class="kal-result-placeholder">
 
-                            <span aria-hidden="true">
+                            <span
+                                class="kal-result-icon"
+                                aria-hidden="true"
+                            >
                                 📊
                             </span>
 
@@ -372,18 +449,18 @@
                     </div>
 
 
-                    <!-- KONSULTASI GIZI -->
+                    <!-- CONSULTATION -->
 
-                    <div class="nutrition-consultation">
+                    <div class="kal-consultation">
 
                         <div
-                            class="nutrition-consultation-icon"
+                            class="kal-consultation-icon"
                             aria-hidden="true"
                         >
                             💚
                         </div>
 
-                        <div class="nutrition-consultation-content">
+                        <div>
 
                             <strong>
                                 Butuh informasi lebih lanjut?
@@ -413,23 +490,23 @@
 
         <section
             id="bmr"
-            class="calculator-section calculator-section-alt"
+            class="kal-section kal-section-alt"
         >
 
-            <div class="calculator-card">
+            <div class="kal-card">
 
 
-                <!-- INFORMASI BMR -->
+                <!-- INFORMASI -->
 
-                <div class="calculator-info">
+                <div class="kal-info">
 
-                    <div class="calculator-number">
+                    <div class="kal-number">
                         02
                     </div>
 
-                    <p class="section-label">
+                    <div class="kal-label">
                         BMR & TDEE
-                    </p>
+                    </div>
 
                     <h2>
                         Kebutuhan Energi
@@ -441,23 +518,34 @@
                         tinggi badan dan aktivitas.
                     </p>
 
-                    <div class="calculator-tip">
-                        💡 Pilih tingkat aktivitas yang paling
-                        mendekati rutinitas Anda sehari-hari.
+                    <div class="kal-tip">
+
+                        <span aria-hidden="true">
+                            💡
+                        </span>
+
+                        <span>
+                            Pilih tingkat aktivitas yang paling
+                            mendekati rutinitas Anda sehari-hari.
+                        </span>
+
                     </div>
 
                 </div>
 
 
-                <!-- FORM BMR -->
+                <!-- FORM -->
 
-                <div class="calculator-form">
+                <div class="kal-form">
 
-                    <div class="form-title">
+                    <div class="kal-form-header">
 
-                        <span aria-hidden="true">
+                        <div
+                            class="kal-form-icon"
+                            aria-hidden="true"
+                        >
                             🔥
-                        </span>
+                        </div>
 
                         <div>
 
@@ -474,9 +562,9 @@
                     </div>
 
 
-                    <!-- JENIS KELAMIN -->
+                    <!-- GENDER -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="gender">
                             Jenis kelamin
@@ -497,15 +585,15 @@
                     </div>
 
 
-                    <!-- UMUR -->
+                    <!-- AGE -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="age">
                             Umur
                         </label>
 
-                        <div class="input-unit">
+                        <div class="kal-input-unit">
 
                             <input
                                 type="number"
@@ -524,15 +612,15 @@
                     </div>
 
 
-                    <!-- BERAT -->
+                    <!-- WEIGHT -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="weightBMR">
                             Berat badan
                         </label>
 
-                        <div class="input-unit">
+                        <div class="kal-input-unit">
 
                             <input
                                 type="number"
@@ -551,15 +639,15 @@
                     </div>
 
 
-                    <!-- TINGGI -->
+                    <!-- HEIGHT -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="heightBMR">
                             Tinggi badan
                         </label>
 
-                        <div class="input-unit">
+                        <div class="kal-input-unit">
 
                             <input
                                 type="number"
@@ -578,9 +666,9 @@
                     </div>
 
 
-                    <!-- AKTIVITAS -->
+                    <!-- ACTIVITY -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="activity">
                             Tingkat aktivitas
@@ -613,34 +701,41 @@
                     </div>
 
 
-                    <p class="activity-note">
+                    <p class="kal-activity-note">
                         Pilih aktivitas yang paling mendekati
                         rutinitas harian Anda.
                     </p>
 
 
-                    <!-- TOMBOL -->
+                    <!-- BUTTON -->
 
                     <button
                         type="button"
-                        class="calculator-button"
+                        class="kal-button"
                         onclick="calculateTDEE()"
                     >
                         Hitung BMR & TDEE
-                        <span>→</span>
+
+                        <span aria-hidden="true">
+                            →
+                        </span>
+
                     </button>
 
 
-                    <!-- HASIL -->
+                    <!-- RESULT -->
 
                     <div
                         id="tdeeResult"
-                        class="result"
+                        class="kal-result"
                     >
 
-                        <div class="result-placeholder">
+                        <div class="kal-result-placeholder">
 
-                            <span aria-hidden="true">
+                            <span
+                                class="kal-result-icon"
+                                aria-hidden="true"
+                            >
                                 🔥
                             </span>
 
@@ -661,18 +756,18 @@
                     </div>
 
 
-                    <!-- KONSULTASI GIZI -->
+                    <!-- CONSULTATION -->
 
-                    <div class="nutrition-consultation">
+                    <div class="kal-consultation">
 
                         <div
-                            class="nutrition-consultation-icon"
+                            class="kal-consultation-icon"
                             aria-hidden="true"
                         >
                             💚
                         </div>
 
-                        <div class="nutrition-consultation-content">
+                        <div>
 
                             <strong>
                                 Butuh informasi lebih lanjut?
@@ -702,23 +797,23 @@
 
         <section
             id="macro"
-            class="calculator-section"
+            class="kal-section"
         >
 
-            <div class="calculator-card">
+            <div class="kal-card">
 
 
-                <!-- INFORMASI MAKRO -->
+                <!-- INFORMASI -->
 
-                <div class="calculator-info">
+                <div class="kal-info">
 
-                    <div class="calculator-number">
+                    <div class="kal-number">
                         03
                     </div>
 
-                    <p class="section-label">
+                    <div class="kal-label">
                         MACRO CALCULATOR
-                    </p>
+                    </div>
 
                     <h2>
                         Kebutuhan Makronutrien
@@ -730,23 +825,34 @@
                         kebutuhan energi dan tujuan Anda.
                     </p>
 
-                    <div class="calculator-tip">
-                        💡 Pilih tujuan yang sesuai untuk mendapatkan
-                        estimasi pembagian makronutrien.
+                    <div class="kal-tip">
+
+                        <span aria-hidden="true">
+                            💡
+                        </span>
+
+                        <span>
+                            Pilih tujuan yang sesuai untuk mendapatkan
+                            estimasi pembagian makronutrien.
+                        </span>
+
                     </div>
 
                 </div>
 
 
-                <!-- FORM MAKRO -->
+                <!-- FORM -->
 
-                <div class="calculator-form">
+                <div class="kal-form">
 
-                    <div class="form-title">
+                    <div class="kal-form-header">
 
-                        <span aria-hidden="true">
+                        <div
+                            class="kal-form-icon"
+                            aria-hidden="true"
+                        >
                             🥗
-                        </span>
+                        </div>
 
                         <div>
 
@@ -763,9 +869,9 @@
                     </div>
 
 
-                    <!-- JENIS KELAMIN -->
+                    <!-- GENDER -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="macroGender">
                             Jenis kelamin
@@ -786,15 +892,15 @@
                     </div>
 
 
-                    <!-- UMUR -->
+                    <!-- AGE -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="macroAge">
                             Umur
                         </label>
 
-                        <div class="input-unit">
+                        <div class="kal-input-unit">
 
                             <input
                                 type="number"
@@ -813,15 +919,15 @@
                     </div>
 
 
-                    <!-- BERAT -->
+                    <!-- WEIGHT -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="macroWeight">
                             Berat badan
                         </label>
 
-                        <div class="input-unit">
+                        <div class="kal-input-unit">
 
                             <input
                                 type="number"
@@ -840,15 +946,15 @@
                     </div>
 
 
-                    <!-- TINGGI -->
+                    <!-- HEIGHT -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="macroHeight">
                             Tinggi badan
                         </label>
 
-                        <div class="input-unit">
+                        <div class="kal-input-unit">
 
                             <input
                                 type="number"
@@ -867,9 +973,9 @@
                     </div>
 
 
-                    <!-- AKTIVITAS -->
+                    <!-- ACTIVITY -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="macroActivity">
                             Tingkat aktivitas
@@ -902,9 +1008,9 @@
                     </div>
 
 
-                    <!-- TUJUAN -->
+                    <!-- GOAL -->
 
-                    <div class="form-group">
+                    <div class="kal-form-group">
 
                         <label for="macroGoal">
                             Tujuan
@@ -929,28 +1035,35 @@
                     </div>
 
 
-                    <!-- TOMBOL -->
+                    <!-- BUTTON -->
 
                     <button
                         type="button"
-                        class="calculator-button"
+                        class="kal-button"
                         onclick="calculateMacros()"
                     >
                         Hitung Kebutuhan Makros
-                        <span>→</span>
+
+                        <span aria-hidden="true">
+                            →
+                        </span>
+
                     </button>
 
 
-                    <!-- HASIL -->
+                    <!-- RESULT -->
 
                     <div
                         id="macroResult"
-                        class="result"
+                        class="kal-result"
                     >
 
-                        <div class="result-placeholder">
+                        <div class="kal-result-placeholder">
 
-                            <span aria-hidden="true">
+                            <span
+                                class="kal-result-icon"
+                                aria-hidden="true"
+                            >
                                 🥗
                             </span>
 
@@ -971,18 +1084,18 @@
                     </div>
 
 
-                    <!-- KONSULTASI GIZI -->
+                    <!-- CONSULTATION -->
 
-                    <div class="nutrition-consultation">
+                    <div class="kal-consultation">
 
                         <div
-                            class="nutrition-consultation-icon"
+                            class="kal-consultation-icon"
                             aria-hidden="true"
                         >
                             💚
                         </div>
 
-                        <div class="nutrition-consultation-content">
+                        <div>
 
                             <strong>
                                 Butuh informasi lebih lanjut?
@@ -1010,21 +1123,31 @@
              DISCLAIMER
         ================================================== -->
 
-        <section class="disclaimer">
+        <section class="kal-disclaimer">
 
-            <h3>
-                ⚠️ Catatan penting
-            </h3>
+            <div
+                class="kal-disclaimer-icon"
+                aria-hidden="true"
+            >
+                ⚠️
+            </div>
 
-            <p>
-                Hasil kalkulator merupakan estimasi untuk
-                tujuan edukasi dan bukan diagnosis medis.
-                Kebutuhan energi dan nutrisi setiap orang
-                dapat berbeda.
-            </p>
+            <div>
+
+                <h3>
+                    Catatan penting
+                </h3>
+
+                <p>
+                    Hasil kalkulator merupakan estimasi untuk
+                    tujuan edukasi dan bukan diagnosis medis.
+                    Kebutuhan energi dan nutrisi setiap orang
+                    dapat berbeda.
+                </p>
+
+            </div>
 
         </section>
-
 
     </main>
 
@@ -1037,9 +1160,6 @@
     <footer>
 
         <div class="footer-content">
-
-
-            <!-- FOOTER INFO -->
 
             <div class="footer-info">
 
@@ -1054,8 +1174,6 @@
 
             </div>
 
-
-            <!-- FOOTER CONTACT -->
 
             <div class="footer-contact">
 
@@ -1080,8 +1198,6 @@
             </div>
 
 
-            <!-- COPYRIGHT -->
-
             <div class="footer-copyright">
 
                 <p>
@@ -1089,7 +1205,6 @@
                 </p>
 
             </div>
-
 
         </div>
 
@@ -1103,7 +1218,7 @@
 
     <script src="script.js"></script>
 
-
 </body>
 
 </html>
+```
