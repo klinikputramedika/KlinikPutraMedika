@@ -1,20 +1,25 @@
 /* =========================================================
-   WHO-ANTHRO-DATA.JS
-   KLINIK PUTRA MEDIKA
+   WHO ANTHRO ENGINE
+   Klinik Putra Medika
 
    WHO Child Growth Standards 2006
-   WHO Reference 2007
+   WHO Growth Reference 2007
 
-   ENGINE DATABASE ANTROPOMETRI ANAK
-========================================================= */
+   File ini menjadi ENGINE referensi untuk:
+   - BB/U
+   - PB/TB/U
+   - BB/PB
+   - BB/TB
+   - IMT/U
+   - Z-score LMS
+   ========================================================= */
+
+"use strict";
 
 (function () {
 
-    "use strict";
-
     console.log("======================================");
-    console.log("WHO ANTHRO DATA ENGINE");
-    console.log("Klinik Putra Medika");
+    console.log("WHO ANTHRO ENGINE DIMUAT");
     console.log("======================================");
 
 
@@ -24,7 +29,7 @@
 
     const VERSION = {
         under5: "WHO Child Growth Standards 2006",
-        schoolAge: "WHO Reference 2007"
+        five19: "WHO Growth Reference 2007"
     };
 
 
@@ -33,287 +38,105 @@
     ===================================================== */
 
     const LIMITS = {
-
-        under5: {
-            minDays: 0,
-            maxDays: 1856,
-            maxCompletedMonths: 60
-        },
-
-        schoolAge: {
-            minCompletedMonths: 61,
-            maxCompletedMonths: 228
-        },
-
-        weightForAgeSchool: {
-            minCompletedMonths: 61,
-            maxCompletedMonths: 120
-        }
-
+        under5MaxMonths: 60,
+        referenceMinMonths: 61,
+        referenceMaxMonths: 228
     };
 
 
     /* =====================================================
-       DATABASE
-       
-       Struktur ini akan menerima tabel WHO resmi.
-
-       Format:
-       
-       database[sex][indicator][age] = {
-           L: ...,
-           M: ...,
-           S: ...
-       }
-
-       Untuk:
-       WFA / HFA / BFA:
-           age = bulan/hari sesuai dataset
-
-       Untuk WHZ:
-           age = panjang/tinggi badan
+       KONVERSI USIA
     ===================================================== */
 
-    const DATABASE = {
-
-        male: {
-
-            weightForAge: {
-                under5: {},
-                schoolAge: {}
-            },
-
-            heightForAge: {
-                under5: {},
-                schoolAge: {}
-            },
-
-            weightForLengthHeight: {
-                under5: {}
-            },
-
-            bmiForAge: {
-                under5: {},
-                schoolAge: {}
-            }
-
-        },
-
-        female: {
-
-            weightForAge: {
-                under5: {},
-                schoolAge: {}
-            },
-
-            heightForAge: {
-                under5: {},
-                schoolAge: {}
-            },
-
-            weightForLengthHeight: {
-                under5: {}
-            },
-
-            bmiForAge: {
-                under5: {},
-                schoolAge: {}
-            }
-
-        }
-
-    };
+    function daysToMonths(days) {
+        return days / 30.4375;
+    }
 
 
-    /* =====================================================
-       SEX
-    ===================================================== */
-
-    function normalizeSex(sex) {
-
-        if (sex === undefined || sex === null) {
-            return null;
-        }
-
-        const s = String(sex)
-            .trim()
-            .toLowerCase();
-
-        if (
-            s === "male" ||
-            s === "m" ||
-            s === "boy" ||
-            s === "laki" ||
-            s === "laki-laki"
-        ) {
-            return "male";
-        }
-
-        if (
-            s === "female" ||
-            s === "f" ||
-            s === "girl" ||
-            s === "perempuan"
-        ) {
-            return "female";
-        }
-
-        return null;
+    function monthsToDays(months) {
+        return months * 30.4375;
     }
 
 
     /* =====================================================
-       ANGKA
+       LMS Z-SCORE
     ===================================================== */
 
-    function number(value) {
+    function lmsZScore(value, L, M, S) {
 
-        const n = Number(value);
-
-        return Number.isFinite(n)
-            ? n
-            : null;
-    }
-
-
-    /* =====================================================
-       PEMBULATAN
-    ===================================================== */
-
-    function round(value, digits = 2) {
-
-        if (!Number.isFinite(value)) {
-            return null;
-        }
-
-        const p = Math.pow(10, digits);
-
-        return Math.round(value * p) / p;
-    }
-
-
-    /* =====================================================
-       BMI
-    ===================================================== */
-
-    function calculateBMI(weightKg, heightCm) {
-
-        const weight = number(weightKg);
-        const height = number(heightCm);
+        value = Number(value);
+        L = Number(L);
+        M = Number(M);
+        S = Number(S);
 
         if (
-            weight === null ||
-            height === null ||
-            weight <= 0 ||
-            height <= 0
+            !Number.isFinite(value) ||
+            !Number.isFinite(L) ||
+            !Number.isFinite(M) ||
+            !Number.isFinite(S) ||
+            M <= 0 ||
+            S <= 0
         ) {
             return null;
         }
 
-        const meter = height / 100;
 
-        return round(
-            weight / (meter * meter),
-            2
-        );
-    }
+        if (L === 0) {
 
+            return Math.log(value / M) / S;
 
-    /* =====================================================
-       AGE GROUP
-    ===================================================== */
-
-    function getAgeGroup(ageDays, ageMonths) {
-
-        const days = number(ageDays);
-        const months = number(ageMonths);
-
-        if (
-            days !== null &&
-            days >= 0 &&
-            days <= 1856
-        ) {
-            return "under5";
         }
 
-        if (
-            months !== null &&
-            months >= 61 &&
-            months <= 228
-        ) {
-            return "schoolAge";
-        }
-
-        return null;
-    }
-
-
-    /* =====================================================
-       DATABASE GETTER
-    ===================================================== */
-
-    function getDatabase(
-        sex,
-        indicator,
-        ageGroup
-    ) {
-
-        const gender = normalizeSex(sex);
-
-        if (!gender) {
-            return null;
-        }
-
-        if (!DATABASE[gender]) {
-            return null;
-        }
-
-        if (!DATABASE[gender][indicator]) {
-            return null;
-        }
-
-        if (!DATABASE[gender][indicator][ageGroup]) {
-            return null;
-        }
-
-        return DATABASE[gender][indicator][ageGroup];
-    }
-
-
-    /* =====================================================
-       LMS VALIDATOR
-    ===================================================== */
-
-    function validLMS(lms) {
-
-        if (!lms) {
-            return false;
-        }
-
-        const L = number(lms.L);
-        const M = number(lms.M);
-        const S = number(lms.S);
 
         return (
-            L !== null &&
-            M !== null &&
-            S !== null &&
-            M > 0 &&
-            S > 0
-        );
+            Math.pow(value / M, L) - 1
+        ) / (L * S);
+
     }
 
 
     /* =====================================================
-       SORT DATABASE
+       LMS → NILAI PADA Z
     ===================================================== */
 
-    function sortedKeys(database) {
+    function lmsValueAtZ(z, L, M, S) {
 
-        return Object.keys(database)
-            .map(Number)
-            .filter(Number.isFinite)
-            .sort((a, b) => a - b);
+        z = Number(z);
+        L = Number(L);
+        M = Number(M);
+        S = Number(S);
+
+        if (
+            !Number.isFinite(z) ||
+            !Number.isFinite(L) ||
+            !Number.isFinite(M) ||
+            !Number.isFinite(S)
+        ) {
+            return null;
+        }
+
+
+        if (L === 0) {
+
+            return M * Math.exp(z * S);
+
+        }
+
+
+        const base =
+            1 + (L * S * z);
+
+
+        if (base <= 0) {
+            return null;
+        }
+
+
+        return (
+            M *
+            Math.pow(base, 1 / L)
+        );
+
     }
 
 
@@ -321,98 +144,11 @@
        INTERPOLASI LMS
     ===================================================== */
 
-    function interpolateLMS(database, x) {
+    function interpolateLMS(a, b, ratio) {
 
-        if (!database) {
+        if (!a || !b) {
             return null;
         }
-
-        const value = number(x);
-
-        if (value === null) {
-            return null;
-        }
-
-        const keys = sortedKeys(database);
-
-        if (!keys.length) {
-            return null;
-        }
-
-
-        /* Exact */
-
-        const exactKey = String(value);
-
-        if (
-            database[exactKey] &&
-            validLMS(database[exactKey])
-        ) {
-
-            return {
-                L: number(database[exactKey].L),
-                M: number(database[exactKey].M),
-                S: number(database[exactKey].S),
-                interpolated: false
-            };
-
-        }
-
-
-        /* Range */
-
-        if (
-            value < keys[0] ||
-            value > keys[keys.length - 1]
-        ) {
-            return null;
-        }
-
-
-        let lower = null;
-        let upper = null;
-
-        for (
-            let i = 0;
-            i < keys.length - 1;
-            i++
-        ) {
-
-            if (
-                value >= keys[i] &&
-                value <= keys[i + 1]
-            ) {
-
-                lower = keys[i];
-                upper = keys[i + 1];
-
-                break;
-            }
-        }
-
-        if (
-            lower === null ||
-            upper === null
-        ) {
-            return null;
-        }
-
-
-        const a = database[String(lower)];
-        const b = database[String(upper)];
-
-        if (
-            !validLMS(a) ||
-            !validLMS(b)
-        ) {
-            return null;
-        }
-
-
-        const ratio =
-            (value - lower) /
-            (upper - lower);
-
 
         return {
 
@@ -426,9 +162,7 @@
 
             S:
                 a.S +
-                (b.S - a.S) * ratio,
-
-            interpolated: true
+                (b.S - a.S) * ratio
 
         };
 
@@ -436,124 +170,119 @@
 
 
     /* =====================================================
-       LMS → Z SCORE
+       MENCARI LMS TERDEKAT
     ===================================================== */
 
-    function calculateZScore(
-        measurement,
-        L,
-        M,
-        S
-    ) {
+    function findLMS(table, age) {
 
-        const X = number(measurement);
-        const l = number(L);
-        const m = number(M);
-        const s = number(S);
-
-        if (
-            X === null ||
-            l === null ||
-            m === null ||
-            s === null
-        ) {
-            return null;
-        }
-
-        if (
-            X <= 0 ||
-            M <= 0 ||
-            S <= 0
-        ) {
+        if (!Array.isArray(table) || !table.length) {
             return null;
         }
 
 
-        let z;
+        const numericAge = Number(age);
 
 
-        if (
-            Math.abs(l) < 0.000001
-        ) {
-
-            z =
-                Math.log(X / m) / s;
-
-        } else {
-
-            z =
-                (
-                    Math.pow(X / m, l) - 1
-                ) /
-                (l * s);
-
-        }
-
-
-        if (!Number.isFinite(z)) {
+        if (!Number.isFinite(numericAge)) {
             return null;
         }
 
-        return z;
+
+        for (let i = 0; i < table.length; i++) {
+
+            if (
+                Number(table[i].age) ===
+                numericAge
+            ) {
+
+                return table[i];
+
+            }
+
+        }
+
+
+        let lower = null;
+        let upper = null;
+
+
+        for (let i = 0; i < table.length; i++) {
+
+            const item = table[i];
+
+
+            if (Number(item.age) < numericAge) {
+
+                lower = item;
+
+            }
+
+
+            if (
+                Number(item.age) >
+                numericAge
+            ) {
+
+                upper = item;
+                break;
+
+            }
+
+        }
+
+
+        if (!lower) {
+            return table[0];
+        }
+
+
+        if (!upper) {
+            return table[table.length - 1];
+        }
+
+
+        const ratio =
+            (
+                numericAge -
+                Number(lower.age)
+            ) /
+            (
+                Number(upper.age) -
+                Number(lower.age)
+            );
+
+
+        return interpolateLMS(
+            lower,
+            upper,
+            ratio
+        );
+
     }
 
 
     /* =====================================================
-       Z SCORE
+       Z-SCORE DENGAN DATA LMS
     ===================================================== */
 
-    function getZScore(options) {
-
-        if (!options) {
-            return null;
-        }
-
-        const {
-            sex,
-            indicator,
-            ageGroup,
-            x,
-            measurement
-        } = options;
-
-
-        const database =
-            getDatabase(
-                sex,
-                indicator,
-                ageGroup
-            );
-
-        if (!database) {
-
-            return {
-                success: false,
-                reason: "Database WHO tidak tersedia."
-            };
-
-        }
-
+    function calculateZ(
+        value,
+        table,
+        age
+    ) {
 
         const lms =
-            interpolateLMS(
-                database,
-                x
-            );
+            findLMS(table, age);
+
 
         if (!lms) {
-
-            return {
-                success: false,
-                reason:
-                    "Nilai referensi WHO tidak ditemukan."
-            };
-
+            return null;
         }
 
 
         const z =
-            calculateZScore(
-                measurement,
+            lmsZScore(
+                value,
                 lms.L,
                 lms.M,
                 lms.S
@@ -561,31 +290,19 @@
 
 
         if (z === null) {
-
-            return {
-                success: false,
-                reason:
-                    "Z-score tidak dapat dihitung."
-            };
-
+            return null;
         }
 
 
         return {
 
-            success: true,
-
-            zScore:
-                round(z, 2),
+            z: z,
 
             L: lms.L,
 
             M: lms.M,
 
-            S: lms.S,
-
-            interpolated:
-                lms.interpolated
+            S: lms.S
 
         };
 
@@ -593,339 +310,449 @@
 
 
     /* =====================================================
-       NORMAL CDF
-       
-       Untuk estimasi percentile.
+       PEMBATASAN Z-SCORE
     ===================================================== */
 
-    function normalCDF(z) {
-
-        const x = number(z);
-
-        if (x === null) {
-            return null;
-        }
-
-        const sign =
-            x < 0 ? -1 : 1;
-
-        const abs =
-            Math.abs(x);
-
-        const t =
-            1 /
-            (
-                1 +
-                0.2316419 * abs
-            );
-
-        const d =
-            0.3989423 *
-            Math.exp(
-                -abs * abs / 2
-            );
-
-        const probability =
-            d *
-            t *
-            (
-                0.3193815 +
-                t *
-                (
-                    -0.3565638 +
-                    t *
-                    (
-                        1.781478 +
-                        t *
-                        (
-                            -1.821256 +
-                            t *
-                            1.330274
-                        )
-                    )
-                )
-            );
-
-        const cdf =
-            sign === 1
-                ? 1 - probability
-                : probability;
-
-        return cdf;
-    }
-
-
-    /* =====================================================
-       PERCENTILE
-    ===================================================== */
-
-    function zToPercentile(z) {
-
-        const p =
-            normalCDF(z);
-
-        if (p === null) {
-            return null;
-        }
-
-        return round(
-            p * 100,
-            1
-        );
-    }
-
-
-    /* =====================================================
-       KLASIFIKASI BMI/U
-    ===================================================== */
-
-    function classifyBMIForAge(z) {
+    function clampZ(z) {
 
         if (!Number.isFinite(z)) {
             return null;
         }
 
-        if (z < -3) {
+        /*
+         * Jangan memotong nilai internal.
+         * Pembatasan hanya untuk tampilan.
+         */
 
-            return {
-                category: "severe_thinness",
-                label: "Sangat kurus",
-                degree: "< -3 SD"
-            };
+        return Math.max(
+            -5,
+            Math.min(5, z)
+        );
 
-        }
-
-        if (z < -2) {
-
-            return {
-                category: "thinness",
-                label: "Kurus",
-                degree: "≥ -3 SD sampai < -2 SD"
-            };
-
-        }
-
-        if (z <= 1) {
-
-            return {
-                category: "normal",
-                label: "Normal",
-                degree: "≥ -2 SD sampai ≤ +1 SD"
-            };
-
-        }
-
-        if (z <= 2) {
-
-            return {
-                category: "overweight",
-                label: "Gemuk",
-                degree: "> +1 SD sampai ≤ +2 SD"
-            };
-
-        }
-
-        return {
-
-            category: "obesity",
-
-            label: "Obesitas",
-
-            degree: "> +2 SD"
-
-        };
     }
 
 
     /* =====================================================
-       KLASIFIKASI TB/U
+       STATUS TB/PB MENURUT UMUR
     ===================================================== */
 
     function classifyHeightForAge(z) {
 
-        if (!Number.isFinite(z)) {
-            return null;
+        if (z === null) {
+            return {
+                category: "Tidak dapat dinilai",
+                code: "NA"
+            };
         }
+
 
         if (z < -3) {
 
             return {
-                category: "severely_stunted",
-                label: "Sangat pendek",
-                degree: "< -3 SD"
+                category: "Sangat pendek",
+                code: "SEVERE_STUNTING"
             };
 
         }
+
 
         if (z < -2) {
 
             return {
-                category: "stunted",
-                label: "Pendek",
-                degree: "≥ -3 SD sampai < -2 SD"
+                category: "Pendek",
+                code: "STUNTING"
             };
 
         }
 
+
         return {
-
-            category: "normal",
-
-            label: "Normal",
-
-            degree: "≥ -2 SD"
-
+            category: "Normal",
+            code: "NORMAL"
         };
+
     }
 
 
     /* =====================================================
-       KLASIFIKASI BB/U
+       STATUS BB MENURUT UMUR
     ===================================================== */
 
     function classifyWeightForAge(z) {
 
-        if (!Number.isFinite(z)) {
-            return null;
+        if (z === null) {
+
+            return {
+                category: "Tidak dapat dinilai",
+                code: "NA"
+            };
+
         }
+
 
         if (z < -3) {
 
             return {
-                category: "severely_underweight",
-                label: "Berat badan sangat kurang",
-                degree: "< -3 SD"
+                category:
+                    "Berat badan sangat kurang",
+                code:
+                    "SEVERE_UNDERWEIGHT"
             };
 
         }
+
 
         if (z < -2) {
 
             return {
-                category: "underweight",
-                label: "Berat badan kurang",
-                degree: "≥ -3 SD sampai < -2 SD"
+                category:
+                    "Berat badan kurang",
+                code:
+                    "UNDERWEIGHT"
             };
 
         }
 
+
         return {
 
-            category: "normal",
+            category:
+                "Berat badan normal",
 
-            label: "Berat badan normal",
-
-            degree: "≥ -2 SD"
+            code:
+                "NORMAL"
 
         };
+
     }
 
 
     /* =====================================================
-       KLASIFIKASI BB/PB ATAU BB/TB
+       STATUS BB/PB ATAU BB/TB 0–5 TAHUN
     ===================================================== */
 
     function classifyWeightForHeight(z) {
 
-        if (!Number.isFinite(z)) {
-            return null;
+        if (z === null) {
+
+            return {
+                category:
+                    "Tidak dapat dinilai",
+
+                code:
+                    "NA"
+            };
+
         }
+
 
         if (z < -3) {
 
             return {
-                category: "severely_wasted",
-                label: "Sangat kurus",
-                degree: "< -3 SD"
+                category:
+                    "Sangat kurus",
+
+                code:
+                    "SEVERE_WASTING"
             };
 
         }
+
 
         if (z < -2) {
 
             return {
-                category: "wasted",
-                label: "Kurus",
-                degree: "≥ -3 SD sampai < -2 SD"
+                category:
+                    "Kurus",
+
+                code:
+                    "WASTING"
             };
 
         }
 
-        if (z <= 2) {
+
+        if (z > 3) {
 
             return {
-                category: "normal",
-                label: "Normal",
-                degree: "≥ -2 SD sampai ≤ +2 SD"
+                category:
+                    "Obesitas",
+
+                code:
+                    "OBESITY"
             };
 
         }
 
-        if (z <= 3) {
+
+        if (z > 2) {
 
             return {
-                category: "overweight",
-                label: "Berat badan lebih",
-                degree: "> +2 SD sampai ≤ +3 SD"
+                category:
+                    "Gemuk",
+
+                code:
+                    "OVERWEIGHT"
             };
 
         }
+
 
         return {
 
-            category: "obesity",
+            category:
+                "Normal",
 
-            label: "Obesitas",
-
-            degree: "> +3 SD"
+            code:
+                "NORMAL"
 
         };
+
     }
 
 
     /* =====================================================
-       STATUS DATABASE
+       STATUS IMT/U 0–5 TAHUN
     ===================================================== */
 
-    function getDatabaseStatus() {
+    function classifyBMIUnder5(z) {
 
-        const result = {};
+        if (z === null) {
 
-        for (
-            const sex of
-            ["male", "female"]
-        ) {
+            return {
+                category:
+                    "Tidak dapat dinilai",
 
-            result[sex] = {};
+                code:
+                    "NA"
+            };
 
-            for (
-                const indicator of
-                Object.keys(DATABASE[sex])
-            ) {
-
-                result[sex][indicator] = {};
-
-                for (
-                    const ageGroup of
-                    Object.keys(
-                        DATABASE[sex][indicator]
-                    )
-                ) {
-
-                    result[sex][indicator][ageGroup] =
-                        Object.keys(
-                            DATABASE[sex][indicator][ageGroup]
-                        ).length;
-                }
-            }
         }
 
-        return result;
+
+        if (z < -3) {
+
+            return {
+                category:
+                    "Sangat kurus",
+
+                code:
+                    "SEVERE_THINNESS"
+            };
+
+        }
+
+
+        if (z < -2) {
+
+            return {
+                category:
+                    "Kurus",
+
+                code:
+                    "THINNESS"
+            };
+
+        }
+
+
+        if (z > 3) {
+
+            return {
+                category:
+                    "Obesitas",
+
+                code:
+                    "OBESITY"
+            };
+
+        }
+
+
+        if (z > 2) {
+
+            return {
+                category:
+                    "Gemuk",
+
+                code:
+                    "OVERWEIGHT"
+            };
+
+        }
+
+
+        if (z > 1) {
+
+            return {
+                category:
+                    "Berisiko gemuk",
+
+                code:
+                    "RISK_OF_OVERWEIGHT"
+            };
+
+        }
+
+
+        return {
+
+            category:
+                "Normal",
+
+            code:
+                "NORMAL"
+
+        };
+
     }
 
 
     /* =====================================================
-       PUBLIC API
+       STATUS IMT/U 5–19 TAHUN
+    ===================================================== */
+
+    function classifyBMI5to19(z) {
+
+        if (z === null) {
+
+            return {
+                category:
+                    "Tidak dapat dinilai",
+
+                code:
+                    "NA"
+            };
+
+        }
+
+
+        if (z < -3) {
+
+            return {
+
+                category:
+                    "Sangat kurus",
+
+                code:
+                    "SEVERE_THINNESS"
+
+            };
+
+        }
+
+
+        if (z < -2) {
+
+            return {
+
+                category:
+                    "Kurus",
+
+                code:
+                    "THINNESS"
+
+            };
+
+        }
+
+
+        if (z > 2) {
+
+            return {
+
+                category:
+                    "Obesitas",
+
+                code:
+                    "OBESITY"
+
+            };
+
+        }
+
+
+        if (z > 1) {
+
+            return {
+
+                category:
+                    "Gemuk",
+
+                code:
+                    "OVERWEIGHT"
+
+            };
+
+        }
+
+
+        return {
+
+            category:
+                "Normal",
+
+            code:
+                "NORMAL"
+
+        };
+
+    }
+
+
+    /* =====================================================
+       DATABASE LMS
+       
+       CATATAN:
+       Array berikut adalah tempat data WHO LMS dimasukkan.
+       Mesin sudah siap membaca data dalam format:
+
+       {
+           age: bulan,
+           L: ...,
+           M: ...,
+           S: ...
+       }
+
+       Contoh struktur:
+    ===================================================== */
+
+    const DATA = {
+
+        male: {
+
+            weightForAge: [],
+
+            heightForAge: [],
+
+            weightForLength: [],
+
+            weightForHeight: [],
+
+            bmiForAge: []
+
+        },
+
+
+        female: {
+
+            weightForAge: [],
+
+            heightForAge: [],
+
+            weightForLength: [],
+
+            weightForHeight: [],
+
+            bmiForAge: []
+
+        }
+
+    };
+
+
+    /* =====================================================
+       API
     ===================================================== */
 
     window.WHO_ANTHRO = {
@@ -934,73 +761,39 @@
 
         limits: LIMITS,
 
-        data: DATABASE,
+        data: DATA,
 
-        normalizeSex,
+        lmsZScore: lmsZScore,
 
-        getAgeGroup,
+        lmsValueAtZ: lmsValueAtZ,
 
-        getDatabase,
+        calculateZ: calculateZ,
 
-        getLMS: interpolateLMS,
+        findLMS: findLMS,
 
-        calculateBMI,
+        clampZ: clampZ,
 
-        calculateZScore,
+        classifyHeightForAge:
+            classifyHeightForAge,
 
-        getZScore,
+        classifyWeightForAge:
+            classifyWeightForAge,
 
-        zToPercentile,
+        classifyWeightForHeight:
+            classifyWeightForHeight,
 
-        classifyBMIForAge,
+        classifyBMIUnder5:
+            classifyBMIUnder5,
 
-        classifyHeightForAge,
-
-        classifyWeightForAge,
-
-        classifyWeightForHeight,
-
-        databaseStatus:
-            getDatabaseStatus
+        classifyBMI5to19:
+            classifyBMI5to19
 
     };
 
 
-    /* =====================================================
-       READY FLAG
-    ===================================================== */
-
-    window.WHO_ANTHRO_READY = true;
-
-
-    /* =====================================================
-       EVENT
-    ===================================================== */
-
-    document.dispatchEvent(
-        new CustomEvent(
-            "whoAnthroReady"
-        )
-    );
-
-
-    /* =====================================================
-       DEBUG
-    ===================================================== */
-
     console.log(
         "WHO_ANTHRO tersedia:",
         !!window.WHO_ANTHRO
-    );
-
-    console.log(
-        "WHO_ANTHRO_READY:",
-        window.WHO_ANTHRO_READY
-    );
-
-    console.log(
-        "Database status:",
-        getDatabaseStatus()
     );
 
 })();
