@@ -3,466 +3,662 @@
    KALKULATOR GIZI ANAK
    ========================================================= */
 
+document.addEventListener("DOMContentLoaded", function () {
 
-/* =========================================================
-   FUNGSI UTAMA
-   ========================================================= */
+    const tanggalLahir = document.getElementById("tanggalLahir");
+    const tanggalPeriksa = document.getElementById("tanggalPeriksa");
+    const usiaDisplay = document.getElementById("usiaAnak");
 
-function hitungGiziAnak() {
+    const tombolHitung = document.getElementById("btnHitungGizi");
 
-    const gender = document.getElementById("jenisKelaminAnak");
-    const umur = document.getElementById("umurAnak");
-    const berat = document.getElementById("beratAnak");
-    const tinggi = document.getElementById("tinggiAnak");
-    const hasil = document.getElementById("hasilGiziAnak");
+    const jenisKelamin = document.getElementById("jenisKelamin");
+    const beratBadan = document.getElementById("beratBadan");
+    const tinggiBadan = document.getElementById("tinggiBadan");
+    const jenisPengukuran = document.getElementById("jenisPengukuran");
 
-    /* Pastikan semua elemen tersedia */
-    if (!gender || !umur || !berat || !tinggi || !hasil) {
-
-        console.error(
-            "Elemen kalkulator gizi anak tidak ditemukan."
-        );
-
-        return;
-    }
-
-
-    /* Ambil nilai */
-    const jenisKelamin = gender.value;
-    const umurBulan = parseFloat(umur.value);
-    const beratKg = parseFloat(berat.value);
-    const tinggiCm = parseFloat(tinggi.value);
+    const hasil = document.getElementById("hasilGizi");
 
 
     /* =====================================================
-       VALIDASI
+       CEK ELEMEN
     ===================================================== */
 
-    if (
-        isNaN(umurBulan) ||
-        isNaN(beratKg) ||
-        isNaN(tinggiCm)
-    ) {
+    console.log("Kalkulator Gizi Anak aktif.");
 
-        tampilkanError(
-            hasil,
-            "Silakan lengkapi semua data terlebih dahulu."
-        );
-
-        return;
-    }
-
-
-    if (
-        umurBulan < 0 ||
-        umurBulan > 228 ||
-        beratKg <= 0 ||
-        tinggiCm <= 0
-    ) {
-
-        tampilkanError(
-            hasil,
-            "Pastikan umur, berat badan dan tinggi badan valid."
-        );
-
-        return;
-    }
-
-
-    /*
-       Kalkulator ini menggunakan pendekatan
-       edukatif berbasis IMT menurut umur.
-
-       Untuk penggunaan klinis, penilaian status gizi
-       anak sebaiknya menggunakan kurva pertumbuhan
-       WHO sesuai umur dan jenis kelamin.
-    */
+    console.log({
+        tanggalLahir,
+        tanggalPeriksa,
+        usiaDisplay,
+        tombolHitung,
+        jenisKelamin,
+        beratBadan,
+        tinggiBadan,
+        jenisPengukuran,
+        hasil
+    });
 
 
     /* =====================================================
-       HITUNG IMT
+       TANGGAL HARI INI
     ===================================================== */
 
-    const tinggiMeter = tinggiCm / 100;
+    if (tanggalPeriksa) {
 
-    const imt =
-        beratKg /
-        (tinggiMeter * tinggiMeter);
+        const today = new Date();
 
-
-    /* =====================================================
-       TENTUKAN KATEGORI SEDERHANA
-       BERDASARKAN IMT
-
-       Catatan:
-       Untuk penilaian klinis anak, kategori final
-       harus berdasarkan IMT menurut umur (IMT/U)
-       menggunakan standar WHO.
-    ===================================================== */
-
-    let kategori = "";
-    let derajat = "";
-    let warnaClass = "";
-    let deskripsi = "";
-
-
-    /*
-       Karena nilai cut-off IMT anak bergantung
-       pada umur dan jenis kelamin, kita tidak
-       menggunakan cut-off BMI dewasa.
-
-       Untuk sementara hasil diberikan sebagai
-       estimasi edukatif dan mengingatkan pengguna
-       bahwa interpretasi klinis membutuhkan
-       kurva pertumbuhan.
-    */
-
-
-    if (imt < 13) {
-
-        kategori = "Berat badan sangat rendah";
-        derajat = "Perlu evaluasi lebih lanjut";
-        warnaClass = "status-severe";
-        deskripsi =
-            "Nilai IMT relatif rendah. Perlu dilakukan penilaian pertumbuhan berdasarkan IMT menurut umur dan jenis kelamin.";
-
-    }
-
-    else if (imt < 15) {
-
-        kategori = "Berat badan relatif rendah";
-        derajat = "Perlu perhatian";
-        warnaClass = "status-warning";
-        deskripsi =
-            "Nilai IMT relatif rendah dan perlu dibandingkan dengan kurva pertumbuhan sesuai umur dan jenis kelamin.";
-
-    }
-
-    else if (imt < 18) {
-
-        kategori = "Rentang relatif sesuai";
-        derajat = "Evaluasi dengan kurva pertumbuhan";
-        warnaClass = "status-normal";
-        deskripsi =
-            "Nilai IMT berada pada rentang yang relatif sesuai, namun status gizi anak harus dinilai berdasarkan IMT menurut umur.";
-
-    }
-
-    else if (imt < 20) {
-
-        kategori = "Berat badan relatif tinggi";
-        derajat = "Perlu perhatian";
-        warnaClass = "status-warning";
-        deskripsi =
-            "Nilai IMT relatif tinggi. Bandingkan dengan kurva IMT menurut umur untuk menentukan status gizi.";
-
-    }
-
-    else {
-
-        kategori = "Berat badan sangat tinggi";
-        derajat = "Perlu evaluasi lebih lanjut";
-        warnaClass = "status-severe";
-        deskripsi =
-            "Nilai IMT relatif tinggi dan memerlukan penilaian lebih lanjut berdasarkan IMT menurut umur.";
+        tanggalPeriksa.value =
+            formatDateInput(today);
 
     }
 
 
     /* =====================================================
-       HASIL
+       HITUNG USIA OTOMATIS
     ===================================================== */
 
-    hasil.className =
-        "gizi-anak-result " + warnaClass;
+    function updateUsia() {
+
+        if (
+            !tanggalLahir ||
+            !tanggalPeriksa ||
+            !usiaDisplay
+        ) {
+            return;
+        }
 
 
-    hasil.innerHTML = `
+        if (
+            !tanggalLahir.value ||
+            !tanggalPeriksa.value
+        ) {
 
-        <div class="gizi-result-header">
+            usiaDisplay.textContent =
+                "Belum dihitung";
 
-            <div>
-
-                <span class="gizi-result-label">
-                    HASIL PENILAIAN
-                </span>
-
-                <h3>
-                    Status Gizi Anak
-                </h3>
-
-            </div>
-
-            <div class="gizi-result-icon">
-                📊
-            </div>
-
-        </div>
+            return;
+        }
 
 
-        <div class="gizi-status">
+        const lahir =
+            parseLocalDate(tanggalLahir.value);
 
-            <span>
-                Status
-            </span>
+        const periksa =
+            parseLocalDate(tanggalPeriksa.value);
+
+
+        if (
+            !lahir ||
+            !periksa ||
+            periksa < lahir
+        ) {
+
+            usiaDisplay.textContent =
+                "Tanggal tidak valid";
+
+            return;
+        }
+
+
+        const usia =
+            hitungUsia(lahir, periksa);
+
+
+        usiaDisplay.innerHTML = `
 
             <strong>
-                ${kategori}
+                ${usia.tahun} tahun
+                ${usia.bulan} bulan
+                ${usia.hari} hari
             </strong>
 
             <small>
-                ${derajat}
+                (${usia.totalBulan} bulan)
             </small>
 
-        </div>
+        `;
+    }
 
 
-        <div class="gizi-data-grid">
+    tanggalLahir?.addEventListener(
+        "change",
+        updateUsia
+    );
 
 
-            <div class="gizi-data">
-
-                <span>
-                    Umur
-                </span>
-
-                <strong>
-                    ${formatUmur(umurBulan)}
-                </strong>
-
-            </div>
+    tanggalPeriksa?.addEventListener(
+        "change",
+        updateUsia
+    );
 
 
-            <div class="gizi-data">
+    /* =====================================================
+       TOMBOL HITUNG
+    ===================================================== */
 
-                <span>
-                    Jenis kelamin
-                </span>
+    if (tombolHitung) {
 
-                <strong>
-                    ${jenisKelamin === "laki-laki"
-                        ? "Laki-laki"
-                        : "Perempuan"}
-                </strong>
-
-            </div>
-
-
-            <div class="gizi-data">
-
-                <span>
-                    Berat badan
-                </span>
-
-                <strong>
-                    ${beratKg.toFixed(1)} kg
-                </strong>
-
-            </div>
-
-
-            <div class="gizi-data">
-
-                <span>
-                    Tinggi badan
-                </span>
-
-                <strong>
-                    ${tinggiCm.toFixed(1)} cm
-                </strong>
-
-            </div>
-
-
-            <div class="gizi-data gizi-data-full">
-
-                <span>
-                    IMT
-                </span>
-
-                <strong>
-                    ${imt.toFixed(1)} kg/m²
-                </strong>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="gizi-result-description">
-
-            <span>
-                💡
-            </span>
-
-            <p>
-                ${deskripsi}
-            </p>
-
-        </div>
-
-
-        <div class="gizi-medical-note">
-
-            <strong>
-                Catatan medis
-            </strong>
-
-            <p>
-                Pada anak, status gizi tidak ditentukan
-                menggunakan batas IMT dewasa. Penilaian
-                yang tepat menggunakan indikator
-                <strong>IMT menurut umur (IMT/U)</strong>
-                berdasarkan umur dan jenis kelamin,
-                kemudian dibandingkan dengan standar
-                pertumbuhan yang sesuai.
-            </p>
-
-        </div>
-
-    `;
-
-
-    /* Scroll ke hasil */
-
-    hasil.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-    });
-
-}
-
-
-/* =========================================================
-   FORMAT UMUR
-   ========================================================= */
-
-function formatUmur(bulan) {
-
-    if (bulan < 12) {
-
-        return `${bulan} bulan`;
+        tombolHitung.addEventListener(
+            "click",
+            hitungGizi
+        );
 
     }
 
 
-    const tahun = Math.floor(bulan / 12);
+    /* =====================================================
+       FUNGSI HITUNG GIZI
+    ===================================================== */
 
-    const sisaBulan = bulan % 12;
+    function hitungGizi() {
 
+        if (
+            !tanggalLahir ||
+            !tanggalPeriksa ||
+            !jenisKelamin ||
+            !beratBadan ||
+            !tinggiBadan ||
+            !hasil
+        ) {
 
-    if (sisaBulan === 0) {
-
-        return `${tahun} tahun`;
-
-    }
-
-
-    return `${tahun} tahun ${sisaBulan} bulan`;
-
-}
-
-
-/* =========================================================
-   ERROR
-   ========================================================= */
-
-function tampilkanError(element, pesan) {
-
-    element.className =
-        "gizi-anak-result status-error";
-
-
-    element.innerHTML = `
-
-        <div class="gizi-error">
-
-            <div class="gizi-error-icon">
-                ⚠️
-            </div>
-
-            <div>
-
-                <strong>
-                    Data belum lengkap
-                </strong>
-
-                <p>
-                    ${pesan}
-                </p>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
-   EVENT LISTENER
-   ========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const tombol =
-            document.getElementById(
-                "btnHitungGiziAnak"
+            console.error(
+                "Elemen kalkulator tidak lengkap."
             );
 
+            return;
+        }
 
-        if (tombol) {
 
-            tombol.addEventListener(
-                "click",
-                hitungGiziAnak
+        const lahir =
+            parseLocalDate(tanggalLahir.value);
+
+        const periksa =
+            parseLocalDate(tanggalPeriksa.value);
+
+        const berat =
+            parseFloat(beratBadan.value);
+
+        const tinggi =
+            parseFloat(tinggiBadan.value);
+
+
+        /* ================================================
+           VALIDASI
+        ================================================ */
+
+        if (!lahir || !periksa) {
+
+            tampilkanError(
+                "Silakan masukkan tanggal lahir dan tanggal pemeriksaan."
             );
+
+            return;
+        }
+
+
+        if (periksa < lahir) {
+
+            tampilkanError(
+                "Tanggal pemeriksaan tidak boleh lebih awal daripada tanggal lahir."
+            );
+
+            return;
+        }
+
+
+        if (
+            isNaN(berat) ||
+            berat <= 0
+        ) {
+
+            tampilkanError(
+                "Masukkan berat badan yang valid."
+            );
+
+            return;
+        }
+
+
+        if (
+            isNaN(tinggi) ||
+            tinggi <= 0
+        ) {
+
+            tampilkanError(
+                "Masukkan tinggi atau panjang badan yang valid."
+            );
+
+            return;
+        }
+
+
+        /* ================================================
+           USIA
+        ================================================ */
+
+        const usia =
+            hitungUsia(lahir, periksa);
+
+
+        updateUsia();
+
+
+        /* ================================================
+           IMT
+        ================================================ */
+
+        const tinggiMeter =
+            tinggi / 100;
+
+        const imt =
+            berat /
+            (tinggiMeter * tinggiMeter);
+
+
+        /* ================================================
+           KATEGORI EDUKATIF
+
+           Catatan:
+           Penilaian klinis anak harus menggunakan
+           IMT/U berdasarkan standar WHO.
+        ================================================ */
+
+        let status;
+        let derajat;
+        let statusClass;
+        let penjelasan;
+
+
+        if (imt < 13) {
+
+            status =
+                "Berat badan sangat rendah";
+
+            derajat =
+                "Perlu evaluasi lebih lanjut";
+
+            statusClass =
+                "status-kurang";
+
+            penjelasan =
+                "Nilai IMT relatif rendah. Hasil perlu dibandingkan dengan standar pertumbuhan menurut umur dan jenis kelamin.";
+
+        }
+
+        else if (imt < 15) {
+
+            status =
+                "Berat badan relatif rendah";
+
+            derajat =
+                "Perlu perhatian";
+
+            statusClass =
+                "status-waspada";
+
+            penjelasan =
+                "Nilai IMT relatif rendah. Penilaian lebih akurat membutuhkan interpretasi IMT menurut umur.";
+
+        }
+
+        else if (imt < 18) {
+
+            status =
+                "Rentang relatif sesuai";
+
+            derajat =
+                "Perlu dibandingkan dengan standar";
+
+            statusClass =
+                "status-normal";
+
+            penjelasan =
+                "Nilai IMT berada pada rentang relatif sesuai, namun status gizi anak tetap harus dinilai berdasarkan umur dan jenis kelamin.";
+
+        }
+
+        else if (imt < 20) {
+
+            status =
+                "Berat badan relatif tinggi";
+
+            derajat =
+                "Perlu perhatian";
+
+            statusClass =
+                "status-lebih";
+
+            penjelasan =
+                "Nilai IMT relatif tinggi dan perlu dibandingkan dengan standar IMT menurut umur.";
+
+        }
+
+        else {
+
+            status =
+                "Berat badan sangat tinggi";
+
+            derajat =
+                "Perlu evaluasi lebih lanjut";
+
+            statusClass =
+                "status-obesitas";
+
+            penjelasan =
+                "Nilai IMT relatif tinggi. Diperlukan penilaian lebih lanjut menggunakan standar pertumbuhan anak.";
 
         }
 
 
-        /*
-           Enter pada input juga dapat menjalankan
-           kalkulator.
-        */
+        /* ================================================
+           HASIL
+        ================================================ */
 
-        const inputIds = [
-            "umurAnak",
-            "beratAnak",
-            "tinggiAnak"
-        ];
+        hasil.className =
+            "gizi-result " + statusClass;
 
 
-        inputIds.forEach(function (id) {
+        hasil.innerHTML = `
 
-            const input =
-                document.getElementById(id);
+            <div class="gizi-result-header">
+
+                <div>
+
+                    <span class="gizi-result-label">
+                        HASIL PENILAIAN
+                    </span>
+
+                    <h3>
+                        Status Gizi Anak
+                    </h3>
+
+                </div>
+
+                <div class="gizi-result-icon">
+                    📊
+                </div>
+
+            </div>
 
 
-            if (input) {
+            <div class="gizi-status">
 
-                input.addEventListener(
-                    "keydown",
-                    function (event) {
+                <span>
+                    Status gizi
+                </span>
 
-                        if (
-                            event.key === "Enter"
-                        ) {
+                <strong>
+                    ${status}
+                </strong>
 
-                            hitungGiziAnak();
+                <small>
+                    ${derajat}
+                </small>
 
+            </div>
+
+
+            <div class="gizi-data-grid">
+
+
+                <div class="gizi-data">
+
+                    <span>
+                        Usia
+                    </span>
+
+                    <strong>
+                        ${usia.tahun} tahun
+                        ${usia.bulan} bulan
+                    </strong>
+
+                </div>
+
+
+                <div class="gizi-data">
+
+                    <span>
+                        Jenis kelamin
+                    </span>
+
+                    <strong>
+                        ${
+                            jenisKelamin.value === "laki-laki"
+                            ? "Laki-laki"
+                            : "Perempuan"
                         }
+                    </strong>
 
-                    }
-                );
+                </div>
 
-            }
 
+                <div class="gizi-data">
+
+                    <span>
+                        Berat badan
+                    </span>
+
+                    <strong>
+                        ${berat.toFixed(1)} kg
+                    </strong>
+
+                </div>
+
+
+                <div class="gizi-data">
+
+                    <span>
+                        Tinggi / panjang
+                    </span>
+
+                    <strong>
+                        ${tinggi.toFixed(1)} cm
+                    </strong>
+
+                </div>
+
+
+                <div class="gizi-data gizi-data-full">
+
+                    <span>
+                        IMT
+                    </span>
+
+                    <strong>
+                        ${imt.toFixed(1)} kg/m²
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="gizi-result-description">
+
+                <span>
+                    💡
+                </span>
+
+                <p>
+                    ${penjelasan}
+                </p>
+
+            </div>
+
+
+            <div class="gizi-medical-note">
+
+                <strong>
+                    Catatan medis
+                </strong>
+
+                <p>
+
+                    Pada anak, status gizi tidak dinilai
+                    menggunakan batas IMT dewasa.
+                    Interpretasi klinis menggunakan
+                    indikator antropometri menurut
+                    umur dan jenis kelamin.
+
+                </p>
+
+            </div>
+
+        `;
+
+
+        hasil.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
         });
 
     }
-);
+
+
+    /* =====================================================
+       ERROR
+    ===================================================== */
+
+    function tampilkanError(pesan) {
+
+        hasil.className =
+            "gizi-result status-error";
+
+
+        hasil.innerHTML = `
+
+            <div class="gizi-error">
+
+                <div class="gizi-error-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <strong>
+                        Data belum lengkap
+                    </strong>
+
+                    <p>
+                        ${pesan}
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       HITUNG USIA
+    ===================================================== */
+
+    function hitungUsia(lahir, periksa) {
+
+        let tahun =
+            periksa.getFullYear() -
+            lahir.getFullYear();
+
+        let bulan =
+            periksa.getMonth() -
+            lahir.getMonth();
+
+        let hari =
+            periksa.getDate() -
+            lahir.getDate();
+
+
+        if (hari < 0) {
+
+            bulan--;
+
+            const jumlahHariBulanSebelumnya =
+                new Date(
+                    periksa.getFullYear(),
+                    periksa.getMonth(),
+                    0
+                ).getDate();
+
+            hari +=
+                jumlahHariBulanSebelumnya;
+        }
+
+
+        if (bulan < 0) {
+
+            tahun--;
+            bulan += 12;
+
+        }
+
+
+        const totalBulan =
+            tahun * 12 + bulan;
+
+
+        return {
+            tahun,
+            bulan,
+            hari,
+            totalBulan
+        };
+
+    }
+
+
+    /* =====================================================
+       PARSE DATE LOCAL
+    ===================================================== */
+
+    function parseLocalDate(value) {
+
+        if (!value) {
+            return null;
+        }
+
+
+        const parts =
+            value.split("-");
+
+
+        if (parts.length !== 3) {
+            return null;
+        }
+
+
+        return new Date(
+            Number(parts[0]),
+            Number(parts[1]) - 1,
+            Number(parts[2])
+        );
+
+    }
+
+
+    /* =====================================================
+       FORMAT DATE INPUT
+    ===================================================== */
+
+    function formatDateInput(date) {
+
+        const year =
+            date.getFullYear();
+
+        const month =
+            String(
+                date.getMonth() + 1
+            ).padStart(2, "0");
+
+        const day =
+            String(
+                date.getDate()
+            ).padStart(2, "0");
+
+
+        return `${year}-${month}-${day}`;
+
+    }
+
+});
