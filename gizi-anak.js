@@ -357,7 +357,53 @@ function calculateBMI(
    Hanya informasi tambahan.
 ========================================================= */
 
-function adultBMIInterpretation(bmi) {
+function interpretChildBMIValue(bmi) {
+
+    if (!Number.isFinite(bmi)) {
+        return {
+            category: "Tidak tersedia",
+            description: "IMT belum dapat dihitung."
+        };
+    }
+
+    /*
+     * CATATAN:
+     * Cut-off IMT dewasa tidak digunakan untuk menentukan
+     * status gizi anak.
+     *
+     * Fungsi ini hanya memberikan deskripsi sederhana
+     * terhadap nilai IMT aktual.
+     *
+     * Status gizi anak tetap menggunakan IMT/U.
+     */
+
+    if (bmi < 14) {
+
+        return {
+            category: "IMT relatif rendah",
+            description:
+                "Nilai IMT relatif rendah; interpretasi status gizi harus menggunakan IMT menurut umur."
+        };
+
+    }
+
+    if (bmi <= 18.5) {
+
+        return {
+            category: "IMT dalam kisaran umum",
+            description:
+                "Nilai IMT berada dalam kisaran umum, tetapi pada anak tetap harus dinilai menurut umur dan jenis kelamin."
+        };
+
+    }
+
+    return {
+        category: "IMT relatif tinggi",
+        description:
+            "Nilai IMT relatif tinggi; interpretasi status gizi harus menggunakan IMT menurut umur."
+    };
+
+}
 
     if (!Number.isFinite(bmi)) {
         return "—";
