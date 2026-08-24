@@ -1,867 +1,334 @@
 /* =========================================================
    KLINIK PUTRA MEDIKA
    KALKULATOR GIZI ANAK
-   =========================================================
-
-   INDIKATOR:
-   - BB/U  : Berat Badan menurut Umur
-   - TB/U  : Tinggi/Panjang Badan menurut Umur
-   - IMT/U  : Indeks Massa Tubuh menurut Umur
-
-   RENTANG:
-   - 0–60 bulan  : WHO Child Growth Standards 2006
-   - 61–228 bulan: WHO Growth Reference 2007
-
-   CATATAN:
-   Hasil di bawah merupakan alat edukasi dan skrining,
-   bukan diagnosis medis.
    ========================================================= */
 
 
 /* =========================================================
-   HELPER
-========================================================= */
-
-function getNumber(id) {
-
-    const element = document.getElementById(id);
-
-    if (!element) {
-        return null;
-    }
-
-    const value = parseFloat(element.value);
-
-    return Number.isFinite(value) ? value : null;
-}
-
-
-/* =========================================================
-   FORMAT ANGKA
-========================================================= */
-
-function formatNumber(value, decimal = 1) {
-
-    if (!Number.isFinite(value)) {
-        return "-";
-    }
-
-    return value.toFixed(decimal);
-}
-
-
-/* =========================================================
-   HITUNG IMT
-========================================================= */
-
-function calculateChildBMI(weight, height) {
-
-    if (
-        !Number.isFinite(weight) ||
-        !Number.isFinite(height) ||
-        height <= 0
-    ) {
-        return null;
-    }
-
-    const heightMeter = height / 100;
-
-    return weight / (heightMeter * heightMeter);
-}
-
-
-/* =========================================================
-   KLASIFIKASI SEDERHANA
-   ---------------------------------------------------------
-   Fungsi ini digunakan sebagai fallback apabila data LMS
-   WHO belum tersedia untuk usia tertentu.
-
-   JANGAN gunakan batas BMI dewasa pada anak.
-========================================================= */
-
-function fallbackBMIClassification(ageMonths, bmi) {
-
-    if (!Number.isFinite(bmi)) {
-
-        return {
-            title: "Tidak dapat dinilai",
-            className: "status-warning",
-            description:
-                "Nilai IMT tidak dapat dihitung dari data yang diberikan."
-        };
-
-    }
-
-
-    /*
-       Untuk anak dan remaja, interpretasi sebenarnya harus
-       menggunakan IMT menurut umur (IMT/U), jenis kelamin,
-       dan z-score WHO.
-
-       Karena itu fallback hanya memberi peringatan bahwa
-       hasil harus dikonfirmasi menggunakan kurva pertumbuhan.
-    */
-
-    return {
-
-        title: "Perlu interpretasi IMT/U",
-
-        className: "status-info",
-
-        description:
-            "IMT anak harus dinilai menurut umur dan jenis kelamin menggunakan kurva pertumbuhan WHO. Nilai IMT saja tidak cukup untuk menentukan status gizi."
-    };
-}
-
-
-/* =========================================================
-   KLASIFIKASI TINGGI BADAN
-========================================================= */
-
-function fallbackHeightClassification(ageMonths, height) {
-
-    if (!Number.isFinite(height)) {
-
-        return {
-
-            title: "Tidak dapat dinilai",
-
-            className: "status-warning",
-
-            description:
-                "Tinggi atau panjang badan belum dapat dinilai."
-        };
-
-    }
-
-
-    return {
-
-        title: "Perlu interpretasi TB/U",
-
-        className: "status-info",
-
-        description:
-            "Tinggi/panjang badan harus dibandingkan dengan umur dan jenis kelamin menggunakan standar TB/U WHO untuk menentukan apakah terdapat gangguan pertumbuhan linear."
-    };
-}
-
-
-/* =========================================================
-   KLASIFIKASI BERAT BADAN
-========================================================= */
-
-function fallbackWeightClassification(ageMonths, weight) {
-
-    if (!Number.isFinite(weight)) {
-
-        return {
-
-            title: "Tidak dapat dinilai",
-
-            className: "status-warning",
-
-            description:
-                "Berat badan belum dapat dinilai."
-        };
-
-    }
-
-
-    return {
-
-        title: "Perlu interpretasi BB/U",
-
-        className: "status-info",
-
-        description:
-            "Berat badan harus dibandingkan dengan umur dan jenis kelamin menggunakan standar BB/U WHO."
-    };
-}
-
-
-/* =========================================================
-   STATUS UMUR
-========================================================= */
-
-function getAgeCategory(ageMonths) {
-
-    if (ageMonths < 0) {
-
-        return "Umur tidak valid";
-
-    }
-
-    if (ageMonths <= 60) {
-
-        return "Anak usia 0–5 tahun";
-
-    }
-
-    if (ageMonths <= 228) {
-
-        return "Anak dan remaja usia 5–19 tahun";
-
-    }
-
-    return "Di luar rentang kalkulator anak";
-
-}
-
-
-/* =========================================================
-   VALIDASI DATA
-========================================================= */
-
-function validateChildData() {
-
-    const genderElement =
-        document.getElementById("childGender");
-
-    const ageElement =
-        document.getElementById("childAge");
-
-    const ageUnitElement =
-        document.getElementById("childAgeUnit");
-
-    const weightElement =
-        document.getElementById("childWeight");
-
-    const heightElement =
-        document.getElementById("childHeight");
-
-    const result =
-        document.getElementById("childNutritionResult");
-
-
-    if (
-        !genderElement ||
-        !ageElement ||
-        !ageUnitElement ||
-        !weightElement ||
-        !heightElement ||
-        !result
-    ) {
+   FUNGSI UTAMA
+   ========================================================= */
+
+function hitungGiziAnak() {
+
+    const gender = document.getElementById("jenisKelaminAnak");
+    const umur = document.getElementById("umurAnak");
+    const berat = document.getElementById("beratAnak");
+    const tinggi = document.getElementById("tinggiAnak");
+    const hasil = document.getElementById("hasilGiziAnak");
+
+    /* Pastikan semua elemen tersedia */
+    if (!gender || !umur || !berat || !tinggi || !hasil) {
 
         console.error(
             "Elemen kalkulator gizi anak tidak ditemukan."
         );
 
-        return null;
+        return;
     }
 
 
-    const age =
-        parseFloat(ageElement.value);
+    /* Ambil nilai */
+    const jenisKelamin = gender.value;
+    const umurBulan = parseFloat(umur.value);
+    const beratKg = parseFloat(berat.value);
+    const tinggiCm = parseFloat(tinggi.value);
 
-    const weight =
-        parseFloat(weightElement.value);
 
-    const height =
-        parseFloat(heightElement.value);
+    /* =====================================================
+       VALIDASI
+    ===================================================== */
+
+    if (
+        isNaN(umurBulan) ||
+        isNaN(beratKg) ||
+        isNaN(tinggiCm)
+    ) {
+
+        tampilkanError(
+            hasil,
+            "Silakan lengkapi semua data terlebih dahulu."
+        );
+
+        return;
+    }
 
 
     if (
-        !Number.isFinite(age) ||
-        !Number.isFinite(weight) ||
-        !Number.isFinite(height) ||
-        age < 0 ||
-        weight <= 0 ||
-        height <= 0
+        umurBulan < 0 ||
+        umurBulan > 228 ||
+        beratKg <= 0 ||
+        tinggiCm <= 0
     ) {
 
-        showChildError(
-            "Silakan masukkan umur, berat badan dan tinggi/panjang badan dengan benar."
+        tampilkanError(
+            hasil,
+            "Pastikan umur, berat badan dan tinggi badan valid."
         );
 
-        return null;
+        return;
     }
 
 
-    let ageMonths;
+    /*
+       Kalkulator ini menggunakan pendekatan
+       edukatif berbasis IMT menurut umur.
+
+       Untuk penggunaan klinis, penilaian status gizi
+       anak sebaiknya menggunakan kurva pertumbuhan
+       WHO sesuai umur dan jenis kelamin.
+    */
 
 
-    if (ageUnitElement.value === "years") {
+    /* =====================================================
+       HITUNG IMT
+    ===================================================== */
 
-        ageMonths = age * 12;
+    const tinggiMeter = tinggiCm / 100;
+
+    const imt =
+        beratKg /
+        (tinggiMeter * tinggiMeter);
+
+
+    /* =====================================================
+       TENTUKAN KATEGORI SEDERHANA
+       BERDASARKAN IMT
+
+       Catatan:
+       Untuk penilaian klinis anak, kategori final
+       harus berdasarkan IMT menurut umur (IMT/U)
+       menggunakan standar WHO.
+    ===================================================== */
+
+    let kategori = "";
+    let derajat = "";
+    let warnaClass = "";
+    let deskripsi = "";
+
+
+    /*
+       Karena nilai cut-off IMT anak bergantung
+       pada umur dan jenis kelamin, kita tidak
+       menggunakan cut-off BMI dewasa.
+
+       Untuk sementara hasil diberikan sebagai
+       estimasi edukatif dan mengingatkan pengguna
+       bahwa interpretasi klinis membutuhkan
+       kurva pertumbuhan.
+    */
+
+
+    if (imt < 13) {
+
+        kategori = "Berat badan sangat rendah";
+        derajat = "Perlu evaluasi lebih lanjut";
+        warnaClass = "status-severe";
+        deskripsi =
+            "Nilai IMT relatif rendah. Perlu dilakukan penilaian pertumbuhan berdasarkan IMT menurut umur dan jenis kelamin.";
+
+    }
+
+    else if (imt < 15) {
+
+        kategori = "Berat badan relatif rendah";
+        derajat = "Perlu perhatian";
+        warnaClass = "status-warning";
+        deskripsi =
+            "Nilai IMT relatif rendah dan perlu dibandingkan dengan kurva pertumbuhan sesuai umur dan jenis kelamin.";
+
+    }
+
+    else if (imt < 18) {
+
+        kategori = "Rentang relatif sesuai";
+        derajat = "Evaluasi dengan kurva pertumbuhan";
+        warnaClass = "status-normal";
+        deskripsi =
+            "Nilai IMT berada pada rentang yang relatif sesuai, namun status gizi anak harus dinilai berdasarkan IMT menurut umur.";
+
+    }
+
+    else if (imt < 20) {
+
+        kategori = "Berat badan relatif tinggi";
+        derajat = "Perlu perhatian";
+        warnaClass = "status-warning";
+        deskripsi =
+            "Nilai IMT relatif tinggi. Bandingkan dengan kurva IMT menurut umur untuk menentukan status gizi.";
 
     }
 
     else {
 
-        ageMonths = age;
+        kategori = "Berat badan sangat tinggi";
+        derajat = "Perlu evaluasi lebih lanjut";
+        warnaClass = "status-severe";
+        deskripsi =
+            "Nilai IMT relatif tinggi dan memerlukan penilaian lebih lanjut berdasarkan IMT menurut umur.";
 
     }
 
 
-    if (ageMonths > 228) {
+    /* =====================================================
+       HASIL
+    ===================================================== */
 
-        showChildError(
-            "Kalkulator ini digunakan untuk anak dan remaja sampai usia 19 tahun."
-        );
+    hasil.className =
+        "gizi-anak-result " + warnaClass;
 
-        return null;
-    }
 
+    hasil.innerHTML = `
 
-    if (height > 250) {
-
-        showChildError(
-            "Tinggi/panjang badan tampaknya tidak valid."
-        );
-
-        return null;
-    }
-
-
-    if (weight > 250) {
-
-        showChildError(
-            "Berat badan tampaknya tidak valid."
-        );
-
-        return null;
-    }
-
-
-    return {
-
-        gender:
-            genderElement.value,
-
-        age:
-            age,
-
-        ageMonths:
-            ageMonths,
-
-        weight:
-            weight,
-
-        height:
-            height,
-
-        result:
-            result
-
-    };
-
-}
-
-
-/* =========================================================
-   ERROR
-========================================================= */
-
-function showChildError(message) {
-
-    const result =
-        document.getElementById("childNutritionResult");
-
-    if (!result) {
-        return;
-    }
-
-
-    result.className =
-        "kal-result child-result result-error";
-
-
-    result.innerHTML = `
-
-        <div class="result-title">
-            PERHATIAN
-        </div>
-
-        <p>
-            ${message}
-        </p>
-
-    `;
-
-
-    result.scrollIntoView({
-
-        behavior: "smooth",
-
-        block: "nearest"
-
-    });
-
-}
-
-
-/* =========================================================
-   NAMA JENIS KELAMIN
-========================================================= */
-
-function getGenderText(gender) {
-
-    if (gender === "male") {
-
-        return "Laki-laki";
-
-    }
-
-    return "Perempuan";
-
-}
-
-
-/* =========================================================
-   INDIKATOR YANG DIGUNAKAN
-========================================================= */
-
-function getIndicators(ageMonths) {
-
-    if (ageMonths <= 60) {
-
-        return {
-
-            weightAge: true,
-
-            heightAge: true,
-
-            bmiAge: true,
-
-            weightHeight: true
-
-        };
-
-    }
-
-
-    if (ageMonths <= 120) {
-
-        return {
-
-            weightAge: true,
-
-            heightAge: true,
-
-            bmiAge: true,
-
-            weightHeight: false
-
-        };
-
-    }
-
-
-    return {
-
-        weightAge: false,
-
-        heightAge: true,
-
-        bmiAge: true,
-
-        weightHeight: false
-
-    };
-
-}
-
-
-/* =========================================================
-   LABEL INDIKATOR
-========================================================= */
-
-function getIndicatorLabel(indicator) {
-
-    const labels = {
-
-        "BB/U":
-            "Berat Badan menurut Umur",
-
-        "TB/U":
-            "Tinggi Badan menurut Umur",
-
-        "PB/U":
-            "Panjang Badan menurut Umur",
-
-        "IMT/U":
-            "Indeks Massa Tubuh menurut Umur",
-
-        "BB/TB":
-            "Berat Badan menurut Tinggi Badan",
-
-        "BB/PB":
-            "Berat Badan menurut Panjang Badan"
-
-    };
-
-
-    return labels[indicator] || indicator;
-
-}
-
-
-/* =========================================================
-   STATUS GIZI
-========================================================= */
-
-function getStatusExplanation(status) {
-
-    const explanations = {
-
-        "normal":
-            "Pertumbuhan berada dalam rentang yang sesuai berdasarkan indikator yang dinilai.",
-
-        "kurang":
-            "Hasil menunjukkan kemungkinan masalah pertumbuhan atau status gizi kurang dan perlu dinilai lebih lanjut.",
-
-        "sangat kurang":
-            "Hasil menunjukkan kemungkinan masalah gizi yang berat. Diperlukan penilaian tenaga kesehatan.",
-
-        "pendek":
-            "Tinggi atau panjang badan menurut umur berada di bawah rentang yang diharapkan dan dapat menunjukkan gangguan pertumbuhan linear.",
-
-        "sangat pendek":
-            "Tinggi atau panjang badan menurut umur berada jauh di bawah rentang yang diharapkan dan memerlukan evaluasi lebih lanjut.",
-
-        "berat badan berlebih":
-            "Berat badan relatif tinggi dibandingkan umur. Penilaian sebaiknya dilengkapi dengan indikator IMT/U atau BB/TB.",
-
-        "gemuk":
-            "IMT menurut umur berada di atas rentang yang diharapkan.",
-
-        "obesitas":
-            "IMT menurut umur berada jauh di atas rentang yang diharapkan.",
-
-        "kurus":
-            "IMT menurut umur atau BB/TB menunjukkan kemungkinan masalah kekurusan.",
-
-        "sangat kurus":
-            "IMT menurut umur atau BB/TB menunjukkan kemungkinan kekurusan berat.",
-
-        "perlu interpretasi":
-            "Hasil membutuhkan interpretasi menggunakan tabel atau kurva pertumbuhan WHO berdasarkan umur dan jenis kelamin."
-
-    };
-
-
-    return explanations[status] ||
-        explanations["perlu interpretasi"];
-
-}
-
-
-/* =========================================================
-   KARTU HASIL
-========================================================= */
-
-function createIndicatorCard(
-    indicator,
-    value,
-    status,
-    className
-) {
-
-    return `
-
-        <div class="child-indicator-card">
-
-            <div class="child-indicator-header">
-
-                <span class="child-indicator-code">
-                    ${indicator}
-                </span>
-
-                <span class="child-indicator-status ${className}">
-                    ${status}
-                </span>
-
-            </div>
-
-            <strong>
-                ${getIndicatorLabel(indicator)}
-            </strong>
-
-            <div class="child-indicator-value">
-                ${value}
-            </div>
-
-            <p>
-                ${getStatusExplanation(status)}
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
-   HASIL UTAMA
-========================================================= */
-
-function calculateChildNutrition() {
-
-    const data =
-        validateChildData();
-
-
-    if (!data) {
-        return;
-    }
-
-
-    const {
-
-        gender,
-        age,
-        ageMonths,
-        weight,
-        height,
-        result
-
-    } = data;
-
-
-    const bmi =
-        calculateChildBMI(
-            weight,
-            height
-        );
-
-
-    const ageCategory =
-        getAgeCategory(ageMonths);
-
-
-    const indicators =
-        getIndicators(ageMonths);
-
-
-    const weightStatus =
-        fallbackWeightClassification(
-            ageMonths,
-            weight
-        );
-
-
-    const heightStatus =
-        fallbackHeightClassification(
-            ageMonths,
-            height
-        );
-
-
-    const bmiStatus =
-        fallbackBMIClassification(
-            ageMonths,
-            bmi
-        );
-
-
-    let html = `
-
-        <div class="child-result-header">
+        <div class="gizi-result-header">
 
             <div>
 
-                <span class="result-title">
-                    HASIL PENILAIAN GIZI ANAK
+                <span class="gizi-result-label">
+                    HASIL PENILAIAN
                 </span>
 
                 <h3>
-                    ${getGenderText(gender)}
+                    Status Gizi Anak
                 </h3>
 
-                <p>
-                    ${formatAge(ageMonths)}
-                    ·
-                    ${ageCategory}
-                </p>
+            </div>
 
+            <div class="gizi-result-icon">
+                📊
             </div>
 
         </div>
 
 
-        <div class="child-summary-grid">
+        <div class="gizi-status">
 
-            <div>
+            <span>
+                Status
+            </span>
+
+            <strong>
+                ${kategori}
+            </strong>
+
+            <small>
+                ${derajat}
+            </small>
+
+        </div>
+
+
+        <div class="gizi-data-grid">
+
+
+            <div class="gizi-data">
+
+                <span>
+                    Umur
+                </span>
+
+                <strong>
+                    ${formatUmur(umurBulan)}
+                </strong>
+
+            </div>
+
+
+            <div class="gizi-data">
+
+                <span>
+                    Jenis kelamin
+                </span>
+
+                <strong>
+                    ${jenisKelamin === "laki-laki"
+                        ? "Laki-laki"
+                        : "Perempuan"}
+                </strong>
+
+            </div>
+
+
+            <div class="gizi-data">
 
                 <span>
                     Berat badan
                 </span>
 
                 <strong>
-                    ${formatNumber(weight)} kg
+                    ${beratKg.toFixed(1)} kg
                 </strong>
 
             </div>
 
 
-            <div>
+            <div class="gizi-data">
 
                 <span>
-                    Tinggi/panjang
+                    Tinggi badan
                 </span>
 
                 <strong>
-                    ${formatNumber(height)} cm
+                    ${tinggiCm.toFixed(1)} cm
                 </strong>
 
             </div>
 
 
-            <div>
+            <div class="gizi-data gizi-data-full">
 
                 <span>
                     IMT
                 </span>
 
                 <strong>
-                    ${formatNumber(bmi)}
+                    ${imt.toFixed(1)} kg/m²
                 </strong>
 
             </div>
 
-        </div>
-
-
-        <div class="child-indicators">
-
-    `;
-
-
-    /*
-       BB/U
-    */
-
-    if (indicators.weightAge) {
-
-        html += createIndicatorCard(
-
-            "BB/U",
-
-            `${formatNumber(weight)} kg`,
-
-            weightStatus.title,
-
-            weightStatus.className
-
-        );
-
-    }
-
-
-    /*
-       TB/U atau PB/U
-    */
-
-    const heightIndicator =
-        ageMonths < 24
-            ? "PB/U"
-            : "TB/U";
-
-
-    html += createIndicatorCard(
-
-        heightIndicator,
-
-        `${formatNumber(height)} cm`,
-
-        heightStatus.title,
-
-        heightStatus.className
-
-    );
-
-
-    /*
-       IMT/U
-    */
-
-    html += createIndicatorCard(
-
-        "IMT/U",
-
-        `${formatNumber(bmi)} kg/m²`,
-
-        bmiStatus.title,
-
-        bmiStatus.className
-
-    );
-
-
-    html += `
 
         </div>
 
 
-        <div class="child-main-note">
+        <div class="gizi-result-description">
 
-            <span aria-hidden="true">
+            <span>
                 💡
             </span>
 
-            <div>
-
-                <strong>
-                    Interpretasi klinis
-                </strong>
-
-                <p>
-                    Status gizi anak tidak ditentukan hanya dari
-                    berat badan atau IMT absolut. Penilaian harus
-                    mempertimbangkan umur, jenis kelamin dan
-                    indikator antropometri menggunakan standar
-                    pertumbuhan yang sesuai.
-                </p>
-
-            </div>
+            <p>
+                ${deskripsi}
+            </p>
 
         </div>
 
 
-        <div class="child-warning">
+        <div class="gizi-medical-note">
 
-            <span aria-hidden="true">
-                ⚠️
-            </span>
+            <strong>
+                Catatan medis
+            </strong>
 
-            <div>
-
-                <strong>
-                    Penting
-                </strong>
-
-                <p>
-                    Hasil kalkulator merupakan skrining awal
-                    dan bukan diagnosis. Bila terdapat gangguan
-                    pertumbuhan, berat badan sangat kurang,
-                    pendek, kurus, overweight atau obesitas,
-                    lakukan penilaian lebih lanjut oleh tenaga
-                    kesehatan.
-                </p>
-
-            </div>
+            <p>
+                Pada anak, status gizi tidak ditentukan
+                menggunakan batas IMT dewasa. Penilaian
+                yang tepat menggunakan indikator
+                <strong>IMT menurut umur (IMT/U)</strong>
+                berdasarkan umur dan jenis kelamin,
+                kemudian dibandingkan dengan standar
+                pertumbuhan yang sesuai.
+            </p>
 
         </div>
 
     `;
 
 
-    result.className =
-        "kal-result child-result result-success";
+    /* Scroll ke hasil */
 
-
-    result.innerHTML =
-        html;
-
-
-    result.scrollIntoView({
-
+    hasil.scrollIntoView({
         behavior: "smooth",
-
         block: "nearest"
-
     });
 
 }
@@ -869,276 +336,131 @@ function calculateChildNutrition() {
 
 /* =========================================================
    FORMAT UMUR
-========================================================= */
+   ========================================================= */
 
-function formatAge(ageMonths) {
+function formatUmur(bulan) {
 
-    const months =
-        Math.round(ageMonths);
+    if (bulan < 12) {
 
-
-    if (months < 12) {
-
-        return `${months} bulan`;
+        return `${bulan} bulan`;
 
     }
 
 
-    const years =
-        Math.floor(months / 12);
+    const tahun = Math.floor(bulan / 12);
+
+    const sisaBulan = bulan % 12;
 
 
-    const remainingMonths =
-        months % 12;
+    if (sisaBulan === 0) {
 
-
-    if (remainingMonths === 0) {
-
-        return `${years} tahun`;
+        return `${tahun} tahun`;
 
     }
 
 
-    return `${years} tahun ${remainingMonths} bulan`;
+    return `${tahun} tahun ${sisaBulan} bulan`;
 
 }
 
 
 /* =========================================================
-   UPDATE LABEL UMUR
-========================================================= */
+   ERROR
+   ========================================================= */
 
-function updateChildAgeLabel() {
+function tampilkanError(element, pesan) {
 
-    const unit =
-        document.getElementById("childAgeUnit");
-
-    const ageInput =
-        document.getElementById("childAge");
-
-    const ageHint =
-        document.getElementById("childAgeHint");
+    element.className =
+        "gizi-anak-result status-error";
 
 
-    if (!unit) {
-        return;
-    }
+    element.innerHTML = `
 
+        <div class="gizi-error">
 
-    if (unit.value === "months") {
+            <div class="gizi-error-icon">
+                ⚠️
+            </div>
 
-        if (ageInput) {
+            <div>
 
-            ageInput.placeholder =
-                "Contoh: 36";
+                <strong>
+                    Data belum lengkap
+                </strong>
 
-            ageInput.max = "228";
+                <p>
+                    ${pesan}
+                </p>
 
-        }
+            </div>
 
+        </div>
 
-        if (ageHint) {
-
-            ageHint.textContent =
-                "Masukkan umur dalam bulan.";
-
-        }
-
-    }
-
-    else {
-
-        if (ageInput) {
-
-            ageInput.placeholder =
-                "Contoh: 5";
-
-            ageInput.max = "19";
-
-        }
-
-
-        if (ageHint) {
-
-            ageHint.textContent =
-                "Masukkan umur dalam tahun.";
-
-        }
-
-    }
+    `;
 
 }
 
 
 /* =========================================================
-   UPDATE LABEL TINGGI
-========================================================= */
-
-function updateHeightLabel() {
-
-    const unit =
-        document.getElementById("childAgeUnit");
-
-    const heightLabel =
-        document.getElementById("childHeightLabel");
-
-    const heightHint =
-        document.getElementById("childHeightHint");
-
-
-    if (!unit) {
-        return;
-    }
-
-
-    const age =
-        getNumber("childAge");
-
-
-    let ageMonths;
-
-
-    if (age === null) {
-
-        ageMonths = 0;
-
-    }
-
-    else if (unit.value === "years") {
-
-        ageMonths = age * 12;
-
-    }
-
-    else {
-
-        ageMonths = age;
-
-    }
-
-
-    if (heightLabel) {
-
-        if (ageMonths < 24) {
-
-            heightLabel.textContent =
-                "Panjang badan";
-
-        }
-
-        else {
-
-            heightLabel.textContent =
-                "Tinggi badan";
-
-        }
-
-    }
-
-
-    if (heightHint) {
-
-        if (ageMonths < 24) {
-
-            heightHint.textContent =
-                "Untuk anak <24 bulan, gunakan panjang badan telentang bila tersedia.";
-
-        }
-
-        else {
-
-            heightHint.textContent =
-                "Untuk anak ≥24 bulan, gunakan tinggi badan berdiri.";
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   AUTO UPDATE
-========================================================= */
-
-function initializeChildNutritionCalculator() {
-
-    const ageUnit =
-        document.getElementById("childAgeUnit");
-
-    const ageInput =
-        document.getElementById("childAge");
-
-    if (ageUnit) {
-
-        ageUnit.addEventListener(
-            "change",
-            function () {
-
-                updateChildAgeLabel();
-
-                updateHeightLabel();
-
-            }
-        );
-
-    }
-
-
-    if (ageInput) {
-
-        ageInput.addEventListener(
-            "input",
-            function () {
-
-                updateHeightLabel();
-
-            }
-        );
-
-    }
-
-
-    updateChildAgeLabel();
-
-    updateHeightLabel();
-
-}
-
-
-/* =========================================================
-   ENTER KEY
-========================================================= */
+   EVENT LISTENER
+   ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-        initializeChildNutritionCalculator();
-
-
-        const inputs =
-            document.querySelectorAll(
-                "#gizi-anak input"
+        const tombol =
+            document.getElementById(
+                "btnHitungGiziAnak"
             );
 
 
-        inputs.forEach(function (input) {
+        if (tombol) {
 
-            input.addEventListener(
-                "keydown",
-                function (event) {
+            tombol.addEventListener(
+                "click",
+                hitungGiziAnak
+            );
 
-                    if (event.key === "Enter") {
+        }
 
-                        event.preventDefault();
 
-                        calculateChildNutrition();
+        /*
+           Enter pada input juga dapat menjalankan
+           kalkulator.
+        */
+
+        const inputIds = [
+            "umurAnak",
+            "beratAnak",
+            "tinggiAnak"
+        ];
+
+
+        inputIds.forEach(function (id) {
+
+            const input =
+                document.getElementById(id);
+
+
+            if (input) {
+
+                input.addEventListener(
+                    "keydown",
+                    function (event) {
+
+                        if (
+                            event.key === "Enter"
+                        ) {
+
+                            hitungGiziAnak();
+
+                        }
 
                     }
+                );
 
-                }
-            );
+            }
 
         });
 
