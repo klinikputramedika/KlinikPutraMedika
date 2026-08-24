@@ -1,18 +1,55 @@
 /* =========================================================
-   KLINIK PUTRA MEDIKA
-   KALKULATOR GIZI ANAK
-   CSS KHUSUS HALAMAN GIZI ANAK
+   GIZI ANAK CSS
+   Klinik Putra Medika
    ========================================================= */
 
 
 /* =========================================================
-   RESET KHUSUS
+   RESET KHUSUS HALAMAN GIZI ANAK
    ========================================================= */
 
+.anak-main,
 .anak-main *,
 .anak-main *::before,
 .anak-main *::after {
     box-sizing: border-box;
+}
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+    --anak-primary: #0f766e;
+    --anak-primary-dark: #115e59;
+    --anak-primary-light: #ccfbf1;
+
+    --anak-secondary: #14b8a6;
+
+    --anak-text: #172033;
+    --anak-text-soft: #64748b;
+    --anak-text-muted: #94a3b8;
+
+    --anak-bg: #f8fafc;
+    --anak-card: #ffffff;
+
+    --anak-border: #e2e8f0;
+
+    --anak-success: #16a34a;
+    --anak-warning: #d97706;
+    --anak-danger: #dc2626;
+    --anak-info: #2563eb;
+
+    --anak-radius-sm: 10px;
+    --anak-radius: 18px;
+    --anak-radius-lg: 26px;
+
+    --anak-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.07);
+
+    --anak-shadow-hover:
+        0 16px 40px rgba(15, 23, 42, 0.11);
 }
 
 
@@ -22,8 +59,17 @@
 
 .anak-main {
     width: 100%;
-    background: #f6f9fc;
-    color: #172033;
+    min-height: 100vh;
+    background:
+        linear-gradient(
+            180deg,
+            #f0fdfa 0,
+            #f8fafc 420px,
+            #ffffff 100%
+        );
+
+    color: var(--anak-text);
+    overflow-x: hidden;
 }
 
 
@@ -32,278 +78,414 @@
    ========================================================= */
 
 .anak-hero {
-    padding: 70px 20px 45px;
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        70px
+        20px
+        85px;
 
     background:
         linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #f6fbfa 100%
+            135deg,
+            #115e59 0%,
+            #0f766e 50%,
+            #0d9488 100%
         );
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+/* decorative circle */
+
+.anak-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    top: -220px;
+    right: -100px;
+}
+
+
+.anak-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    bottom: -180px;
+    left: -80px;
 }
 
 
 .anak-hero-inner {
-    width: min(780px, 100%);
+    position: relative;
+
+    z-index: 2;
+
+    width: min(1100px, 100%);
+
     margin: 0 auto;
+
     text-align: center;
 }
 
 
+/* hero icon */
+
 .anak-hero-icon {
-    width: 66px;
-    height: 66px;
-
-    margin: 0 auto 18px;
-
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    border-radius: 19px;
+    width: 74px;
+    height: 74px;
 
-    background: #e7f7f3;
+    margin: 0 auto 20px;
 
-    font-size: 32px;
+    border-radius: 22px;
 
-    box-shadow:
-        0 8px 24px rgba(15, 157, 138, 0.12);
+    background: rgba(255, 255, 255, 0.14);
+
+    font-size: 38px;
+
+    backdrop-filter: blur(8px);
 }
 
 
+/* badge */
+
 .anak-hero-badge {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 7px 13px;
+    padding: 7px 14px;
+
     margin-bottom: 15px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.25);
 
     border-radius: 999px;
 
-    background: #e7f7f3;
+    background:
+        rgba(255, 255, 255, 0.1);
 
-    color: #0c8b79;
+    font-size: 11px;
 
-    font-size: 10px;
     font-weight: 800;
 
-    letter-spacing: 1.1px;
+    letter-spacing: 1.5px;
 }
 
 
 .anak-hero h1 {
-    margin: 0;
+    margin: 0 0 15px;
 
-    color: #142033;
+    color: white;
 
-    font-size: clamp(32px, 5vw, 48px);
+    font-size:
+        clamp(32px, 5vw, 54px);
 
-    line-height: 1.15;
+    line-height: 1.1;
 
     font-weight: 800;
 
-    letter-spacing: -1.2px;
+    letter-spacing: -1.5px;
 }
 
 
 .anak-hero p {
-    max-width: 680px;
+    width: min(680px, 100%);
 
-    margin: 17px auto 0;
+    margin: 0 auto;
 
-    color: #66758a;
+    color:
+        rgba(255, 255, 255, 0.88);
 
-    font-size: 15px;
+    font-size: 16px;
 
     line-height: 1.8;
 }
 
 
 /* =========================================================
-   QUICK INFO
+   NAVIGATION CARDS
    ========================================================= */
 
-.anak-info-grid {
-    width: min(1120px, calc(100% - 40px));
+.anak-navigation {
+    position: relative;
 
-    margin: 8px auto 45px;
+    z-index: 10;
 
     display: grid;
 
     grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+        repeat(3, 1fr);
 
-    gap: 16px;
+    gap: 18px;
+
+    width: min(1100px, calc(100% - 40px));
+
+    margin:
+        -38px auto
+        0;
+
+    padding-bottom: 55px;
 }
 
 
-.anak-info-card {
-    min-width: 0;
-
+.anak-nav-card {
     display: flex;
+
     align-items: center;
 
-    gap: 13px;
+    gap: 14px;
 
-    padding: 17px;
+    min-height: 95px;
 
-    border: 1px solid #e2ebef;
+    padding: 18px 20px;
 
-    border-radius: 16px;
+    background:
+        rgba(255, 255, 255, 0.98);
 
-    background: #ffffff;
+    border:
+        1px solid
+        var(--anak-border);
+
+    border-radius:
+        var(--anak-radius);
 
     box-shadow:
-        0 6px 20px rgba(30, 60, 90, 0.05);
+        var(--anak-shadow);
+
+    color:
+        var(--anak-text);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 
-.anak-info-icon {
-    width: 46px;
-    height: 46px;
+.anak-nav-card:hover {
+    transform:
+        translateY(-4px);
 
-    flex: 0 0 46px;
+    box-shadow:
+        var(--anak-shadow-hover);
 
+    border-color:
+        rgba(15, 118, 110, 0.3);
+}
+
+
+.anak-nav-icon {
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    border-radius: 13px;
+    flex: 0 0 auto;
 
-    background: #edf9f7;
+    width: 50px;
+    height: 50px;
+
+    border-radius: 15px;
+
+    background:
+        var(--anak-primary-light);
+
+    font-size: 24px;
+}
+
+
+.anak-nav-content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.anak-nav-content strong {
+    color:
+        var(--anak-text);
+
+    font-size: 15px;
+}
+
+
+.anak-nav-content small {
+    color:
+        var(--anak-text-soft);
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+.anak-nav-arrow {
+    flex: 0 0 auto;
+
+    color:
+        var(--anak-primary);
 
     font-size: 22px;
-}
 
-
-.anak-info-card strong {
-    display: block;
-
-    margin-bottom: 2px;
-
-    color: #172033;
-
-    font-size: 13px;
-
-    line-height: 1.4;
-
-    font-weight: 800;
-}
-
-
-.anak-info-card span {
-    display: block;
-
-    color: #7a8797;
-
-    font-size: 11px;
-
-    line-height: 1.4;
+    font-weight: 700;
 }
 
 
 /* =========================================================
-   CALCULATOR SECTION
+   SECTION
    ========================================================= */
 
-.anak-calculator-section {
-    width: min(1120px, calc(100% - 40px));
+.anak-section {
+    width: 100%;
 
-    margin: 0 auto 30px;
+    padding:
+        70px
+        20px;
 }
 
+
+.anak-section-alt {
+    background:
+        #f8fafc;
+}
+
+
+/* =========================================================
+   DATA CARD
+   ========================================================= */
 
 .anak-card {
     display: grid;
 
     grid-template-columns:
-        minmax(260px, 0.8fr)
-        minmax(0, 1.2fr);
+        0.8fr
+        1.2fr;
 
-    gap: 45px;
+    gap: 50px;
 
-    padding: 38px;
+    width: min(1100px, 100%);
 
-    border: 1px solid #e2ebef;
+    margin: 0 auto;
 
-    border-radius: 24px;
+    padding: 42px;
 
-    background: #ffffff;
+    background:
+        var(--anak-card);
+
+    border:
+        1px solid
+        var(--anak-border);
+
+    border-radius:
+        var(--anak-radius-lg);
 
     box-shadow:
-        0 10px 35px rgba(30, 60, 90, 0.07);
+        var(--anak-shadow);
 }
 
 
 /* =========================================================
-   INFORMATION
+   LEFT INFORMATION
    ========================================================= */
 
-.anak-information {
-    min-width: 0;
-
-    padding-top: 4px;
+.anak-info {
+    padding-top: 5px;
 }
 
 
 .anak-number {
-    display: inline-flex;
+    margin-bottom: 10px;
 
-    align-items: center;
-    justify-content: center;
-
-    width: 42px;
-    height: 42px;
-
-    margin-bottom: 17px;
-
-    border-radius: 12px;
-
-    background: #e7f7f3;
-
-    color: #0b8978;
+    color:
+        var(--anak-primary);
 
     font-size: 13px;
 
     font-weight: 800;
+
+    letter-spacing: 2px;
 }
 
 
 .anak-label {
-    margin-bottom: 9px;
+    margin-bottom: 10px;
 
-    color: #0c8b79;
+    color:
+        var(--anak-primary);
 
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-}
-
-
-.anak-information h2 {
-    margin: 0 0 13px;
-
-    color: #172033;
-
-    font-size: 28px;
-
-    line-height: 1.25;
+    font-size: 11px;
 
     font-weight: 800;
 
-    letter-spacing: -0.5px;
+    letter-spacing: 1.5px;
 }
 
 
-.anak-information > p {
+.anak-info h2,
+.anak-info-section h2,
+.anak-information-card h2 {
+    margin:
+        0 0 14px;
+
+    color:
+        var(--anak-text);
+
+    font-size:
+        clamp(26px, 4vw, 36px);
+
+    line-height: 1.2;
+
+    font-weight: 800;
+}
+
+
+.anak-info > p,
+.anak-info-section > p,
+.anak-information-card p {
     margin: 0;
 
-    color: #66758a;
+    color:
+        var(--anak-text-soft);
 
-    font-size: 14px;
+    font-size: 15px;
 
     line-height: 1.8;
 }
@@ -318,80 +500,35 @@
 
     align-items: flex-start;
 
-    gap: 10px;
+    gap: 12px;
 
-    margin-top: 24px;
+    margin-top: 25px;
 
-    padding: 15px;
+    padding: 17px;
 
-    border: 1px solid #dcefeb;
+    border-radius:
+        var(--anak-radius-sm);
 
-    border-radius: 13px;
+    background:
+        #f0fdfa;
 
-    background: #f2faf8;
+    border:
+        1px solid
+        #ccfbf1;
 
-    color: #547068;
+    color:
+        var(--anak-primary-dark);
 
-    font-size: 12px;
+    font-size: 13px;
 
-    line-height: 1.65;
+    line-height: 1.6;
 }
 
 
 .anak-tip span:first-child {
     flex: 0 0 auto;
 
-    font-size: 16px;
-
-    line-height: 1.3;
-}
-
-
-/* =========================================================
-   REFERENCE BOX
-   ========================================================= */
-
-.anak-reference-box {
-    margin-top: 18px;
-
-    padding: 17px;
-
-    border: 1px solid #e4eaf0;
-
-    border-radius: 14px;
-
-    background: #fafcfd;
-}
-
-
-.anak-reference-box strong {
-    display: block;
-
-    margin-bottom: 10px;
-
-    color: #344256;
-
-    font-size: 12px;
-
-    font-weight: 800;
-}
-
-
-.anak-reference-box ul {
-    margin: 0;
-
-    padding-left: 18px;
-
-    color: #718092;
-
-    font-size: 11px;
-
-    line-height: 1.8;
-}
-
-
-.anak-reference-box li {
-    margin-bottom: 2px;
+    font-size: 20px;
 }
 
 
@@ -400,77 +537,70 @@
    ========================================================= */
 
 .anak-form {
-    min-width: 0;
+    width: 100%;
 
-    padding: 26px;
+    padding: 30px;
 
-    border: 1px solid #e8eef2;
+    border-radius:
+        var(--anak-radius);
 
-    border-radius: 19px;
+    background:
+        #f8fafc;
 
-    background: #fbfcfd;
+    border:
+        1px solid
+        var(--anak-border);
 }
 
-
-/* =========================================================
-   FORM HEADER
-   ========================================================= */
 
 .anak-form-header {
     display: flex;
 
     align-items: center;
 
-    gap: 13px;
+    gap: 15px;
 
-    margin-bottom: 25px;
-
-    padding-bottom: 20px;
-
-    border-bottom: 1px solid #e7edf1;
+    margin-bottom: 28px;
 }
 
 
 .anak-form-icon {
-    width: 48px;
-    height: 48px;
-
-    flex: 0 0 48px;
-
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 13px;
+    width: 54px;
+    height: 54px;
 
-    background: #e7f7f3;
+    flex: 0 0 auto;
 
-    font-size: 23px;
+    border-radius: 16px;
+
+    background:
+        var(--anak-primary-light);
+
+    font-size: 26px;
 }
 
 
 .anak-form-header h3 {
-    margin: 0;
+    margin: 0 0 4px;
 
-    color: #263449;
+    color:
+        var(--anak-text);
 
-    font-size: 15px;
-
-    line-height: 1.4;
-
-    font-weight: 800;
+    font-size: 18px;
 }
 
 
 .anak-form-header p {
-    margin: 3px 0 0;
+    margin: 0;
 
-    color: #8290a0;
+    color:
+        var(--anak-text-soft);
 
-    font-size: 11px;
-
-    line-height: 1.5;
+    font-size: 13px;
 }
 
 
@@ -479,51 +609,56 @@
    ========================================================= */
 
 .anak-form-group {
-    margin-bottom: 17px;
+    margin-bottom: 19px;
 }
 
 
 .anak-form-group label {
     display: block;
 
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 
-    color: #344256;
+    color:
+        var(--anak-text);
 
-    font-size: 12px;
+    font-size: 13px;
 
     font-weight: 700;
-
-    line-height: 1.4;
 }
 
 
 /* =========================================================
-   INPUT & SELECT
+   INPUT + SELECT
    ========================================================= */
 
 .anak-form input,
 .anak-form select {
     width: 100%;
 
-    min-height: 48px;
+    height: 48px;
 
-    border: 1px solid #dce4e9;
+    padding:
+        0 14px;
 
-    border-radius: 11px;
+    border:
+        1px solid
+        #cbd5e1;
 
-    background: #ffffff;
-
-    color: #263449;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size: 13px;
+    border-radius:
+        12px;
 
     outline: none;
+
+    background:
+        white;
+
+    color:
+        var(--anak-text);
+
+    font-family:
+        inherit;
+
+    font-size: 14px;
 
     transition:
         border-color 0.2s ease,
@@ -531,29 +666,14 @@
 }
 
 
-.anak-form input {
-    padding: 12px 13px;
-}
-
-
-.anak-form select {
-    padding: 10px 38px 10px 13px;
-
-    cursor: pointer;
-}
-
-
-.anak-form input::placeholder {
-    color: #a0acb8;
-}
-
-
 .anak-form input:focus,
 .anak-form select:focus {
-    border-color: #0f9d8a;
+    border-color:
+        var(--anak-primary);
 
     box-shadow:
-        0 0 0 3px rgba(15, 157, 138, 0.10);
+        0 0 0 4px
+        rgba(15, 118, 110, 0.1);
 }
 
 
@@ -567,7 +687,7 @@
 
 
 .anak-input-unit input {
-    padding-right: 65px;
+    padding-right: 55px;
 }
 
 
@@ -575,83 +695,93 @@
     position: absolute;
 
     top: 50%;
-    right: 13px;
+    right: 15px;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 
-    color: #7c8998;
+    color:
+        var(--anak-text-muted);
 
-    font-size: 11px;
+    font-size: 13px;
 
     font-weight: 700;
-
-    pointer-events: none;
 }
 
 
 /* =========================================================
-   AGE DISPLAY
+   AGE BOX
    ========================================================= */
 
-.anak-age-display {
+.anak-age-box {
     display: flex;
 
     align-items: center;
 
-    gap: 12px;
+    gap: 14px;
 
-    margin: 3px 0 19px;
+    margin:
+        4px 0
+        20px;
 
-    padding: 13px 14px;
+    padding: 15px 17px;
 
-    border: 1px solid #dcefeb;
+    border:
+        1px solid
+        #bae6fd;
 
-    border-radius: 13px;
+    border-radius:
+        13px;
 
-    background: #f2faf8;
+    background:
+        #f0f9ff;
 }
 
 
 .anak-age-icon {
-    width: 39px;
-    height: 39px;
-
-    flex: 0 0 39px;
-
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 10px;
+    width: 44px;
+    height: 44px;
 
-    background: #dff4ef;
+    flex: 0 0 auto;
 
-    font-size: 18px;
+    border-radius: 12px;
+
+    background:
+        white;
+
+    font-size: 21px;
 }
 
 
-.anak-age-display span {
-    display: block;
+.anak-age-box > div:last-child {
+    display: flex;
 
-    margin-bottom: 2px;
+    flex-direction: column;
 
-    color: #71877f;
+    gap: 3px;
+}
 
-    font-size: 10px;
+
+.anak-age-box span {
+    color:
+        #0369a1;
+
+    font-size: 11px;
 
     font-weight: 600;
 }
 
 
-.anak-age-display strong {
-    display: block;
+.anak-age-box strong {
+    color:
+        #0c4a6e;
 
-    color: #28554d;
-
-    font-size: 13px;
-
-    font-weight: 800;
+    font-size: 16px;
 }
 
 
@@ -660,13 +790,42 @@
    ========================================================= */
 
 .anak-measurement-note {
-    margin: -5px 0 18px;
+    display: flex;
 
-    color: #8592a1;
+    align-items: flex-start;
 
-    font-size: 11px;
+    gap: 10px;
 
-    line-height: 1.65;
+    margin:
+        4px 0
+        22px;
+
+    padding: 13px 15px;
+
+    border-radius:
+        11px;
+
+    background:
+        #f1f5f9;
+
+    color:
+        var(--anak-text-soft);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.anak-measurement-note span {
+    flex: 0 0 auto;
+
+    font-size: 18px;
+}
+
+
+.anak-measurement-note p {
+    margin: 0;
 }
 
 
@@ -675,69 +834,66 @@
    ========================================================= */
 
 .anak-button {
-    width: 100%;
-
-    min-height: 51px;
-
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 9px;
+    gap: 10px;
 
-    margin-top: 7px;
+    width: 100%;
 
-    padding: 12px 18px;
+    min-height: 52px;
 
-    border: 0;
+    padding:
+        13px 20px;
 
-    border-radius: 12px;
+    border: none;
 
-    background: #0f9d8a;
+    border-radius:
+        13px;
 
-    color: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            var(--anak-primary),
+            var(--anak-secondary)
+        );
+
+    color: white;
 
     font-family:
-        "Inter",
-        Arial,
-        sans-serif;
+        inherit;
 
-    font-size: 13px;
+    font-size: 14px;
 
     font-weight: 800;
 
     cursor: pointer;
 
     box-shadow:
-        0 7px 18px rgba(15, 157, 138, 0.20);
+        0 8px 18px
+        rgba(15, 118, 110, 0.22);
 
     transition:
-        background 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
 }
 
 
 .anak-button:hover {
-    background: #0b8978;
-
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
-        0 10px 24px rgba(15, 157, 138, 0.25);
+        0 12px 24px
+        rgba(15, 118, 110, 0.28);
 }
 
 
 .anak-button:active {
-    transform: translateY(0);
-}
-
-
-.anak-button:focus-visible {
-    outline: 3px solid rgba(15, 157, 138, 0.20);
-
-    outline-offset: 3px;
+    transform:
+        translateY(0);
 }
 
 
@@ -746,71 +902,378 @@
    ========================================================= */
 
 .anak-result {
-    min-height: 110px;
+    width: 100%;
 
-    margin-top: 18px;
-
-    padding: 18px;
-
-    border: 1px dashed #d5e0e5;
-
-    border-radius: 14px;
-
-    background: #ffffff;
+    margin-top: 22px;
 }
 
 
 .anak-result-placeholder {
-    min-height: 70px;
-
     display: flex;
 
     align-items: center;
 
-    gap: 13px;
+    gap: 14px;
+
+    padding: 20px;
+
+    border:
+        1px dashed
+        #cbd5e1;
+
+    border-radius:
+        14px;
+
+    background:
+        white;
 }
 
 
-.anak-result-icon {
-    width: 45px;
-    height: 45px;
-
-    flex: 0 0 45px;
-
+.anak-result-placeholder-icon {
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 12px;
+    width: 48px;
+    height: 48px;
 
-    background: #f0f6f5;
+    flex: 0 0 auto;
 
-    font-size: 21px;
+    border-radius: 13px;
+
+    background:
+        #f1f5f9;
+
+    font-size: 22px;
 }
 
 
 .anak-result-placeholder strong {
     display: block;
 
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 
-    color: #364356;
+    color:
+        var(--anak-text);
 
-    font-size: 13px;
-
-    font-weight: 800;
+    font-size: 14px;
 }
 
 
 .anak-result-placeholder small {
     display: block;
 
-    color: #8995a3;
+    color:
+        var(--anak-text-soft);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESULT CONTENT DARI JAVASCRIPT
+   ========================================================= */
+
+.anak-result-card {
+    width: 100%;
+
+    padding: 24px;
+
+    border:
+        1px solid
+        var(--anak-border);
+
+    border-radius:
+        17px;
+
+    background:
+        white;
+
+    box-shadow:
+        0 6px 20px
+        rgba(15, 23, 42, 0.05);
+}
+
+
+.anak-result-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.anak-result-header h3 {
+    margin: 0 0 5px;
+
+    color:
+        var(--anak-text);
+
+    font-size: 19px;
+}
+
+
+.anak-result-header p {
+    margin: 0;
+
+    color:
+        var(--anak-text-soft);
+
+    font-size: 12px;
+}
+
+
+.anak-status-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 12px;
+
+    border-radius: 999px;
 
     font-size: 11px;
 
-    line-height: 1.5;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* status colors */
+
+.anak-status-normal {
+    background: #dcfce7;
+    color: #166534;
+}
+
+
+.anak-status-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+
+.anak-status-danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+
+.anak-status-info {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+
+/* =========================================================
+   RESULT GRID
+   ========================================================= */
+
+.anak-result-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+
+.anak-result-item {
+    padding: 15px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        12px;
+
+    background:
+        #f8fafc;
+}
+
+
+.anak-result-item span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color:
+        var(--anak-text-soft);
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+.anak-result-item strong {
+    display: block;
+
+    color:
+        var(--anak-text);
+
+    font-size: 16px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   Z SCORE
+   ========================================================= */
+
+.anak-zscore-section {
+    margin-top: 20px;
+}
+
+
+.anak-zscore-title {
+    margin:
+        0 0 12px;
+
+    color:
+        var(--anak-text);
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+.anak-zscore-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+
+.anak-zscore-item {
+    padding: 13px;
+
+    border-radius:
+        11px;
+
+    background:
+        #f8fafc;
+
+    border:
+        1px solid
+        #e2e8f0;
+}
+
+
+.anak-zscore-item span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        var(--anak-text-soft);
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.anak-zscore-item strong {
+    color:
+        var(--anak-primary-dark);
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   MACRO / NUTRITION
+   ========================================================= */
+
+.anak-macro-section {
+    margin-top: 22px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        var(--anak-border);
+}
+
+
+.anak-macro-title {
+    margin:
+        0 0 14px;
+
+    color:
+        var(--anak-text);
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+.anak-macro-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+
+.anak-macro-item {
+    padding: 15px 12px;
+
+    text-align: center;
+
+    border-radius:
+        12px;
+
+    background:
+        #f8fafc;
+
+    border:
+        1px solid
+        #e2e8f0;
+}
+
+
+.anak-macro-item strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        var(--anak-primary);
+
+    font-size: 18px;
+}
+
+
+.anak-macro-item span {
+    color:
+        var(--anak-text-soft);
+
+    font-size: 10px;
+
+    font-weight: 700;
 }
 
 
@@ -823,360 +1286,211 @@
 
     align-items: flex-start;
 
-    gap: 12px;
+    gap: 13px;
 
-    margin-top: 18px;
+    margin-top: 20px;
 
-    padding: 16px;
+    padding: 17px;
 
-    border: 1px solid #dcefeb;
+    border-radius:
+        14px;
 
-    border-radius: 14px;
+    background:
+        #ecfdf5;
 
-    background: #f2faf8;
+    border:
+        1px solid
+        #bbf7d0;
 }
 
 
 .anak-consultation-icon {
-    width: 38px;
-    height: 38px;
-
-    flex: 0 0 38px;
-
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 10px;
+    width: 42px;
+    height: 42px;
 
-    background: #dff4ef;
+    flex: 0 0 auto;
 
-    font-size: 17px;
+    border-radius: 12px;
+
+    background:
+        white;
+
+    font-size: 19px;
 }
 
 
 .anak-consultation strong {
     display: block;
 
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 
-    color: #2e514b;
+    color:
+        #166534;
 
-    font-size: 12px;
-
-    line-height: 1.5;
+    font-size: 13px;
 }
 
 
 .anak-consultation p {
     margin: 0;
 
-    color: #607a74;
-
-    font-size: 11px;
-
-    line-height: 1.65;
-}
-
-
-/* =========================================================
-   STATUS SECTION
-   ========================================================= */
-
-.anak-status-section {
-    width: min(1120px, calc(100% - 40px));
-
-    margin: 55px auto 0;
-}
-
-
-.anak-status-header {
-    max-width: 700px;
-
-    margin-bottom: 25px;
-}
-
-
-.anak-status-header h2 {
-    margin: 0 0 10px;
-
-    color: #172033;
-
-    font-size: 27px;
-
-    line-height: 1.3;
-
-    font-weight: 800;
-
-    letter-spacing: -0.5px;
-}
-
-
-.anak-status-header p {
-    margin: 0;
-
-    color: #66758a;
-
-    font-size: 13px;
-
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   STATUS GRID
-   ========================================================= */
-
-.anak-status-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 14px;
-}
-
-
-.anak-status-card {
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 12px;
-
-    padding: 18px;
-
-    border: 1px solid #e2ebef;
-
-    border-radius: 16px;
-
-    background: #ffffff;
-
-    box-shadow:
-        0 6px 20px rgba(30, 60, 90, 0.04);
-}
-
-
-.anak-status-icon {
-    width: 38px;
-    height: 38px;
-
-    flex: 0 0 38px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    background: #edf9f7;
-
-    color: #0b8978;
-
-    font-size: 18px;
-
-    font-weight: 800;
-}
-
-
-.anak-status-card strong {
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: #29374b;
+    color:
+        #166534;
 
     font-size: 12px;
-
-    line-height: 1.4;
-
-    font-weight: 800;
-}
-
-
-.anak-status-card span {
-    display: block;
-
-    color: #7c8998;
-
-    font-size: 10.5px;
 
     line-height: 1.6;
 }
 
 
 /* =========================================================
-   INDICATOR SECTION
+   INFORMATION CARD
    ========================================================= */
 
-.anak-indicator-section {
-    width: min(1120px, calc(100% - 40px));
+.anak-information-card {
+    display: flex;
 
-    margin: 55px auto 0;
+    align-items: flex-start;
+
+    gap: 25px;
+
+    width: min(1100px, 100%);
+
+    margin: 0 auto;
+
+    padding: 35px;
+
+    background:
+        white;
+
+    border:
+        1px solid
+        var(--anak-border);
+
+    border-radius:
+        var(--anak-radius-lg);
+
+    box-shadow:
+        var(--anak-shadow);
 }
 
 
-.anak-indicator-header {
-    margin-bottom: 20px;
-}
+.anak-information-icon {
+    display: flex;
 
+    align-items: center;
+    justify-content: center;
 
-.anak-indicator-header h2 {
-    margin: 0;
+    width: 62px;
+    height: 62px;
 
-    color: #172033;
+    flex: 0 0 auto;
 
-    font-size: 27px;
+    border-radius: 18px;
 
-    line-height: 1.3;
+    background:
+        var(--anak-primary-light);
 
-    font-weight: 800;
+    font-size: 29px;
 }
 
 
 /* =========================================================
-   INDICATOR LIST
+   INFORMATION SECTION
    ========================================================= */
 
-.anak-indicator-list {
+.anak-info-section {
+    width: min(1100px, 100%);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   INDICATOR GRID
+   ========================================================= */
+
+.anak-indicator-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+        repeat(4, 1fr);
 
-    gap: 14px;
+    gap: 16px;
+
+    margin-top: 35px;
 }
 
 
-.anak-indicator {
-    display: flex;
+.anak-indicator-card {
+    padding: 22px;
 
-    align-items: flex-start;
+    border:
+        1px solid
+        var(--anak-border);
 
-    gap: 15px;
+    border-radius:
+        var(--anak-radius);
 
-    padding: 19px;
+    background:
+        white;
 
-    border: 1px solid #e2ebef;
-
-    border-radius: 16px;
-
-    background: #ffffff;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
-.anak-indicator-code {
-    width: 58px;
-    height: 42px;
+.anak-indicator-card:hover {
+    transform:
+        translateY(-3px);
 
-    flex: 0 0 58px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 11px;
-
-    background: #e7f7f3;
-
-    color: #0b8978;
-
-    font-size: 11px;
-
-    font-weight: 800;
+    box-shadow:
+        var(--anak-shadow);
 }
 
 
-.anak-indicator strong {
-    display: block;
-
-    margin-bottom: 4px;
-
-    color: #2c394c;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-
-    font-weight: 800;
-}
-
-
-.anak-indicator p {
-    margin: 0;
-
-    color: #7b8998;
-
-    font-size: 10.5px;
-
-    line-height: 1.65;
-}
-
-
-/* =========================================================
-   DISCLAIMER
-   ========================================================= */
-
-.anak-disclaimer {
-    width: min(1120px, calc(100% - 40px));
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 15px;
-
-    margin: 45px auto 70px;
-
-    padding: 22px 24px;
-
-    border: 1px solid #f0dfb5;
-
-    border-radius: 17px;
-
-    background: #fffaf0;
-}
-
-
-.anak-disclaimer-icon {
-    width: 42px;
-    height: 42px;
-
-    flex: 0 0 42px;
-
+.anak-indicator-icon {
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 11px;
+    width: 46px;
+    height: 46px;
 
-    background: #fff0c7;
+    margin-bottom: 15px;
 
-    font-size: 20px;
+    border-radius: 13px;
+
+    background:
+        #f0fdfa;
+
+    font-size: 22px;
 }
 
 
-.anak-disclaimer h3 {
-    margin: 0 0 4px;
+.anak-indicator-card h3 {
+    margin:
+        0 0 8px;
 
-    color: #5e4a24;
+    color:
+        var(--anak-text);
 
-    font-size: 14px;
-
-    line-height: 1.5;
-
-    font-weight: 800;
+    font-size: 15px;
 }
 
 
-.anak-disclaimer p {
+.anak-indicator-card p {
     margin: 0;
 
-    color: #796a48;
+    color:
+        var(--anak-text-soft);
 
     font-size: 12px;
 
@@ -1185,48 +1499,226 @@
 
 
 /* =========================================================
-   TABLET
+   DISCLAIMER
    ========================================================= */
 
-@media (max-width: 950px) {
+.anak-disclaimer {
+    display: flex;
 
-    .anak-info-grid {
-        width: min(100% - 30px, 720px);
+    align-items: flex-start;
 
-        grid-template-columns: 1fr;
+    gap: 15px;
+
+    width: min(1100px, calc(100% - 40px));
+
+    margin:
+        20px auto
+        70px;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        #fde68a;
+
+    border-radius:
+        16px;
+
+    background:
+        #fffbeb;
+}
+
+
+.anak-disclaimer-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    flex: 0 0 auto;
+
+    border-radius: 12px;
+
+    background:
+        white;
+
+    font-size: 21px;
+}
+
+
+.anak-disclaimer h3 {
+    margin:
+        0 0 6px;
+
+    color:
+        #92400e;
+
+    font-size: 14px;
+}
+
+
+.anak-disclaimer p {
+    margin: 0;
+
+    color:
+        #92400e;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TABLE HASIL
+   ========================================================= */
+
+.anak-result table {
+    width: 100%;
+
+    margin-top: 18px;
+
+    border-collapse: collapse;
+
+    font-size: 12px;
+}
+
+
+.anak-result th {
+    padding: 11px;
+
+    text-align: left;
+
+    background:
+        #f1f5f9;
+
+    color:
+        var(--anak-text-soft);
+
+    font-weight: 800;
+}
+
+
+.anak-result td {
+    padding: 11px;
+
+    border-top:
+        1px solid
+        #e2e8f0;
+
+    color:
+        var(--anak-text);
+}
+
+
+/* =========================================================
+   PROGRESS BAR / Z-SCORE VISUAL
+   ========================================================= */
+
+.anak-progress {
+    width: 100%;
+
+    height: 9px;
+
+    margin-top: 8px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        #e2e8f0;
+}
+
+
+.anak-progress-bar {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0f766e,
+            #14b8a6
+        );
+
+    transition:
+        width 0.5s ease;
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+    .navbar,
+    .anak-navigation,
+    .anak-hero,
+    .anak-button,
+    footer {
+        display: none !important;
     }
 
 
-    .anak-calculator-section,
-    .anak-status-section,
-    .anak-indicator-section,
-    .anak-disclaimer {
-        width: min(100% - 30px, 720px);
+    .anak-main {
+        background: white;
+    }
+
+
+    .anak-section {
+        padding: 20px 0;
     }
 
 
     .anak-card {
-        grid-template-columns: 1fr;
+        display: block;
 
-        gap: 30px;
+        box-shadow: none;
 
-        padding: 28px;
+        border: none;
     }
 
 
-    .anak-information {
-        max-width: 650px;
+    .anak-form {
+        margin-top: 20px;
+
+        background: white;
     }
 
+}
 
-    .anak-status-grid {
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .anak-navigation {
         grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+            1fr;
     }
 
 
-    .anak-indicator-list {
-        grid-template-columns: 1fr;
+    .anak-card {
+        grid-template-columns:
+            1fr;
+
+        gap: 35px;
+
+        padding: 30px;
+    }
+
+
+    .anak-indicator-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
 }
@@ -1236,510 +1728,181 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
 
     .anak-hero {
-        padding: 45px 12px 30px;
-    }
-
-
-    .anak-hero-icon {
-        width: 56px;
-        height: 56px;
-
-        margin-bottom: 14px;
-
-        border-radius: 15px;
-
-        font-size: 27px;
-    }
-
-
-    .anak-hero-badge {
-        font-size: 9px;
-
-        letter-spacing: 0.9px;
+        padding:
+            45px
+            16px
+            65px;
     }
 
 
     .anak-hero h1 {
-        font-size: 31px;
+        font-size: 32px;
 
-        letter-spacing: -0.7px;
+        letter-spacing: -0.8px;
     }
 
 
     .anak-hero p {
-        margin-top: 13px;
-
-        font-size: 13px;
+        font-size: 14px;
 
         line-height: 1.7;
     }
 
 
-    .anak-info-grid,
-    .anak-calculator-section,
-    .anak-status-section,
-    .anak-indicator-section,
-    .anak-disclaimer {
-        width: calc(100% - 24px);
-    }
+    .anak-navigation {
+        width:
+            calc(100% - 24px);
 
-
-    .anak-info-grid {
-        margin-bottom: 28px;
+        margin-top:
+            -30px;
 
         gap: 10px;
+
+        padding-bottom: 35px;
     }
 
 
-    .anak-info-card {
+    .anak-nav-card {
+        min-height: 78px;
+
         padding: 14px;
-
-        border-radius: 14px;
     }
 
 
-    .anak-info-icon {
+    .anak-nav-icon {
         width: 42px;
         height: 42px;
 
-        flex-basis: 42px;
-
-        border-radius: 11px;
+        border-radius: 12px;
 
         font-size: 20px;
     }
 
 
-    .anak-info-card strong {
-        font-size: 12px;
+    .anak-nav-content strong {
+        font-size: 13px;
     }
 
 
-    .anak-info-card span {
-        font-size: 10px;
+    .anak-nav-content small {
+        font-size: 11px;
+    }
+
+
+    .anak-section {
+        padding:
+            45px
+            12px;
     }
 
 
     .anak-card {
-        gap: 22px;
+        padding:
+            20px;
 
-        padding: 20px;
-
-        border-radius: 18px;
-    }
-
-
-    .anak-number {
-        width: 38px;
-        height: 38px;
-
-        margin-bottom: 13px;
-
-        border-radius: 10px;
-
-        font-size: 11px;
-    }
-
-
-    .anak-label {
-        font-size: 9px;
-    }
-
-
-    .anak-information h2 {
-        font-size: 22px;
-
-        margin-bottom: 10px;
-    }
-
-
-    .anak-information > p {
-        font-size: 13px;
-
-        line-height: 1.7;
-    }
-
-
-    .anak-tip {
-        margin-top: 18px;
-
-        padding: 12px;
-
-        font-size: 11px;
-    }
-
-
-    .anak-reference-box {
-        padding: 14px;
-
-        border-radius: 12px;
-    }
-
-
-    .anak-reference-box strong {
-        font-size: 11px;
-    }
-
-
-    .anak-reference-box ul {
-        font-size: 10px;
-
-        line-height: 1.75;
+        border-radius:
+            20px;
     }
 
 
     .anak-form {
-        padding: 18px;
-
-        border-radius: 16px;
+        padding:
+            20px 15px;
     }
 
 
     .anak-form-header {
-        margin-bottom: 20px;
-
-        padding-bottom: 17px;
+        margin-bottom: 22px;
     }
 
 
     .anak-form-icon {
-        width: 43px;
-        height: 43px;
+        width: 46px;
+        height: 46px;
 
-        flex-basis: 43px;
-
-        border-radius: 11px;
-
-        font-size: 20px;
-    }
-
-
-    .anak-form-header h3 {
-        font-size: 13px;
-    }
-
-
-    .anak-form-header p {
-        font-size: 10px;
-    }
-
-
-    .anak-form-group {
-        margin-bottom: 14px;
-    }
-
-
-    .anak-form-group label {
-        font-size: 11px;
-
-        margin-bottom: 6px;
-    }
-
-
-    .anak-form input,
-    .anak-form select {
-        min-height: 45px;
-
-        font-size: 12px;
-
-        border-radius: 10px;
-    }
-
-
-    .anak-form input {
-        padding: 11px;
-    }
-
-
-    .anak-form select {
-        padding: 9px 34px 9px 11px;
-    }
-
-
-    .anak-input-unit input {
-        padding-right: 60px;
-    }
-
-
-    .anak-input-unit span {
-        right: 11px;
-
-        font-size: 10px;
-    }
-
-
-    .anak-age-display {
-        gap: 9px;
-
-        padding: 11px 12px;
-
-        border-radius: 11px;
-    }
-
-
-    .anak-age-icon {
-        width: 35px;
-        height: 35px;
-
-        flex-basis: 35px;
-
-        border-radius: 9px;
-
-        font-size: 16px;
-    }
-
-
-    .anak-age-display span {
-        font-size: 9px;
-    }
-
-
-    .anak-age-display strong {
-        font-size: 11px;
-    }
-
-
-    .anak-measurement-note {
-        font-size: 10px;
-    }
-
-
-    .anak-button {
-        min-height: 47px;
-
-        font-size: 12px;
-
-        border-radius: 10px;
-    }
-
-
-    .anak-result {
-        padding: 14px;
-
-        border-radius: 12px;
-    }
-
-
-    .anak-result-placeholder {
-        gap: 10px;
-    }
-
-
-    .anak-result-icon {
-        width: 38px;
-        height: 38px;
-
-        flex-basis: 38px;
-
-        border-radius: 10px;
-
-        font-size: 18px;
-    }
-
-
-    .anak-result-placeholder strong {
-        font-size: 11px;
-    }
-
-
-    .anak-result-placeholder small {
-        font-size: 10px;
-    }
-
-
-    .anak-consultation {
-        gap: 9px;
-
-        padding: 13px;
-
-        border-radius: 12px;
-    }
-
-
-    .anak-consultation-icon {
-        width: 34px;
-        height: 34px;
-
-        flex-basis: 34px;
-
-        border-radius: 9px;
-
-        font-size: 15px;
-    }
-
-
-    .anak-consultation strong {
-        font-size: 11px;
-    }
-
-
-    .anak-consultation p {
-        font-size: 10px;
-    }
-
-
-    .anak-status-section {
-        margin-top: 35px;
-    }
-
-
-    .anak-status-header h2 {
         font-size: 22px;
     }
 
 
-    .anak-status-header p {
-        font-size: 12px;
-
-        line-height: 1.7;
+    .anak-result-grid {
+        grid-template-columns:
+            1fr;
     }
 
 
-    .anak-status-grid {
-        grid-template-columns: 1fr;
-
-        gap: 10px;
+    .anak-zscore-grid {
+        grid-template-columns:
+            1fr;
     }
 
 
-    .anak-status-card {
-        padding: 14px;
-
-        border-radius: 14px;
+    .anak-macro-grid {
+        grid-template-columns:
+            1fr;
     }
 
 
-    .anak-status-icon {
-        width: 34px;
-        height: 34px;
-
-        flex-basis: 34px;
-
-        border-radius: 9px;
-
-        font-size: 16px;
+    .anak-result-header {
+        flex-direction: column;
     }
 
 
-    .anak-status-card strong {
-        font-size: 11px;
+    .anak-indicator-grid {
+        grid-template-columns:
+            1fr;
     }
 
 
-    .anak-status-card span {
-        font-size: 10px;
-    }
+    .anak-information-card {
+        flex-direction: column;
 
+        padding:
+            25px;
 
-    .anak-indicator-section {
-        margin-top: 35px;
-    }
-
-
-    .anak-indicator-header h2 {
-        font-size: 22px;
-    }
-
-
-    .anak-indicator {
-        gap: 10px;
-
-        padding: 14px;
-
-        border-radius: 14px;
-    }
-
-
-    .anak-indicator-code {
-        width: 50px;
-        height: 38px;
-
-        flex-basis: 50px;
-
-        border-radius: 9px;
-
-        font-size: 10px;
-    }
-
-
-    .anak-indicator strong {
-        font-size: 11px;
-    }
-
-
-    .anak-indicator p {
-        font-size: 10px;
+        gap: 18px;
     }
 
 
     .anak-disclaimer {
-        gap: 10px;
+        width:
+            calc(100% - 24px);
 
-        margin-top: 30px;
-
-        margin-bottom: 45px;
-
-        padding: 16px;
-
-        border-radius: 14px;
-    }
-
-
-    .anak-disclaimer-icon {
-        width: 36px;
-        height: 36px;
-
-        flex-basis: 36px;
-
-        border-radius: 9px;
-
-        font-size: 17px;
-    }
-
-
-    .anak-disclaimer h3 {
-        font-size: 12px;
-    }
-
-
-    .anak-disclaimer p {
-        font-size: 10.5px;
+        margin-bottom:
+            40px;
     }
 
 }
 
 
 /* =========================================================
-   EXTRA SMALL
+   VERY SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
+
+    .anak-card {
+        padding:
+            15px;
+    }
+
+
+    .anak-form {
+        padding:
+            16px 12px;
+    }
+
 
     .anak-hero h1 {
         font-size: 28px;
     }
 
 
-    .anak-card {
-        padding: 17px;
-    }
-
-
-    .anak-form {
-        padding: 15px;
-    }
-
-
-    .anak-info-card {
-        padding: 12px;
-    }
-
-
-    .anak-indicator {
-        padding: 12px;
+    .anak-result-card {
+        padding:
+            17px;
     }
 
 }
