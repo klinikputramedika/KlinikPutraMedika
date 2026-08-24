@@ -1,146 +1,350 @@
-* {
+/* =========================================================
+   GIZI ANAK - KLINIK PUTRA MEDIKA
+   CSS FINAL
+========================================================= */
+
+
+/* =========================================================
+   RESET KHUSUS
+========================================================= */
+
+.anak-main,
+.anak-main * {
     box-sizing: border-box;
 }
 
 .anak-main {
-    min-height: 100vh;
-    background: #f8fafc;
+    width: 100%;
+    overflow-x: hidden;
 }
 
+.anak-main h1,
+.anak-main h2,
+.anak-main h3,
+.anak-main p {
+    margin-top: 0;
+}
+
+.anak-main a {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
 .anak-hero {
-    padding: 70px 20px;
-    background: linear-gradient(
-        135deg,
-        #0f766e,
-        #115e59
-    );
-    color: white;
+    position: relative;
+    width: 100%;
+    padding: 72px 20px 85px;
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(45, 212, 191, 0.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(20, 184, 166, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #064e3b 0%,
+            #0f766e 50%,
+            #115e59 100%
+        );
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.anak-hero::after {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    right: -140px;
+    top: -180px;
+    border-radius: 50%;
+    border: 70px solid rgba(255, 255, 255, 0.05);
 }
 
 .anak-hero-inner {
-    max-width: 1100px;
-    margin: auto;
+    position: relative;
+    z-index: 2;
+    max-width: 1050px;
+    margin: 0 auto;
     text-align: center;
 }
 
 .anak-hero-icon {
-    font-size: 52px;
-    margin-bottom: 15px;
-}
-
-.anak-hero-badge,
-.anak-label {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(8px);
+    font-size: 38px;
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .anak-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 7px 14px;
-    border-radius: 30px;
-    background: rgba(255,255,255,.15);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
 }
 
 .anak-hero h1 {
-    margin: 18px 0 12px;
-    font-size: clamp(32px, 5vw, 52px);
+    margin-bottom: 14px;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -1.5px;
 }
 
 .anak-hero p {
     max-width: 700px;
-    margin: auto;
-    line-height: 1.7;
-    opacity: .92;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 16px;
+    line-height: 1.75;
 }
 
-.anak-section {
-    padding: 60px 20px;
-}
 
-.anak-section-alt {
-    background: #eefaf8;
-}
+/* =========================================================
+   QUICK NAVIGATION
+========================================================= */
 
-.anak-card {
-    max-width: 1100px;
-    margin: auto;
+.anak-navigation {
+    position: relative;
+    z-index: 5;
+    max-width: 1120px;
+    margin: -42px auto 0;
+    padding: 0 20px;
     display: grid;
-    grid-template-columns: .8fr 1.2fr;
-    gap: 35px;
-    background: white;
-    border-radius: 24px;
-    padding: 35px;
-    box-shadow: 0 15px 45px rgba(15,118,110,.08);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
 }
 
-.anak-info {
-    padding: 15px;
-}
-
-.anak-number {
-    font-size: 13px;
-    font-weight: 800;
-    color: #0f766e;
-}
-
-.anak-info h2,
-.anak-info-section h2 {
-    font-size: 32px;
-    margin: 12px 0;
-    color: #0f172a;
-}
-
-.anak-info p,
-.anak-info-section > p {
-    color: #64748b;
-    line-height: 1.7;
-}
-
-.anak-tip {
+.anak-nav-card {
+    min-height: 104px;
+    padding: 20px;
     display: flex;
-    gap: 10px;
-    margin-top: 25px;
-    padding: 15px;
-    border-radius: 14px;
-    background: #f0fdfa;
-    color: #115e59;
+    align-items: center;
+    gap: 15px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    color: #172033;
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.08);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.anak-nav-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+.anak-nav-icon {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: #ecfdf5;
+    font-size: 24px;
+}
+
+.anak-nav-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.anak-nav-content strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.anak-nav-content small {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
     line-height: 1.5;
 }
 
+.anak-nav-arrow {
+    color: #0f766e;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.anak-section {
+    width: 100%;
+    padding: 80px 20px;
+}
+
+.anak-section-alt {
+    background: #f8fafc;
+}
+
+
+/* =========================================================
+   DATA CARD
+========================================================= */
+
+.anak-card {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+
+/* =========================================================
+   LEFT INFORMATION
+========================================================= */
+
+.anak-info {
+    padding: 28px 10px 28px 0;
+}
+
+.anak-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    color: #0f766e;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.anak-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #0f766e;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+}
+
+.anak-info h2,
+.anak-info-section h2,
+.anak-macro-section h2,
+.anak-results-header h2 {
+    margin-bottom: 14px;
+    color: #0f172a;
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.anak-info > p {
+    max-width: 500px;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.anak-tip {
+    max-width: 500px;
+    margin-top: 25px;
+    padding: 17px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #f0fdfa;
+    border: 1px solid #ccfbf1;
+    border-radius: 16px;
+}
+
+.anak-tip span {
+    flex: 0 0 auto;
+    font-size: 19px;
+}
+
+.anak-tip p {
+    margin: 0;
+    color: #475569;
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
 .anak-form {
-    border: 1px solid #e2e8f0;
-    border-radius: 20px;
-    padding: 25px;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 26px;
+    box-shadow:
+        0 18px 50px rgba(15, 23, 42, 0.08);
 }
 
 .anak-form-header {
     display: flex;
-    gap: 14px;
     align-items: center;
-    margin-bottom: 25px;
+    gap: 14px;
+    margin-bottom: 26px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #eef2f7;
 }
 
 .anak-form-icon {
-    width: 48px;
-    height: 48px;
-    display: grid;
-    place-items: center;
-    border-radius: 14px;
-    background: #ccfbf1;
+    width: 50px;
+    height: 50px;
+    flex: 0 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: #ecfdf5;
     font-size: 25px;
 }
 
 .anak-form-header h3 {
-    margin: 0;
+    margin-bottom: 4px;
     color: #0f172a;
+    font-size: 18px;
+    font-weight: 800;
 }
 
 .anak-form-header p {
-    margin: 4px 0 0;
+    margin: 0;
     color: #64748b;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .anak-form-group {
@@ -150,27 +354,37 @@
 .anak-form-group label {
     display: block;
     margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 700;
     color: #334155;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .anak-form-group input,
 .anak-form-group select {
     width: 100%;
-    min-height: 48px;
-    padding: 12px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 12px;
-    background: white;
-    font: inherit;
+    height: 48px;
+    padding: 0 14px;
+    color: #0f172a;
+    background: #ffffff;
+    border: 1px solid #dbe3ec;
+    border-radius: 13px;
     outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .anak-form-group input:focus,
 .anak-form-group select:focus {
     border-color: #0f766e;
-    box-shadow: 0 0 0 3px rgba(15,118,110,.1);
+    box-shadow:
+        0 0 0 4px rgba(15, 118, 110, 0.10);
+}
+
+.anak-form-group input::placeholder {
+    color: #94a3b8;
 }
 
 .anak-input-unit {
@@ -183,437 +397,716 @@
 
 .anak-input-unit span {
     position: absolute;
-    right: 15px;
     top: 50%;
+    right: 15px;
     transform: translateY(-50%);
     color: #64748b;
+    font-size: 13px;
     font-weight: 700;
 }
 
+
+/* =========================================================
+   AGE BOX
+========================================================= */
+
 .anak-age-box {
-    display: flex;
-    gap: 15px;
-    align-items: center;
     margin: 20px 0;
     padding: 17px;
-    border-radius: 15px;
-    background: #f0fdfa;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    background: linear-gradient(
+        135deg,
+        #ecfdf5,
+        #f0fdfa
+    );
+    border: 1px solid #ccfbf1;
+    border-radius: 16px;
 }
 
 .anak-age-icon {
-    font-size: 30px;
+    width: 45px;
+    height: 45px;
+    flex: 0 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 13px;
+    font-size: 22px;
 }
 
 .anak-age-box span {
     display: block;
-    font-size: 12px;
+    margin-bottom: 3px;
     color: #64748b;
+    font-size: 11px;
 }
 
 .anak-age-box strong {
     display: block;
-    margin-top: 4px;
     color: #0f766e;
+    font-size: 16px;
 }
+
+
+/* =========================================================
+   MEASUREMENT NOTE
+========================================================= */
 
 .anak-measurement-note {
+    margin: 4px 0 22px;
+    padding: 13px 15px;
     display: flex;
+    align-items: flex-start;
     gap: 10px;
-    padding: 14px;
-    margin: 20px 0;
     background: #f8fafc;
-    border-radius: 12px;
-    color: #64748b;
-    font-size: 13px;
-    line-height: 1.5;
+    border-radius: 13px;
 }
 
-.anak-button {
-    width: 100%;
-    min-height: 54px;
-    border: none;
-    border-radius: 14px;
-    background: #0f766e;
-    color: white;
-    font: inherit;
-    font-weight: 800;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    transition: .2s;
-}
-
-.anak-button:hover {
-    background: #115e59;
-    transform: translateY(-1px);
-}
-
-.anak-result {
-    margin-top: 25px;
-}
-
-.anak-result-placeholder,
-.anak-error,
-.anak-loading {
-    padding: 25px;
-    border-radius: 16px;
-    background: #f8fafc;
-    text-align: center;
-}
-
-.anak-result-placeholder {
-    display: flex;
-    gap: 15px;
-    text-align: left;
-    align-items: center;
-}
-
-.anak-result-placeholder > div:first-child {
-    font-size: 30px;
-}
-
-.anak-result-placeholder strong,
-.anak-result-placeholder small {
-    display: block;
-}
-
-.anak-result-placeholder small {
-    margin-top: 5px;
-    color: #64748b;
-}
-
-.anak-error {
-    background: #fef2f2;
-    color: #991b1b;
-}
-
-.anak-error strong,
-.anak-error p {
-    display: block;
-}
-
-.anak-loading {
-    color: #0f766e;
-}
-
-.anak-result-header {
-    margin-bottom: 20px;
-}
-
-.anak-result-header h2 {
-    margin: 6px 0 0;
-    font-size: 24px;
-}
-
-.anak-summary-grid {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.anak-summary-grid > div {
-    padding: 15px;
-    border-radius: 12px;
-    background: #f8fafc;
-}
-
-.anak-summary-grid span,
-.anak-summary-grid strong {
-    display: block;
-}
-
-.anak-summary-grid span {
-    color: #64748b;
-    font-size: 12px;
-}
-
-.anak-summary-grid strong {
-    margin-top: 5px;
-    color: #0f172a;
-}
-
-.anak-zscore-grid {
-    display: grid;
-    gap: 14px;
-}
-
-.anak-zscore-card {
-    padding: 18px;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-}
-
-.anak-zscore-subtitle {
-    font-size: 11px;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-}
-
-.anak-zscore-card h3 {
-    margin: 5px 0;
+.anak-measurement-note span {
     font-size: 17px;
 }
 
-.anak-zscore-value strong {
-    font-size: 30px;
-    color: #0f766e;
+.anak-measurement-note p {
+    margin: 0;
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.6;
 }
 
-.anak-zscore-status {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 7px 11px;
-    border-radius: 20px;
-    font-size: 13px;
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.anak-button {
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(
+        135deg,
+        #0f766e,
+        #115e59
+    );
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow:
+        0 12px 25px rgba(15, 118, 110, 0.20);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.anak-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 16px 30px rgba(15, 118, 110, 0.28);
+}
+
+.anak-button:active {
+    transform: translateY(0);
+}
+
+.anak-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.anak-error {
+    margin-top: 15px;
+    padding: 13px 15px;
+    color: #991b1b;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 13px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.anak-error[hidden] {
+    display: none;
+}
+
+
+/* =========================================================
+   RESULTS
+========================================================= */
+
+.anak-results-container {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.anak-results-header {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.anak-results-header p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.anak-result {
+    min-height: 170px;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.06);
+}
+
+.anak-result-placeholder {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-align: left;
+}
+
+.anak-result-placeholder-icon {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 17px;
+    background: #f0fdfa;
+    font-size: 27px;
+}
+
+.anak-result-placeholder strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.anak-result-placeholder small {
+    display: block;
+    max-width: 430px;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   RESULT SUMMARY
+========================================================= */
+
+.anak-result-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.anak-summary-item {
+    padding: 17px;
+    background: #f8fafc;
+    border-radius: 15px;
+}
+
+.anak-summary-item small {
+    display: block;
+    margin-bottom: 6px;
+    color: #64748b;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.anak-summary-item strong {
+    display: block;
+    color: #0f172a;
+    font-size: 17px;
     font-weight: 800;
 }
 
-.anak-zscore-status.normal {
+
+/* =========================================================
+   IMT RESULT
+========================================================= */
+
+.anak-imt-result {
+    margin-top: 18px;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.06);
+}
+
+.anak-result-title {
+    margin-bottom: 15px;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.anak-imt-main {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 13px;
+}
+
+.anak-imt-main strong {
+    color: #0f766e;
+    font-size: 38px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.anak-imt-main span {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.anak-status-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.anak-imt-result p {
+    margin: 14px 0 0;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   STATUS COLORS
+========================================================= */
+
+.status-normal {
     background: #dcfce7;
     color: #166534;
 }
 
-.anak-zscore-status.low {
+.status-low {
     background: #fef3c7;
     color: #92400e;
 }
 
-.anak-zscore-status.very-low {
-    background: #fee2e2;
-    color: #991b1b;
-}
-
-.anak-zscore-status.high {
+.status-high {
     background: #ffedd5;
     color: #9a3412;
 }
 
-.anak-zscore-status.very-high {
+.status-severe {
     background: #fee2e2;
     color: #991b1b;
 }
 
-.anak-zscore-status.neutral {
-    background: #e2e8f0;
+.status-neutral {
+    background: #f1f5f9;
     color: #475569;
 }
 
-.anak-percentile {
-    margin-top: 8px;
-    font-size: 12px;
-    color: #64748b;
+
+/* =========================================================
+   ANTHROPOMETRY
+========================================================= */
+
+.anak-anthropometry-grid {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
 }
 
-.anak-result-block {
-    margin-top: 25px;
+.anak-anthro-card {
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    box-shadow:
+        0 12px 35px rgba(15, 23, 42, 0.05);
 }
 
-.anak-bmi-result {
-    margin-top: 12px;
-    padding: 20px;
-    border-radius: 16px;
-    background: #f8fafc;
-}
-
-.anak-bmi-number span,
-.anak-bmi-category span {
+.anak-anthro-card > span {
     display: block;
-    font-size: 12px;
-    color: #64748b;
+    margin-bottom: 15px;
+    font-size: 25px;
 }
 
-.anak-bmi-number strong {
+.anak-anthro-card small {
     display: block;
-    margin-top: 5px;
-    font-size: 28px;
-}
-
-.anak-bmi-category {
-    margin-top: 15px;
-}
-
-.anak-bmi-category strong {
-    display: block;
-    margin-top: 4px;
-}
-
-.anak-bmi-category.low strong {
-    color: #b45309;
-}
-
-.anak-bmi-category.normal strong {
-    color: #15803d;
-}
-
-.anak-bmi-category.high strong {
-    color: #c2410c;
-}
-
-.anak-bmi-note {
-    font-size: 13px;
-    line-height: 1.6;
+    margin-bottom: 8px;
     color: #64748b;
+    font-size: 11px;
 }
 
-.anak-bmi-warning {
-    padding: 13px;
-    border-radius: 12px;
-    background: #fff7ed;
-    color: #9a3412;
-    font-size: 12px;
-    line-height: 1.6;
+.anak-anthro-card strong {
+    display: block;
+    color: #0f172a;
+    font-size: 15px;
+    line-height: 1.4;
 }
+
+
+/* =========================================================
+   MACRO SECTION
+========================================================= */
 
 .anak-macro-section {
-    margin-top: 25px;
-    padding-top: 25px;
-    border-top: 1px solid #e2e8f0;
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
-.anak-macro-section h3 {
-    margin: 5px 0 15px;
+.anak-macro-section > p {
+    max-width: 700px;
+    margin-bottom: 30px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.8;
 }
 
 .anak-macro-grid {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
 }
 
 .anak-macro-card {
-    padding: 15px;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 21px;
+    box-shadow:
+        0 12px 35px rgba(15, 23, 42, 0.05);
+}
+
+.anak-macro-icon {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 14px;
-    background: #f0fdfa;
+    background: #ecfdf5;
+    font-size: 22px;
 }
 
-.anak-macro-card span,
-.anak-macro-card strong,
-.anak-macro-card small {
+.anak-macro-card > span {
     display: block;
-}
-
-.anak-macro-card span {
-    font-size: 12px;
+    margin-bottom: 7px;
     color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .anak-macro-card strong {
-    margin-top: 5px;
-    font-size: 20px;
+    display: block;
+    margin-bottom: 4px;
     color: #0f766e;
+    font-size: 28px;
+    line-height: 1.1;
+    font-weight: 800;
 }
 
 .anak-macro-card small {
-    color: #64748b;
+    color: #94a3b8;
+    font-size: 11px;
 }
 
-.anak-macro-note,
-.anak-result-note {
-    margin-top: 15px;
-    font-size: 12px;
-    line-height: 1.6;
-    color: #64748b;
-}
+
+/* =========================================================
+   INFORMATION
+========================================================= */
 
 .anak-info-section {
-    max-width: 1100px;
-    margin: auto;
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
-.anak-indicator-grid {
-    margin-top: 30px;
+.anak-info-section > p {
+    max-width: 750px;
+    margin-bottom: 30px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.anak-info-grid {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
 
-.anak-indicator-card {
-    background: white;
-    padding: 22px;
-    border-radius: 18px;
+.anak-info-card {
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
 }
 
-.anak-indicator-card > div {
-    font-size: 28px;
+.anak-info-card > span {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 27px;
 }
 
-.anak-indicator-card h3 {
-    margin: 12px 0 8px;
+.anak-info-card h3 {
+    margin-bottom: 9px;
+    color: #0f172a;
+    font-size: 16px;
+    font-weight: 800;
 }
 
-.anak-indicator-card p {
+.anak-info-card p {
     margin: 0;
     color: #64748b;
-    line-height: 1.5;
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1.7;
 }
 
+
+/* =========================================================
+   DISCLAIMER
+========================================================= */
+
 .anak-disclaimer {
-    max-width: 1060px;
-    margin: 40px auto;
-    padding: 20px;
+    max-width: 1080px;
+    margin: 0 auto 70px;
+    padding: 22px;
     display: flex;
+    align-items: flex-start;
     gap: 15px;
-    border-radius: 16px;
-    background: #fff7ed;
-    color: #9a3412;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 20px;
+}
+
+.anak-disclaimer-icon {
+    font-size: 25px;
 }
 
 .anak-disclaimer h3 {
-    margin: 0 0 5px;
+    margin-bottom: 6px;
+    color: #78350f;
+    font-size: 15px;
+    font-weight: 800;
 }
 
 .anak-disclaimer p {
     margin: 0;
-    line-height: 1.6;
-    font-size: 13px;
+    color: #92400e;
+    font-size: 12px;
+    line-height: 1.7;
 }
 
 
-@media (max-width: 850px) {
+/* =========================================================
+   RESULT DETAIL CARDS
+========================================================= */
+
+.anak-result-detail {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.anak-detail-card {
+    padding: 18px;
+    background: #f8fafc;
+    border-radius: 16px;
+}
+
+.anak-detail-card small {
+    display: block;
+    margin-bottom: 7px;
+    color: #64748b;
+    font-size: 10px;
+}
+
+.anak-detail-card strong {
+    display: block;
+    color: #0f172a;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.anak-loading {
+    padding: 30px;
+    text-align: center;
+}
+
+.anak-loading-spinner {
+    width: 35px;
+    height: 35px;
+    margin: 0 auto 12px;
+    border: 3px solid #d1fae5;
+    border-top-color: #0f766e;
+    border-radius: 50%;
+    animation: anakSpin 0.8s linear infinite;
+}
+
+.anak-loading p {
+    margin: 0;
+    color: #64748b;
+    font-size: 12px;
+}
+
+@keyframes anakSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .anak-navigation {
+        grid-template-columns: 1fr;
+        margin-top: -25px;
+    }
 
     .anak-card {
         grid-template-columns: 1fr;
     }
 
-    .anak-summary-grid {
-        grid-template-columns: repeat(2,1fr);
+    .anak-info {
+        padding: 0;
     }
 
-    .anak-indicator-grid {
-        grid-template-columns: repeat(2,1fr);
+    .anak-result-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .anak-macro-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .anak-info-grid {
+        grid-template-columns: 1fr;
     }
 
 }
 
 
-@media (max-width: 550px) {
+@media (max-width: 650px) {
 
-    .anak-section {
-        padding: 35px 15px;
+    .anak-hero {
+        padding: 55px 18px 70px;
     }
 
-    .anak-card {
-        padding: 18px;
-        border-radius: 18px;
+    .anak-hero h1 {
+        font-size: 35px;
+    }
+
+    .anak-hero p {
+        font-size: 14px;
+    }
+
+    .anak-section {
+        padding: 55px 15px;
+    }
+
+    .anak-navigation {
+        padding: 0 15px;
+    }
+
+    .anak-nav-card {
+        min-height: 85px;
+        padding: 15px;
+        border-radius: 16px;
     }
 
     .anak-form {
+        padding: 20px 16px;
+        border-radius: 20px;
+    }
+
+    .anak-result-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .anak-anthropometry-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .anak-result-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .anak-macro-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .anak-macro-card {
         padding: 18px;
     }
 
-    .anak-summary-grid,
-    .anak-indicator-grid,
+    .anak-macro-card strong {
+        font-size: 23px;
+    }
+
+    .anak-disclaimer {
+        margin: 0 15px 50px;
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .anak-hero h1 {
+        font-size: 30px;
+    }
+
+    .anak-result-summary {
+        grid-template-columns: 1fr;
+    }
+
     .anak-macro-grid {
         grid-template-columns: 1fr;
     }
 
-    .anak-hero {
-        padding: 50px 18px;
+    .anak-imt-main strong {
+        font-size: 32px;
     }
 
 }
