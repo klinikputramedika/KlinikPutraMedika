@@ -2,201 +2,287 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="Kalkulator kesehatan Klinik Putra Medika untuk menghitung BMI, BMR, TDEE dan kebutuhan makronutrien."
+        content="Kalkulator kesehatan Klinik Putra Medika untuk menghitung BMI, BMR, TDEE, kebutuhan kalori dan makronutrien."
     >
 
     <meta
         name="theme-color"
-        content="#0f766e"
+        content="#0f9d8a"
     >
 
-    <title>
-        Kalkulator Kesehatan - Klinik Putra Medika
-    </title>
+    <title>Kalkulator Kesehatan - Klinik Putra Medika</title>
 
-
-    <!-- =====================================================
-         FONT
-    ====================================================== -->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
-
-    <!-- =====================================================
-         CSS GLOBAL
-    ====================================================== -->
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
-
-    <!-- =====================================================
-         CSS KALKULATOR
-    ====================================================== -->
-
-    <link
-        rel="stylesheet"
-        href="kalkulator.css"
-    >
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="kalkulator.css">
 </head>
 
 
 <body>
 
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
-    <!-- =====================================================
-         NAVBAR
-    ====================================================== -->
+<header class="navbar">
 
-    <header class="navbar">
+    <a
+        href="index.html"
+        class="logo"
+        aria-label="Klinik Putra Medika - Beranda"
+    >
+        <img
+            src="logo.png"
+            alt="Logo Klinik Putra Medika"
+        >
+    </a>
+
+    <nav aria-label="Navigasi utama">
+
+        <a href="index.html">
+            Beranda
+        </a>
 
         <a
-            href="index.html"
-            class="logo"
-            aria-label="Klinik Putra Medika - Beranda"
+            href="kalkulator.html"
+            class="active"
+            aria-current="page"
+        >
+            Kalkulator
+        </a>
+
+        <a href="edukasi.html">
+            Edukasi
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="kal-main">
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="kal-hero">
+
+        <div class="kal-hero-inner">
+
+            <div
+                class="kal-hero-icon"
+                aria-hidden="true"
+            >
+                🧮
+            </div>
+
+            <div class="kal-hero-badge">
+                HEALTH CALCULATOR
+            </div>
+
+            <h1>
+                Kalkulator Kesehatan
+            </h1>
+
+            <p>
+                Masukkan data tubuh Anda sekali untuk mendapatkan
+                estimasi BMI, kebutuhan energi, target kalori,
+                dan kebutuhan makronutrien.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         QUICK NAVIGATION
+    ================================================== -->
+
+    <section
+        class="kal-navigation"
+        aria-label="Bagian kalkulator"
+    >
+
+        <a
+            href="#data"
+            class="kal-nav-card"
         >
 
-            <img
-                src="logo.png"
-                alt="Logo Klinik Putra Medika"
-            >
+            <span class="kal-nav-icon">
+                👤
+            </span>
+
+            <span class="kal-nav-content">
+
+                <strong>
+                    Data Tubuh
+                </strong>
+
+                <small>
+                    Isi data dasar
+                </small>
+
+            </span>
+
+            <span class="kal-nav-arrow">
+                →
+            </span>
 
         </a>
 
 
-        <nav aria-label="Navigasi utama">
+        <a
+            href="#hasil"
+            class="kal-nav-card"
+        >
 
-            <a href="index.html">
-                Beranda
-            </a>
+            <span class="kal-nav-icon">
+                📊
+            </span>
 
-            <a
-                href="kalkulator.html"
-                class="active"
-                aria-current="page"
-            >
-                Kalkulator
-            </a>
+            <span class="kal-nav-content">
 
-            <a href="edukasi.html">
-                Edukasi
-            </a>
+                <strong>
+                    Hasil Kesehatan
+                </strong>
 
-            <a href="contact.html">
-                Contact Us
-            </a>
+                <small>
+                    BMI, BMR & TDEE
+                </small>
 
-        </nav>
+            </span>
 
-    </header>
+            <span class="kal-nav-arrow">
+                →
+            </span>
 
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-    <main class="kal-main">
+        </a>
 
 
-        <!-- =================================================
-             HERO
-        ================================================== -->
+        <a
+            href="#macro"
+            class="kal-nav-card"
+        >
 
-        <section class="kal-hero">
+            <span class="kal-nav-icon">
+                🥗
+            </span>
 
-            <div class="kal-hero-inner">
+            <span class="kal-nav-content">
 
-                <div
-                    class="kal-hero-icon"
-                    aria-hidden="true"
-                >
-                    🧮
+                <strong>
+                    Target Makro
+                </strong>
+
+                <small>
+                    Kalori & makronutrien
+                </small>
+
+            </span>
+
+            <span class="kal-nav-arrow">
+                →
+            </span>
+
+        </a>
+
+    </section>
+
+
+    <!-- =================================================
+         DATA TUBUH
+    ================================================== -->
+
+    <section
+        id="data"
+        class="kal-section"
+    >
+
+        <div class="kal-card">
+
+
+            <!-- INFORMASI -->
+
+            <div class="kal-info">
+
+                <div class="kal-number">
+                    01
                 </div>
 
-
-                <div class="kal-hero-badge">
-                    HEALTH CALCULATOR
+                <div class="kal-label">
+                    YOUR BODY DATA
                 </div>
 
-
-                <h1>
-                    Kalkulator Kesehatan
-                </h1>
-
+                <h2>
+                    Data Tubuh Anda
+                </h2>
 
                 <p>
-                    Hitung BMI, kebutuhan energi dan kebutuhan
-                    makronutrien Anda dalam satu langkah.
+                    Masukkan data dasar tubuh dan aktivitas Anda.
+                    Data ini akan digunakan untuk menghitung seluruh
+                    hasil kalkulator secara otomatis.
                 </p>
+
+                <div class="kal-tip">
+
+                    <span>
+                        💡
+                    </span>
+
+                    <span>
+                        Gunakan data terbaru agar hasil estimasi
+                        lebih sesuai dengan kondisi Anda.
+                    </span>
+
+                </div>
 
             </div>
 
-        </section>
 
+            <!-- FORM -->
 
+            <div class="kal-form">
 
-        <!-- =================================================
-             CALCULATOR CONTAINER
-        ================================================== -->
+                <div class="kal-form-header">
 
-        <section class="kal-calculator-container">
-
-
-            <!-- =================================================
-                 DATA INPUT
-            ================================================== -->
-
-            <div class="kal-input-card">
-
-
-                <div class="kal-section-heading">
-
-                    <div class="kal-section-number">
-                        01
+                    <div class="kal-form-icon">
+                        👤
                     </div>
-
 
                     <div>
 
-                        <span class="kal-section-label">
-                            DATA TUBUH
-                        </span>
-
-                        <h2>
+                        <h3>
                             Masukkan data Anda
-                        </h2>
+                        </h3>
 
                         <p>
-                            Gunakan data terbaru untuk mendapatkan
-                            hasil yang lebih sesuai.
+                            Semua data diperlukan untuk perhitungan.
                         </p>
 
                     </div>
@@ -204,167 +290,181 @@
                 </div>
 
 
+                <!-- GENDER -->
 
-                <!-- FORM -->
+                <div class="kal-form-group">
 
-                <div class="kal-form-grid">
+                    <label for="gender">
+                        Jenis kelamin
+                    </label>
 
+                    <select id="gender">
 
-                    <!-- JENIS KELAMIN -->
+                        <option value="male">
+                            Pria
+                        </option>
 
-                    <div class="kal-form-group">
+                        <option value="female">
+                            Wanita
+                        </option>
 
-                        <label for="gender">
-                            Jenis kelamin
-                        </label>
+                    </select>
 
-                        <select id="gender">
-
-                            <option value="male">
-                                Pria
-                            </option>
-
-                            <option value="female">
-                                Wanita
-                            </option>
-
-                        </select>
-
-                    </div>
+                </div>
 
 
+                <!-- AGE -->
 
-                    <!-- UMUR -->
+                <div class="kal-form-group">
 
-                    <div class="kal-form-group">
+                    <label for="age">
+                        Umur
+                    </label>
 
-                        <label for="age">
-                            Umur
-                        </label>
+                    <div class="kal-input-unit">
 
-                        <div class="kal-input-unit">
+                        <input
+                            type="number"
+                            id="age"
+                            placeholder="Contoh: 25"
+                            min="18"
+                            max="120"
+                            inputmode="numeric"
+                        >
 
-                            <input
-                                type="number"
-                                id="age"
-                                placeholder="Contoh: 25"
-                                min="18"
-                                max="120"
-                                inputmode="numeric"
-                            >
-
-                            <span>
-                                tahun
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- BERAT -->
-
-                    <div class="kal-form-group">
-
-                        <label for="weight">
-                            Berat badan
-                        </label>
-
-                        <div class="kal-input-unit">
-
-                            <input
-                                type="number"
-                                id="weight"
-                                placeholder="Contoh: 70"
-                                min="1"
-                                max="500"
-                                step="0.1"
-                                inputmode="decimal"
-                            >
-
-                            <span>
-                                kg
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- TINGGI -->
-
-                    <div class="kal-form-group">
-
-                        <label for="height">
-                            Tinggi badan
-                        </label>
-
-                        <div class="kal-input-unit">
-
-                            <input
-                                type="number"
-                                id="height"
-                                placeholder="Contoh: 170"
-                                min="50"
-                                max="250"
-                                step="0.1"
-                                inputmode="decimal"
-                            >
-
-                            <span>
-                                cm
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- AKTIVITAS -->
-
-                    <div class="kal-form-group kal-form-group-full">
-
-                        <label for="activity">
-                            Tingkat aktivitas
-                        </label>
-
-                        <select id="activity">
-
-                            <option value="1.2">
-                                Sedentary — sangat sedikit aktivitas
-                            </option>
-
-                            <option value="1.375">
-                                Light — olahraga ringan 1–3 hari/minggu
-                            </option>
-
-                            <option value="1.55">
-                                Moderate — olahraga sedang 3–5 hari/minggu
-                            </option>
-
-                            <option value="1.725">
-                                Active — olahraga berat 6–7 hari/minggu
-                            </option>
-
-                            <option value="1.9">
-                                Very Active — aktivitas fisik sangat tinggi
-                            </option>
-
-                        </select>
-
-
-                        <p class="kal-field-note">
-                            Pilih aktivitas yang paling mendekati
-                            rutinitas Anda sehari-hari.
-                        </p>
+                        <span>
+                            tahun
+                        </span>
 
                     </div>
 
                 </div>
 
+
+                <!-- WEIGHT -->
+
+                <div class="kal-form-group">
+
+                    <label for="weight">
+                        Berat badan
+                    </label>
+
+                    <div class="kal-input-unit">
+
+                        <input
+                            type="number"
+                            id="weight"
+                            placeholder="Contoh: 70"
+                            min="1"
+                            max="500"
+                            step="0.1"
+                            inputmode="decimal"
+                        >
+
+                        <span>
+                            kg
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HEIGHT -->
+
+                <div class="kal-form-group">
+
+                    <label for="height">
+                        Tinggi badan
+                    </label>
+
+                    <div class="kal-input-unit">
+
+                        <input
+                            type="number"
+                            id="height"
+                            placeholder="Contoh: 170"
+                            min="50"
+                            max="250"
+                            step="0.1"
+                            inputmode="decimal"
+                        >
+
+                        <span>
+                            cm
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIVITY -->
+
+                <div class="kal-form-group">
+
+                    <label for="activity">
+                        Tingkat aktivitas
+                    </label>
+
+                    <select id="activity">
+
+                        <option value="1.2">
+                            Sedentary — sangat sedikit aktivitas
+                        </option>
+
+                        <option value="1.375">
+                            Light — olahraga ringan 1–3 hari/minggu
+                        </option>
+
+                        <option value="1.55">
+                            Moderate — olahraga sedang 3–5 hari/minggu
+                        </option>
+
+                        <option value="1.725">
+                            Active — olahraga berat 6–7 hari/minggu
+                        </option>
+
+                        <option value="1.9">
+                            Very Active — aktivitas sangat tinggi
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <p class="kal-activity-note">
+                    Pilih tingkat aktivitas yang paling mendekati
+                    rutinitas harian Anda.
+                </p>
+
+
+                <!-- GOAL -->
+
+                <div class="kal-form-group">
+
+                    <label for="goal">
+                        Tujuan Anda
+                    </label>
+
+                    <select id="goal">
+
+                        <option value="maintenance">
+                            Maintenance — mempertahankan berat badan
+                        </option>
+
+                        <option value="fatloss">
+                            Fat Loss — menurunkan berat badan
+                        </option>
+
+                        <option value="bulking">
+                            Muscle Gain — meningkatkan massa otot
+                        </option>
+
+                    </select>
+
+                </div>
 
 
                 <!-- BUTTON -->
@@ -372,688 +472,279 @@
                 <button
                     type="button"
                     class="kal-button"
-                    id="calculateAllButton"
+                    onclick="calculateHealth()"
                 >
 
                     <span>
                         Hitung Hasil Saya
                     </span>
 
-                    <span aria-hidden="true">
+                    <span>
                         →
                     </span>
 
                 </button>
 
+
+                <!-- ERROR -->
+
+                <div
+                    id="formError"
+                    class="kal-form-error"
+                    aria-live="polite"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         HASIL
+    ================================================== -->
+
+    <section
+        id="hasil"
+        class="kal-section kal-section-alt"
+    >
+
+        <div class="kal-card kal-result-card">
+
+
+            <!-- INFORMASI -->
+
+            <div class="kal-info">
+
+                <div class="kal-number">
+                    02
+                </div>
+
+                <div class="kal-label">
+                    HEALTH SUMMARY
+                </div>
+
+                <h2>
+                    Ringkasan Kesehatan
+                </h2>
+
+                <p>
+                    Berikut adalah estimasi berdasarkan data
+                    tubuh dan aktivitas yang Anda masukkan.
+                </p>
+
+                <div class="kal-tip">
+
+                    <span>
+                        📊
+                    </span>
+
+                    <span>
+                        Hasil ini merupakan estimasi dan dapat
+                        berbeda dari kebutuhan aktual tubuh Anda.
+                    </span>
+
+                </div>
+
             </div>
 
 
+            <!-- RESULT -->
 
-            <!-- =================================================
-                 RESULTS
-            ================================================== -->
+            <div class="kal-result-panel">
 
-            <div
-                id="calculatorResults"
-                class="kal-results"
-            >
+                <div class="result-placeholder">
 
-
-                <!-- =================================================
-                     BMI
-                ================================================== -->
-
-                <section class="kal-result-card">
-
-
-                    <div class="kal-result-heading">
-
-                        <div class="kal-result-icon">
-                            ⚖️
-                        </div>
-
-                        <div>
-
-                            <span>
-                                BMI
-                            </span>
-
-                            <h2>
-                                Indeks Massa Tubuh
-                            </h2>
-
-                        </div>
-
+                    <div class="placeholder-icon">
+                        📊
                     </div>
-
-
-                    <div class="bmi-result-content">
-
-                        <div class="bmi-score">
-
-                            <span>
-                                BMI Anda
-                            </span>
-
-                            <strong id="bmiValue">
-                                —
-                            </strong>
-
-                            <div
-                                id="bmiCategory"
-                                class="bmi-category"
-                            >
-                                Masukkan data untuk melihat hasil
-                            </div>
-
-                        </div>
-
-
-                        <div class="bmi-info">
-
-                            <div class="bmi-range">
-
-                                <span>
-                                    < 18,5
-                                </span>
-
-                                <span>
-                                    18,5–24,9
-                                </span>
-
-                                <span>
-                                    25–29,9
-                                </span>
-
-                                <span>
-                                    ≥ 30
-                                </span>
-
-                            </div>
-
-
-                            <div class="bmi-scale">
-
-                                <div class="bmi-scale-segment segment-1"></div>
-
-                                <div class="bmi-scale-segment segment-2"></div>
-
-                                <div class="bmi-scale-segment segment-3"></div>
-
-                                <div class="bmi-scale-segment segment-4"></div>
-
-                            </div>
-
-
-                            <p id="bmiDescription">
-                                BMI merupakan indikator sederhana
-                                untuk melihat hubungan berat dan
-                                tinggi badan.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     ENERGY
-                ================================================== -->
-
-                <section class="kal-result-card">
-
-
-                    <div class="kal-result-heading">
-
-                        <div class="kal-result-icon">
-                            🔥
-                        </div>
-
-                        <div>
-
-                            <span>
-                                KEBUTUHAN ENERGI
-                            </span>
-
-                            <h2>
-                                BMR & TDEE
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="energy-result-grid">
-
-
-                        <div class="energy-card">
-
-                            <span>
-                                BMR
-                            </span>
-
-                            <strong id="bmrValue">
-                                —
-                            </strong>
-
-                            <small>
-                                kkal / hari
-                            </small>
-
-                            <p>
-                                Energi yang diperkirakan
-                                dibutuhkan tubuh saat istirahat.
-                            </p>
-
-                        </div>
-
-
-
-                        <div class="energy-card energy-card-highlight">
-
-                            <span>
-                                TDEE
-                            </span>
-
-                            <strong id="tdeeValue">
-                                —
-                            </strong>
-
-                            <small>
-                                kkal / hari
-                            </small>
-
-                            <p>
-                                Estimasi kebutuhan energi
-                                harian berdasarkan aktivitas.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     GOAL
-                ================================================== -->
-
-                <section class="kal-result-card">
-
-
-                    <div class="kal-result-heading">
-
-                        <div class="kal-result-icon">
-                            🎯
-                        </div>
-
-                        <div>
-
-                            <span>
-                                TUJUAN
-                            </span>
-
-                            <h2>
-                                Pilih tujuan Anda
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="kal-goal-options"
-                        role="group"
-                        aria-label="Pilih tujuan"
-                    >
-
-
-                        <button
-                            type="button"
-                            class="kal-goal-button"
-                            data-goal="maintenance"
-                        >
-
-                            <span>
-                                ⚖️
-                            </span>
-
-                            <strong>
-                                Maintenance
-                            </strong>
-
-                            <small>
-                                Mempertahankan berat
-                            </small>
-
-                        </button>
-
-
-
-                        <button
-                            type="button"
-                            class="kal-goal-button active"
-                            data-goal="fatloss"
-                        >
-
-                            <span>
-                                🔥
-                            </span>
-
-                            <strong>
-                                Fat Loss
-                            </strong>
-
-                            <small>
-                                Menurunkan berat
-                            </small>
-
-                        </button>
-
-
-
-                        <button
-                            type="button"
-                            class="kal-goal-button"
-                            data-goal="bulking"
-                        >
-
-                            <span>
-                                💪
-                            </span>
-
-                            <strong>
-                                Muscle Gain
-                            </strong>
-
-                            <small>
-                                Meningkatkan massa otot
-                            </small>
-
-                        </button>
-
-                    </div>
-
-
-
-                    <!-- TARGET CALORIES -->
-
-                    <div class="target-calorie-card">
-
-                        <div>
-
-                            <span>
-                                TARGET KALORI HARIAN
-                            </span>
-
-                            <strong id="targetCalories">
-                                —
-                            </strong>
-
-                            <small>
-                                kkal / hari
-                            </small>
-
-                        </div>
-
-
-                        <div
-                            id="calorieAdjustment"
-                            class="calorie-adjustment"
-                        >
-                            —
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     MACROS
-                ================================================== -->
-
-                <section class="kal-result-card macro-result-card">
-
-
-                    <div class="kal-result-heading">
-
-                        <div class="kal-result-icon">
-                            🥗
-                        </div>
-
-                        <div>
-
-                            <span>
-                                MAKRO
-                            </span>
-
-                            <h2>
-                                Makronutrien Harian
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="macro-progress-list">
-
-
-                        <!-- PROTEIN -->
-
-                        <div class="macro-progress-item">
-
-                            <div class="macro-progress-header">
-
-                                <span>
-                                    Protein
-                                </span>
-
-                                <strong>
-                                    <span id="proteinValue">
-                                        —
-                                    </span>
-                                    g
-                                </strong>
-
-                            </div>
-
-
-                            <div class="macro-progress-track">
-
-                                <div
-                                    id="proteinBar"
-                                    class="macro-progress-fill protein-fill"
-                                ></div>
-
-                            </div>
-
-
-                            <div class="macro-progress-footer">
-
-                                <span id="proteinPercent">
-                                    —% energi
-                                </span>
-
-                                <span id="proteinCalories">
-                                    — kkal
-                                </span>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- KARBO -->
-
-                        <div class="macro-progress-item">
-
-                            <div class="macro-progress-header">
-
-                                <span>
-                                    Karbohidrat
-                                </span>
-
-                                <strong>
-                                    <span id="carbsValue">
-                                        —
-                                    </span>
-                                    g
-                                </strong>
-
-                            </div>
-
-
-                            <div class="macro-progress-track">
-
-                                <div
-                                    id="carbsBar"
-                                    class="macro-progress-fill carbs-fill"
-                                ></div>
-
-                            </div>
-
-
-                            <div class="macro-progress-footer">
-
-                                <span id="carbsPercent">
-                                    —% energi
-                                </span>
-
-                                <span id="carbsCalories">
-                                    — kkal
-                                </span>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- LEMAK -->
-
-                        <div class="macro-progress-item">
-
-                            <div class="macro-progress-header">
-
-                                <span>
-                                    Lemak
-                                </span>
-
-                                <strong>
-                                    <span id="fatValue">
-                                        —
-                                    </span>
-                                    g
-                                </strong>
-
-                            </div>
-
-
-                            <div class="macro-progress-track">
-
-                                <div
-                                    id="fatBar"
-                                    class="macro-progress-fill fat-fill"
-                                ></div>
-
-                            </div>
-
-
-                            <div class="macro-progress-footer">
-
-                                <span id="fatPercent">
-                                    —% energi
-                                </span>
-
-                                <span id="fatCalories">
-                                    — kkal
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- MACRO SUMMARY -->
-
-                    <div class="macro-summary">
-
-                        <div>
-
-                            <span>
-                                Protein
-                            </span>
-
-                            <strong id="macroProteinSummary">
-                                —
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Karbohidrat
-                            </span>
-
-                            <strong id="macroCarbsSummary">
-                                —
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Lemak
-                            </span>
-
-                            <strong id="macroFatSummary">
-                                —
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <p class="macro-note">
-
-                        Pembagian makronutrien merupakan estimasi
-                        untuk tujuan edukasi. Kebutuhan setiap orang
-                        dapat berbeda.
-
-                    </p>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     DISCLAIMER
-                ================================================== -->
-
-                <div class="kal-disclaimer">
-
-                    <div
-                        class="kal-disclaimer-icon"
-                        aria-hidden="true"
-                    >
-                        ⚠️
-                    </div>
-
 
                     <div>
 
-                        <h3>
-                            Catatan penting
-                        </h3>
+                        <strong>
+                            Hasil Anda akan muncul di sini
+                        </strong>
 
                         <p>
-                            Hasil kalkulator merupakan estimasi
-                            untuk tujuan edukasi dan bukan diagnosis
-                            medis. Kebutuhan energi dan nutrisi
-                            setiap orang dapat berbeda.
+                            Isi data tubuh kemudian tekan
+                            "Hitung Hasil Saya".
                         </p>
 
                     </div>
 
                 </div>
 
-            </div>
 
-        </section>
+                <!-- HASIL AKAN DIISI JAVASCRIPT -->
 
-    </main>
-
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer>
-
-        <div class="footer-content">
-
-
-            <div class="footer-info">
-
-                <h3>
-                    Klinik Putra Medika
-                </h3>
-
-                <p>
-                    Informasi dan edukasi kesehatan
-                    untuk masyarakat.
-                </p>
+                <div
+                    id="healthResult"
+                    class="health-result"
+                    aria-live="polite"
+                ></div>
 
             </div>
 
+        </div>
+
+    </section>
 
 
-            <div class="footer-contact">
+    <!-- =================================================
+         MACRO
+    ================================================== -->
 
-                <h4>
-                    Alamat
-                </h4>
+    <section
+        id="macro"
+        class="kal-section"
+    >
 
-                <p>
-                    Kp. Gandasoli, Cikidangbayabang,
-                    Kec. Mande, Kabupaten Cianjur,
-                    Jawa Barat 43292
-                </p>
+        <div class="kal-macro-card">
 
+            <div class="kal-macro-header">
 
-                <a
-                    href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    📍 Lihat Lokasi Klinik
-                </a>
+                <div>
+
+                    <div class="kal-label">
+                        DAILY NUTRITION TARGET
+                    </div>
+
+                    <h2>
+                        Target Kalori & Makronutrien
+                    </h2>
+
+                    <p>
+                        Estimasi target harian berdasarkan tujuan Anda.
+                    </p>
+
+                </div>
+
+                <div class="macro-header-icon">
+                    🥗
+                </div>
 
             </div>
 
 
+            <div
+                id="macroResult"
+                class="macro-result-placeholder"
+            >
 
-            <div class="footer-copyright">
+                <div class="macro-empty-icon">
+                    🥗
+                </div>
+
+                <strong>
+                    Target makronutrien belum dihitung
+                </strong>
 
                 <p>
-                    © 2026 Klinik Putra Medika
+                    Lengkapi data tubuh terlebih dahulu.
                 </p>
 
             </div>
 
         </div>
 
-    </footer>
+    </section>
 
 
+    <!-- =================================================
+         DISCLAIMER
+    ================================================== -->
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    <section class="kal-disclaimer">
 
-    <script src="script.js"></script>
+        <div class="kal-disclaimer-icon">
+            ⚠️
+        </div>
+
+        <div>
+
+            <h3>
+                Catatan penting
+            </h3>
+
+            <p>
+                Hasil kalkulator merupakan estimasi untuk tujuan
+                edukasi dan bukan diagnosis medis. Kebutuhan energi
+                dan nutrisi setiap orang dapat berbeda. Untuk kondisi
+                khusus atau kebutuhan diet tertentu, konsultasikan
+                dengan tenaga kesehatan.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-info">
+
+            <h3>
+                Klinik Putra Medika
+            </h3>
+
+            <p>
+                Informasi dan edukasi kesehatan
+                untuk masyarakat.
+            </p>
+
+        </div>
+
+
+        <div class="footer-contact">
+
+            <h4>
+                Alamat
+            </h4>
+
+            <p>
+                Kp. Gandasoli, Cikidangbayabang,
+                Kec. Mande, Kabupaten Cianjur,
+                Jawa Barat 43292
+            </p>
+
+            <a
+                href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                📍 Lihat Lokasi Klinik
+            </a>
+
+        </div>
+
+
+        <div class="footer-copyright">
+
+            <p>
+                © 2026 Klinik Putra Medika
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
