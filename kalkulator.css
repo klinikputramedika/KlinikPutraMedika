@@ -1678,3 +1678,574 @@
         display: block;
     }
 }
+/* =========================================================
+   RESULT SYSTEM
+   ========================================================= */
+
+.kal-result.result {
+    min-height: 0;
+    margin-top: 18px;
+    padding: 20px;
+
+    border: 1px solid #dce7eb;
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    animation: kalResultAppear 0.3s ease;
+}
+
+@keyframes kalResultAppear {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   RESULT TITLE
+   ========================================================= */
+
+.result-title {
+    margin-bottom: 14px;
+
+    color: #0c8b79;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.kal-result.result-error {
+    border: 1px solid #f0d2d2;
+
+    background: #fff7f7;
+}
+
+.result-error .result-title {
+    color: #c0392b;
+}
+
+.result-error p {
+    margin: 0;
+
+    color: #7c4a46;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   BMI NUMBER
+   ========================================================= */
+
+.bmi-number {
+    margin: 2px 0 8px;
+
+    color: #172033;
+
+    font-size: 42px;
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+/* =========================================================
+   BMI CATEGORY
+   ========================================================= */
+
+.bmi-category {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    background: #e7f7f3;
+
+    color: #0b8978;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BMI CATEGORY COLORS
+   ========================================================= */
+
+.result-underweight .bmi-category {
+    background: #eef5ff;
+    color: #3f6fa8;
+}
+
+.result-normal .bmi-category {
+    background: #e7f7f3;
+    color: #0b8978;
+}
+
+.result-overweight .bmi-category {
+    background: #fff5df;
+    color: #a36b00;
+}
+
+.result-obesity .bmi-category {
+    background: #fff0ef;
+    color: #c0392b;
+}
+
+
+/* =========================================================
+   RESULT DETAILS
+   ========================================================= */
+
+.result-details {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-top: 17px;
+}
+
+.result-details p {
+    margin: 0;
+
+    padding: 11px 12px;
+
+    border-radius: 10px;
+
+    background: #f7fafb;
+
+    color: #718091;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.result-details strong {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #2b384b;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RESULT DESCRIPTION
+   ========================================================= */
+
+.result-description {
+    margin: 15px 0 0;
+
+    padding-top: 14px;
+
+    border-top: 1px solid #edf1f3;
+
+    color: #687789;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ENERGY RESULT
+   ========================================================= */
+
+.energy-result {
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #fbfefd 100%
+        );
+}
+
+
+/* =========================================================
+   ENERGY BOX
+   ========================================================= */
+
+.energy-box {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-top: 5px;
+}
+
+.energy-box > div {
+    padding: 16px;
+
+    border: 1px solid #dcefeb;
+
+    border-radius: 13px;
+
+    background: #f2faf8;
+
+    text-align: center;
+}
+
+.energy-box span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #5e7b74;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+}
+
+.energy-box strong {
+    display: block;
+
+    color: #172033;
+
+    font-size: 28px;
+
+    line-height: 1.1;
+
+    font-weight: 800;
+}
+
+.energy-box small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #7c8998;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   ENERGY EXPLANATION
+   ========================================================= */
+
+.energy-explanation {
+    margin: 17px 0 0;
+
+    padding: 14px;
+
+    border-radius: 11px;
+
+    background: #f7fafb;
+
+    color: #687789;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+.energy-explanation strong {
+    color: #344256;
+}
+
+
+/* =========================================================
+   MACRO CALORIES
+   ========================================================= */
+
+.macro-calories {
+    padding: 17px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e7f7f3,
+            #f5fbfa
+        );
+
+    text-align: center;
+}
+
+.macro-calories span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #47766e;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+}
+
+.macro-calories strong {
+    display: block;
+
+    color: #172033;
+
+    font-size: 34px;
+    line-height: 1.1;
+
+    font-weight: 800;
+}
+
+.macro-calories small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #70837f;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   MACRO GRID
+   ========================================================= */
+
+.macro-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+
+/* =========================================================
+   MACRO BOX
+   ========================================================= */
+
+.macro-box {
+    padding: 14px 10px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    background: #f7fafb;
+}
+
+.macro-box span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #647487;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.macro-box strong {
+    display: block;
+
+    color: #263449;
+
+    font-size: 18px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+}
+
+.macro-box small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #8995a3;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   MACRO INDICATORS
+   ========================================================= */
+
+.macro-box.protein {
+    border: 1px solid #dcefeb;
+
+    background: #f2faf8;
+}
+
+.macro-box.protein strong {
+    color: #0b8978;
+}
+
+
+.macro-box.carbs {
+    border: 1px solid #e2eaf5;
+
+    background: #f5f8fc;
+}
+
+.macro-box.carbs strong {
+    color: #4b6f9f;
+}
+
+
+.macro-box.fat {
+    border: 1px solid #f0e6cf;
+
+    background: #fffbf2;
+}
+
+.macro-box.fat strong {
+    color: #a77718;
+}
+
+
+/* =========================================================
+   MACRO RESULT DETAILS
+   ========================================================= */
+
+.macro-result .result-details {
+    margin-top: 13px;
+}
+
+
+/* =========================================================
+   MOBILE RESULT
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+    .kal-result.result {
+        padding: 15px;
+    }
+
+
+    .bmi-number {
+        font-size: 36px;
+    }
+
+
+    .result-details {
+        grid-template-columns: 1fr;
+    }
+
+
+    .energy-box {
+        gap: 8px;
+    }
+
+
+    .energy-box > div {
+        padding: 13px 8px;
+    }
+
+
+    .energy-box strong {
+        font-size: 23px;
+    }
+
+
+    .macro-grid {
+        gap: 7px;
+    }
+
+
+    .macro-box {
+        padding: 12px 6px;
+    }
+
+
+    .macro-box strong {
+        font-size: 15px;
+    }
+
+
+    .macro-box span {
+        font-size: 9px;
+    }
+
+
+    .macro-box small {
+        font-size: 8px;
+    }
+
+
+    .macro-calories strong {
+        font-size: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .macro-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .macro-box {
+        display: grid;
+
+        grid-template-columns: 1fr auto auto;
+
+        align-items: center;
+
+        gap: 8px;
+
+        text-align: left;
+    }
+
+
+    .macro-box span {
+        margin: 0;
+    }
+
+
+    .macro-box strong {
+        font-size: 14px;
+    }
+
+
+    .macro-box small {
+        margin: 0;
+    }
+
+}
