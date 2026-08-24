@@ -1,0 +1,1008 @@
+/* =========================================================
+   KLINIK PUTRA MEDIKA
+   GIZI ANAK
+   ========================================================= */
+
+.anak-main *,
+.anak-main *::before,
+.anak-main *::after {
+    box-sizing: border-box;
+}
+
+
+.anak-main {
+    width: 100%;
+    background: #f6f9fc;
+    color: #172033;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.anak-hero {
+    padding: 65px 20px 40px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f3fbf9 100%
+        );
+}
+
+
+.anak-hero-inner {
+    width: min(760px, 100%);
+    margin: auto;
+    text-align: center;
+}
+
+
+.anak-hero-icon {
+    width: 64px;
+    height: 64px;
+
+    margin: 0 auto 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #e7f7f3;
+
+    font-size: 31px;
+
+    box-shadow:
+        0 8px 24px rgba(15, 157, 138, 0.12);
+}
+
+
+.anak-hero-badge {
+    display: inline-flex;
+
+    padding: 7px 13px;
+
+    margin-bottom: 14px;
+
+    border-radius: 999px;
+
+    background: #e7f7f3;
+
+    color: #0c8b79;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.anak-hero h1 {
+    margin: 0;
+
+    color: #142033;
+
+    font-size: clamp(32px, 5vw, 48px);
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+.anak-hero p {
+    max-width: 660px;
+
+    margin: 16px auto 0;
+
+    color: #66758a;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   BACK
+   ========================================================= */
+
+.anak-back {
+    width: min(1120px, calc(100% - 40px));
+
+    margin: 20px auto;
+}
+
+
+.anak-back a {
+    display: inline-flex;
+
+    align-items: center;
+
+    color: #0c8b79;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: color 0.2s ease;
+}
+
+
+.anak-back a:hover {
+    color: #076d60;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.anak-section {
+    width: min(1120px, calc(100% - 40px));
+
+    margin: 0 auto 35px;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.anak-card {
+    display: grid;
+
+    grid-template-columns:
+        minmax(280px, 0.85fr)
+        minmax(0, 1.15fr);
+
+    gap: 45px;
+
+    padding: 38px;
+
+    border: 1px solid #e2ebef;
+
+    border-radius: 24px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 10px 35px rgba(30, 60, 90, 0.07);
+}
+
+
+/* =========================================================
+   INFO
+   ========================================================= */
+
+.anak-info {
+    min-width: 0;
+}
+
+
+.anak-number {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #e7f7f3;
+
+    color: #0b8978;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.anak-label {
+    margin-bottom: 9px;
+
+    color: #0c8b79;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.anak-info h2 {
+    margin: 0 0 13px;
+
+    color: #172033;
+
+    font-size: 28px;
+
+    line-height: 1.25;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+.anak-info > p {
+    margin: 0;
+
+    color: #66758a;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.anak-feature-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+
+    margin-top: 25px;
+}
+
+
+.anak-feature {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 11px;
+}
+
+
+.anak-feature > span {
+    width: 25px;
+    height: 25px;
+
+    flex: 0 0 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #e7f7f3;
+
+    color: #0c8b79;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.anak-feature strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #344256;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.anak-feature small {
+    display: block;
+
+    color: #84909e;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   INFO NOTE
+   ========================================================= */
+
+.anak-info-note {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding: 14px;
+
+    border: 1px solid #dcefeb;
+
+    border-radius: 13px;
+
+    background: #f2faf8;
+}
+
+
+.anak-info-note span {
+    font-size: 17px;
+}
+
+
+.anak-info-note p {
+    margin: 0;
+
+    color: #607a74;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.anak-form {
+    min-width: 0;
+
+    padding: 26px;
+
+    border: 1px solid #e8eef2;
+
+    border-radius: 19px;
+
+    background: #fbfcfd;
+}
+
+
+.anak-form-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #e7edf1;
+}
+
+
+.anak-form-icon {
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #e7f7f3;
+
+    font-size: 23px;
+}
+
+
+.anak-form-header h3 {
+    margin: 0;
+
+    color: #263449;
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+.anak-form-header p {
+    margin: 3px 0 0;
+
+    color: #8290a0;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.anak-form-group {
+    margin-bottom: 17px;
+}
+
+
+.anak-form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #344256;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   INPUT / SELECT
+   ========================================================= */
+
+.anak-form input,
+.anak-form select {
+    width: 100%;
+
+    min-height: 48px;
+
+    border: 1px solid #dce4e9;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #263449;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.anak-form input {
+    padding: 12px 13px;
+}
+
+
+.anak-form select {
+    padding: 10px 38px 10px 13px;
+
+    cursor: pointer;
+}
+
+
+.anak-form input::placeholder {
+    color: #a0acb8;
+}
+
+
+.anak-form input:focus,
+.anak-form select:focus {
+    border-color: #0f9d8a;
+
+    box-shadow:
+        0 0 0 3px rgba(15, 157, 138, 0.10);
+}
+
+
+/* =========================================================
+   INPUT UNIT
+   ========================================================= */
+
+.anak-input-unit {
+    position: relative;
+}
+
+
+.anak-input-unit input {
+    padding-right: 70px;
+}
+
+
+.anak-input-unit span {
+    position: absolute;
+
+    top: 50%;
+    right: 13px;
+
+    transform: translateY(-50%);
+
+    color: #7c8998;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.anak-button {
+    width: 100%;
+
+    min-height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 8px;
+
+    padding: 12px 18px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    background: #0f9d8a;
+
+    color: #ffffff;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px rgba(15, 157, 138, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.anak-button:hover {
+    background: #0b8978;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 24px rgba(15, 157, 138, 0.25);
+}
+
+
+.anak-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESULT
+   ========================================================= */
+
+.anak-result {
+    min-height: 105px;
+
+    margin-top: 18px;
+
+    padding: 18px;
+
+    border: 1px dashed #d5e0e5;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+}
+
+
+.anak-result-placeholder {
+    min-height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.anak-result-icon {
+    width: 44px;
+    height: 44px;
+
+    flex: 0 0 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f0f6f5;
+
+    font-size: 21px;
+}
+
+
+.anak-result-placeholder strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #364356;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.anak-result-placeholder small {
+    color: #8995a3;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   INFORMATION
+   ========================================================= */
+
+.anak-information {
+    width: min(1120px, calc(100% - 40px));
+
+    margin: 0 auto 35px;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background: #eef7f5;
+}
+
+
+.anak-information-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 23px;
+}
+
+
+.anak-information-header > span {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #dff4ef;
+
+    font-size: 21px;
+}
+
+
+.anak-information-header h2 {
+    margin: 0 0 3px;
+
+    color: #263f3b;
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+
+.anak-information-header p {
+    margin: 0;
+
+    color: #66817b;
+
+    font-size: 11px;
+}
+
+
+.anak-info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 15px;
+}
+
+
+.anak-info-box {
+    padding: 20px;
+
+    border: 1px solid #d8eae6;
+
+    border-radius: 15px;
+
+    background: #ffffff;
+}
+
+
+.anak-info-box > span {
+    font-size: 22px;
+}
+
+
+.anak-info-box h3 {
+    margin: 10px 0 5px;
+
+    color: #344256;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.anak-info-box p {
+    margin: 0;
+
+    color: #74838f;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   DISCLAIMER
+   ========================================================= */
+
+.anak-disclaimer {
+    width: min(1120px, calc(100% - 40px));
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin: 35px auto 70px;
+
+    padding: 22px 24px;
+
+    border: 1px solid #f0dfb5;
+
+    border-radius: 17px;
+
+    background: #fffaf0;
+}
+
+
+.anak-disclaimer-icon {
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #fff0c7;
+
+    font-size: 20px;
+}
+
+
+.anak-disclaimer h3 {
+    margin: 0 0 4px;
+
+    color: #5e4a24;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+.anak-disclaimer p {
+    margin: 0;
+
+    color: #796a48;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .anak-section,
+    .anak-information,
+    .anak-disclaimer,
+    .anak-back {
+        width: min(100% - 30px, 720px);
+    }
+
+
+    .anak-card {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        padding: 28px;
+    }
+
+
+    .anak-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+    .anak-hero {
+        padding: 45px 12px 30px;
+    }
+
+
+    .anak-hero-icon {
+        width: 56px;
+        height: 56px;
+
+        border-radius: 15px;
+
+        font-size: 27px;
+    }
+
+
+    .anak-hero h1 {
+        font-size: 31px;
+    }
+
+
+    .anak-hero p {
+        font-size: 13px;
+    }
+
+
+    .anak-section,
+    .anak-information,
+    .anak-disclaimer,
+    .anak-back {
+        width: calc(100% - 24px);
+    }
+
+
+    .anak-card {
+        padding: 20px;
+
+        gap: 22px;
+
+        border-radius: 18px;
+    }
+
+
+    .anak-info h2 {
+        font-size: 22px;
+    }
+
+
+    .anak-info > p {
+        font-size: 13px;
+    }
+
+
+    .anak-form {
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+
+    .anak-form-header {
+        margin-bottom: 20px;
+
+        padding-bottom: 17px;
+    }
+
+
+    .anak-form-icon {
+        width: 43px;
+        height: 43px;
+
+        flex-basis: 43px;
+
+        border-radius: 11px;
+
+        font-size: 20px;
+    }
+
+
+    .anak-form input,
+    .anak-form select {
+        min-height: 45px;
+
+        font-size: 12px;
+    }
+
+
+    .anak-button {
+        min-height: 47px;
+
+        font-size: 12px;
+    }
+
+
+    .anak-result {
+        padding: 14px;
+    }
+
+
+    .anak-information {
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+
+    .anak-information-header h2 {
+        font-size: 15px;
+    }
+
+
+    .anak-disclaimer {
+        padding: 16px;
+
+        border-radius: 14px;
+    }
+
+
+    .anak-disclaimer p {
+        font-size: 10.5px;
+    }
+
+}
