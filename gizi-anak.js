@@ -1,490 +1,789 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================================
+   KLINIK PUTRA MEDIKA
+   KALKULATOR GIZI ANAK
+   gizi-anak.js
+   ========================================================= */
 
-    console.log("GIZI-ANAK.JS BERHASIL DIMUAT");
-
-
-    /* =========================================
-       CARI SEMUA ELEMEN
-    ========================================= */
-
-    const semuaInput =
-        document.querySelectorAll("input");
-
-    const semuaSelect =
-        document.querySelectorAll("select");
-
-    const semuaButton =
-        document.querySelectorAll("button");
+console.log("GIZI-ANAK.JS BERHASIL DIMUAT");
 
 
-    console.log("Jumlah input:", semuaInput.length);
-    console.log("Jumlah select:", semuaSelect.length);
-    console.log("Jumlah button:", semuaButton.length);
+/* =========================================================
+   HELPER
+========================================================= */
+
+function getElement(...ids) {
+    for (const id of ids) {
+        const el = document.getElementById(id);
+
+        if (el) {
+            return el;
+        }
+    }
+
+    return null;
+}
 
 
-    /* =========================================
-       CARI INPUT TANGGAL
-    ========================================= */
+function showError(message) {
 
-    let tanggalLahir = null;
-    let tanggalPeriksa = null;
+    const result = getElement(
+        "anakResult",
+        "anakNutritionResult",
+        "giziAnakResult",
+        "childResult",
+        "resultAnak"
+    );
+
+    if (!result) {
+        console.error("AREA HASIL TIDAK DITEMUKAN");
+        return;
+    }
+
+    result.className = "anak-result anak-result-error";
+
+    result.innerHTML = `
+        <div class="anak-result-header">
+            <span class="anak-result-icon">⚠️</span>
+
+            <div>
+                <strong>Data belum lengkap</strong>
+                <small>Periksa kembali data yang dimasukkan.</small>
+            </div>
+        </div>
+
+        <p class="anak-error-text">
+            ${message}
+        </p>
+    `;
+
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+}
 
 
-    semuaInput.forEach(function (input) {
+/* =========================================================
+   HITUNG UMUR
+========================================================= */
 
-        if (input.type === "date") {
+function calculateChildAge() {
 
-            if (!tanggalLahir) {
+    const birthDateInput = getElement(
+        "anakBirthDate"
+    );
 
-                tanggalLahir = input;
+    const checkDateInput = getElement(
+        "anakCheckDate"
+    );
 
-            } else if (!tanggalPeriksa) {
+    const ageText = getElement(
+        "anakAgeText"
+    );
 
-                tanggalPeriksa = input;
+    if (!birthDateInput || !checkDateInput) {
+        console.error("Input tanggal tidak ditemukan.");
+        return null;
+    }
 
-            }
+    if (!birthDateInput.value || !checkDateInput.value) {
 
+        if (ageText) {
+            ageText.textContent = "—";
         }
 
+        return null;
+    }
+
+    const birthDate = new Date(
+        birthDateInput.value + "T00:00:00"
+    );
+
+    const checkDate = new Date(
+        checkDateInput.value + "T00:00:00"
+    );
+
+    if (
+        isNaN(birthDate.getTime()) ||
+        isNaN(checkDate.getTime())
+    ) {
+        return null;
+    }
+
+    if (checkDate < birthDate) {
+
+        if (ageText) {
+            ageText.textContent = "Tanggal tidak valid";
+        }
+
+        return null;
+    }
+
+
+    let years =
+        checkDate.getFullYear() -
+        birthDate.getFullYear();
+
+    let months =
+        checkDate.getMonth() -
+        birthDate.getMonth();
+
+    let days =
+        checkDate.getDate() -
+        birthDate.getDate();
+
+
+    if (days < 0) {
+
+        months--;
+
+        const previousMonth =
+            new Date(
+                checkDate.getFullYear(),
+                checkDate.getMonth(),
+                0
+            );
+
+        days += previousMonth.getDate();
+    }
+
+
+    if (months < 0) {
+
+        years--;
+
+        months += 12;
+    }
+
+
+    const totalMonths =
+        years * 12 + months;
+
+
+    const result = {
+        years: years,
+        months: months,
+        days: days,
+        totalMonths: totalMonths
+    };
+
+
+    if (ageText) {
+
+        ageText.textContent =
+            `${years} tahun ${months} bulan ${days} hari`;
+    }
+
+
+    console.log(
+        "USIA:",
+        `${years} tahun ${months} bulan ${days} hari`
+    );
+
+
+    return result;
+}
+
+
+/* =========================================================
+   UPDATE UMUR OTOMATIS
+========================================================= */
+
+function updateChildAge() {
+    calculateChildAge();
+}
+
+
+/* =========================================================
+   KLASIFIKASI IMT ANAK
+=========================================================
+
+   CATATAN:
+
+   Perhitungan z-score WHO membutuhkan tabel WHO
+   berdasarkan usia dan jenis kelamin.
+
+   Untuk tahap awal kalkulator:
+   - IMT dihitung secara matematis.
+   - Status pertumbuhan tidak disamakan dengan BMI dewasa.
+   - Untuk penilaian klinis diperlukan kurva WHO/z-score.
+========================================================= */
+
+
+/* =========================================================
+   HITUNG IMT
+========================================================= */
+
+function calculateBMIChild(weight, heightCm) {
+
+    if (
+        !weight ||
+        !heightCm ||
+        weight <= 0 ||
+        heightCm <= 0
+    ) {
+        return null;
+    }
+
+    const heightM = heightCm / 100;
+
+    const bmi =
+        weight / (heightM * heightM);
+
+    return bmi;
+}
+
+
+/* =========================================================
+   STATUS BERDASARKAN IMT
+=========================================================
+
+   INI BUKAN KLASIFIKASI WHO UNTUK ANAK.
+
+   Digunakan hanya sebagai informasi angka IMT.
+
+   Status akhir harus menggunakan IMT/U WHO.
+========================================================= */
+
+function getBMIDescription(age, bmi) {
+
+    if (age.totalMonths < 60) {
+
+        return {
+            title: "IMT perlu dinilai berdasarkan IMT menurut umur",
+            description:
+                "Pada anak usia di bawah 5 tahun, IMT tidak dinilai menggunakan batas BMI dewasa. Interpretasi harus menggunakan kurva pertumbuhan WHO berdasarkan umur dan jenis kelamin."
+        };
+    }
+
+
+    if (age.years >= 5) {
+
+        return {
+            title: "IMT menurut umur",
+            description:
+                "Untuk anak usia 5–19 tahun, status gizi berdasarkan IMT harus ditentukan menggunakan IMT menurut umur (IMT/U) dan nilai Z-score WHO sesuai jenis kelamin."
+        };
+    }
+
+
+    return {
+        title: "IMT anak",
+        description:
+            "Interpretasi IMT anak membutuhkan pembandingan dengan standar pertumbuhan berdasarkan umur dan jenis kelamin."
+    };
+}
+
+
+/* =========================================================
+   RENDER HASIL
+========================================================= */
+
+function renderChildResult(
+    age,
+    gender,
+    weight,
+    height,
+    bmi
+) {
+
+    const result = getElement(
+        "anakResult",
+        "anakNutritionResult",
+        "giziAnakResult",
+        "childResult",
+        "resultAnak"
+    );
+
+
+    if (!result) {
+
+        console.error(
+            "Area hasil tidak ditemukan."
+        );
+
+        return;
+    }
+
+
+    const genderText =
+        gender === "male"
+            ? "Laki-laki"
+            : "Perempuan";
+
+
+    const bmiInfo =
+        getBMIDescription(age, bmi);
+
+
+    let ageGroup = "";
+
+
+    if (age.totalMonths < 60) {
+
+        ageGroup =
+            "0–<5 tahun — WHO Child Growth Standards";
+
+    } else {
+
+        ageGroup =
+            "5–19 tahun — WHO Growth Reference 2007";
+    }
+
+
+    result.className =
+        "anak-result anak-result-success";
+
+
+    result.innerHTML = `
+
+        <div class="anak-result-header">
+
+            <span class="anak-result-icon">
+                📊
+            </span>
+
+            <div>
+
+                <strong>
+                    HASIL PENILAIAN ANTROPOMETRI
+                </strong>
+
+                <small>
+                    Berdasarkan data pemeriksaan
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="anak-result-summary">
+
+            <div class="anak-result-main">
+
+                <span class="anak-result-label">
+                    IMT
+                </span>
+
+                <strong class="anak-bmi-number">
+                    ${bmi.toFixed(1)}
+                </strong>
+
+                <small>
+                    kg/m²
+                </small>
+
+            </div>
+
+
+            <div class="anak-result-age">
+
+                <span>
+                    Usia saat pemeriksaan
+                </span>
+
+                <strong>
+                    ${age.years} tahun
+                    ${age.months} bulan
+                    ${age.days} hari
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="anak-data-grid">
+
+            <div class="anak-data-box">
+
+                <span>
+                    Jenis kelamin
+                </span>
+
+                <strong>
+                    ${genderText}
+                </strong>
+
+            </div>
+
+
+            <div class="anak-data-box">
+
+                <span>
+                    Berat badan
+                </span>
+
+                <strong>
+                    ${weight.toFixed(1)} kg
+                </strong>
+
+            </div>
+
+
+            <div class="anak-data-box">
+
+                <span>
+                    Tinggi badan
+                </span>
+
+                <strong>
+                    ${height.toFixed(1)} cm
+                </strong>
+
+            </div>
+
+
+            <div class="anak-data-box">
+
+                <span>
+                    Kelompok usia
+                </span>
+
+                <strong>
+                    ${ageGroup}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="anak-status-box">
+
+            <div class="anak-status-title">
+                STATUS IMT
+            </div>
+
+            <strong>
+                ${bmiInfo.title}
+            </strong>
+
+            <p>
+                ${bmiInfo.description}
+            </p>
+
+        </div>
+
+
+        <div class="anak-result-note">
+
+            <span>ℹ️</span>
+
+            <p>
+                Nilai IMT anak tidak boleh langsung
+                dibandingkan dengan batas BMI dewasa.
+                Status gizi anak harus ditentukan
+                berdasarkan indikator antropometri
+                menurut umur dan jenis kelamin.
+            </p>
+
+        </div>
+
+    `;
+
+
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
     });
+}
+
+
+/* =========================================================
+   FUNGSI UTAMA KALKULATOR
+========================================================= */
+
+function calculateChildNutrition() {
+
+    console.log(
+        "TOMBOL STATUS GIZI DIKLIK"
+    );
+
+
+    /* -----------------------------------------
+       UMUR
+    ----------------------------------------- */
+
+    const age = calculateChildAge();
+
+
+    if (!age) {
+
+        showError(
+            "Silakan masukkan tanggal lahir dan tanggal pemeriksaan."
+        );
+
+        return;
+    }
+
+
+    /* -----------------------------------------
+       JENIS KELAMIN
+    ----------------------------------------- */
+
+    const genderInput = getElement(
+        "anakGender",
+        "genderAnak",
+        "childGender"
+    );
+
+
+    if (!genderInput) {
+
+        showError(
+            "Input jenis kelamin tidak ditemukan."
+        );
+
+        return;
+    }
+
+
+    const gender =
+        genderInput.value;
+
+
+    /* -----------------------------------------
+       BERAT
+    ----------------------------------------- */
+
+    const weightInput = getElement(
+        "anakWeight",
+        "anakBerat",
+        "childWeight",
+        "weightAnak"
+    );
+
+
+    /* -----------------------------------------
+       TINGGI
+    ----------------------------------------- */
+
+    const heightInput = getElement(
+        "anakHeight",
+        "anakTinggi",
+        "childHeight",
+        "heightAnak"
+    );
+
+
+    if (!weightInput || !heightInput) {
+
+        showError(
+            "Input berat badan atau tinggi badan tidak ditemukan."
+        );
+
+        return;
+    }
+
+
+    const weight =
+        parseFloat(weightInput.value);
+
+
+    const height =
+        parseFloat(heightInput.value);
 
 
     console.log(
-        "Tanggal lahir:",
-        tanggalLahir
+        "Berat:",
+        weight
     );
+
 
     console.log(
-        "Tanggal pemeriksaan:",
-        tanggalPeriksa
+        "Tinggi:",
+        height
     );
 
 
-    /* =========================================
-       CARI BAGIAN USIA
-    ========================================= */
+    if (
+        isNaN(weight) ||
+        weight <= 0
+    ) {
 
-    const semuaText =
-        document.querySelectorAll(
-            "div, span, p, strong"
+        showError(
+            "Masukkan berat badan yang valid."
+        );
+
+        return;
+    }
+
+
+    if (
+        isNaN(height) ||
+        height <= 0
+    ) {
+
+        showError(
+            "Masukkan tinggi badan yang valid."
+        );
+
+        return;
+    }
+
+
+    /* -----------------------------------------
+       IMT
+    ----------------------------------------- */
+
+    const bmi =
+        calculateBMIChild(
+            weight,
+            height
         );
 
 
-    let usiaElement = null;
+    if (!bmi) {
 
+        showError(
+            "IMT tidak dapat dihitung. Periksa kembali berat dan tinggi badan."
+        );
 
-    semuaText.forEach(function (element) {
-
-        const text =
-            element.textContent.trim();
-
-
-        if (
-            text === "Belum dihitung" &&
-            !usiaElement
-        ) {
-
-            usiaElement = element;
-
-        }
-
-    });
+        return;
+    }
 
 
     console.log(
-        "Elemen usia:",
-        usiaElement
+        "IMT:",
+        bmi.toFixed(2)
     );
 
 
-    /* =========================================
-       HITUNG USIA
-    ========================================= */
+    /* -----------------------------------------
+       RENDER
+    ----------------------------------------- */
 
-    function hitungUsia() {
+    renderChildResult(
+        age,
+        gender,
+        weight,
+        height,
+        bmi
+    );
+}
 
-        if (
-            !tanggalLahir ||
-            !tanggalPeriksa ||
-            !usiaElement
-        ) {
 
-            console.error(
-                "Elemen tanggal atau usia tidak ditemukan."
+/* =========================================================
+   EVENT LISTENER
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        console.log(
+            "DOM GIZI ANAK SIAP"
+        );
+
+
+        const birthDate =
+            getElement("anakBirthDate");
+
+
+        const checkDate =
+            getElement("anakCheckDate");
+
+
+        const calculateButton =
+            getElement(
+                "anakCalculateButton",
+                "calculateChildButton",
+                "btnCalculateChild"
             );
-
-            return;
-
-        }
-
-
-        if (
-            !tanggalLahir.value ||
-            !tanggalPeriksa.value
-        ) {
-
-            usiaElement.textContent =
-                "Belum dihitung";
-
-            return;
-
-        }
-
-
-        const lahir =
-            new Date(
-                tanggalLahir.value + "T00:00:00"
-            );
-
-
-        const periksa =
-            new Date(
-                tanggalPeriksa.value + "T00:00:00"
-            );
-
-
-        if (periksa < lahir) {
-
-            usiaElement.textContent =
-                "Tanggal tidak valid";
-
-            return;
-
-        }
-
-
-        let tahun =
-            periksa.getFullYear() -
-            lahir.getFullYear();
-
-
-        let bulan =
-            periksa.getMonth() -
-            lahir.getMonth();
-
-
-        let hari =
-            periksa.getDate() -
-            lahir.getDate();
-
-
-        if (hari < 0) {
-
-            bulan--;
-
-            const hariBulanSebelumnya =
-                new Date(
-                    periksa.getFullYear(),
-                    periksa.getMonth(),
-                    0
-                ).getDate();
-
-            hari +=
-                hariBulanSebelumnya;
-
-        }
-
-
-        if (bulan < 0) {
-
-            tahun--;
-
-            bulan += 12;
-
-        }
-
-
-        const totalBulan =
-            tahun * 12 + bulan;
-
-
-        usiaElement.innerHTML =
-            `${tahun} tahun ${bulan} bulan ${hari} hari
-             <small>(${totalBulan} bulan)</small>`;
 
 
         console.log(
-            "USIA:",
-            tahun,
-            "tahun",
-            bulan,
-            "bulan",
-            hari,
-            "hari"
+            "Tanggal lahir:",
+            birthDate
         );
 
-    }
 
-
-    /* =========================================
-       EVENT TANGGAL
-    ========================================= */
-
-    if (tanggalLahir) {
-
-        tanggalLahir.addEventListener(
-            "change",
-            hitungUsia
+        console.log(
+            "Tanggal pemeriksaan:",
+            checkDate
         );
 
-    }
 
-
-    if (tanggalPeriksa) {
-
-        tanggalPeriksa.addEventListener(
-            "change",
-            hitungUsia
+        console.log(
+            "Elemen usia:",
+            getElement("anakAgeText")
         );
 
-    }
+
+        console.log(
+            "Tombol hitung:",
+            calculateButton
+        );
 
 
-    /* =========================================
-       CARI TOMBOL NILAI STATUS GIZI
-    ========================================= */
+        if (birthDate) {
 
-    let tombolHitung = null;
-
-
-    semuaButton.forEach(function (button) {
-
-        const text =
-            button.textContent
-                .trim()
-                .toLowerCase();
-
-
-        if (
-            text.includes("nilai status gizi")
-        ) {
-
-            tombolHitung = button;
-
+            birthDate.addEventListener(
+                "change",
+                updateChildAge
+            );
         }
 
-    });
 
+        if (checkDate) {
 
-    console.log(
-        "Tombol hitung:",
-        tombolHitung
-    );
-
-
-    /* =========================================
-       CARI AREA HASIL
-    ========================================= */
-
-    let hasil = null;
-
-
-    semuaText.forEach(function (element) {
-
-        const text =
-            element.textContent.trim();
-
-
-        if (
-            text ===
-            "Hasil status gizi akan muncul setelah data dihitung."
-        ) {
-
-            hasil = element.parentElement;
-
+            checkDate.addEventListener(
+                "change",
+                updateChildAge
+            );
         }
 
-    });
 
+        /*
+         * JIKA TOMBOL DITEMUKAN,
+         * KITA PASANG EVENT LISTENER.
+         */
 
-    console.log(
-        "Area hasil:",
-        hasil
-    );
+        if (calculateButton) {
 
+            calculateButton.addEventListener(
+                "click",
+                calculateChildNutrition
+            );
+        }
 
-    /* =========================================
-       TOMBOL HITUNG
-    ========================================= */
 
-    if (tombolHitung) {
+        /*
+         * Hitung umur saat halaman dibuka
+         */
 
-        tombolHitung.addEventListener(
-            "click",
-            function () {
-
-                console.log(
-                    "TOMBOL STATUS GIZI DIKLIK"
-                );
-
-
-                /* Update usia */
-
-                hitungUsia();
-
-
-                /* =================================
-                   CARI ANGKA BERAT & TINGGI
-                ================================= */
-
-                const angka =
-                    document.querySelectorAll(
-                        'input[type="number"]'
-                    );
-
-
-                let berat = null;
-                let tinggi = null;
-
-
-                if (angka.length >= 1) {
-
-                    berat =
-                        parseFloat(
-                            angka[0].value
-                        );
-
-                }
-
-
-                if (angka.length >= 2) {
-
-                    tinggi =
-                        parseFloat(
-                            angka[1].value
-                        );
-
-                }
-
-
-                console.log(
-                    "Berat:",
-                    berat
-                );
-
-                console.log(
-                    "Tinggi:",
-                    tinggi
-                );
-
-
-                if (
-                    !berat ||
-                    !tinggi
-                ) {
-
-                    if (hasil) {
-
-                        hasil.innerHTML = `
-
-                            <div class="gizi-error">
-
-                                ⚠️
-
-                                <strong>
-                                    Data belum lengkap
-                                </strong>
-
-                                <p>
-                                    Silakan masukkan
-                                    berat badan dan
-                                    tinggi/panjang badan.
-                                </p>
-
-                            </div>
-
-                        `;
-
-                    }
-
-                    return;
-
-                }
-
-
-                /* =================================
-                   HITUNG IMT
-                ================================= */
-
-                const tinggiMeter =
-                    tinggi / 100;
-
-
-                const imt =
-                    berat /
-                    (
-                        tinggiMeter *
-                        tinggiMeter
-                    );
-
-
-                /* =================================
-                   TAMPILKAN HASIL
-                ================================= */
-
-                if (hasil) {
-
-                    hasil.innerHTML = `
-
-                        <div class="gizi-result-header">
-
-                            <div>
-
-                                <span>
-                                    HASIL PENILAIAN
-                                </span>
-
-                                <h3>
-                                    Status Gizi Anak
-                                </h3>
-
-                            </div>
-
-                            <div>
-                                📊
-                            </div>
-
-                        </div>
-
-
-                        <div class="gizi-status">
-
-                            <span>
-                                IMT
-                            </span>
-
-                            <strong>
-                                ${imt.toFixed(1)}
-                                kg/m²
-                            </strong>
-
-                            <small>
-                                Hasil perhitungan awal
-                            </small>
-
-                        </div>
-
-
-                        <div class="gizi-result-description">
-
-                            <p>
-
-                                Kalkulator berhasil
-                                membaca data anak.
-
-                            </p>
-
-                        </div>
-
-
-                    `;
-
-                }
-
-            }
-        );
+        calculateChildAge();
 
     }
+);
 
 
-});
+/* =========================================================
+   BUAT FUNGSI TERSEDIA SECARA GLOBAL
+=========================================================
+
+   Ini penting karena HTML kita mungkin masih
+   memiliki:
+
+   onclick="calculateChildNutrition()"
+
+   sehingga fungsi harus tersedia pada window.
+========================================================= */
+
+window.calculateChildNutrition =
+    calculateChildNutrition;
+
+
+window.calculateChildAge =
+    calculateChildAge;
+
+
+window.updateChildAge =
+    updateChildAge;
+
+
+console.log(
+    "FUNGSI calculateChildNutrition SIAP"
+);
