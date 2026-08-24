@@ -1,24 +1,11 @@
 /* =========================================================
-   WHO ANTHRO DATA ENGINE
-   Klinik Putra Medika
+   WHO-ANTHRO-DATA.JS
+   KLINIK PUTRA MEDIKA
 
-   WHO CHILD GROWTH STANDARDS
-   0–60 bulan
+   WHO Child Growth Standards 2006
+   WHO Reference 2007
 
-   WHO REFERENCE 2007
-   5–19 tahun
-
-   INDIKATOR:
-   - Weight-for-age
-   - Length/height-for-age
-   - Weight-for-length/height
-   - BMI-for-age
-
-   CATATAN:
-   File ini merupakan ENGINE / DATABASE INTERFACE.
-
-   DATA LMS WHO HARUS BERASAL DARI TABEL WHO RESMI.
-   Jangan mengisi angka LMS dengan perkiraan.
+   ENGINE DATABASE ANTROPOMETRI ANAK
 ========================================================= */
 
 (function () {
@@ -26,7 +13,8 @@
     "use strict";
 
     console.log("======================================");
-    console.log("WHO-ANTHRO-DATA.JS BERHASIL DIMUAT");
+    console.log("WHO ANTHRO DATA ENGINE");
+    console.log("Klinik Putra Medika");
     console.log("======================================");
 
 
@@ -35,13 +23,8 @@
     ===================================================== */
 
     const VERSION = {
-
-        under5:
-            "WHO Child Growth Standards 2006",
-
-        fiveTo19:
-            "WHO Reference 2007"
-
+        under5: "WHO Child Growth Standards 2006",
+        schoolAge: "WHO Reference 2007"
     };
 
 
@@ -51,157 +34,90 @@
 
     const LIMITS = {
 
-        UNDER_5: {
-
+        under5: {
             minDays: 0,
-
             maxDays: 1856,
-
-            minMonths: 0,
-
-            maxMonths: 60
-
+            maxCompletedMonths: 60
         },
 
-        AGE_5_19: {
+        schoolAge: {
+            minCompletedMonths: 61,
+            maxCompletedMonths: 228
+        },
 
-            minMonths: 61,
-
-            maxMonths: 228
-
+        weightForAgeSchool: {
+            minCompletedMonths: 61,
+            maxCompletedMonths: 120
         }
 
     };
 
 
     /* =====================================================
-       INDIKATOR
-    ===================================================== */
+       DATABASE
+       
+       Struktur ini akan menerima tabel WHO resmi.
 
-    const INDICATORS = {
-
-        WFA:
-            "weightForAge",
-
-        HFA:
-            "heightForAge",
-
-        WFHL:
-            "weightForLengthHeight",
-
-        BFA:
-            "bmiForAge"
-
-    };
-
-
-    /* =====================================================
-       DATABASE LMS
-
-       FORMAT:
-
-       {
-           age: {
-               L: value,
-               M: value,
-               S: value
-           }
+       Format:
+       
+       database[sex][indicator][age] = {
+           L: ...,
+           M: ...,
+           S: ...
        }
 
-       Untuk indikator berbasis umur:
+       Untuk:
+       WFA / HFA / BFA:
+           age = bulan/hari sesuai dataset
 
-       age = hari       → WHO 0–60 bulan
-
-       age = bulan      → WHO 5–19 tahun
-
-
-       Untuk weight-for-length/height:
-
-       age = panjang/tinggi dalam cm
+       Untuk WHZ:
+           age = panjang/tinggi badan
     ===================================================== */
 
-    const DATA = {
-
-
-        /* =================================================
-           LAKI-LAKI
-        ================================================= */
+    const DATABASE = {
 
         male: {
 
             weightForAge: {
-
                 under5: {},
-
-                fiveTo19: {}
-
+                schoolAge: {}
             },
-
 
             heightForAge: {
-
                 under5: {},
-
-                fiveTo19: {}
-
+                schoolAge: {}
             },
-
 
             weightForLengthHeight: {
-
                 under5: {}
-
             },
 
-
             bmiForAge: {
-
                 under5: {},
-
-                fiveTo19: {}
-
+                schoolAge: {}
             }
 
         },
 
-
-        /* =================================================
-           PEREMPUAN
-        ================================================= */
-
         female: {
 
             weightForAge: {
-
                 under5: {},
-
-                fiveTo19: {}
-
+                schoolAge: {}
             },
-
 
             heightForAge: {
-
                 under5: {},
-
-                fiveTo19: {}
-
+                schoolAge: {}
             },
-
 
             weightForLengthHeight: {
-
                 under5: {}
-
             },
 
-
             bmiForAge: {
-
                 under5: {},
-
-                fiveTo19: {}
-
+                schoolAge: {}
             }
 
         }
@@ -210,202 +126,194 @@
 
 
     /* =====================================================
-       SEX NORMALIZER
+       SEX
     ===================================================== */
 
     function normalizeSex(sex) {
 
-        if (!sex) {
+        if (sex === undefined || sex === null) {
             return null;
         }
 
-        const value =
-            String(sex)
-                .trim()
-                .toLowerCase();
-
+        const s = String(sex)
+            .trim()
+            .toLowerCase();
 
         if (
-
-            value === "male" ||
-
-            value === "m" ||
-
-            value === "laki" ||
-
-            value === "laki-laki" ||
-
-            value === "boy"
-
+            s === "male" ||
+            s === "m" ||
+            s === "boy" ||
+            s === "laki" ||
+            s === "laki-laki"
         ) {
-
             return "male";
-
         }
-
 
         if (
-
-            value === "female" ||
-
-            value === "f" ||
-
-            value === "perempuan" ||
-
-            value === "girl"
-
+            s === "female" ||
+            s === "f" ||
+            s === "girl" ||
+            s === "perempuan"
         ) {
-
             return "female";
-
         }
-
 
         return null;
-
     }
 
 
     /* =====================================================
-       NUMBER HELPER
+       ANGKA
     ===================================================== */
 
-    function isNumber(value) {
+    function number(value) {
 
-        return (
+        const n = Number(value);
 
-            typeof value === "number" &&
-
-            Number.isFinite(value)
-
-        );
-
+        return Number.isFinite(n)
+            ? n
+            : null;
     }
 
 
     /* =====================================================
-       AGE RANGE
+       PEMBULATAN
+    ===================================================== */
+
+    function round(value, digits = 2) {
+
+        if (!Number.isFinite(value)) {
+            return null;
+        }
+
+        const p = Math.pow(10, digits);
+
+        return Math.round(value * p) / p;
+    }
+
+
+    /* =====================================================
+       BMI
+    ===================================================== */
+
+    function calculateBMI(weightKg, heightCm) {
+
+        const weight = number(weightKg);
+        const height = number(heightCm);
+
+        if (
+            weight === null ||
+            height === null ||
+            weight <= 0 ||
+            height <= 0
+        ) {
+            return null;
+        }
+
+        const meter = height / 100;
+
+        return round(
+            weight / (meter * meter),
+            2
+        );
+    }
+
+
+    /* =====================================================
+       AGE GROUP
     ===================================================== */
 
     function getAgeGroup(ageDays, ageMonths) {
 
-        if (isNumber(ageDays)) {
+        const days = number(ageDays);
+        const months = number(ageMonths);
 
-            if (
-                ageDays >= LIMITS.UNDER_5.minDays &&
-                ageDays <= LIMITS.UNDER_5.maxDays
-            ) {
-
-                return "under5";
-
-            }
-
+        if (
+            days !== null &&
+            days >= 0 &&
+            days <= 1856
+        ) {
+            return "under5";
         }
 
-
-        if (isNumber(ageMonths)) {
-
-            if (
-                ageMonths >= LIMITS.AGE_5_19.minMonths &&
-                ageMonths <= LIMITS.AGE_5_19.maxMonths
-            ) {
-
-                return "fiveTo19";
-
-            }
-
+        if (
+            months !== null &&
+            months >= 61 &&
+            months <= 228
+        ) {
+            return "schoolAge";
         }
-
 
         return null;
-
     }
 
 
     /* =====================================================
-       GET DATABASE
+       DATABASE GETTER
     ===================================================== */
 
-    function getIndicatorDatabase(
+    function getDatabase(
         sex,
         indicator,
         ageGroup
     ) {
 
-        const gender =
-            normalizeSex(sex);
-
+        const gender = normalizeSex(sex);
 
         if (!gender) {
             return null;
         }
 
-
-        if (!DATA[gender]) {
+        if (!DATABASE[gender]) {
             return null;
         }
 
-
-        if (!DATA[gender][indicator]) {
+        if (!DATABASE[gender][indicator]) {
             return null;
         }
 
-
-        if (!DATA[gender][indicator][ageGroup]) {
+        if (!DATABASE[gender][indicator][ageGroup]) {
             return null;
         }
 
-
-        return DATA[gender][indicator][ageGroup];
-
+        return DATABASE[gender][indicator][ageGroup];
     }
 
 
     /* =====================================================
-       SORT NUMERIC KEYS
+       LMS VALIDATOR
     ===================================================== */
 
-    function getNumericKeys(database) {
+    function validLMS(lms) {
+
+        if (!lms) {
+            return false;
+        }
+
+        const L = number(lms.L);
+        const M = number(lms.M);
+        const S = number(lms.S);
+
+        return (
+            L !== null &&
+            M !== null &&
+            S !== null &&
+            M > 0 &&
+            S > 0
+        );
+    }
+
+
+    /* =====================================================
+       SORT DATABASE
+    ===================================================== */
+
+    function sortedKeys(database) {
 
         return Object.keys(database)
-
             .map(Number)
-
             .filter(Number.isFinite)
-
-            .sort(function (a, b) {
-
-                return a - b;
-
-            });
-
-    }
-
-
-    /* =====================================================
-       EXACT LMS
-    ===================================================== */
-
-    function getExactLMS(
-        database,
-        x
-    ) {
-
-        if (!database) {
-            return null;
-        }
-
-
-        const key = String(x);
-
-
-        if (!database[key]) {
-            return null;
-        }
-
-
-        return database[key];
-
+            .sort((a, b) => a - b);
     }
 
 
@@ -413,75 +321,56 @@
        INTERPOLASI LMS
     ===================================================== */
 
-    function interpolateLMS(
-        database,
-        x
-    ) {
+    function interpolateLMS(database, x) {
 
         if (!database) {
             return null;
         }
 
+        const value = number(x);
 
-        const keys =
-            getNumericKeys(database);
+        if (value === null) {
+            return null;
+        }
 
+        const keys = sortedKeys(database);
 
         if (!keys.length) {
             return null;
         }
 
 
-        /*
-         * Exact match
-         */
+        /* Exact */
 
-        const exact =
-            getExactLMS(
-                database,
-                x
-            );
+        const exactKey = String(value);
 
-
-        if (exact) {
+        if (
+            database[exactKey] &&
+            validLMS(database[exactKey])
+        ) {
 
             return {
-
-                L: Number(exact.L),
-
-                M: Number(exact.M),
-
-                S: Number(exact.S),
-
+                L: number(database[exactKey].L),
+                M: number(database[exactKey].M),
+                S: number(database[exactKey].S),
                 interpolated: false
-
             };
 
         }
 
 
-        /*
-         * Di luar range
-         */
+        /* Range */
 
         if (
-            x < keys[0] ||
-            x > keys[keys.length - 1]
+            value < keys[0] ||
+            value > keys[keys.length - 1]
         ) {
-
             return null;
-
         }
 
 
-        /*
-         * Cari dua titik
-         */
-
         let lower = null;
-
         let upper = null;
-
 
         for (
             let i = 0;
@@ -490,68 +379,54 @@
         ) {
 
             if (
-                x > keys[i] &&
-                x < keys[i + 1]
+                value >= keys[i] &&
+                value <= keys[i + 1]
             ) {
 
                 lower = keys[i];
-
                 upper = keys[i + 1];
 
                 break;
-
             }
-
         }
-
 
         if (
             lower === null ||
             upper === null
         ) {
-
             return null;
-
         }
 
 
-        const a =
-            database[String(lower)];
+        const a = database[String(lower)];
+        const b = database[String(upper)];
 
-        const b =
-            database[String(upper)];
+        if (
+            !validLMS(a) ||
+            !validLMS(b)
+        ) {
+            return null;
+        }
 
 
         const ratio =
-            (x - lower) /
+            (value - lower) /
             (upper - lower);
 
 
         return {
 
             L:
-                Number(a.L) +
-                (
-                    Number(b.L) -
-                    Number(a.L)
-                ) *
-                ratio,
+                a.L +
+                (b.L - a.L) * ratio,
 
             M:
-                Number(a.M) +
-                (
-                    Number(b.M) -
-                    Number(a.M)
-                ) *
-                ratio,
+                a.M +
+                (b.M - a.M) * ratio,
 
             S:
-                Number(a.S) +
-                (
-                    Number(b.S) -
-                    Number(a.S)
-                ) *
-                ratio,
+                a.S +
+                (b.S - a.S) * ratio,
 
             interpolated: true
 
@@ -564,231 +439,96 @@
        LMS → Z SCORE
     ===================================================== */
 
-    function lmsToZ(
+    function calculateZScore(
         measurement,
         L,
         M,
         S
     ) {
 
+        const X = number(measurement);
+        const l = number(L);
+        const m = number(M);
+        const s = number(S);
+
         if (
-            !isNumber(measurement) ||
-            !isNumber(L) ||
-            !isNumber(M) ||
-            !isNumber(S)
+            X === null ||
+            l === null ||
+            m === null ||
+            s === null
         ) {
-
             return null;
-
         }
 
-
         if (
+            X <= 0 ||
             M <= 0 ||
             S <= 0
         ) {
-
             return null;
-
         }
 
-
-        /*
-         * LMS formula
-
-         * z = ((X/M)^L - 1) / (L*S)
-
-         * Jika L = 0:
-
-         * z = ln(X/M) / S
-         */
 
         let z;
 
 
-        if (Math.abs(L) < 0.000001) {
+        if (
+            Math.abs(l) < 0.000001
+        ) {
 
             z =
-                Math.log(
-                    measurement / M
-                ) / S;
+                Math.log(X / m) / s;
 
-        }
-
-        else {
+        } else {
 
             z =
                 (
-                    Math.pow(
-                        measurement / M,
-                        L
-                    ) - 1
+                    Math.pow(X / m, l) - 1
                 ) /
-                (L * S);
+                (l * s);
 
         }
 
+
+        if (!Number.isFinite(z)) {
+            return null;
+        }
 
         return z;
-
     }
 
 
     /* =====================================================
-       Z SCORE → APPROX PERCENTILE
+       Z SCORE
     ===================================================== */
 
-    function normalCDF(z) {
+    function getZScore(options) {
 
-        if (!isNumber(z)) {
+        if (!options) {
             return null;
         }
 
+        const {
+            sex,
+            indicator,
+            ageGroup,
+            x,
+            measurement
+        } = options;
 
-        /*
-         * Approximation of standard normal CDF
-         */
-
-        const sign =
-            z < 0 ? -1 : 1;
-
-        const x =
-            Math.abs(z) /
-            Math.sqrt(2);
-
-
-        const t =
-            1 /
-            (
-                1 +
-                0.3275911 * x
-            );
-
-
-        const a1 = 0.254829592;
-
-        const a2 = -0.284496736;
-
-        const a3 = 1.421413741;
-
-        const a4 = -1.453152027;
-
-        const a5 = 1.061405429;
-
-
-        const erf =
-            1 -
-            (
-                (
-                    (
-                        (
-                            (
-                                a5 * t +
-                                a4
-                            ) * t +
-                            a3
-                        ) * t +
-                        a2
-                    ) * t +
-                    a1
-                ) *
-                t *
-                Math.exp(-x * x)
-            );
-
-
-        return (
-            0.5 *
-            (
-                1 +
-                sign * erf
-            )
-        );
-
-    }
-
-
-    function zToPercentile(z) {
-
-        const p =
-            normalCDF(z);
-
-
-        if (p === null) {
-            return null;
-        }
-
-
-        return p * 100;
-
-    }
-
-
-    /* =====================================================
-       ROUND
-    ===================================================== */
-
-    function round(
-        value,
-        decimals
-    ) {
-
-        if (!isNumber(value)) {
-            return null;
-        }
-
-
-        const factor =
-            Math.pow(
-                10,
-                decimals
-            );
-
-
-        return (
-            Math.round(
-                value * factor
-            ) / factor
-        );
-
-    }
-
-
-    /* =====================================================
-       GET Z-SCORE
-    ===================================================== */
-
-    function calculateZScore({
-
-        sex,
-
-        indicator,
-
-        ageGroup,
-
-        x,
-
-        measurement
-
-    }) {
 
         const database =
-            getIndicatorDatabase(
+            getDatabase(
                 sex,
                 indicator,
                 ageGroup
             );
 
-
         if (!database) {
 
             return {
-
                 success: false,
-
-                reason:
-                    "Database WHO belum tersedia."
-
+                reason: "Database WHO tidak tersedia."
             };
 
         }
@@ -800,23 +540,19 @@
                 x
             );
 
-
         if (!lms) {
 
             return {
-
                 success: false,
-
                 reason:
-                    "Tidak ditemukan LMS WHO untuk titik referensi tersebut."
-
+                    "Nilai referensi WHO tidak ditemukan."
             };
 
         }
 
 
         const z =
-            lmsToZ(
+            calculateZScore(
                 measurement,
                 lms.L,
                 lms.M,
@@ -827,12 +563,9 @@
         if (z === null) {
 
             return {
-
                 success: false,
-
                 reason:
                     "Z-score tidak dapat dihitung."
-
             };
 
         }
@@ -842,13 +575,8 @@
 
             success: true,
 
-            zScore: round(z, 2),
-
-            percentile:
-                round(
-                    zToPercentile(z),
-                    1
-                ),
+            zScore:
+                round(z, 2),
 
             L: lms.L,
 
@@ -865,352 +593,334 @@
 
 
     /* =====================================================
-       BMI
+       NORMAL CDF
+       
+       Untuk estimasi percentile.
     ===================================================== */
 
-    function calculateBMI(
-        weight,
-        height
-    ) {
+    function normalCDF(z) {
 
-        if (
-            !isNumber(weight) ||
-            !isNumber(height) ||
-            weight <= 0 ||
-            height <= 0
-        ) {
+        const x = number(z);
 
+        if (x === null) {
             return null;
-
         }
 
+        const sign =
+            x < 0 ? -1 : 1;
 
-        const meters =
-            height / 100;
+        const abs =
+            Math.abs(x);
 
-
-        return round(
-            weight /
+        const t =
+            1 /
             (
-                meters *
-                meters
-            ),
-            2
-        );
+                1 +
+                0.2316419 * abs
+            );
 
+        const d =
+            0.3989423 *
+            Math.exp(
+                -abs * abs / 2
+            );
+
+        const probability =
+            d *
+            t *
+            (
+                0.3193815 +
+                t *
+                (
+                    -0.3565638 +
+                    t *
+                    (
+                        1.781478 +
+                        t *
+                        (
+                            -1.821256 +
+                            t *
+                            1.330274
+                        )
+                    )
+                )
+            );
+
+        const cdf =
+            sign === 1
+                ? 1 - probability
+                : probability;
+
+        return cdf;
     }
 
 
     /* =====================================================
-       STATUS BMI-FOR-AGE
+       PERCENTILE
+    ===================================================== */
+
+    function zToPercentile(z) {
+
+        const p =
+            normalCDF(z);
+
+        if (p === null) {
+            return null;
+        }
+
+        return round(
+            p * 100,
+            1
+        );
+    }
+
+
+    /* =====================================================
+       KLASIFIKASI BMI/U
     ===================================================== */
 
     function classifyBMIForAge(z) {
 
-        if (!isNumber(z)) {
+        if (!Number.isFinite(z)) {
             return null;
         }
-
 
         if (z < -3) {
 
             return {
-                code: "BAZ_LT_M3",
-                label: "Sangat kurus"
+                category: "severe_thinness",
+                label: "Sangat kurus",
+                degree: "< -3 SD"
             };
 
         }
-
 
         if (z < -2) {
 
             return {
-                code: "BAZ_M3_TO_LT_M2",
-                label: "Kurus"
+                category: "thinness",
+                label: "Kurus",
+                degree: "≥ -3 SD sampai < -2 SD"
             };
 
         }
-
 
         if (z <= 1) {
 
             return {
-                code: "BAZ_M2_TO_P1",
-                label: "Normal"
+                category: "normal",
+                label: "Normal",
+                degree: "≥ -2 SD sampai ≤ +1 SD"
             };
 
         }
-
 
         if (z <= 2) {
 
             return {
-                code: "BAZ_GT_P1_TO_P2",
-                label: "Gemuk"
+                category: "overweight",
+                label: "Gemuk",
+                degree: "> +1 SD sampai ≤ +2 SD"
             };
 
         }
 
-
         return {
 
-            code: "BAZ_GT_P2",
+            category: "obesity",
 
-            label: "Obesitas"
+            label: "Obesitas",
+
+            degree: "> +2 SD"
 
         };
-
     }
 
 
     /* =====================================================
-       STATUS TINGGI MENURUT UMUR
+       KLASIFIKASI TB/U
     ===================================================== */
 
     function classifyHeightForAge(z) {
 
-        if (!isNumber(z)) {
+        if (!Number.isFinite(z)) {
             return null;
         }
-
 
         if (z < -3) {
 
             return {
-
-                code: "HAZ_LT_M3",
-
-                label: "Sangat pendek"
-
+                category: "severely_stunted",
+                label: "Sangat pendek",
+                degree: "< -3 SD"
             };
 
         }
-
 
         if (z < -2) {
 
             return {
-
-                code: "HAZ_M3_TO_LT_M2",
-
-                label: "Pendek"
-
+                category: "stunted",
+                label: "Pendek",
+                degree: "≥ -3 SD sampai < -2 SD"
             };
 
         }
 
-
         return {
 
-            code: "HAZ_GE_M2",
+            category: "normal",
 
-            label: "Normal"
+            label: "Normal",
+
+            degree: "≥ -2 SD"
 
         };
-
     }
 
 
     /* =====================================================
-       STATUS BERAT MENURUT UMUR
+       KLASIFIKASI BB/U
     ===================================================== */
 
     function classifyWeightForAge(z) {
 
-        if (!isNumber(z)) {
+        if (!Number.isFinite(z)) {
             return null;
         }
-
 
         if (z < -3) {
 
             return {
-
-                code: "WAZ_LT_M3",
-
-                label:
-                    "Berat badan sangat kurang"
-
+                category: "severely_underweight",
+                label: "Berat badan sangat kurang",
+                degree: "< -3 SD"
             };
 
         }
-
 
         if (z < -2) {
 
             return {
-
-                code:
-                    "WAZ_M3_TO_LT_M2",
-
-                label:
-                    "Berat badan kurang"
-
+                category: "underweight",
+                label: "Berat badan kurang",
+                degree: "≥ -3 SD sampai < -2 SD"
             };
 
         }
 
-
         return {
 
-            code:
-                "WAZ_GE_M2",
+            category: "normal",
 
-            label:
-                "Berat badan normal"
+            label: "Berat badan normal",
+
+            degree: "≥ -2 SD"
 
         };
-
     }
 
 
     /* =====================================================
-       STATUS WEIGHT-FOR-HEIGHT
+       KLASIFIKASI BB/PB ATAU BB/TB
     ===================================================== */
 
     function classifyWeightForHeight(z) {
 
-        if (!isNumber(z)) {
+        if (!Number.isFinite(z)) {
             return null;
         }
-
 
         if (z < -3) {
 
             return {
-
-                code:
-                    "WHZ_LT_M3",
-
-                label:
-                    "Sangat kurus"
-
+                category: "severely_wasted",
+                label: "Sangat kurus",
+                degree: "< -3 SD"
             };
 
         }
-
 
         if (z < -2) {
 
             return {
-
-                code:
-                    "WHZ_M3_TO_LT_M2",
-
-                label:
-                    "Kurus"
-
+                category: "wasted",
+                label: "Kurus",
+                degree: "≥ -3 SD sampai < -2 SD"
             };
 
         }
-
 
         if (z <= 2) {
 
             return {
-
-                code:
-                    "WHZ_GE_M2_TO_LE_P2",
-
-                label:
-                    "Normal"
-
+                category: "normal",
+                label: "Normal",
+                degree: "≥ -2 SD sampai ≤ +2 SD"
             };
 
         }
-
 
         if (z <= 3) {
 
             return {
-
-                code:
-                    "WHZ_GT_P2_TO_LE_P3",
-
-                label:
-                    "Berat badan lebih"
-
+                category: "overweight",
+                label: "Berat badan lebih",
+                degree: "> +2 SD sampai ≤ +3 SD"
             };
 
         }
 
-
         return {
 
-            code:
-                "WHZ_GT_P3",
+            category: "obesity",
 
-            label:
-                "Obesitas"
+            label: "Obesitas",
+
+            degree: "> +3 SD"
 
         };
-
     }
 
 
     /* =====================================================
-       DATABASE STATUS
+       STATUS DATABASE
     ===================================================== */
 
-    function databaseStatus() {
+    function getDatabaseStatus() {
 
-        const result = {
+        const result = {};
 
+        for (
+            const sex of
+            ["male", "female"]
+        ) {
 
-            male: {
+            result[sex] = {};
 
-                weightForAge:
+            for (
+                const indicator of
+                Object.keys(DATABASE[sex])
+            ) {
+
+                result[sex][indicator] = {};
+
+                for (
+                    const ageGroup of
                     Object.keys(
-                        DATA.male.weightForAge.under5
-                    ).length,
+                        DATABASE[sex][indicator]
+                    )
+                ) {
 
-                heightForAge:
-                    Object.keys(
-                        DATA.male.heightForAge.under5
-                    ).length,
-
-                weightForLengthHeight:
-                    Object.keys(
-                        DATA.male.weightForLengthHeight.under5
-                    ).length,
-
-                bmiForAge:
-                    Object.keys(
-                        DATA.male.bmiForAge.under5
-                    ).length
-
-            },
-
-
-            female: {
-
-                weightForAge:
-                    Object.keys(
-                        DATA.female.weightForAge.under5
-                    ).length,
-
-                heightForAge:
-                    Object.keys(
-                        DATA.female.heightForAge.under5
-                    ).length,
-
-                weightForLengthHeight:
-                    Object.keys(
-                        DATA.female.weightForLengthHeight.under5
-                    ).length,
-
-                bmiForAge:
-                    Object.keys(
-                        DATA.female.bmiForAge.under5
-                    ).length
-
+                    result[sex][indicator][ageGroup] =
+                        Object.keys(
+                            DATABASE[sex][indicator][ageGroup]
+                        ).length;
+                }
             }
-
-        };
-
+        }
 
         return result;
-
     }
 
 
@@ -1220,75 +930,58 @@
 
     window.WHO_ANTHRO = {
 
+        version: VERSION,
 
-        version:
-            VERSION,
+        limits: LIMITS,
 
+        data: DATABASE,
 
-        limits:
-            LIMITS,
+        normalizeSex,
 
+        getAgeGroup,
 
-        indicators:
-            INDICATORS,
+        getDatabase,
 
+        getLMS: interpolateLMS,
 
-        data:
-            DATA,
+        calculateBMI,
 
+        calculateZScore,
 
-        normalizeSex:
-            normalizeSex,
+        getZScore,
 
+        zToPercentile,
 
-        getAgeGroup:
-            getAgeGroup,
+        classifyBMIForAge,
 
+        classifyHeightForAge,
 
-        getIndicatorDatabase:
-            getIndicatorDatabase,
+        classifyWeightForAge,
 
-
-        getLMS:
-            interpolateLMS,
-
-
-        calculateZScore:
-            calculateZScore,
-
-
-        lmsToZ:
-            lmsToZ,
-
-
-        calculateBMI:
-            calculateBMI,
-
-
-        zToPercentile:
-            zToPercentile,
-
-
-        classifyBMIForAge:
-            classifyBMIForAge,
-
-
-        classifyHeightForAge:
-            classifyHeightForAge,
-
-
-        classifyWeightForAge:
-            classifyWeightForAge,
-
-
-        classifyWeightForHeight:
-            classifyWeightForHeight,
-
+        classifyWeightForHeight,
 
         databaseStatus:
-            databaseStatus
+            getDatabaseStatus
 
     };
+
+
+    /* =====================================================
+       READY FLAG
+    ===================================================== */
+
+    window.WHO_ANTHRO_READY = true;
+
+
+    /* =====================================================
+       EVENT
+    ===================================================== */
+
+    document.dispatchEvent(
+        new CustomEvent(
+            "whoAnthroReady"
+        )
+    );
 
 
     /* =====================================================
@@ -1300,17 +993,14 @@
         !!window.WHO_ANTHRO
     );
 
-
     console.log(
-        "Versi WHO:",
-        VERSION
+        "WHO_ANTHRO_READY:",
+        window.WHO_ANTHRO_READY
     );
 
-
     console.log(
-        "Status database:",
-        databaseStatus()
+        "Database status:",
+        getDatabaseStatus()
     );
-
 
 })();
