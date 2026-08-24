@@ -1,389 +1,156 @@
 /* =========================================================
    KLINIK PUTRA MEDIKA
-   KALKULATOR KESEHATAN
-   JAVASCRIPT
-   ========================================================= */
+   KALKULATOR KESEHATAN TERPADU
+========================================================= */
 
 
 /* =========================================================
-   HELPER
-   ========================================================= */
+   MAIN CALCULATOR
+========================================================= */
 
-function showError(result, message) {
+function calculateHealth() {
 
-    result.className = "kal-result result-error";
-
-    result.innerHTML = `
-        <div class="kal-error-box">
-            <div class="kal-error-icon">⚠️</div>
-
-            <div>
-                <strong>Data belum lengkap</strong>
-
-                <p>
-                    ${message}
-                </p>
-            </div>
-        </div>
-    `;
-}
-
-
-/* =========================================================
-   BMI CALCULATOR
-   ========================================================= */
-
-function calculateBMI() {
-
+    const gender = document.getElementById("gender");
+    const ageInput = document.getElementById("age");
     const weightInput = document.getElementById("weight");
     const heightInput = document.getElementById("height");
-    const result = document.getElementById("bmiResult");
+    const activityInput = document.getElementById("activity");
+    const goalInput = document.getElementById("goal");
 
-    if (!weightInput || !heightInput || !result) {
-        return;
-    }
+    const errorBox = document.getElementById("formError");
 
-    const weight = parseFloat(weightInput.value);
-    const heightCm = parseFloat(heightInput.value);
+    const healthResult = document.getElementById("healthResult");
+    const macroResult = document.getElementById("macroResult");
+
+
+    /* -----------------------------------------------------
+       CEK ELEMENT
+    ----------------------------------------------------- */
 
     if (
-        isNaN(weight) ||
-        isNaN(heightCm) ||
-        weight <= 0 ||
-        heightCm <= 0
+        !gender ||
+        !ageInput ||
+        !weightInput ||
+        !heightInput ||
+        !activityInput ||
+        !goalInput
     ) {
-
-        showError(
-            result,
-            "Silakan masukkan berat dan tinggi badan yang valid."
-        );
-
         return;
     }
 
 
-    const heightM = heightCm / 100;
+    /* -----------------------------------------------------
+       AMBIL DATA
+    ----------------------------------------------------- */
 
-    const bmi = weight / (heightM * heightM);
+    const age = parseFloat(ageInput.value);
+    const weight = parseFloat(weightInput.value);
+    const height = parseFloat(heightInput.value);
+
+    const activity = parseFloat(activityInput.value);
+
+    const goal = goalInput.value;
 
 
-    let category = "";
-    let description = "";
+    /* -----------------------------------------------------
+       VALIDASI
+    ----------------------------------------------------- */
+
+    let errorMessage = "";
+
+
+    if (
+        isNaN(age) ||
+        age < 18 ||
+        age > 120
+    ) {
+
+        errorMessage =
+            "Masukkan umur antara 18–120 tahun.";
+
+    }
+
+    else if (
+        isNaN(weight) ||
+        weight <= 0 ||
+        weight > 500
+    ) {
+
+        errorMessage =
+            "Masukkan berat badan yang valid.";
+
+    }
+
+    else if (
+        isNaN(height) ||
+        height < 50 ||
+        height > 250
+    ) {
+
+        errorMessage =
+            "Masukkan tinggi badan yang valid.";
+
+    }
+
+
+    if (errorMessage !== "") {
+
+        errorBox.textContent = errorMessage;
+
+        errorBox.classList.add("show");
+
+        return;
+
+    }
+
+
+    errorBox.textContent = "";
+
+    errorBox.classList.remove("show");
+
+
+    /* =====================================================
+       BMI
+    ===================================================== */
+
+    const heightMeter = height / 100;
+
+    const bmi =
+        weight /
+        (heightMeter * heightMeter);
+
+
+    let bmiCategory = "";
 
 
     if (bmi < 18.5) {
 
-        category = "Berat badan kurang";
-
-        description =
-            "BMI berada di bawah rentang 18,5. Pertimbangkan pola makan bergizi seimbang dan konsultasikan dengan tenaga kesehatan bila diperlukan.";
+        bmiCategory = "Berat badan kurang";
 
     }
 
     else if (bmi < 25) {
 
-        category = "Berat badan normal";
-
-        description =
-            "BMI berada dalam rentang normal berdasarkan kategori BMI dewasa.";
+        bmiCategory = "Berat badan normal";
 
     }
 
     else if (bmi < 30) {
 
-        category = "Berat badan berlebih";
-
-        description =
-            "BMI berada di atas rentang normal. Perhatikan pola makan, aktivitas fisik dan kebiasaan hidup sehat.";
+        bmiCategory = "Berat badan berlebih";
 
     }
 
     else {
 
-        category = "Obesitas";
+        bmiCategory = "Obesitas";
 
-        description =
-            "BMI berada pada kategori obesitas. Pertimbangkan konsultasi dengan tenaga kesehatan untuk mendapatkan penilaian yang lebih menyeluruh.";
-    }
-
-
-    result.className = "kal-result bmi-result";
-
-
-    result.innerHTML = `
-
-        <div class="result-title">
-            HASIL BMI
-        </div>
-
-        <div class="bmi-main">
-
-            <div class="bmi-number">
-                ${bmi.toFixed(1)}
-            </div>
-
-            <div class="bmi-category">
-                ${category}
-            </div>
-
-        </div>
-
-        <div class="result-details">
-
-            <p>
-                Berat badan:
-                <strong>${weight.toFixed(1)} kg</strong>
-            </p>
-
-            <p>
-                Tinggi badan:
-                <strong>${heightCm.toFixed(0)} cm</strong>
-            </p>
-
-        </div>
-
-        <p class="result-description">
-            ${description}
-        </p>
-
-    `;
-}
-
-
-/* =========================================================
-   BMR & TDEE
-   ========================================================= */
-
-function calculateTDEE() {
-
-    const gender =
-        document.getElementById("gender");
-
-    const ageInput =
-        document.getElementById("age");
-
-    const weightInput =
-        document.getElementById("weightBMR");
-
-    const heightInput =
-        document.getElementById("heightBMR");
-
-    const activityInput =
-        document.getElementById("activity");
-
-    const result =
-        document.getElementById("tdeeResult");
-
-
-    if (
-        !gender ||
-        !ageInput ||
-        !weightInput ||
-        !heightInput ||
-        !activityInput ||
-        !result
-    ) {
-        return;
-    }
-
-
-    const age =
-        parseFloat(ageInput.value);
-
-    const weight =
-        parseFloat(weightInput.value);
-
-    const height =
-        parseFloat(heightInput.value);
-
-    const activity =
-        parseFloat(activityInput.value);
-
-
-    if (
-        isNaN(age) ||
-        isNaN(weight) ||
-        isNaN(height) ||
-        age <= 0 ||
-        weight <= 0 ||
-        height <= 0
-    ) {
-
-        showError(
-            result,
-            "Silakan lengkapi umur, berat badan dan tinggi badan dengan benar."
-        );
-
-        return;
-    }
-
-
-    let bmr;
-
-
-    if (gender.value === "male") {
-
-        bmr =
-            (10 * weight) +
-            (6.25 * height) -
-            (5 * age) +
-            5;
-
-    }
-
-    else {
-
-        bmr =
-            (10 * weight) +
-            (6.25 * height) -
-            (5 * age) -
-            161;
-    }
-
-
-    const tdee =
-        bmr * activity;
-
-
-    result.className =
-        "kal-result energy-result";
-
-
-    result.innerHTML = `
-
-        <div class="result-title">
-            HASIL KEBUTUHAN ENERGI
-        </div>
-
-
-        <div class="energy-box">
-
-            <div>
-
-                <span>
-                    BMR
-                </span>
-
-                <strong>
-                    ${Math.round(bmr)}
-                </strong>
-
-                <small>
-                    kkal/hari
-                </small>
-
-            </div>
-
-
-            <div>
-
-                <span>
-                    TDEE
-                </span>
-
-                <strong>
-                    ${Math.round(tdee)}
-                </strong>
-
-                <small>
-                    kkal/hari
-                </small>
-
-            </div>
-
-        </div>
-
-
-        <p class="energy-explanation">
-
-            <strong>BMR</strong> adalah estimasi energi
-            yang dibutuhkan tubuh ketika beristirahat.
-
-            <br><br>
-
-            <strong>TDEE</strong> adalah estimasi kebutuhan
-            energi harian setelah memperhitungkan aktivitas.
-
-        </p>
-
-    `;
-}
-
-
-/* =========================================================
-   MACRO CALCULATOR
-   ========================================================= */
-
-function calculateMacros() {
-
-    const gender =
-        document.getElementById("macroGender");
-
-    const ageInput =
-        document.getElementById("macroAge");
-
-    const weightInput =
-        document.getElementById("macroWeight");
-
-    const heightInput =
-        document.getElementById("macroHeight");
-
-    const activityInput =
-        document.getElementById("macroActivity");
-
-    const goalInput =
-        document.getElementById("macroGoal");
-
-    const result =
-        document.getElementById("macroResult");
-
-
-    if (
-        !gender ||
-        !ageInput ||
-        !weightInput ||
-        !heightInput ||
-        !activityInput ||
-        !goalInput ||
-        !result
-    ) {
-        return;
-    }
-
-
-    const age =
-        parseFloat(ageInput.value);
-
-    const weight =
-        parseFloat(weightInput.value);
-
-    const height =
-        parseFloat(heightInput.value);
-
-    const activity =
-        parseFloat(activityInput.value);
-
-
-    if (
-        isNaN(age) ||
-        isNaN(weight) ||
-        isNaN(height) ||
-        age <= 0 ||
-        weight <= 0 ||
-        height <= 0
-    ) {
-
-        showError(
-            result,
-            "Silakan lengkapi semua data tubuh dengan benar."
-        );
-
-        return;
     }
 
 
     /* =====================================================
        BMR
+       Mifflin-St Jeor
     ===================================================== */
 
     let bmr;
@@ -406,6 +173,7 @@ function calculateMacros() {
             (6.25 * height) -
             (5 * age) -
             161;
+
     }
 
 
@@ -418,58 +186,55 @@ function calculateMacros() {
 
 
     /* =====================================================
-       GOAL
+       TARGET KALORI
     ===================================================== */
 
     let calories;
     let goalText;
 
 
-    if (goalInput.value === "fatloss") {
+    if (goal === "fatloss") {
 
-        calories =
-            tdee * 0.80;
+        calories = tdee * 0.80;
 
-        goalText =
-            "Fat Loss";
+        goalText = "Fat Loss";
 
     }
 
-    else if (goalInput.value === "bulking") {
+    else if (goal === "bulking") {
 
-        calories =
-            tdee * 1.10;
+        calories = tdee * 1.10;
 
-        goalText =
-            "Muscle Gain / Bulking";
+        goalText = "Muscle Gain";
 
     }
 
     else {
 
-        calories =
-            tdee;
+        calories = tdee;
 
-        goalText =
-            "Maintenance";
+        goalText = "Maintenance";
+
     }
 
 
     /* =====================================================
-       MACRO
+       PROTEIN
+       1.8 g/kg
     ===================================================== */
-
-    /*
-       Protein = 1.8 g/kg
-    */
 
     const protein =
         weight * 1.8;
 
 
-    /*
-       Lemak = 25% kalori
-    */
+    const proteinCalories =
+        protein * 4;
+
+
+    /* =====================================================
+       FAT
+       25% KALORI
+    ===================================================== */
 
     const fatCalories =
         calories * 0.25;
@@ -478,81 +243,247 @@ function calculateMacros() {
         fatCalories / 9;
 
 
-    /*
-       Karbohidrat = sisa kalori
-    */
-
-    const proteinCalories =
-        protein * 4;
+    /* =====================================================
+       CARBOHYDRATE
+       SISA KALORI
+    ===================================================== */
 
     const carbCalories =
         calories -
         proteinCalories -
         fatCalories;
 
+
     const carbs =
         Math.max(0, carbCalories / 4);
 
 
     /* =====================================================
-       PERCENTAGE PROGRESS
+       UPDATE HEALTH RESULT
     ===================================================== */
 
-    const proteinCaloriesFinal =
-        protein * 4;
+    healthResult.style.display = "block";
 
-    const carbsCaloriesFinal =
-        carbs * 4;
-
-    const fatCaloriesFinal =
-        fat * 9;
+    document.querySelector(".result-placeholder").style.display =
+        "none";
 
 
-    const totalMacroCalories =
-        proteinCaloriesFinal +
-        carbsCaloriesFinal +
-        fatCaloriesFinal;
+    healthResult.innerHTML = `
+
+        <div class="health-summary-title">
+            HASIL PERHITUNGAN ANDA
+        </div>
 
 
-    const proteinPercent =
-        Math.round(
-            (proteinCaloriesFinal / totalMacroCalories) * 100
-        );
+        <div class="health-metrics">
 
-    const carbsPercent =
-        Math.round(
-            (carbsCaloriesFinal / totalMacroCalories) * 100
-        );
+            <div class="health-metric">
 
-    const fatPercent =
-        Math.round(
-            (fatCaloriesFinal / totalMacroCalories) * 100
-        );
+                <span>
+                    BMI
+                </span>
+
+                <strong>
+                    ${bmi.toFixed(1)}
+                </strong>
+
+                <small>
+                    Indeks massa tubuh
+                </small>
+
+                <div class="bmi-category">
+                    ${bmiCategory}
+                </div>
+
+            </div>
+
+
+            <div class="health-metric">
+
+                <span>
+                    BMR
+                </span>
+
+                <strong>
+                    ${Math.round(bmr)}
+                </strong>
+
+                <small>
+                    kkal / hari
+                </small>
+
+            </div>
+
+
+            <div class="health-metric">
+
+                <span>
+                    TDEE
+                </span>
+
+                <strong>
+                    ${Math.round(tdee)}
+                </strong>
+
+                <small>
+                    kkal / hari
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="energy-summary">
+
+            <div class="energy-card">
+
+                <span>
+                    TARGET KALORI
+                </span>
+
+                <strong>
+                    ${Math.round(calories)}
+                </strong>
+
+                <small>
+                    kkal / hari
+                </small>
+
+            </div>
+
+
+            <div class="energy-card">
+
+                <span>
+                    TUJUAN
+                </span>
+
+                <strong>
+                    ${goalText}
+                </strong>
+
+                <small>
+                    berdasarkan pilihan Anda
+                </small>
+
+            </div>
+
+        </div>
+
+    `;
 
 
     /* =====================================================
-       RESULT
+       UPDATE MACRO
     ===================================================== */
 
-    result.className =
-        "kal-result macro-result";
+    renderMacroResult(
+        calories,
+        protein,
+        carbs,
+        fat,
+        goalText,
+        tdee
+    );
 
 
-    result.innerHTML = `
+    /* =====================================================
+       SCROLL HASIL
+    ===================================================== */
 
-        <div class="macro-result-header">
+    setTimeout(() => {
 
-            <div>
+        document
+            .getElementById("hasil")
+            .scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
 
-                <span class="result-title">
-                    TARGET MAKROS HARIAN
-                </span>
+    }, 100);
 
-                <strong class="macro-target-calories">
-                    ${Math.round(calories)}
-                    <small>kkal</small>
-                </strong>
+}
 
+
+/* =========================================================
+   MACRO RESULT
+========================================================= */
+
+function renderMacroResult(
+    calories,
+    protein,
+    carbs,
+    fat,
+    goalText,
+    tdee
+) {
+
+    const macroResult =
+        document.getElementById("macroResult");
+
+
+    if (!macroResult) {
+        return;
+    }
+
+
+    const proteinKcal =
+        protein * 4;
+
+    const carbsKcal =
+        carbs * 4;
+
+    const fatKcal =
+        fat * 9;
+
+
+    /*
+       Persentase visual.
+       Dibuat relatif terhadap makro terbesar
+       agar progress bar terlihat jelas.
+    */
+
+    const maxMacro =
+        Math.max(
+            protein,
+            carbs,
+            fat
+        );
+
+
+    const proteinPercent =
+        (protein / maxMacro) * 100;
+
+    const carbsPercent =
+        (carbs / maxMacro) * 100;
+
+    const fatPercent =
+        (fat / maxMacro) * 100;
+
+
+    macroResult.className =
+        "macro-result";
+
+
+    macroResult.innerHTML = `
+
+        <div class="macro-target">
+
+            <span class="macro-target-label">
+                TARGET HARIAN
+            </span>
+
+            <strong>
+                ${Math.round(calories)}
+            </strong>
+
+            <small>
+                kkal / hari
+            </small>
+
+            <div class="macro-goal">
+                ${goalText}
             </div>
 
         </div>
@@ -565,37 +496,39 @@ function calculateMacros() {
 
             <div class="macro-progress-item">
 
-                <div class="macro-progress-header">
+                <div class="macro-progress-top">
 
-                    <span>
+                    <span class="macro-name">
                         Protein
                     </span>
 
-                    <strong>
+                    <span class="macro-value">
                         ${Math.round(protein)} g
-                    </strong>
+                    </span>
 
                 </div>
 
 
-                <div class="macro-progress-track">
+                <div class="macro-track">
 
                     <div
-                        class="macro-progress-fill protein-fill"
-                        style="width:${proteinPercent}%"
+                        class="macro-fill protein"
+                        style="width: ${proteinPercent}%"
                     ></div>
 
                 </div>
 
 
-                <div class="macro-progress-footer">
+                <div class="macro-kcal">
 
                     <span>
-                        ${proteinPercent}% energi
+                        ${Math.round(proteinKcal)} kkal
                     </span>
 
                     <span>
-                        ${Math.round(proteinCaloriesFinal)} kkal
+                        ${Math.round(
+                            (proteinKcal / calories) * 100
+                        )}%
                     </span>
 
                 </div>
@@ -603,42 +536,43 @@ function calculateMacros() {
             </div>
 
 
-
-            <!-- KARBOHIDRAT -->
+            <!-- CARBOHYDRATE -->
 
             <div class="macro-progress-item">
 
-                <div class="macro-progress-header">
+                <div class="macro-progress-top">
 
-                    <span>
+                    <span class="macro-name">
                         Karbohidrat
                     </span>
 
-                    <strong>
+                    <span class="macro-value">
                         ${Math.round(carbs)} g
-                    </strong>
+                    </span>
 
                 </div>
 
 
-                <div class="macro-progress-track">
+                <div class="macro-track">
 
                     <div
-                        class="macro-progress-fill carbs-fill"
-                        style="width:${carbsPercent}%"
+                        class="macro-fill carbs"
+                        style="width: ${carbsPercent}%"
                     ></div>
 
                 </div>
 
 
-                <div class="macro-progress-footer">
+                <div class="macro-kcal">
 
                     <span>
-                        ${carbsPercent}% energi
+                        ${Math.round(carbsKcal)} kkal
                     </span>
 
                     <span>
-                        ${Math.round(carbsCaloriesFinal)} kkal
+                        ${Math.round(
+                            (carbsKcal / calories) * 100
+                        )}%
                     </span>
 
                 </div>
@@ -646,42 +580,43 @@ function calculateMacros() {
             </div>
 
 
-
-            <!-- LEMAK -->
+            <!-- FAT -->
 
             <div class="macro-progress-item">
 
-                <div class="macro-progress-header">
+                <div class="macro-progress-top">
 
-                    <span>
+                    <span class="macro-name">
                         Lemak
                     </span>
 
-                    <strong>
+                    <span class="macro-value">
                         ${Math.round(fat)} g
-                    </strong>
+                    </span>
 
                 </div>
 
 
-                <div class="macro-progress-track">
+                <div class="macro-track">
 
                     <div
-                        class="macro-progress-fill fat-fill"
-                        style="width:${fatPercent}%"
+                        class="macro-fill fat"
+                        style="width: ${fatPercent}%"
                     ></div>
 
                 </div>
 
 
-                <div class="macro-progress-footer">
+                <div class="macro-kcal">
 
                     <span>
-                        ${fatPercent}% energi
+                        ${Math.round(fatKcal)} kkal
                     </span>
 
                     <span>
-                        ${Math.round(fatCaloriesFinal)} kkal
+                        ${Math.round(
+                            (fatKcal / calories) * 100
+                        )}%
                     </span>
 
                 </div>
@@ -693,88 +628,84 @@ function calculateMacros() {
 
         <div class="macro-summary">
 
-            <div>
-
-                <span>
-                    Tujuan
-                </span>
+            <div class="macro-summary-box">
 
                 <strong>
-                    ${goalText}
+                    ${Math.round(protein)} g
                 </strong>
+
+                <span>
+                    Protein
+                </span>
 
             </div>
 
 
-            <div>
-
-                <span>
-                    Estimasi TDEE
-                </span>
+            <div class="macro-summary-box">
 
                 <strong>
-                    ${Math.round(tdee)} kkal
+                    ${Math.round(carbs)} g
                 </strong>
+
+                <span>
+                    Karbohidrat
+                </span>
+
+            </div>
+
+
+            <div class="macro-summary-box">
+
+                <strong>
+                    ${Math.round(fat)} g
+                </strong>
+
+                <span>
+                    Lemak
+                </span>
 
             </div>
 
         </div>
 
-
-        <p class="result-description">
-
-            Pembagian makronutrien ini merupakan estimasi
-            sederhana untuk tujuan edukasi. Kebutuhan
-            individu dapat berbeda.
-
-        </p>
-
     `;
+
 }
 
 
 /* =========================================================
-   AUTO ENTER SUPPORT
-   ========================================================= */
+   ENTER KEY
+   Memudahkan pengguna menghitung dari keyboard
+========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const inputs =
-        document.querySelectorAll(
-            ".kal-form input"
-        );
-
-
-    inputs.forEach(function (input) {
-
-        input.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (event.key === "Enter") {
-
-                    const form =
-                        input.closest(".kal-form");
-
-                    if (!form) {
-                        return;
-                    }
+        const inputs =
+            document.querySelectorAll(
+                "#data input"
+            );
 
 
-                    const button =
-                        form.querySelector(".kal-button");
+        inputs.forEach(function (input) {
 
-                    if (button) {
+            input.addEventListener(
+                "keydown",
+                function (event) {
 
-                        button.click();
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+                        calculateHealth();
 
                     }
 
                 }
+            );
 
-            }
-        );
+        });
 
-    });
-
-});
+    }
+);
