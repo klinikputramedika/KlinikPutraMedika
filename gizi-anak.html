@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="Kalkulator gizi anak Klinik Putra Medika untuk menghitung usia, IMT dan membantu penilaian status gizi anak berdasarkan pertumbuhan."
+        content="Kalkulator gizi anak Klinik Putra Medika untuk membantu penilaian pertumbuhan dan status gizi anak."
     >
 
     <meta
@@ -62,9 +62,7 @@
 
     <link
         rel="stylesheet"
-        <script src="who-anthro-data.js?v=1"></script>
-<script src="gizi-anak.js?v=4"></script>
-        href="gizi-anak.css?v=3"
+        href="gizi-anak.css?v=4"
     >
 
 </head>
@@ -147,21 +145,18 @@
                     👶
                 </div>
 
-
                 <div class="anak-hero-badge">
                     CHILD NUTRITION
                 </div>
-
 
                 <h1>
                     Kalkulator Gizi Anak
                 </h1>
 
-
                 <p>
-                    Pantau pertumbuhan anak melalui data
-                    umur, berat badan, tinggi badan dan
-                    indeks massa tubuh sesuai kelompok usia.
+                    Pantau pertumbuhan anak melalui usia,
+                    berat badan, tinggi atau panjang badan,
+                    IMT dan indikator pertumbuhan.
                 </p>
 
             </div>
@@ -171,7 +166,7 @@
 
 
         <!-- =================================================
-             QUICK INFORMATION
+             NAVIGASI CEPAT
         ================================================== -->
 
         <section class="anak-navigation">
@@ -188,7 +183,6 @@
                     👶
                 </span>
 
-
                 <span class="anak-nav-content">
 
                     <strong>
@@ -201,7 +195,6 @@
 
                 </span>
 
-
                 <span
                     class="anak-nav-arrow"
                     aria-hidden="true"
@@ -210,6 +203,7 @@
                 </span>
 
             </a>
+
 
 
             <a
@@ -224,7 +218,6 @@
                     📊
                 </span>
 
-
                 <span class="anak-nav-content">
 
                     <strong>
@@ -232,11 +225,10 @@
                     </strong>
 
                     <small>
-                        Hasil penilaian pertumbuhan
+                        Z-score & interpretasi
                     </small>
 
                 </span>
-
 
                 <span
                     class="anak-nav-arrow"
@@ -248,8 +240,9 @@
             </a>
 
 
+
             <a
-                href="#informasi-gizi"
+                href="#makros"
                 class="anak-nav-card"
             >
 
@@ -257,22 +250,20 @@
                     class="anak-nav-icon"
                     aria-hidden="true"
                 >
-                    💚
+                    🍽️
                 </span>
-
 
                 <span class="anak-nav-content">
 
                     <strong>
-                        Informasi
+                        Kebutuhan Gizi
                     </strong>
 
                     <small>
-                        Penjelasan hasil
+                        Energi & makronutrien
                     </small>
 
                 </span>
-
 
                 <span
                     class="anak-nav-arrow"
@@ -309,20 +300,17 @@
                         01
                     </div>
 
-
                     <div class="anak-label">
                         CHILD GROWTH ASSESSMENT
                     </div>
-
 
                     <h2>
                         Data Anak
                     </h2>
 
-
                     <p>
                         Masukkan data anak dan tanggal
-                        pemeriksaan untuk menghitung umur
+                        pemeriksaan untuk menghitung usia
                         secara otomatis.
                     </p>
 
@@ -335,8 +323,9 @@
 
                         <span>
                             Gunakan tanggal lahir dan tanggal
-                            pemeriksaan yang sebenarnya agar
-                            perhitungan usia lebih akurat.
+                            pemeriksaan sebenarnya agar usia
+                            dan interpretasi pertumbuhan lebih
+                            akurat.
                         </span>
 
                     </div>
@@ -351,6 +340,7 @@
 
                 <div class="anak-form">
 
+
                     <div class="anak-form-header">
 
                         <div
@@ -360,7 +350,6 @@
                             👶
                         </div>
 
-
                         <div>
 
                             <h3>
@@ -368,7 +357,7 @@
                             </h3>
 
                             <p>
-                                Lengkapi semua data berikut.
+                                Lengkapi seluruh data berikut.
                             </p>
 
                         </div>
@@ -387,8 +376,11 @@
                             Jenis kelamin
                         </label>
 
-
                         <select id="anakGender">
+
+                            <option value="">
+                                Pilih jenis kelamin
+                            </option>
 
                             <option value="male">
                                 Laki-laki
@@ -414,7 +406,6 @@
                             Tanggal lahir
                         </label>
 
-
                         <input
                             type="date"
                             id="anakBirthDate"
@@ -434,7 +425,6 @@
                             Tanggal pemeriksaan
                         </label>
 
-
                         <input
                             type="date"
                             id="anakCheckDate"
@@ -445,10 +435,13 @@
 
 
                     <!-- =====================================
-                         USIA OTOMATIS
+                         USIA
                     ====================================== -->
 
-                    <div class="anak-age-box">
+                    <div
+                        class="anak-age-box"
+                        id="anakAgeBox"
+                    >
 
                         <div
                             class="anak-age-icon"
@@ -457,15 +450,50 @@
                             🎂
                         </div>
 
-
                         <div>
 
                             <span>
                                 Usia saat pemeriksaan
                             </span>
 
-
                             <strong id="anakAgeText">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         USIA DALAM BULAN
+                    ====================================== -->
+
+                    <div
+                        class="anak-age-detail"
+                        id="anakAgeDetail"
+                    >
+
+                        <div>
+
+                            <span>
+                                Usia kronologis
+                            </span>
+
+                            <strong id="anakAgeMonths">
+                                —
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Kelompok usia
+                            </span>
+
+                            <strong id="anakAgeGroup">
                                 —
                             </strong>
 
@@ -485,7 +513,6 @@
                             Berat badan
                         </label>
 
-
                         <div class="anak-input-unit">
 
                             <input
@@ -495,7 +522,6 @@
                                 min="0.1"
                                 step="0.1"
                             >
-
 
                             <span>
                                 kg
@@ -517,7 +543,6 @@
                             Tinggi / panjang badan
                         </label>
 
-
                         <div class="anak-input-unit">
 
                             <input
@@ -527,7 +552,6 @@
                                 min="30"
                                 step="0.1"
                             >
-
 
                             <span>
                                 cm
@@ -540,7 +564,7 @@
 
 
                     <!-- =====================================
-                         CATATAN ANTROPOMETRI
+                         CATATAN PENGUKURAN
                     ====================================== -->
 
                     <div class="anak-measurement-note">
@@ -550,9 +574,11 @@
                         </span>
 
                         <p>
-                            Untuk anak yang belum dapat berdiri
-                            dengan baik, pengukuran panjang badan
-                            dilakukan dengan posisi berbaring.
+                            Anak yang belum dapat berdiri tegak
+                            diukur menggunakan panjang badan
+                            dalam posisi berbaring. Anak yang
+                            sudah dapat berdiri diukur menggunakan
+                            tinggi badan berdiri.
                         </p>
 
                     </div>
@@ -569,7 +595,9 @@
                         class="anak-button"
                     >
 
-                        Hitung Status Gizi
+                        <span>
+                            Hitung Status Gizi
+                        </span>
 
                         <span aria-hidden="true">
                             →
@@ -580,7 +608,20 @@
 
 
                     <!-- =====================================
-                         HASIL
+                         ERROR
+                    ====================================== -->
+
+                    <div
+                        id="anakError"
+                        class="anak-error"
+                        hidden
+                    >
+                    </div>
+
+
+
+                    <!-- =====================================
+                         HASIL UTAMA
                     ====================================== -->
 
                     <div
@@ -597,54 +638,18 @@
                                 📊
                             </span>
 
-
                             <div>
 
                                 <strong>
                                     Hasil status gizi
                                 </strong>
 
-
                                 <small>
-                                    Hasil perhitungan akan
-                                    muncul di sini.
+                                    Masukkan data anak kemudian
+                                    tekan tombol Hitung Status Gizi.
                                 </small>
 
                             </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =====================================
-                         KONSULTASI
-                    ====================================== -->
-
-                    <div class="anak-consultation">
-
-                        <div
-                            class="anak-consultation-icon"
-                            aria-hidden="true"
-                        >
-                            💚
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                Butuh informasi lebih lanjut?
-                            </strong>
-
-
-                            <p>
-                                Untuk informasi lebih lanjut
-                                dan konsultasi mengenai gizi
-                                anak, silakan berkunjung ke
-                                Klinik Putra Medika.
-                            </p>
 
                         </div>
 
@@ -659,7 +664,7 @@
 
 
         <!-- =================================================
-             HASIL GIZI
+             HASIL STATUS GIZI
         ================================================== -->
 
         <section
@@ -667,31 +672,628 @@
             class="anak-section anak-section-alt"
         >
 
-            <div class="anak-information-card">
+            <div class="anak-result-section">
 
-                <div class="anak-information-icon">
-                    📊
+
+                <div class="anak-section-heading">
+
+                    <div class="anak-number">
+                        02
+                    </div>
+
+                    <div class="anak-label">
+                        GROWTH ASSESSMENT
+                    </div>
+
+                    <h2>
+                        Hasil Penilaian Status Gizi
+                    </h2>
+
+                    <p>
+                        Hasil akan ditampilkan setelah data
+                        antropometri dihitung.
+                    </p>
+
                 </div>
 
 
-                <div>
 
-                    <div class="anak-label">
-                        INTERPRETASI
+                <!-- =========================================
+                     RINGKASAN HASIL
+                ========================================== -->
+
+                <div
+                    id="anakStatusSummary"
+                    class="anak-status-summary"
+                >
+
+                    <div class="anak-status-placeholder">
+
+                        <span>
+                            📊
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Belum ada hasil
+                            </strong>
+
+                            <small>
+                                Silakan lakukan perhitungan
+                                terlebih dahulu.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     INDIKATOR Z-SCORE
+                ========================================== -->
+
+                <div
+                    id="zscoreResults"
+                    class="zscore-results"
+                >
+
+                    <div class="anak-card-title">
+
+                        <span>
+                            📈
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Indikator Pertumbuhan
+                            </h3>
+
+                            <p>
+                                Interpretasi berdasarkan
+                                indikator antropometri.
+                            </p>
+
+                        </div>
+
                     </div>
 
 
+                    <div class="zscore-grid">
+
+
+                        <!-- BB/U -->
+
+                        <div class="zscore-card">
+
+                            <div class="zscore-icon">
+                                ⚖️
+                            </div>
+
+                            <div class="zscore-content">
+
+                                <span class="zscore-label">
+                                    Berat Badan menurut Umur
+                                </span>
+
+                                <strong
+                                    id="zscoreBFA"
+                                >
+                                    —
+                                </strong>
+
+                                <small
+                                    id="statusBFA"
+                                >
+                                    Belum dihitung
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- TB/U -->
+
+                        <div class="zscore-card">
+
+                            <div class="zscore-icon">
+                                📏
+                            </div>
+
+                            <div class="zscore-content">
+
+                                <span class="zscore-label">
+                                    Tinggi/Panjang Badan menurut Umur
+                                </span>
+
+                                <strong
+                                    id="zscoreHFA"
+                                >
+                                    —
+                                </strong>
+
+                                <small
+                                    id="statusHFA"
+                                >
+                                    Belum dihitung
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- BB/TB -->
+
+                        <div class="zscore-card">
+
+                            <div class="zscore-icon">
+                                📊
+                            </div>
+
+                            <div class="zscore-content">
+
+                                <span class="zscore-label">
+                                    Berat Badan menurut Panjang/Tinggi Badan
+                                </span>
+
+                                <strong
+                                    id="zscoreWFA"
+                                >
+                                    —
+                                </strong>
+
+                                <small
+                                    id="statusWFA"
+                                >
+                                    Belum dihitung
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- IMT/U -->
+
+                        <div class="zscore-card">
+
+                            <div class="zscore-icon">
+                                🧮
+                            </div>
+
+                            <div class="zscore-content">
+
+                                <span class="zscore-label">
+                                    IMT menurut Umur
+                                </span>
+
+                                <strong
+                                    id="zscoreBMI"
+                                >
+                                    —
+                                </strong>
+
+                                <small
+                                    id="statusBMI"
+                                >
+                                    Belum dihitung
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     IMT
+                ========================================== -->
+
+                <div
+                    id="imtResult"
+                    class="anak-imt-card"
+                >
+
+                    <div class="anak-imt-header">
+
+                        <div>
+
+                            <span>
+                                INDEKS MASSA TUBUH
+                            </span>
+
+                            <h3>
+                                IMT Anak
+                            </h3>
+
+                        </div>
+
+                        <div
+                            class="anak-imt-value"
+                            id="anakBMIValue"
+                        >
+                            —
+                        </div>
+
+                    </div>
+
+
+                    <div class="anak-imt-info">
+
+                        <div>
+
+                            <span>
+                                Berat badan
+                            </span>
+
+                            <strong id="resultWeight">
+                                —
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Tinggi badan
+                            </span>
+
+                            <strong id="resultHeight">
+                                —
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Usia
+                            </span>
+
+                            <strong id="resultAge">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     STATUS GIZI
+                ========================================== -->
+
+                <div
+                    id="nutritionStatusCard"
+                    class="nutrition-status-card"
+                >
+
+                    <div class="nutrition-status-header">
+
+                        <div
+                            class="nutrition-status-icon"
+                            id="nutritionStatusIcon"
+                        >
+                            📊
+                        </div>
+
+                        <div>
+
+                            <span>
+                                STATUS GIZI
+                            </span>
+
+                            <h3 id="nutritionStatus">
+                                Belum dihitung
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="nutrition-status-description">
+
+                        <p id="nutritionStatusDescription">
+                            Hasil interpretasi akan muncul
+                            setelah perhitungan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     DERAJAT STATUS GIZI
+                ========================================== -->
+
+                <div
+                    id="nutritionDegree"
+                    class="nutrition-degree-card"
+                >
+
+                    <div>
+
+                        <span>
+                            KATEGORI / DERAJAT
+                        </span>
+
+                        <h3 id="nutritionDegreeText">
+                            —
+                        </h3>
+
+                    </div>
+
+                    <div
+                        id="nutritionDegreeBadge"
+                        class="nutrition-degree-badge"
+                    >
+                        —
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     REKOMENDASI
+                ========================================== -->
+
+                <div
+                    id="nutritionRecommendation"
+                    class="anak-recommendation"
+                >
+
+                    <div
+                        class="anak-recommendation-icon"
+                        aria-hidden="true"
+                    >
+                        💡
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Interpretasi
+                        </h3>
+
+                        <p id="recommendationText">
+                            Hasil interpretasi akan muncul
+                            setelah kalkulator digunakan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAKRO & KEBUTUHAN ENERGI
+        ================================================== -->
+
+        <section
+            id="makros"
+            class="anak-section"
+        >
+
+            <div class="anak-macro-section">
+
+
+                <div class="anak-section-heading">
+
+                    <div class="anak-number">
+                        03
+                    </div>
+
+                    <div class="anak-label">
+                        NUTRITION REQUIREMENTS
+                    </div>
+
                     <h2>
-                        Penilaian Status Gizi
+                        Perkiraan Kebutuhan Gizi
                     </h2>
 
+                    <p>
+                        Perkiraan kebutuhan energi dan
+                        makronutrien berdasarkan data anak.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     TOTAL KALORI
+                ========================================== -->
+
+                <div class="macro-energy-card">
+
+                    <div class="macro-energy-icon">
+                        🔥
+                    </div>
+
+                    <div>
+
+                        <span>
+                            PERKIRAAN KEBUTUHAN ENERGI
+                        </span>
+
+                        <strong id="childCalories">
+                            —
+                        </strong>
+
+                        <small>
+                            kkal / hari
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     MACRO GRID
+                ========================================== -->
+
+                <div class="macro-grid">
+
+
+                    <!-- PROTEIN -->
+
+                    <div class="macro-card">
+
+                        <div class="macro-card-top">
+
+                            <div class="macro-icon">
+                                🥩
+                            </div>
+
+                            <span>
+                                PROTEIN
+                            </span>
+
+                        </div>
+
+                        <strong id="childProtein">
+                            —
+                        </strong>
+
+                        <small>
+                            gram / hari
+                        </small>
+
+
+                        <div class="macro-progress">
+
+                            <div
+                                id="proteinProgress"
+                                class="macro-progress-bar"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- KARBOHIDRAT -->
+
+                    <div class="macro-card">
+
+                        <div class="macro-card-top">
+
+                            <div class="macro-icon">
+                                🍚
+                            </div>
+
+                            <span>
+                                KARBOHIDRAT
+                            </span>
+
+                        </div>
+
+                        <strong id="childCarbs">
+                            —
+                        </strong>
+
+                        <small>
+                            gram / hari
+                        </small>
+
+
+                        <div class="macro-progress">
+
+                            <div
+                                id="carbsProgress"
+                                class="macro-progress-bar"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- LEMAK -->
+
+                    <div class="macro-card">
+
+                        <div class="macro-card-top">
+
+                            <div class="macro-icon">
+                                🥑
+                            </div>
+
+                            <span>
+                                LEMAK
+                            </span>
+
+                        </div>
+
+                        <strong id="childFat">
+                            —
+                        </strong>
+
+                        <small>
+                            gram / hari
+                        </small>
+
+
+                        <div class="macro-progress">
+
+                            <div
+                                id="fatProgress"
+                                class="macro-progress-bar"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     CATATAN MAKRO
+                ========================================== -->
+
+                <div class="macro-note">
+
+                    <span aria-hidden="true">
+                        ℹ️
+                    </span>
 
                     <p>
-                        Penilaian status gizi anak tidak cukup
-                        hanya dengan melihat angka berat badan
-                        atau IMT. Hasil harus dibandingkan dengan
-                        umur dan jenis kelamin anak menggunakan
-                        standar pertumbuhan yang sesuai.
+                        Kebutuhan energi dan makronutrien
+                        merupakan perkiraan untuk membantu
+                        edukasi. Kebutuhan aktual dapat berbeda
+                        sesuai usia, aktivitas, kondisi kesehatan,
+                        pertumbuhan dan kondisi klinis anak.
                     </p>
 
                 </div>
@@ -703,37 +1305,35 @@
 
 
         <!-- =================================================
-             INFORMASI GIZI
+             INFORMASI
         ================================================== -->
 
         <section
             id="informasi-gizi"
-            class="anak-section"
+            class="anak-section anak-section-alt"
         >
 
             <div class="anak-info-section">
 
-                <div class="anak-number">
-                    02
-                </div>
 
+                <div class="anak-number">
+                    04
+                </div>
 
                 <div class="anak-label">
-                    INFORMASI
+                    EDUCATION
                 </div>
-
 
                 <h2>
                     Memahami Status Gizi Anak
                 </h2>
 
-
                 <p>
-                    Pertumbuhan anak dinilai menggunakan
-                    beberapa indikator antropometri. Interpretasi
-                    harus disesuaikan dengan kelompok umur,
-                    jenis kelamin dan standar pertumbuhan yang
-                    digunakan.
+                    Status gizi anak perlu dinilai berdasarkan
+                    umur dan jenis kelamin menggunakan indikator
+                    antropometri yang sesuai. Satu angka berat
+                    badan atau IMT saja tidak cukup untuk
+                    menentukan kondisi gizi anak.
                 </p>
 
 
@@ -754,15 +1354,14 @@
                             ⚖️
                         </div>
 
-
                         <h3>
-                            Berat Badan
+                            BB menurut Umur
                         </h3>
 
-
                         <p>
-                            Menggambarkan ukuran massa tubuh
-                            anak dan dapat dinilai menurut umur.
+                            Membandingkan berat badan anak
+                            dengan anak seusianya menurut
+                            jenis kelamin.
                         </p>
 
                     </div>
@@ -778,15 +1377,14 @@
                             📏
                         </div>
 
-
                         <h3>
-                            Tinggi / Panjang Badan
+                            TB/PB menurut Umur
                         </h3>
 
-
                         <p>
-                            Digunakan untuk menilai pertumbuhan
-                            linear anak menurut umur.
+                            Membantu menilai pertumbuhan
+                            linear dan mendeteksi gangguan
+                            pertumbuhan.
                         </p>
 
                     </div>
@@ -802,16 +1400,14 @@
                             📊
                         </div>
 
-
                         <h3>
-                            IMT Menurut Umur
+                            BB menurut TB/PB
                         </h3>
 
-
                         <p>
-                            IMT anak harus dibandingkan dengan
-                            umur dan jenis kelamin menggunakan
-                            standar pertumbuhan.
+                            Membantu menilai proporsi berat
+                            badan terhadap panjang atau
+                            tinggi badan.
                         </p>
 
                     </div>
@@ -824,19 +1420,17 @@
                             class="anak-indicator-icon"
                             aria-hidden="true"
                         >
-                            👶
+                            🧮
                         </div>
 
-
                         <h3>
-                            Pertumbuhan Anak
+                            IMT menurut Umur
                         </h3>
 
-
                         <p>
-                            Penilaian pertumbuhan dilakukan secara
-                            menyeluruh dan tidak berdasarkan satu
-                            angka saja.
+                            IMT anak harus diinterpretasikan
+                            berdasarkan umur dan jenis kelamin,
+                            bukan menggunakan batas IMT dewasa.
                         </p>
 
                     </div>
@@ -862,21 +1456,20 @@
                 ⚠️
             </div>
 
-
             <div>
 
                 <h3>
                     Catatan penting
                 </h3>
 
-
                 <p>
                     Kalkulator ini merupakan alat bantu edukasi
-                    dan skrining awal. Hasil pengukuran bukan
-                    diagnosis medis. Penilaian status gizi anak
-                    secara klinis perlu mempertimbangkan standar
-                    pertumbuhan, kondisi klinis dan faktor lain
-                    yang relevan.
+                    dan skrining awal, bukan pengganti pemeriksaan
+                    oleh tenaga kesehatan. Interpretasi status gizi
+                    harus mempertimbangkan standar pertumbuhan,
+                    hasil pengukuran yang benar, kondisi klinis,
+                    riwayat pertumbuhan dan faktor lain yang
+                    relevan.
                 </p>
 
             </div>
@@ -902,7 +1495,6 @@
                     Klinik Putra Medika
                 </h3>
 
-
                 <p>
                     Informasi dan edukasi kesehatan
                     untuk masyarakat.
@@ -918,13 +1510,11 @@
                     Alamat
                 </h4>
 
-
                 <p>
                     Kp. Gandasoli, Cikidangbayabang,
                     Kec. Mande, Kabupaten Cianjur,
                     Jawa Barat 43292
                 </p>
-
 
                 <a
                     href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
@@ -953,11 +1543,23 @@
 
 
     <!-- =====================================================
-         JAVASCRIPT
+         DATA WHO ANTHRO
+         HARUS SEBELUM JS UTAMA
     ====================================================== -->
 
     <script
-        src="gizi-anak.js?v=3"
+        src="who-anthro-data.js?v=1"
+    ></script>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT GIZI ANAK
+         SATU KALI SAJA
+    ====================================================== -->
+
+    <script
+        src="gizi-anak.js?v=5"
     ></script>
 
 
