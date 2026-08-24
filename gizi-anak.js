@@ -1,70 +1,104 @@
 /* =========================================================
    GIZI-ANAK.JS
-   Klinik Putra Medika
+   KLINIK PUTRA MEDIKA
 
-   Engine tampilan dan perhitungan antropometri.
-   Tidak menggunakan API / internet / WHO external loader.
-========================================================= */
+   Fungsi:
+   - Hitung umur kronologis
+   - Hitung IMT
+   - Status antropometri
+   - Z-score engine
+   - Klasifikasi berdasarkan Permenkes No. 2 Tahun 2020
+   - Perhitungan kebutuhan energi
+   - Makronutrien
+   - Tidak membutuhkan who-anthro-data.js
+
+   ========================================================= */
 
 "use strict";
 
-
+console.log("======================================");
 console.log("GIZI-ANAK.JS BERHASIL DIMUAT");
+console.log("Klinik Putra Medika");
+console.log("======================================");
 
 
 /* =========================================================
-   ELEMENT
+   KONFIGURASI
 ========================================================= */
 
-const genderEl =
-    document.getElementById("anakGender");
+const GIZI_ANAK_CONFIG = {
 
-const birthEl =
-    document.getElementById("anakBirthDate");
+    version: "1.0.0",
 
-const checkEl =
-    document.getElementById("anakCheckDate");
+    reference:
+        "Permenkes No. 2 Tahun 2020 / WHO Growth Reference",
 
-const weightEl =
-    document.getElementById("anakWeight");
+    maxAgeYears: 19,
 
-const heightEl =
-    document.getElementById("anakHeight");
+    macroRatio: {
+        carbohydrate: 0.50,
+        protein: 0.15,
+        fat: 0.35
+    }
 
-const measurementEl =
-    document.getElementById("anakMeasurement");
-
-const ageTextEl =
-    document.getElementById("anakAgeText");
-
-const calculateBtn =
-    document.getElementById(
-        "anakCalculateButton"
-    );
-
-const summaryEl =
-    document.getElementById(
-        "anakSummary"
-    );
-
-const indicatorsEl =
-    document.getElementById(
-        "anakIndicators"
-    );
-
-const bmiEl =
-    document.getElementById(
-        "anakBMI"
-    );
-
-const conclusionEl =
-    document.getElementById(
-        "anakConclusion"
-    );
+};
 
 
 /* =========================================================
-   DATE
+   UTILITAS
+========================================================= */
+
+function getElement(id) {
+
+    return document.getElementById(id);
+
+}
+
+
+function numberValue(id) {
+
+    const el = getElement(id);
+
+    if (!el) {
+        return null;
+    }
+
+    const value = parseFloat(el.value);
+
+    return Number.isFinite(value)
+        ? value
+        : null;
+
+}
+
+
+function round(value, digits = 2) {
+
+    if (!Number.isFinite(value)) {
+        return null;
+    }
+
+    const factor = Math.pow(10, digits);
+
+    return Math.round(value * factor) / factor;
+
+}
+
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   TANGGAL
 ========================================================= */
 
 function parseDate(value) {
@@ -73,42 +107,73 @@ function parseDate(value) {
         return null;
     }
 
-    const parts =
-        value.split("-");
+    const parts = value.split("-");
 
     if (parts.length !== 3) {
         return null;
     }
 
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10);
+    const day = parseInt(parts[2], 10);
+
+    if (
+        !year ||
+        !month ||
+        !day
+    ) {
+        return null;
+    }
+
     return new Date(
-        Number(parts[0]),
-        Number(parts[1]) - 1,
-        Number(parts[2])
+        year,
+        month - 1,
+        day
     );
 
 }
 
 
 /* =========================================================
-   AGE
+   HITUNG UMUR
 ========================================================= */
 
 function calculateAge(
-    birth,
-    check
+    birthDate,
+    checkDate
 ) {
 
+    if (
+        !birthDate ||
+        !checkDate
+    ) {
+
+        return null;
+
+    }
+
+    if (
+        checkDate < birthDate
+    ) {
+
+        return null;
+
+    }
+
     let years =
-        check.getFullYear() -
-        birth.getFullYear();
+        checkDate.getFullYear()
+        -
+        birthDate.getFullYear();
 
     let months =
-        check.getMonth() -
-        birth.getMonth();
+        checkDate.getMonth()
+        -
+        birthDate.getMonth();
 
     let days =
-        check.getDate() -
-        birth.getDate();
+        checkDate.getDate()
+        -
+        birthDate.getDate();
 
 
     if (days < 0) {
@@ -117,8 +182,8 @@ function calculateAge(
 
         const previousMonth =
             new Date(
-                check.getFullYear(),
-                check.getMonth(),
+                checkDate.getFullYear(),
+                checkDate.getMonth(),
                 0
             );
 
@@ -137,23 +202,42 @@ function calculateAge(
     }
 
 
-    if (years < 0) {
-        return null;
-    }
+    const totalDays =
+        Math.floor(
+            (
+                checkDate.getTime()
+                -
+                birthDate.getTime()
+            )
+            /
+            86400000
+        );
+
+
+    const totalMonths =
+        years * 12 + months;
+
+
+    const totalYears =
+        totalDays / 365.2425;
 
 
     return {
 
         years,
-
         months,
-
         days,
 
-        totalMonths:
-            years * 12 +
-            months +
-            days / 30.4375
+        totalDays,
+
+        totalMonths,
+
+        totalYears,
+
+        ageText:
+            `${years} tahun ` +
+            `${months} bulan ` +
+            `${days} hari`
 
     };
 
@@ -161,36 +245,34 @@ function calculateAge(
 
 
 /* =========================================================
-   DISPLAY AGE
+   TAMPILKAN UMUR
 ========================================================= */
 
-function updateAge() {
+function updateAgeDisplay() {
 
     const birth =
         parseDate(
-            birthEl.value
+            getElement("anakBirthDate")?.value
         );
 
     const check =
         parseDate(
-            checkEl.value
+            getElement("anakCheckDate")?.value
         );
 
 
-    if (!birth || !check) {
-
-        ageTextEl.textContent =
-            "—";
-
-        return null;
-
-    }
+    const ageText =
+        getElement("anakAgeText");
 
 
-    if (check < birth) {
+    if (
+        !birth ||
+        !check
+    ) {
 
-        ageTextEl.textContent =
-            "Tanggal tidak valid";
+        if (ageText) {
+            ageText.textContent = "—";
+        }
 
         return null;
 
@@ -204,10 +286,30 @@ function updateAge() {
         );
 
 
-    ageTextEl.textContent =
-        `${age.years} tahun ` +
-        `${age.months} bulan ` +
-        `${age.days} hari`;
+    if (!age) {
+
+        if (ageText) {
+            ageText.textContent =
+                "Tanggal tidak valid";
+        }
+
+        return null;
+
+    }
+
+
+    if (ageText) {
+
+        ageText.textContent =
+            age.ageText;
+
+    }
+
+
+    console.log(
+        "USIA:",
+        age.ageText
+    );
 
 
     return age;
@@ -216,22 +318,7 @@ function updateAge() {
 
 
 /* =========================================================
-   EVENTS AGE
-========================================================= */
-
-birthEl.addEventListener(
-    "change",
-    updateAge
-);
-
-checkEl.addEventListener(
-    "change",
-    updateAge
-);
-
-
-/* =========================================================
-   BMI
+   IMT
 ========================================================= */
 
 function calculateBMI(
@@ -239,155 +326,480 @@ function calculateBMI(
     height
 ) {
 
-    const meter =
-        height / 100;
-
     if (
-        !weight ||
-        !height ||
-        meter <= 0
+        !Number.isFinite(weight) ||
+        !Number.isFinite(height) ||
+        weight <= 0 ||
+        height <= 0
     ) {
 
         return null;
 
     }
 
+
+    const heightMeter =
+        height / 100;
+
+
+    return weight /
+        (
+            heightMeter *
+            heightMeter
+        );
+
+}
+
+
+/* =========================================================
+   INTERPRETASI IMT DEWASA
+   Tidak digunakan sebagai status utama anak.
+   Hanya informasi tambahan.
+========================================================= */
+
+function adultBMIInterpretation(bmi) {
+
+    if (!Number.isFinite(bmi)) {
+        return "—";
+    }
+
+    if (bmi < 18.5) {
+        return "Berat badan kurang";
+    }
+
+    if (bmi < 25) {
+        return "Normal";
+    }
+
+    if (bmi < 30) {
+        return "Berat badan lebih";
+    }
+
+    return "Obesitas";
+
+}
+
+
+/* =========================================================
+   KATEGORI Z-SCORE
+========================================================= */
+
+function classifyHeightForAge(z) {
+
+    if (!Number.isFinite(z)) {
+        return "Tidak tersedia";
+    }
+
+    if (z < -3) {
+        return "Sangat pendek";
+    }
+
+    if (z < -2) {
+        return "Pendek";
+    }
+
+    if (z <= 3) {
+        return "Normal";
+    }
+
+    return "Tinggi";
+
+}
+
+
+function classifyWeightForAge(z) {
+
+    if (!Number.isFinite(z)) {
+        return "Tidak tersedia";
+    }
+
+    if (z < -3) {
+        return "Berat badan sangat kurang";
+    }
+
+    if (z < -2) {
+        return "Berat badan kurang";
+    }
+
+    if (z <= 2) {
+        return "Berat badan normal";
+    }
+
+    return "Berat badan tinggi";
+
+}
+
+
+function classifyWeightForHeight(z) {
+
+    if (!Number.isFinite(z)) {
+        return "Tidak tersedia";
+    }
+
+    if (z < -3) {
+        return "Gizi buruk";
+    }
+
+    if (z < -2) {
+        return "Gizi kurang";
+    }
+
+    if (z <= 1) {
+        return "Gizi baik";
+    }
+
+    if (z <= 2) {
+        return "Berisiko gizi lebih";
+    }
+
+    if (z <= 3) {
+        return "Gizi lebih";
+    }
+
+    return "Obesitas";
+
+}
+
+
+function classifyBMIForAge(
+    z,
+    ageYears
+) {
+
+    if (!Number.isFinite(z)) {
+        return "Tidak tersedia";
+    }
+
+
+    /*
+     * 0–5 tahun
+     *
+     * WHO:
+     * > +1 SD  : berisiko overweight
+     * > +2 SD  : overweight
+     * > +3 SD  : obesitas
+     */
+
+    if (ageYears < 5) {
+
+        if (z < -3) {
+            return "Sangat kurus";
+        }
+
+        if (z < -2) {
+            return "Kurus";
+        }
+
+        if (z <= 1) {
+            return "Normal";
+        }
+
+        if (z <= 2) {
+            return "Berisiko gizi lebih";
+        }
+
+        if (z <= 3) {
+            return "Gizi lebih";
+        }
+
+        return "Obesitas";
+
+    }
+
+
+    /*
+     * 5–19 tahun
+     */
+
+    if (z < -3) {
+        return "Gizi buruk";
+    }
+
+    if (z < -2) {
+        return "Gizi kurang";
+    }
+
+    if (z < 1) {
+        return "Gizi baik";
+    }
+
+    if (z <= 2) {
+        return "Gizi lebih";
+    }
+
+    return "Obesitas";
+
+}
+
+
+/* =========================================================
+   ENGINE LMS
+========================================================= */
+
+/*
+ * Formula LMS WHO:
+ *
+ * Jika L != 0:
+ *
+ * Z =
+ * (((X/M)^L) - 1)
+ * /
+ * (L*S)
+ *
+ *
+ * Jika L = 0:
+ *
+ * Z =
+ * ln(X/M) / S
+ *
+ *
+ * DATA LMS RESMI HARUS DIMASUKKAN
+ * KE OBJECT ANTHRO_LMS.
+ *
+ */
+
+
+const ANTHRO_LMS = {
+
+    male: {
+
+        weightForAge: {},
+
+        heightForAge: {},
+
+        weightForHeight: {},
+
+        bmiForAge: {}
+
+    },
+
+
+    female: {
+
+        weightForAge: {},
+
+        heightForAge: {},
+
+        weightForHeight: {},
+
+        bmiForAge: {}
+
+    }
+
+};
+
+
+/* =========================================================
+   LMS CALCULATOR
+========================================================= */
+
+function calculateLMSZScore(
+    measurement,
+    L,
+    M,
+    S
+) {
+
+    if (
+        !Number.isFinite(measurement) ||
+        !Number.isFinite(L) ||
+        !Number.isFinite(M) ||
+        !Number.isFinite(S) ||
+        M <= 0 ||
+        S <= 0
+    ) {
+
+        return null;
+
+    }
+
+
+    if (L === 0) {
+
+        return Math.log(
+            measurement / M
+        ) / S;
+
+    }
+
+
     return (
-        weight /
-        (meter * meter)
+        Math.pow(
+            measurement / M,
+            L
+        ) - 1
+    )
+    /
+    (
+        L * S
     );
 
 }
 
 
 /* =========================================================
-   HEIGHT METHOD
+   CARI DATA LMS
 ========================================================= */
 
-function determineMeasurement(
-    age,
-    selected
+function getLMS(
+    sex,
+    indicator,
+    key
 ) {
 
-    if (
-        selected === "lying"
-    ) {
+    const gender =
+        sex === "female"
+            ? "female"
+            : "male";
 
-        return "PB";
 
+    const table =
+        ANTHRO_LMS[
+            gender
+        ]?.[
+            indicator
+        ];
+
+
+    if (!table) {
+        return null;
     }
 
-    if (
-        selected === "standing"
-    ) {
 
-        return "TB";
-
-    }
-
-
-    /*
-     * Kemenkes:
-     * 0–24 bulan -> PB
-     * >24 bulan -> TB
-     */
-
-    if (
-        age.totalMonths <= 24
-    ) {
-
-        return "PB";
-
-    }
-
-    return "TB";
+    return table[key] || null;
 
 }
 
 
 /* =========================================================
-   CORRECTION
+   INTERPOLASI LMS
 ========================================================= */
 
-function correctedHeight(
-    height,
-    age,
-    selected
+function interpolateLMS(
+    table,
+    age
 ) {
 
-    const method =
-        determineMeasurement(
-            age,
-            selected
+    if (
+        !table ||
+        typeof table !== "object"
+    ) {
+
+        return null;
+
+    }
+
+
+    const keys =
+        Object.keys(table)
+            .map(Number)
+            .filter(Number.isFinite)
+            .sort(
+                (a, b) => a - b
+            );
+
+
+    if (!keys.length) {
+        return null;
+    }
+
+
+    if (
+        age <= keys[0]
+    ) {
+
+        return table[
+            keys[0]
+        ];
+
+    }
+
+
+    if (
+        age >= keys[keys.length - 1]
+    ) {
+
+        return table[
+            keys[keys.length - 1]
+        ];
+
+    }
+
+
+    let lower =
+        keys[0];
+
+    let upper =
+        keys[keys.length - 1];
+
+
+    for (
+        let i = 0;
+        i < keys.length - 1;
+        i++
+    ) {
+
+        if (
+            age >= keys[i] &&
+            age <= keys[i + 1]
+        ) {
+
+            lower = keys[i];
+            upper = keys[i + 1];
+
+            break;
+
+        }
+
+    }
+
+
+    const a =
+        table[lower];
+
+    const b =
+        table[upper];
+
+
+    if (
+        !a ||
+        !b
+    ) {
+
+        return null;
+
+    }
+
+
+    const ratio =
+        (
+            age - lower
+        )
+        /
+        (
+            upper - lower
         );
-
-
-    if (
-        selected === "auto"
-    ) {
-
-        return {
-
-            value: height,
-
-            method
-
-        };
-
-    }
-
-
-    /*
-     * 0–24 bulan seharusnya PB.
-     * Jika diukur berdiri:
-     * tambahkan 0,7 cm.
-     */
-
-    if (
-        age.totalMonths <= 24 &&
-        selected === "standing"
-    ) {
-
-        return {
-
-            value:
-                height + 0.7,
-
-            method: "PB"
-
-        };
-
-    }
-
-
-    /*
-     * >24 bulan seharusnya TB.
-     * Jika diukur terlentang:
-     * kurangi 0,7 cm.
-     */
-
-    if (
-        age.totalMonths > 24 &&
-        selected === "lying"
-    ) {
-
-        return {
-
-            value:
-                height - 0.7,
-
-            method: "TB"
-
-        };
-
-    }
 
 
     return {
 
-        value: height,
+        L:
+            a.L +
+            (
+                b.L - a.L
+            ) * ratio,
 
-        method
+        M:
+            a.M +
+            (
+                b.M - a.M
+            ) * ratio,
+
+        S:
+            a.S +
+            (
+                b.S - a.S
+            ) * ratio
 
     };
 
@@ -395,79 +807,91 @@ function correctedHeight(
 
 
 /* =========================================================
-   Z SCORE
+   Z-SCORE DARI LMS
 ========================================================= */
 
-function calculateZ(
-    value,
-    lms
+function zScoreFromTable(
+    sex,
+    indicator,
+    age,
+    measurement
 ) {
+
+    const gender =
+        sex === "female"
+            ? "female"
+            : "male";
+
+
+    const table =
+        ANTHRO_LMS[
+            gender
+        ]?.[
+            indicator
+        ];
+
+
+    if (
+        !table ||
+        Object.keys(table).length === 0
+    ) {
+
+        return null;
+
+    }
+
+
+    const lms =
+        interpolateLMS(
+            table,
+            age
+        );
+
 
     if (!lms) {
         return null;
     }
 
-    const L =
-        Number(lms.L);
 
-    const M =
-        Number(lms.M);
-
-    const S =
-        Number(lms.S);
-
-
-    if (
-        !Number.isFinite(L) ||
-        !Number.isFinite(M) ||
-        !Number.isFinite(S) ||
-        M <= 0 ||
-        S <= 0 ||
-        value <= 0
-    ) {
-
-        return null;
-
-    }
-
-
-    if (
-        Math.abs(L) < 0.000001
-    ) {
-
-        return (
-            Math.log(value / M) /
-            S
-        );
-
-    }
-
-
-    return (
-        (
-            Math.pow(
-                value / M,
-                L
-            ) - 1
-        ) /
-        (L * S)
+    return calculateLMSZScore(
+        measurement,
+        lms.L,
+        lms.M,
+        lms.S
     );
 
 }
 
 
 /* =========================================================
-   FIND LMS
+   KEBUTUHAN ENERGI
 ========================================================= */
 
-function findLMS(
+/*
+ * Ini adalah estimasi edukatif,
+ * bukan diagnosis kebutuhan energi klinis.
+ *
+ * Karena kebutuhan energi anak dipengaruhi:
+ * - usia
+ * - jenis kelamin
+ * - berat badan
+ * - tinggi badan
+ * - aktivitas
+ * - kondisi klinis
+ *
+ */
+
+function calculateEnergy(
     sex,
-    indicator,
-    ageMonths
+    ageYears,
+    weight,
+    height
 ) {
 
     if (
-        !window.KEMENKES_ANTHRO_DATA
+        !Number.isFinite(ageYears) ||
+        !Number.isFinite(weight) ||
+        !Number.isFinite(height)
     ) {
 
         return null;
@@ -475,744 +899,810 @@ function findLMS(
     }
 
 
-    const sexData =
-        window.KEMENKES_ANTHRO_DATA[
-            sex
-        ];
+    /*
+     * Estimasi BMR Schofield
+     */
+
+    let bmr;
 
 
-    if (!sexData) {
-        return null;
-    }
+    if (ageYears < 3) {
 
-
-    const table =
-        sexData[indicator];
-
-
-    if (
-        !Array.isArray(table) ||
-        !table.length
-    ) {
-
-        return null;
+        bmr =
+            59.512 *
+            weight
+            -
+            30.4;
 
     }
 
+    else if (ageYears < 10) {
 
-    let nearest =
-        table[0];
+        bmr =
+            22.706 *
+            weight
+            +
+            504.3;
 
-    let difference =
-        Math.abs(
-            Number(nearest.age) -
-            ageMonths
-        );
+    }
 
+    else {
 
-    for (
-        let i = 1;
-        i < table.length;
-        i++
-    ) {
+        if (sex === "female") {
 
-        const current =
-            table[i];
+            bmr =
+                12.2 *
+                weight
+                +
+                746;
 
-        const currentDifference =
-            Math.abs(
-                Number(current.age) -
-                ageMonths
-            );
+        } else {
 
-
-        if (
-            currentDifference <
-            difference
-        ) {
-
-            nearest =
-                current;
-
-            difference =
-                currentDifference;
+            bmr =
+                17.5 *
+                weight
+                +
+                651;
 
         }
 
     }
 
 
-    return nearest;
+    /*
+     * Faktor aktivitas ringan.
+     *
+     * Hanya estimasi.
+     */
+
+    let activityFactor =
+        1.4;
+
+
+    if (ageYears >= 10) {
+
+        activityFactor =
+            1.5;
+
+    }
+
+
+    const energy =
+        bmr *
+        activityFactor;
+
+
+    return {
+
+        bmr:
+            Math.round(bmr),
+
+        estimatedEnergy:
+            Math.round(energy)
+
+    };
 
 }
 
 
 /* =========================================================
-   CLASSIFICATION
+   MAKRO
 ========================================================= */
 
-function classify(
-    indicator,
-    z
+function calculateMacros(
+    calories
 ) {
 
     if (
-        z === null ||
-        !Number.isFinite(z)
+        !Number.isFinite(calories) ||
+        calories <= 0
     ) {
 
-        return {
-
-            label:
-                "Data referensi belum tersedia",
-
-            type:
-                "info"
-
-        };
+        return null;
 
     }
+
+
+    const carbCalories =
+        calories *
+        GIZI_ANAK_CONFIG
+            .macroRatio
+            .carbohydrate;
+
+
+    const proteinCalories =
+        calories *
+        GIZI_ANAK_CONFIG
+            .macroRatio
+            .protein;
+
+
+    const fatCalories =
+        calories *
+        GIZI_ANAK_CONFIG
+            .macroRatio
+            .fat;
+
+
+    return {
+
+        calories:
+            Math.round(calories),
+
+        carbohydrate:
+            round(
+                carbCalories / 4,
+                1
+            ),
+
+        protein:
+            round(
+                proteinCalories / 4,
+                1
+            ),
+
+        fat:
+            round(
+                fatCalories / 9,
+                1
+            )
+
+    };
+
+}
+
+
+/* =========================================================
+   HTML HASIL
+========================================================= */
+
+function resultCard(
+    title,
+    value,
+    status,
+    description
+) {
+
+    return `
+
+        <div class="anak-result-card">
+
+            <div class="anak-result-card-title">
+                ${escapeHTML(title)}
+            </div>
+
+            <div class="anak-result-zscore">
+                ${escapeHTML(value)}
+            </div>
+
+            <div class="anak-result-status">
+                ${escapeHTML(status)}
+            </div>
+
+            ${
+                description
+                ?
+                `
+                <div class="anak-result-description">
+                    ${escapeHTML(description)}
+                </div>
+                `
+                :
+                ""
+            }
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   KARTU MAKRO
+========================================================= */
+
+function macroCard(
+    macro
+) {
+
+    if (!macro) {
+        return "";
+    }
+
+
+    return `
+
+        <div class="anak-macro-section">
+
+            <div class="anak-result-heading">
+
+                <span>
+                    🍽️
+                </span>
+
+                <div>
+
+                    <strong>
+                        Estimasi Kebutuhan Energi & Makronutrien
+                    </strong>
+
+                    <small>
+                        Nilai edukatif, bukan resep diet individual
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="anak-macro-grid">
+
+                <div class="anak-macro-card">
+
+                    <span>
+                        Energi
+                    </span>
+
+                    <strong>
+                        ${macro.calories}
+                    </strong>
+
+                    <small>
+                        kkal/hari
+                    </small>
+
+                </div>
+
+
+                <div class="anak-macro-card">
+
+                    <span>
+                        Karbohidrat
+                    </span>
+
+                    <strong>
+                        ${macro.carbohydrate}
+                    </strong>
+
+                    <small>
+                        gram/hari
+                    </small>
+
+                </div>
+
+
+                <div class="anak-macro-card">
+
+                    <span>
+                        Protein
+                    </span>
+
+                    <strong>
+                        ${macro.protein}
+                    </strong>
+
+                    <small>
+                        gram/hari
+                    </small>
+
+                </div>
+
+
+                <div class="anak-macro-card">
+
+                    <span>
+                        Lemak
+                    </span>
+
+                    <strong>
+                        ${macro.fat}
+                    </strong>
+
+                    <small>
+                        gram/hari
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   FUNGSI UTAMA
+========================================================= */
+
+function calculateChildNutrition() {
+
+    console.log(
+        "TOMBOL HITUNG STATUS GIZI DIKLIK"
+    );
+
+
+    const gender =
+        getElement("anakGender")?.value
+        || "male";
+
+
+    const birth =
+        parseDate(
+            getElement("anakBirthDate")?.value
+        );
+
+
+    const check =
+        parseDate(
+            getElement("anakCheckDate")?.value
+        );
+
+
+    const weight =
+        numberValue(
+            "anakWeight"
+        );
+
+
+    const height =
+        numberValue(
+            "anakHeight"
+        );
+
+
+    const result =
+        getElement(
+            "anakResult"
+        );
+
+
+    if (!result) {
+
+        console.error(
+            "anakResult tidak ditemukan"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !birth ||
+        !check
+    ) {
+
+        result.innerHTML = `
+
+            <div class="anak-error">
+
+                ⚠️
+                Silakan masukkan tanggal lahir
+                dan tanggal pemeriksaan.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    if (!weight || weight <= 0) {
+
+        result.innerHTML = `
+
+            <div class="anak-error">
+
+                ⚠️
+                Berat badan belum diisi dengan benar.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    if (!height || height <= 0) {
+
+        result.innerHTML = `
+
+            <div class="anak-error">
+
+                ⚠️
+                Tinggi/panjang badan belum diisi
+                dengan benar.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const age =
+        calculateAge(
+            birth,
+            check
+        );
+
+
+    if (!age) {
+
+        result.innerHTML = `
+
+            <div class="anak-error">
+
+                ⚠️
+                Tanggal pemeriksaan harus sama
+                atau setelah tanggal lahir.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const bmi =
+        calculateBMI(
+            weight,
+            height
+        );
+
+
+    const ageYears =
+        age.totalYears;
+
+
+    /*
+     * =====================================================
+     * Z-SCORE
+     * =====================================================
+     */
+
+    const zWeightAge =
+        zScoreFromTable(
+            gender,
+            "weightForAge",
+            age.totalMonths,
+            weight
+        );
+
+
+    const zHeightAge =
+        zScoreFromTable(
+            gender,
+            "heightForAge",
+            age.totalMonths,
+            height
+        );
+
+
+    const zBMI =
+        zScoreFromTable(
+            gender,
+            "bmiForAge",
+            age.totalMonths,
+            bmi
+        );
+
+
+    /*
+     * BB/TB
+     *
+     * Untuk mesin final, tabel BB/TB perlu menggunakan
+     * panjang/tinggi sesuai umur dan metode pengukuran.
+     */
+
+    const zWeightHeight =
+        null;
+
+
+    /*
+     * =====================================================
+     * STATUS
+     * =====================================================
+     */
+
+    const statusWeightAge =
+        classifyWeightForAge(
+            zWeightAge
+        );
+
+
+    const statusHeightAge =
+        classifyHeightForAge(
+            zHeightAge
+        );
+
+
+    const statusWeightHeight =
+        classifyWeightForHeight(
+            zWeightHeight
+        );
+
+
+    const statusBMI =
+        classifyBMIForAge(
+            zBMI,
+            ageYears
+        );
+
+
+    /*
+     * =====================================================
+     * ENERGI + MAKRO
+     * =====================================================
+     */
+
+    const energy =
+        calculateEnergy(
+            gender,
+            ageYears,
+            weight,
+            height
+        );
+
+
+    const macros =
+        energy
+        ?
+        calculateMacros(
+            energy.estimatedEnergy
+        )
+        :
+        null;
+
+
+    /*
+     * =====================================================
+     * RENDER
+     * =====================================================
+     */
+
+    let html = `
+
+        <div class="anak-result-header">
+
+            <div>
+
+                <span class="anak-result-label">
+                    HASIL PENILAIAN PERTUMBUHAN
+                </span>
+
+                <h3>
+                    Hasil Antropometri Anak
+                </h3>
+
+                <p>
+                    Acuan: Permenkes No. 2 Tahun 2020
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="anak-summary-grid">
+
+            <div>
+
+                <span>
+                    Usia
+                </span>
+
+                <strong>
+                    ${escapeHTML(age.ageText)}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Berat badan
+                </span>
+
+                <strong>
+                    ${round(weight, 1)} kg
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Tinggi / panjang badan
+                </span>
+
+                <strong>
+                    ${round(height, 1)} cm
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    IMT
+                </span>
+
+                <strong>
+                    ${round(bmi, 2)} kg/m²
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="anak-result-heading">
+
+            <span>
+                📊
+            </span>
+
+            <div>
+
+                <strong>
+                    Indikator Antropometri
+                </strong>
+
+                <small>
+                    Interpretasi berdasarkan umur dan jenis kelamin
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="anak-result-grid">
+
+    `;
 
 
     /*
      * BB/U
      */
 
-    if (
-        indicator ===
-        "weightForAge"
-    ) {
+    html += resultCard(
 
-        if (z < -3) {
+        "BB menurut Umur",
 
-            return {
-                label:
-                    "Berat Badan Sangat Kurang",
-                type:
-                    "danger"
-            };
+        Number.isFinite(zWeightAge)
+            ?
+            `${round(zWeightAge, 2)} SD`
+            :
+            "—",
 
-        }
+        statusWeightAge,
 
-        if (z < -2) {
+        ageYears > 10
+            ?
+            "BB/U tidak digunakan sebagai indikator utama setelah usia 10 tahun."
+            :
+            ""
 
-            return {
-                label:
-                    "Berat Badan Kurang",
-                type:
-                    "warning"
-            };
-
-        }
-
-        if (z <= 1) {
-
-            return {
-                label:
-                    "Berat Badan Normal",
-                type:
-                    "info"
-            };
-
-        }
-
-        return {
-            label:
-                "Risiko Berat Badan Lebih",
-            type:
-                "warning"
-        };
-
-    }
+    );
 
 
     /*
      * TB/U
      */
 
-    if (
-        indicator ===
-        "heightForAge"
-    ) {
+    html += resultCard(
 
-        if (z < -3) {
+        "TB/PB menurut Umur",
 
-            return {
-                label:
-                    "Sangat Pendek",
-                type:
-                    "danger"
-            };
+        Number.isFinite(zHeightAge)
+            ?
+            `${round(zHeightAge, 2)} SD`
+            :
+            "—",
 
-        }
+        statusHeightAge,
 
-        if (z < -2) {
+        ""
 
-            return {
-                label:
-                    "Pendek",
-                type:
-                    "warning"
-            };
-
-        }
-
-        if (z <= 3) {
-
-            return {
-                label:
-                    "Normal",
-                type:
-                    "info"
-            };
-
-        }
-
-        return {
-            label:
-                "Tinggi",
-            type:
-                "info"
-        };
-
-    }
+    );
 
 
     /*
-     * BB/PB atau BB/TB
+     * BB/TB
      */
 
-    if (
-        indicator ===
-        "weightForHeight"
-    ) {
+    html += resultCard(
 
-        if (z < -3) {
+        "BB menurut TB/PB",
 
-            return {
-                label:
-                    "Gizi Buruk",
-                type:
-                    "danger"
-            };
+        Number.isFinite(zWeightHeight)
+            ?
+            `${round(zWeightHeight, 2)} SD`
+            :
+            "—",
 
-        }
+        statusWeightHeight,
 
-        if (z < -2) {
+        ageYears >= 5
+            ?
+            "Indikator BB/TB terutama digunakan pada anak usia di bawah 5 tahun."
+            :
+            ""
 
-            return {
-                label:
-                    "Gizi Kurang",
-                type:
-                    "warning"
-            };
-
-        }
-
-        if (z <= 1) {
-
-            return {
-                label:
-                    "Gizi Baik",
-                type:
-                    "info"
-            };
-
-        }
-
-        if (z <= 2) {
-
-            return {
-                label:
-                    "Risiko Gizi Lebih",
-                type:
-                    "warning"
-            };
-
-        }
-
-        if (z <= 3) {
-
-            return {
-                label:
-                    "Gizi Lebih",
-                type:
-                    "warning"
-            };
-
-        }
-
-        return {
-            label:
-                "Obesitas",
-            type:
-                "danger"
-        };
-
-    }
+    );
 
 
     /*
      * IMT/U
      */
 
-    if (
-        indicator ===
-        "bmiForAge"
-    ) {
+    html += resultCard(
 
-        if (z < -3) {
+        "IMT menurut Umur",
 
-            return {
-                label:
-                    "Gizi Buruk",
-                type:
-                    "danger"
-            };
+        Number.isFinite(zBMI)
+            ?
+            `${round(zBMI, 2)} SD`
+            :
+            "—",
 
-        }
+        statusBMI,
 
-        if (z < -2) {
+        ""
 
-            return {
-                label:
-                    "Gizi Kurang",
-                type:
-                    "warning"
-            };
-
-        }
-
-        if (z <= 1) {
-
-            return {
-                label:
-                    "Gizi Baik",
-                type:
-                    "info"
-            };
-
-        }
-
-        if (z <= 2) {
-
-            return {
-                label:
-                    "Risiko Gizi Lebih",
-                type:
-                    "warning"
-            };
-
-        }
-
-        if (z <= 3) {
-
-            return {
-                label:
-                    "Gizi Lebih",
-                type:
-                    "warning"
-            };
-
-        }
-
-        return {
-            label:
-                "Obesitas",
-            type:
-                "danger"
-        };
-
-    }
-
-
-    return {
-
-        label:
-            "Tidak tersedia",
-
-        type:
-            "info"
-
-    };
-
-}
-
-
-/* =========================================================
-   FORMAT Z
-========================================================= */
-
-function formatZ(z) {
-
-    if (
-        z === null ||
-        !Number.isFinite(z)
-    ) {
-
-        return "—";
-
-    }
-
-    return (
-        z >= 0
-            ? "+" + z.toFixed(2)
-            : z.toFixed(2)
     );
 
-}
 
-
-/* =========================================================
-   RESULT CARD
-========================================================= */
-
-function createIndicator(
-    title,
-    subtitle,
-    z,
-    status
-) {
-
-    return `
-
-        <div class="anak-indicator-result">
-
-            <h3>
-                ${title}
-            </h3>
-
-            <div class="indicator-name">
-                ${subtitle}
-            </div>
-
-            <div class="zscore">
-                ${formatZ(z)}
-            </div>
-
-            <span class="status ${status.type}">
-                ${status.label}
-            </span>
+    html += `
 
         </div>
 
     `;
-
-}
-
-
-/* =========================================================
-   CALCULATE
-========================================================= */
-
-function calculateChildNutrition() {
-
-    const gender =
-        genderEl.value;
-
-    const weight =
-        Number(
-            weightEl.value
-        );
-
-    const height =
-        Number(
-            heightEl.value
-        );
-
-
-    const age =
-        updateAge();
-
-
-    if (!gender) {
-
-        alert(
-            "Silakan pilih jenis kelamin."
-        );
-
-        return;
-
-    }
-
-
-    if (!age) {
-
-        alert(
-            "Silakan isi tanggal lahir dan tanggal pemeriksaan."
-        );
-
-        return;
-
-    }
-
-
-    if (
-        !weight ||
-        weight <= 0
-    ) {
-
-        alert(
-            "Masukkan berat badan yang valid."
-        );
-
-        return;
-
-    }
-
-
-    if (
-        !height ||
-        height <= 0
-    ) {
-
-        alert(
-            "Masukkan panjang/tinggi badan yang valid."
-        );
-
-        return;
-
-    }
-
-
-    const measurement =
-        correctedHeight(
-            height,
-            age,
-            measurementEl.value
-        );
-
-
-    const finalHeight =
-        measurement.value;
-
-
-    const bmi =
-        calculateBMI(
-            weight,
-            finalHeight
-        );
-
-
-    const ageMonths =
-        age.totalMonths;
 
 
     /*
      * =====================================================
-     * LMS
+     * IMT INFORMASI
      * =====================================================
      */
 
-    const wfaLMS =
-        findLMS(
-            gender,
-            "weightForAge",
-            ageMonths
-        );
+    html += `
 
+        <div class="anak-bmi-box">
 
-    const hfaLMS =
-        findLMS(
-            gender,
-            "heightForAge",
-            ageMonths
-        );
+            <div>
 
+                <span>
+                    IMT aktual
+                </span>
 
-    const wfhLMS =
-        findLMS(
-            gender,
-            "weightForHeight",
-            finalHeight
-        );
+                <strong>
+                    ${round(bmi, 2)} kg/m²
+                </strong>
 
-
-    const bmiLMS =
-        findLMS(
-            gender,
-            "bmiForAge",
-            ageMonths
-        );
-
-
-    /*
-     * Z-SCORE
-     */
-
-    const wfaZ =
-        calculateZ(
-            weight,
-            wfaLMS
-        );
-
-
-    const hfaZ =
-        calculateZ(
-            finalHeight,
-            hfaLMS
-        );
-
-
-    const wfhZ =
-        calculateZ(
-            weight,
-            wfhLMS
-        );
-
-
-    const bmiZ =
-        calculateZ(
-            bmi,
-            bmiLMS
-        );
-
-
-    /*
-     * STATUS
-     */
-
-    const wfaStatus =
-        classify(
-            "weightForAge",
-            wfaZ
-        );
-
-
-    const hfaStatus =
-        classify(
-            "heightForAge",
-            hfaZ
-        );
-
-
-    const wfhStatus =
-        classify(
-            "weightForHeight",
-            wfhZ
-        );
-
-
-    const bmiStatus =
-        classify(
-            "bmiForAge",
-            bmiZ
-        );
-
-
-    /*
-     * SUMMARY
-     */
-
-    summaryEl.innerHTML = `
-
-        <div class="anak-summary-item">
-
-            <span>
-                Usia
-            </span>
-
-            <strong>
-                ${age.years} tahun
-                ${age.months} bulan
-                ${age.days} hari
-            </strong>
-
-        </div>
-
-
-        <div class="anak-summary-item">
-
-            <span>
-                Berat badan
-            </span>
-
-            <strong>
-                ${weight.toFixed(1)} kg
-            </strong>
-
-        </div>
-
-
-        <div class="anak-summary-item">
-
-            <span>
-                ${measurement.method}
-            </span>
-
-            <strong>
-                ${finalHeight.toFixed(1)} cm
-            </strong>
-
-        </div>
-
-    `;
-
-
-    /*
-     * INDICATORS
-     */
-
-    indicatorsEl.innerHTML = `
-
-        ${createIndicator(
-            "BB/U",
-            "Berat Badan menurut Umur",
-            wfaZ,
-            wfaStatus
-        )}
-
-        ${createIndicator(
-            measurement.method === "PB"
-                ? "PB/U"
-                : "TB/U",
-            measurement.method === "PB"
-                ? "Panjang Badan menurut Umur"
-                : "Tinggi Badan menurut Umur",
-            hfaZ,
-            hfaStatus
-        )}
-
-        ${createIndicator(
-            measurement.method === "PB"
-                ? "BB/PB"
-                : "BB/TB",
-            measurement.method === "PB"
-                ? "Berat Badan menurut Panjang Badan"
-                : "Berat Badan menurut Tinggi Badan",
-            wfhZ,
-            wfhStatus
-        )}
-
-        ${createIndicator(
-            "IMT/U",
-            "Indeks Massa Tubuh menurut Umur",
-            bmiZ,
-            bmiStatus
-        )}
-
-    `;
-
-
-    /*
-     * BMI
-     */
-
-    bmiEl.innerHTML = `
-
-        <div class="bmi-box">
-
-            <strong>
-                Indeks Massa Tubuh
-            </strong>
-
-            <div class="bmi-value">
-                ${bmi.toFixed(2)} kg/m²
             </div>
 
             <small>
-                Status IMT/U:
-                ${bmiStatus.label}
+                IMT anak tidak dinilai menggunakan batas IMT
+                dewasa. Status utama harus dibandingkan dengan
+                umur dan jenis kelamin.
             </small>
 
         </div>
@@ -1221,22 +1711,42 @@ function calculateChildNutrition() {
 
 
     /*
-     * CONCLUSION
+     * =====================================================
+     * MAKRO
+     * =====================================================
      */
 
-    conclusionEl.innerHTML = `
+    html += macroCard(
+        macros
+    );
 
-        <div class="conclusion-box">
 
-            <h3>
-                Interpretasi
-            </h3>
+    /*
+     * =====================================================
+     * CATATAN
+     * =====================================================
+     */
+
+    html += `
+
+        <div class="anak-result-note">
+
+            <strong>
+                ⚠️ Catatan klinis
+            </strong>
 
             <p>
-                Hasil harus diinterpretasikan berdasarkan
-                umur, jenis kelamin, dan indikator antropometri.
-                Jangan menentukan status gizi hanya dari satu
-                parameter.
+                Hasil kalkulator merupakan skrining awal.
+                Penilaian status gizi anak perlu dilakukan
+                dengan pengukuran antropometri yang benar,
+                plotting pertumbuhan, anamnesis, pemeriksaan
+                klinis, serta mempertimbangkan kondisi anak.
+            </p>
+
+            <p>
+                Z-score hanya ditampilkan apabila tabel
+                referensi antropometri resmi tersedia di
+                mesin kalkulator.
             </p>
 
         </div>
@@ -1244,52 +1754,214 @@ function calculateChildNutrition() {
     `;
 
 
+    result.innerHTML =
+        html;
+
+
+    console.log(
+        "PERHITUNGAN SELESAI",
+        {
+            age,
+            weight,
+            height,
+            bmi,
+            zWeightAge,
+            zHeightAge,
+            zWeightHeight,
+            zBMI,
+            energy,
+            macros
+        }
+    );
+
+
     /*
-     * SCROLL
+     * Scroll ke hasil
      */
 
-    document
-        .getElementById(
-            "hasil-gizi"
-        )
-        .scrollIntoView({
-            behavior: "smooth"
+    setTimeout(() => {
+
+        result.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
         });
+
+    }, 100);
 
 }
 
 
 /* =========================================================
-   BUTTON
+   EVENT LISTENER
 ========================================================= */
 
-calculateBtn.addEventListener(
-    "click",
-    calculateChildNutrition
-);
+function initializeChildNutrition() {
+
+    const birth =
+        getElement(
+            "anakBirthDate"
+        );
+
+
+    const check =
+        getElement(
+            "anakCheckDate"
+        );
+
+
+    const button =
+        getElement(
+            "anakCalculateButton"
+        );
+
+
+    /*
+     * Tanggal pemeriksaan default = hari ini
+     */
+
+    if (
+        check &&
+        !check.value
+    ) {
+
+        const now =
+            new Date();
+
+
+        const year =
+            now.getFullYear();
+
+
+        const month =
+            String(
+                now.getMonth() + 1
+            )
+            .padStart(2, "0");
+
+
+        const day =
+            String(
+                now.getDate()
+            )
+            .padStart(2, "0");
+
+
+        check.value =
+            `${year}-${month}-${day}`;
+
+    }
+
+
+    /*
+     * Event umur
+     */
+
+    if (birth) {
+
+        birth.addEventListener(
+            "change",
+            updateAgeDisplay
+        );
+
+    }
+
+
+    if (check) {
+
+        check.addEventListener(
+            "change",
+            updateAgeDisplay
+        );
+
+    }
+
+
+    /*
+     * Event tombol
+     */
+
+    if (button) {
+
+        button.addEventListener(
+            "click",
+            calculateChildNutrition
+        );
+
+        console.log(
+            "Event tombol berhasil dipasang."
+        );
+
+    }
+
+
+    console.log(
+        "Jumlah input:",
+        document.querySelectorAll("input").length
+    );
+
+
+    console.log(
+        "Jumlah select:",
+        document.querySelectorAll("select").length
+    );
+
+
+    console.log(
+        "Jumlah button:",
+        document.querySelectorAll("button").length
+    );
+
+
+    console.log(
+        "Area hasil:",
+        getElement("anakResult")
+    );
+
+
+    updateAgeDisplay();
+
+}
 
 
 /* =========================================================
-   DEFAULT DATE
+   PUBLIC API
 ========================================================= */
 
-(function () {
-
-    const today =
-        new Date();
-
-    const iso =
-        today
-            .toISOString()
-            .split("T")[0];
+window.calculateChildNutrition =
+    calculateChildNutrition;
 
 
-    checkEl.value =
-        iso;
-
-})();
+window.updateAgeDisplay =
+    updateAgeDisplay;
 
 
-console.log(
-    "Event kalkulator gizi anak siap."
-);
+window.calculateAge =
+    calculateAge;
+
+
+window.calculateBMI =
+    calculateBMI;
+
+
+window.calculateMacros =
+    calculateMacros;
+
+
+/* =========================================================
+   START
+========================================================= */
+
+if (
+    document.readyState === "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeChildNutrition
+    );
+
+} else {
+
+    initializeChildNutrition();
+
+}
