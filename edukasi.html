@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -53,45 +53,92 @@
          HEADER
     ========================== -->
 
-    <header class="edu-header">
+   <header class="site-header">
 
-        <div class="edu-header-inner">
+    <div class="site-header-inner">
 
-            <a
-                href="index.html"
-                class="edu-brand"
+        <a
+            href="index.html"
+            class="site-logo"
+            aria-label="Klinik Putra Medika"
+        >
+
+            <img
+                src="logo.png"
+                alt="Klinik Putra Medika"
             >
-                <span class="edu-brand-icon">✚</span>
 
-                <span class="edu-brand-text">
-                    <strong>Klinik Putra Medika</strong>
-                    <small>Edukasi Kesehatan</small>
+            <div class="site-logo-text">
+
+                <strong>
+                    Klinik Putra Medika
+                </strong>
+
+                <span>
+                    Sehat • Edukatif • Terpercaya
                 </span>
+
+            </div>
+
+        </a>
+
+
+        <nav
+            class="site-nav"
+            id="siteNav"
+            aria-label="Navigasi utama"
+        >
+
+            <a href="index.html">
+                <span>⌂</span>
+                Beranda
             </a>
 
-            <nav class="edu-nav">
+            <a href="kalkulator.html">
+                <span>🧮</span>
+                Kalkulator
+            </a>
 
-                <a href="index.html">
-                    Beranda
-                </a>
+            <a href="gizi-anak.html">
+                <span>👶</span>
+                Gizi Anak
+            </a>
 
-                <a href="kalkulator.html">
-                    Kalkulator
-                </a>
+            <a href="berita.html">
+                <span>📰</span>
+                Berita
+            </a>
 
-                <a
-                    href="edukasi.html"
-                    class="active"
-                >
-                    Edukasi
-                </a>
+            <a href="edukasi.html">
+                <span>📚</span>
+                Edukasi
+            </a>
 
-            </nav>
+            <a href="contact.html">
+                <span>📞</span>
+                Kontak
+            </a>
 
-        </div>
+        </nav>
 
-    </header>
 
+        <button
+            type="button"
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Buka menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
 
     <!-- =========================
          MAIN
