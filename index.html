@@ -1,7 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -11,7 +13,7 @@
 
     <meta
         name="description"
-        content="Klinik Putra Medika - Informasi, edukasi dan layanan kesehatan untuk masyarakat."
+        content="Klinik Putra Medika - informasi, edukasi, dan kalkulator kesehatan untuk membantu masyarakat memahami kesehatan dengan lebih mudah."
     >
 
     <meta
@@ -19,195 +21,329 @@
         content="#0f766e"
     >
 
-    <title>Klinik Putra Medika</title>
+    <title>
+        Klinik Putra Medika
+    </title>
+
+
+    <!-- FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- GLOBAL CSS -->
 
     <link
         rel="stylesheet"
         href="style.css"
     >
+
+
+    <!-- HOME CSS -->
+
+    <link
+        rel="stylesheet"
+        href="index.css?v=1"
+    >
+
 </head>
 
 
 <body>
 
-    <!-- ========================================
-         HEADER / NAVBAR
-    ========================================= -->
 
-    <header class="navbar">
+<!-- =====================================================
+     NAVBAR
+====================================================== -->
+
+<header class="site-header">
+
+    <div class="site-header-inner">
+
+
+        <!-- LOGO -->
 
         <a
             href="index.html"
-            class="logo"
-            aria-label="Klinik Putra Medika - Beranda"
+            class="site-logo"
         >
+
             <img
                 src="logo.png"
-                alt="Logo Klinik Putra Medika"
+                alt="Klinik Putra Medika"
             >
+
+            <div class="site-logo-text">
+
+                <strong>
+                    Klinik Putra Medika
+                </strong>
+
+                <span>
+                    Sehat • Edukatif • Terpercaya
+                </span>
+
+            </div>
+
         </a>
 
 
-        <nav aria-label="Navigasi utama">
+        <!-- NAVIGATION -->
 
-            <a
-                href="index.html"
-                class="active"
-                aria-current="page"
-            >
+        <nav
+            class="site-nav"
+            id="siteNav"
+            aria-label="Navigasi utama"
+        >
+
+            <a href="index.html">
+
+                <span>⌂</span>
+
                 Beranda
+
             </a>
+
 
             <a href="kalkulator.html">
+
+                <span>🧮</span>
+
                 Kalkulator
+
             </a>
+
+
+            <a href="gizi-anak.html">
+
+                <span>👶</span>
+
+                Gizi Anak
+
+            </a>
+
+
+            <a href="berita.html">
+
+                <span>📰</span>
+
+                Berita
+
+            </a>
+
 
             <a href="edukasi.html">
+
+                <span>📚</span>
+
                 Edukasi
+
             </a>
 
+
             <a href="contact.html">
-                Contact Us
+
+                <span>📞</span>
+
+                Kontak
+
             </a>
 
         </nav>
 
-    </header>
+
+        <!-- MOBILE MENU -->
+
+        <button
+            type="button"
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Buka menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
 
 
-    <!-- ========================================
-         MAIN CONTENT
-    ========================================= -->
 
-    <main>
+<!-- =====================================================
+     MAIN
+====================================================== -->
 
-
-        <!-- ====================================
-             HERO
-        ===================================== -->
-
-        <section class="hero">
-
-            <div class="hero-content">
-
-                <!-- Hero Text -->
-
-                <div class="hero-text">
-
-                    <p class="section-label">
-                        KLINIK PUTRA MEDIKA
-                    </p>
-
-                    <h1>
-                        Menjaga kesehatan,
-                        dimulai dari informasi
-                        yang tepat.
-                    </h1>
-
-                    <p class="hero-description">
-                        Temukan informasi kesehatan, edukasi,
-                        dan berbagai layanan digital yang dapat
-                        membantu Anda memahami kesehatan dengan
-                        lebih baik.
-                    </p>
-
-                    <div class="hero-buttons">
-
-                        <a
-                            href="kalkulator.html"
-                            class="btn btn-primary"
-                        >
-                            Coba Kalkulator →
-                        </a>
-
-                    </div>
-
-                </div>
+<main>
 
 
-                <!-- Hero Information Card -->
+    <!-- =================================================
+         HERO
+    ================================================== -->
 
-                <div class="hero-card">
+    <section class="home-hero">
 
-                    <div
-                        class="hero-icon"
-                        aria-hidden="true"
-                    >
-                        🏥
-                    </div>
-
-                    <p>
-                        Informasi kesehatan yang
-                        mudah dipahami.
-                    </p>
-
-                    <span>
-                        Klinik Putra Medika
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
+        <div class="home-hero-overlay"></div>
 
 
-        <!-- ====================================
-             LAYANAN DIGITAL
-        ===================================== -->
+        <div class="home-container home-hero-content">
 
-        <section class="section">
 
-            <div class="section-heading">
+            <div class="home-badge">
 
-                <p class="section-label">
-                    LAYANAN DIGITAL
-                </p>
+                <span>
+                    🩺
+                </span>
 
-                <h2>
-                    Temukan yang Anda butuhkan
-                </h2>
-
-                <p>
-                    Gunakan berbagai fitur informasi dan
-                    edukasi kesehatan yang tersedia di
-                    website Klinik Putra Medika.
-                </p>
+                KLINIK PUTRA MEDIKA
 
             </div>
 
 
-            <div class="service-grid">
+            <h1>
+
+                Sehat Lebih Mudah
+                <br>
+
+                <span>
+                    Dipahami dan Dijaga
+                </span>
+
+            </h1>
 
 
-                <!-- Kalkulator -->
+            <p>
+
+                Informasi kesehatan, edukasi dan alat bantu
+                kesehatan yang dirancang agar mudah dipahami
+                oleh masyarakat.
+
+            </p>
+
+
+            <div class="home-hero-buttons">
+
 
                 <a
                     href="kalkulator.html"
-                    class="service-card"
+                    class="home-btn home-btn-primary"
                 >
 
-                    <div
-                        class="service-icon"
-                        aria-hidden="true"
-                    >
+                    🧮
+
+                    Gunakan Kalkulator
+
+                    <span>→</span>
+
+                </a>
+
+
+                <a
+                    href="edukasi.html"
+                    class="home-btn home-btn-secondary"
+                >
+
+                    📚
+
+                    Pelajari Edukasi
+
+                </a>
+
+            </div>
+
+
+            <div class="home-hero-note">
+
+                <span>✓</span>
+
+                Informasi kesehatan untuk edukasi dan
+                skrining awal
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUICK ACCESS
+    ================================================== -->
+
+    <section class="home-section home-quick-section">
+
+        <div class="home-container">
+
+
+            <div class="home-section-heading">
+
+                <span class="home-eyebrow">
+                    AKSES CEPAT
+                </span>
+
+                <h2>
+                    Apa yang ingin Anda cari?
+                </h2>
+
+                <p>
+                    Gunakan berbagai fitur Klinik Putra Medika
+                    untuk membantu memahami kesehatan Anda.
+                </p>
+
+            </div>
+
+
+            <div class="home-feature-grid">
+
+
+                <!-- KALKULATOR -->
+
+                <a
+                    href="kalkulator.html"
+                    class="home-feature-card"
+                >
+
+                    <div class="home-feature-icon">
                         🧮
                     </div>
 
-                    <div class="service-content">
+
+                    <div class="home-feature-body">
+
+                        <span class="home-card-label">
+                            KALKULATOR
+                        </span>
 
                         <h3>
                             Kalkulator Kesehatan
                         </h3>
 
                         <p>
-                            Gunakan berbagai kalkulator kesehatan
-                            sederhana untuk membantu memahami
-                            kondisi tubuh Anda.
+                            Hitung BMI, kebutuhan kalori,
+                            BMR, TDEE dan kebutuhan makronutrien.
                         </p>
 
-                        <span class="service-link">
-                            Buka Kalkulator →
+                        <span class="home-card-link">
+                            Mulai menghitung →
                         </span>
 
                     </div>
@@ -215,21 +351,61 @@
                 </a>
 
 
-                <!-- Edukasi -->
+
+                <!-- GIZI ANAK -->
+
+                <a
+                    href="gizi-anak.html"
+                    class="home-feature-card home-feature-card-highlight"
+                >
+
+                    <div class="home-feature-icon">
+                        👶
+                    </div>
+
+
+                    <div class="home-feature-body">
+
+                        <span class="home-card-label">
+                            ANAK
+                        </span>
+
+                        <h3>
+                            Kalkulator Gizi Anak
+                        </h3>
+
+                        <p>
+                            Pantau usia, berat badan, tinggi badan
+                            dan status pertumbuhan anak.
+                        </p>
+
+                        <span class="home-card-link">
+                            Cek gizi anak →
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- EDUKASI -->
 
                 <a
                     href="edukasi.html"
-                    class="service-card"
+                    class="home-feature-card"
                 >
 
-                    <div
-                        class="service-icon"
-                        aria-hidden="true"
-                    >
+                    <div class="home-feature-icon">
                         📚
                     </div>
 
-                    <div class="service-content">
+
+                    <div class="home-feature-body">
+
+                        <span class="home-card-label">
+                            EDUKASI
+                        </span>
 
                         <h3>
                             Edukasi Kesehatan
@@ -237,12 +413,11 @@
 
                         <p>
                             Pelajari berbagai informasi kesehatan
-                            dengan bahasa yang sederhana dan mudah
-                            dipahami.
+                            dengan bahasa yang sederhana.
                         </p>
 
-                        <span class="service-link">
-                            Lihat Edukasi →
+                        <span class="home-card-link">
+                            Baca edukasi →
                         </span>
 
                     </div>
@@ -250,34 +425,36 @@
                 </a>
 
 
-                <!-- Contact -->
+
+                <!-- BERITA -->
 
                 <a
-                    href="contact.html"
-                    class="service-card"
+                    href="berita.html"
+                    class="home-feature-card"
                 >
 
-                    <div
-                        class="service-icon"
-                        aria-hidden="true"
-                    >
-                        💬
+                    <div class="home-feature-icon">
+                        📰
                     </div>
 
-                    <div class="service-content">
+
+                    <div class="home-feature-body">
+
+                        <span class="home-card-label">
+                            INFORMASI
+                        </span>
 
                         <h3>
-                            Hubungi Kami
+                            Berita Kesehatan
                         </h3>
 
                         <p>
-                            Hubungi Klinik Putra Medika melalui
-                            WhatsApp dan berbagai media sosial
-                            resmi kami.
+                            Temukan informasi dan kabar terbaru
+                            seputar kesehatan.
                         </p>
 
-                        <span class="service-link">
-                            Contact Us →
+                        <span class="home-card-link">
+                            Lihat berita →
                         </span>
 
                     </div>
@@ -286,135 +463,449 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- ====================================
-             TENTANG KLINIK
-        ===================================== -->
 
-        <section class="section about-section">
+    <!-- =================================================
+         ABOUT
+    ================================================== -->
 
-            <div class="about-card">
+    <section class="home-section home-about-section">
 
-                <div
-                    class="about-icon"
-                    aria-hidden="true"
-                >
-                    🏥
+        <div class="home-container home-about-grid">
+
+
+            <div class="home-about-visual">
+
+                <div class="home-about-main-icon">
+                    🩺
                 </div>
 
 
-                <div class="about-content">
+                <div class="home-about-floating-card">
 
-                    <p class="section-label">
-                        TENTANG KAMI
-                    </p>
-
-                    <h2>
+                    <strong>
                         Klinik Putra Medika
-                    </h2>
+                    </strong>
 
-                    <p>
-                        Klinik Putra Medika hadir untuk memberikan
-                        informasi dan edukasi kesehatan yang mudah
-                        dipahami oleh masyarakat.
-                    </p>
-
-                    <p>
-                        Kami juga menyediakan berbagai informasi
-                        digital yang dapat membantu masyarakat
-                        memperoleh pengetahuan kesehatan secara
-                        lebih mudah.
-                    </p>
+                    <span>
+                        Informasi kesehatan yang mudah dipahami
+                    </span>
 
                 </div>
 
             </div>
 
-        </section>
 
+            <div class="home-about-content">
 
-        <!-- ====================================
-             WHATSAPP CTA
-        ===================================== -->
+                <span class="home-eyebrow">
+                    TENTANG KAMI
+                </span>
 
-        <section class="section">
-
-            <div class="whatsapp-cta">
-
-                <p class="cta-label">
-                    BUTUH INFORMASI?
-                </p>
 
                 <h2>
-                    Hubungi Klinik Putra Medika
+                    Membantu masyarakat
+                    memahami kesehatan
+                    dengan lebih mudah.
                 </h2>
 
+
                 <p>
-                    Untuk informasi lebih lanjut,
-                    Anda dapat menghubungi kami
-                    melalui WhatsApp.
+                    Klinik Putra Medika menghadirkan informasi
+                    kesehatan dan berbagai alat bantu digital
+                    yang dapat digunakan masyarakat sebagai
+                    sumber edukasi.
                 </p>
 
+
+                <p>
+                    Kami berusaha menyajikan informasi dengan
+                    bahasa yang sederhana, praktis dan mudah
+                    dipahami.
+                </p>
+
+
+                <div class="home-check-list">
+
+                    <div>
+                        <span>✓</span>
+                        Informasi kesehatan
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Edukasi kesehatan
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Kalkulator kesehatan
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Informasi gizi anak
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         NEWS
+    ================================================== -->
+
+    <section class="home-section home-news-section">
+
+        <div class="home-container">
+
+
+            <div class="home-section-heading home-heading-row">
+
+                <div>
+
+                    <span class="home-eyebrow">
+                        INFORMASI TERBARU
+                    </span>
+
+                    <h2>
+                        Berita Kesehatan
+                    </h2>
+
+                    <p>
+                        Informasi kesehatan terbaru dari
+                        Klinik Putra Medika.
+                    </p>
+
+                </div>
+
+
                 <a
-                    href="https://wa.me/628745655446"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-white"
+                    href="berita.html"
+                    class="home-see-all"
                 >
-                    Chat WhatsApp →
+                    Lihat semua →
                 </a>
 
             </div>
 
-        </section>
+
+            <div class="home-news-grid">
 
 
-        <!-- ====================================
-             DISCLAIMER
-        ===================================== -->
+                <article class="home-news-card">
 
-        <section
-            class="disclaimer"
-            aria-label="Catatan penting"
-        >
+                    <div class="home-news-icon">
+                        🩺
+                    </div>
 
-            <h3>
-                ⚠️ Catatan penting
-            </h3>
+                    <div class="home-news-content">
 
-            <p>
-                Informasi pada website ini ditujukan untuk
-                edukasi kesehatan umum. Informasi kesehatan
-                tidak dimaksudkan sebagai diagnosis atau
-                pengganti konsultasi dengan tenaga kesehatan
-                profesional.
-            </p>
+                        <span>
+                            KESEHATAN
+                        </span>
 
-        </section>
+                        <h3>
+                            Menjaga kesehatan tubuh
+                            sehari-hari
+                        </h3>
 
-    </main>
+                        <p>
+                            Kebiasaan sederhana dapat membantu
+                            menjaga kesehatan dan kualitas hidup.
+                        </p>
 
+                        <a href="berita.html">
+                            Baca selengkapnya →
+                        </a>
 
-    <!-- ========================================
-         FOOTER
-    ========================================= -->
+                    </div>
 
-    <footer>
-
-        <div class="footer-content">
+                </article>
 
 
-            <!-- Footer Info -->
 
-            <div class="footer-info">
+                <article class="home-news-card">
 
-                <img
-                    src="logo.png"
-                    alt="Logo Klinik Putra Medika"
-                    class="footer-logo"
+                    <div class="home-news-icon">
+                        ❤️
+                    </div>
+
+                    <div class="home-news-content">
+
+                        <span>
+                            PENCEGAHAN
+                        </span>
+
+                        <h3>
+                            Pentingnya pemeriksaan
+                            kesehatan
+                        </h3>
+
+                        <p>
+                            Pemeriksaan berkala dapat membantu
+                            mengenali masalah kesehatan lebih awal.
+                        </p>
+
+                        <a href="berita.html">
+                            Baca selengkapnya →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="home-news-card">
+
+                    <div class="home-news-icon">
+                        🥗
+                    </div>
+
+                    <div class="home-news-content">
+
+                        <span>
+                            GIZI
+                        </span>
+
+                        <h3>
+                            Pentingnya pola makan
+                            seimbang
+                        </h3>
+
+                        <p>
+                            Pola makan seimbang berperan penting
+                            dalam menjaga kesehatan tubuh.
+                        </p>
+
+                        <a href="berita.html">
+                            Baca selengkapnya →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         EDUCATION
+    ================================================== -->
+
+    <section class="home-section home-education-section">
+
+        <div class="home-container">
+
+
+            <div class="home-section-heading">
+
+                <span class="home-eyebrow">
+                    EDUKASI
+                </span>
+
+                <h2>
+                    Belajar Kesehatan
+                </h2>
+
+                <p>
+                    Kenali berbagai masalah kesehatan
+                    dan cara menjaganya.
+                </p>
+
+            </div>
+
+
+            <div class="home-topic-grid">
+
+
+                <a
+                    href="edukasi.html"
+                    class="home-topic-card"
                 >
+
+                    <span>
+                        🩸
+                    </span>
+
+                    <strong>
+                        Diabetes
+                    </strong>
+
+                    <small>
+                        Kenali dan cegah diabetes
+                    </small>
+
+                </a>
+
+
+                <a
+                    href="edukasi.html"
+                    class="home-topic-card"
+                >
+
+                    <span>
+                        ❤️
+                    </span>
+
+                    <strong>
+                        Hipertensi
+                    </strong>
+
+                    <small>
+                        Jaga tekanan darah
+                    </small>
+
+                </a>
+
+
+                <a
+                    href="edukasi.html"
+                    class="home-topic-card"
+                >
+
+                    <span>
+                        ⚖️
+                    </span>
+
+                    <strong>
+                        Obesitas
+                    </strong>
+
+                    <small>
+                        Kenali berat badan sehat
+                    </small>
+
+                </a>
+
+
+                <a
+                    href="edukasi.html"
+                    class="home-topic-card"
+                >
+
+                    <span>
+                        🦴
+                    </span>
+
+                    <strong>
+                        Nyeri Punggung
+                    </strong>
+
+                    <small>
+                        Tips menjaga punggung
+                    </small>
+
+                </a>
+
+            </div>
+
+
+            <div class="home-centered-button">
+
+                <a
+                    href="edukasi.html"
+                    class="home-outline-button"
+                >
+                    Lihat Semua Edukasi →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CTA
+    ================================================== -->
+
+    <section class="home-cta">
+
+        <div class="home-container home-cta-inner">
+
+
+            <div>
+
+                <span class="home-cta-label">
+                    KLINIK PUTRA MEDIKA
+                </span>
+
+
+                <h2>
+                    Punya pertanyaan tentang kesehatan?
+                </h2>
+
+
+                <p>
+                    Jangan ragu untuk mencari informasi
+                    dan berkonsultasi dengan tenaga kesehatan.
+                </p>
+
+            </div>
+
+
+            <a
+                href="contact.html"
+                class="home-cta-button"
+            >
+                Hubungi Klinik
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="site-footer">
+
+    <div class="home-container">
+
+
+        <div class="site-footer-grid">
+
+
+            <div>
+
+                <div class="site-footer-brand">
+
+                    <img
+                        src="logo.png"
+                        alt="Klinik Putra Medika"
+                    >
+
+                    <strong>
+                        Klinik Putra Medika
+                    </strong>
+
+                </div>
+
 
                 <p>
                     Informasi dan edukasi kesehatan
@@ -424,48 +915,103 @@
             </div>
 
 
-            <!-- Footer Contact -->
 
-            <div class="footer-contact">
+            <div>
 
-                <h4>
-                    Alamat Klinik
-                </h4>
+                <h3>
+                    Navigasi
+                </h3>
 
-                <p>
-                    Kp. Gandasoli, Cikidangbayabang,
-                    Kec. Mande, Kabupaten Cianjur,
-                    Jawa Barat 43292
-                </p>
+                <a href="index.html">
+                    Beranda
+                </a>
 
-                <p>
-                    <a
-                        href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        📍 Lihat Lokasi Klinik
-                    </a>
-                </p>
+                <a href="kalkulator.html">
+                    Kalkulator
+                </a>
+
+                <a href="gizi-anak.html">
+                    Gizi Anak
+                </a>
+
+                <a href="berita.html">
+                    Berita
+                </a>
 
             </div>
 
 
-            <!-- Copyright -->
 
-            <div class="footer-copyright">
+            <div>
+
+                <h3>
+                    Informasi
+                </h3>
+
+                <a href="edukasi.html">
+                    Edukasi
+                </a>
+
+                <a href="contact.html">
+                    Kontak
+                </a>
+
+            </div>
+
+
+
+            <div>
+
+                <h3>
+                    Lokasi Klinik
+                </h3>
 
                 <p>
-                    © 2026 Klinik Putra Medika
+                    Kp. Gandasoli,
+                    Cikidangbayabang,
+                    Kec. Mande,
+                    Kabupaten Cianjur,
+                    Jawa Barat 43292
                 </p>
+
+
+                <a
+                    href="https://maps.app.goo.gl/FBpVHsCqKXm1utNK8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    📍 Lihat Lokasi
+                </a>
 
             </div>
 
         </div>
 
-    </footer>
+
+        <div class="site-footer-bottom">
+
+            <p>
+                © 2026 Klinik Putra Medika
+            </p>
+
+            <p>
+                Informasi kesehatan untuk edukasi.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- NAVBAR JS -->
+
+<script src="navbar.js?v=1"></script>
 
 
 </body>
 
 </html>
+```
