@@ -39,45 +39,92 @@
      NAVBAR
 ===================================================== -->
 
-<header class="navbar">
+<header class="site-header">
 
-    <a
-        href="index.html"
-        class="logo"
-        aria-label="Klinik Putra Medika - Beranda"
-    >
-        <img
-            src="logo.png"
-            alt="Logo Klinik Putra Medika"
-        >
-    </a>
-
-    <nav aria-label="Navigasi utama">
-
-        <a href="index.html">
-            Beranda
-        </a>
+    <div class="site-header-inner">
 
         <a
-            href="kalkulator.html"
-            class="active"
-            aria-current="page"
+            href="index.html"
+            class="site-logo"
+            aria-label="Klinik Putra Medika"
         >
-            Kalkulator
+
+            <img
+                src="logo.png"
+                alt="Klinik Putra Medika"
+            >
+
+            <div class="site-logo-text">
+
+                <strong>
+                    Klinik Putra Medika
+                </strong>
+
+                <span>
+                    Sehat • Edukatif • Terpercaya
+                </span>
+
+            </div>
+
         </a>
 
-        <a href="edukasi.html">
-            Edukasi
-        </a>
 
-        <a href="contact.html">
-            Contact Us
-        </a>
+        <nav
+            class="site-nav"
+            id="siteNav"
+            aria-label="Navigasi utama"
+        >
 
-    </nav>
+            <a href="index.html">
+                <span>⌂</span>
+                Beranda
+            </a>
+
+            <a href="kalkulator.html">
+                <span>🧮</span>
+                Kalkulator
+            </a>
+
+            <a href="gizi-anak.html">
+                <span>👶</span>
+                Gizi Anak
+            </a>
+
+            <a href="berita.html">
+                <span>📰</span>
+                Berita
+            </a>
+
+            <a href="edukasi.html">
+                <span>📚</span>
+                Edukasi
+            </a>
+
+            <a href="contact.html">
+                <span>📞</span>
+                Kontak
+            </a>
+
+        </nav>
+
+
+        <button
+            type="button"
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Buka menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
 
 </header>
-
 
 <!-- =====================================================
      MAIN
