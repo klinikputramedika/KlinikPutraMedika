@@ -1,0 +1,2288 @@
+/* =========================================================
+KLINIK PUTRA MEDIKA
+INDEX.CSS
+HOME PAGE
+Responsive Desktop / Tablet / Mobile
+========================================================= */
+
+/* =========================================================
+HOME VARIABLES
+========================================================= */
+
+:root {
+
+```
+--home-primary: #0f766e;
+--home-primary-dark: #115e59;
+--home-primary-light: #14b8a6;
+
+--home-green-soft: #ecfdf5;
+--home-green-bg: #f0fdfa;
+
+--home-text: #0f172a;
+--home-text-soft: #475569;
+--home-text-muted: #64748b;
+
+--home-border: #e2e8f0;
+
+--home-white: #ffffff;
+--home-background: #f8fafc;
+
+--home-radius-sm: 12px;
+--home-radius-md: 16px;
+--home-radius-lg: 22px;
+--home-radius-xl: 30px;
+
+--home-shadow-sm:
+    0 5px 18px rgba(15, 23, 42, 0.06);
+
+--home-shadow-md:
+    0 12px 32px rgba(15, 23, 42, 0.08);
+
+--home-shadow-lg:
+    0 24px 60px rgba(15, 23, 42, 0.12);
+```
+
+}
+
+/* =========================================================
+GLOBAL HOME
+========================================================= */
+
+body {
+background: #ffffff;
+}
+
+.home-container {
+
+```
+width: min(
+    1180px,
+    calc(100% - 40px)
+);
+
+margin-inline: auto;
+```
+
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.home-hero {
+
+```
+position: relative;
+
+overflow: hidden;
+
+padding:
+    90px
+    0
+    95px;
+
+background:
+    linear-gradient(
+        135deg,
+        #f0fdfa 0%,
+        #ffffff 58%,
+        #ecfdf5 100%
+    );
+```
+
+}
+
+/* decorative background */
+
+.home-hero::before {
+
+```
+content: "";
+
+position: absolute;
+
+width: 480px;
+height: 480px;
+
+top: -250px;
+right: -160px;
+
+border-radius: 50%;
+
+background:
+    rgba(20, 184, 166, 0.08);
+
+pointer-events: none;
+```
+
+}
+
+.home-hero::after {
+
+```
+content: "";
+
+position: absolute;
+
+width: 280px;
+height: 280px;
+
+bottom: -180px;
+left: -100px;
+
+border-radius: 50%;
+
+background:
+    rgba(15, 118, 110, 0.06);
+
+pointer-events: none;
+```
+
+}
+
+.home-hero-grid {
+
+```
+position: relative;
+
+z-index: 2;
+
+display: grid;
+
+grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(360px, 0.95fr);
+
+align-items: center;
+
+gap: 70px;
+```
+
+}
+
+/* =========================================================
+HERO CONTENT
+========================================================= */
+
+.home-hero-content {
+
+```
+max-width: 650px;
+```
+
+}
+
+.home-badge {
+
+```
+width: fit-content;
+
+display: inline-flex;
+
+align-items: center;
+
+gap: 8px;
+
+margin-bottom: 20px;
+
+padding:
+    8px
+    13px;
+
+border:
+    1px solid
+    rgba(15, 118, 110, 0.15);
+
+border-radius: 999px;
+
+color:
+    var(--home-primary);
+
+background:
+    rgba(255, 255, 255, 0.8);
+
+font-size: 12px;
+
+font-weight: 700;
+```
+
+}
+
+.home-hero-content h1 {
+
+```
+max-width: 650px;
+
+margin:
+    0
+    0
+    22px;
+
+color:
+    var(--home-text);
+
+font-size:
+    clamp(
+        40px,
+        5vw,
+        66px
+    );
+
+font-weight: 800;
+
+line-height: 1.05;
+
+letter-spacing:
+    -1.8px;
+```
+
+}
+
+.home-hero-content h1 span {
+
+```
+display: block;
+
+color:
+    var(--home-primary);
+```
+
+}
+
+.home-hero-content p {
+
+```
+max-width: 590px;
+
+margin:
+    0
+    0
+    30px;
+
+color:
+    var(--home-text-soft);
+
+font-size: 17px;
+
+line-height: 1.8;
+```
+
+}
+
+/* =========================================================
+HERO BUTTONS
+========================================================= */
+
+.home-hero-actions {
+
+```
+display: flex;
+
+align-items: center;
+
+gap: 12px;
+
+flex-wrap: wrap;
+```
+
+}
+
+.home-hero-actions .btn {
+
+```
+min-width: 160px;
+```
+
+}
+
+.btn-outline {
+
+```
+min-height: 46px;
+
+display: inline-flex;
+
+align-items: center;
+
+justify-content: center;
+
+padding:
+    0
+    18px;
+
+border:
+    1px solid
+    var(--home-border);
+
+border-radius: 12px;
+
+color:
+    var(--home-primary);
+
+background:
+    #ffffff;
+
+font-size: 14px;
+
+font-weight: 700;
+
+transition:
+    0.2s ease;
+```
+
+}
+
+.btn-outline:hover {
+
+```
+border-color:
+    var(--home-primary-light);
+
+background:
+    var(--home-green-soft);
+
+transform:
+    translateY(-2px);
+```
+
+}
+
+/* =========================================================
+HERO VISUAL
+========================================================= */
+
+.home-hero-visual {
+
+```
+position: relative;
+
+min-height: 420px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+```
+
+}
+
+.hero-medical-card {
+
+```
+width: min(
+    100%,
+    390px
+);
+
+min-height: 250px;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+justify-content: center;
+
+text-align: center;
+
+padding: 35px;
+
+border:
+    1px solid
+    rgba(255,255,255,0.8);
+
+border-radius:
+    32px;
+
+background:
+    rgba(255,255,255,0.85);
+
+box-shadow:
+    var(--home-shadow-lg);
+
+backdrop-filter:
+    blur(12px);
+```
+
+}
+
+.hero-medical-icon {
+
+```
+width: 105px;
+height: 105px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+margin-bottom: 22px;
+
+border-radius:
+    28px;
+
+background:
+    var(--home-green-soft);
+
+font-size: 54px;
+```
+
+}
+
+.hero-medical-card strong {
+
+```
+display: block;
+
+margin-bottom: 6px;
+
+color:
+    var(--home-text);
+
+font-size: 20px;
+
+font-weight: 800;
+```
+
+}
+
+.hero-medical-card p {
+
+```
+margin: 0;
+
+color:
+    var(--home-text-muted);
+
+font-size: 13px;
+```
+
+}
+
+/* =========================================================
+FLOATING HERO CARDS
+========================================================= */
+
+.hero-floating-card {
+
+```
+position: absolute;
+
+display: flex;
+
+align-items: center;
+
+gap: 10px;
+
+padding:
+    12px
+    15px;
+
+border:
+    1px solid
+    rgba(226, 232, 240, 0.8);
+
+border-radius:
+    15px;
+
+background:
+    rgba(255,255,255,0.95);
+
+box-shadow:
+    var(--home-shadow-md);
+```
+
+}
+
+.hero-floating-card > span {
+
+```
+width: 38px;
+height: 38px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+border-radius:
+    11px;
+
+background:
+    var(--home-green-soft);
+
+font-size: 18px;
+```
+
+}
+
+.hero-floating-card strong {
+
+```
+display: block;
+
+color:
+    var(--home-text);
+
+font-size: 12px;
+```
+
+}
+
+.hero-floating-card small {
+
+```
+display: block;
+
+margin-top: 2px;
+
+color:
+    var(--home-text-muted);
+
+font-size: 10px;
+```
+
+}
+
+.hero-card-one {
+
+```
+top: 30px;
+
+left: 0;
+```
+
+}
+
+.hero-card-two {
+
+```
+right: 0;
+
+bottom: 35px;
+```
+
+}
+
+/* =========================================================
+HOME SECTION
+========================================================= */
+
+.home-section {
+
+```
+padding:
+    85px
+    0;
+```
+
+}
+
+.home-quick {
+
+```
+background:
+    #ffffff;
+```
+
+}
+
+.home-section-heading {
+
+```
+max-width: 700px;
+
+margin:
+    0
+    auto
+    42px;
+
+text-align: center;
+```
+
+}
+
+.home-section-label {
+
+```
+display: inline-block;
+
+margin-bottom: 9px;
+
+color:
+    var(--home-primary);
+
+font-size: 11px;
+
+font-weight: 800;
+
+letter-spacing:
+    1.3px;
+```
+
+}
+
+.home-section-heading h2 {
+
+```
+margin:
+    0
+    0
+    13px;
+
+color:
+    var(--home-text);
+
+font-size:
+    clamp(
+        28px,
+        4vw,
+        40px
+    );
+
+font-weight: 800;
+
+line-height: 1.15;
+
+letter-spacing:
+    -0.8px;
+```
+
+}
+
+.home-section-heading p {
+
+```
+margin: 0;
+
+color:
+    var(--home-text-muted);
+
+font-size: 15px;
+
+line-height: 1.8;
+```
+
+}
+
+/* =========================================================
+QUICK ACCESS
+========================================================= */
+
+.home-quick-grid {
+
+```
+display: grid;
+
+grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+gap: 18px;
+```
+
+}
+
+.home-feature-card {
+
+```
+min-width: 0;
+
+display: flex;
+
+flex-direction: column;
+
+padding:
+    25px;
+
+border:
+    1px solid
+    var(--home-border);
+
+border-radius:
+    var(--home-radius-lg);
+
+background:
+    #ffffff;
+
+box-shadow:
+    var(--home-shadow-sm);
+
+transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+```
+
+}
+
+.home-feature-card:hover {
+
+```
+transform:
+    translateY(-5px);
+
+border-color:
+    rgba(20,184,166,0.3);
+
+box-shadow:
+    var(--home-shadow-md);
+```
+
+}
+
+.feature-icon {
+
+```
+width: 54px;
+height: 54px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+margin-bottom: 20px;
+
+border-radius:
+    15px;
+
+background:
+    var(--home-green-soft);
+
+font-size: 25px;
+```
+
+}
+
+.home-feature-card h3 {
+
+```
+margin:
+    0
+    0
+    9px;
+
+color:
+    var(--home-text);
+
+font-size: 17px;
+
+line-height: 1.3;
+```
+
+}
+
+.home-feature-card p {
+
+```
+margin:
+    0
+    0
+    18px;
+
+color:
+    var(--home-text-muted);
+
+font-size: 13px;
+
+line-height: 1.7;
+```
+
+}
+
+.feature-link {
+
+```
+margin-top: auto;
+
+color:
+    var(--home-primary);
+
+font-size: 12px;
+
+font-weight: 800;
+```
+
+}
+
+/* =========================================================
+ABOUT
+========================================================= */
+
+.home-about {
+
+```
+background:
+    var(--home-background);
+```
+
+}
+
+.home-about-grid {
+
+```
+display: grid;
+
+grid-template-columns:
+    minmax(330px, 0.85fr)
+    minmax(0, 1.15fr);
+
+align-items: center;
+
+gap: 80px;
+```
+
+}
+
+.home-about-visual {
+
+```
+position: relative;
+
+min-height: 370px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+```
+
+}
+
+.about-main-card {
+
+```
+width: min(
+    100%,
+    360px
+);
+
+min-height: 300px;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+justify-content: center;
+
+text-align: center;
+
+border-radius:
+    30px;
+
+background:
+    linear-gradient(
+        145deg,
+        #0f766e,
+        #14b8a6
+    );
+
+color:
+    #ffffff;
+
+box-shadow:
+    var(--home-shadow-lg);
+```
+
+}
+
+.about-symbol {
+
+```
+width: 90px;
+height: 90px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+margin-bottom: 20px;
+
+border-radius:
+    25px;
+
+background:
+    rgba(255,255,255,0.15);
+
+font-size: 45px;
+```
+
+}
+
+.about-main-card strong {
+
+```
+display: block;
+
+margin-bottom: 5px;
+
+font-size: 19px;
+```
+
+}
+
+.about-main-card span {
+
+```
+font-size: 12px;
+
+opacity: 0.85;
+```
+
+}
+
+.about-small-card {
+
+```
+position: absolute;
+
+right: 0;
+
+bottom: 25px;
+
+max-width: 220px;
+
+padding:
+    13px
+    16px;
+
+border-radius:
+    13px;
+
+background:
+    #ffffff;
+
+color:
+    var(--home-primary);
+
+box-shadow:
+    var(--home-shadow-md);
+
+font-size: 11px;
+
+font-weight: 700;
+```
+
+}
+
+.home-about-content {
+
+```
+max-width: 620px;
+```
+
+}
+
+.home-about-content .home-section-label {
+
+```
+margin-bottom: 12px;
+```
+
+}
+
+.home-about-content h2 {
+
+```
+margin:
+    0
+    0
+    20px;
+
+color:
+    var(--home-text);
+
+font-size:
+    clamp(
+        30px,
+        4vw,
+        43px
+    );
+
+line-height: 1.15;
+```
+
+}
+
+.home-about-content p {
+
+```
+margin:
+    0
+    0
+    14px;
+
+color:
+    var(--home-text-muted);
+
+font-size: 14px;
+
+line-height: 1.8;
+```
+
+}
+
+.about-points {
+
+```
+display: grid;
+
+gap: 10px;
+
+margin-top: 25px;
+```
+
+}
+
+.about-points div {
+
+```
+display: flex;
+
+align-items: center;
+
+gap: 10px;
+
+color:
+    var(--home-text-soft);
+
+font-size: 13px;
+
+font-weight: 600;
+```
+
+}
+
+.about-points span {
+
+```
+width: 25px;
+height: 25px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+flex-shrink: 0;
+
+border-radius: 50%;
+
+color:
+    var(--home-primary);
+
+background:
+    var(--home-green-soft);
+
+font-size: 12px;
+```
+
+}
+
+/* =========================================================
+NEWS
+========================================================= */
+
+.home-news {
+
+```
+background:
+    #ffffff;
+```
+
+}
+
+.home-heading-row {
+
+```
+max-width: none;
+
+display: flex;
+
+align-items: flex-end;
+
+justify-content: space-between;
+
+gap: 30px;
+
+text-align: left;
+```
+
+}
+
+.home-heading-row > div {
+
+```
+max-width: 700px;
+```
+
+}
+
+.home-view-all {
+
+```
+flex-shrink: 0;
+
+color:
+    var(--home-primary);
+
+font-size: 13px;
+
+font-weight: 800;
+```
+
+}
+
+.home-news-grid {
+
+```
+display: grid;
+
+grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+gap: 20px;
+```
+
+}
+
+.home-news-card {
+
+```
+overflow: hidden;
+
+border:
+    1px solid
+    var(--home-border);
+
+border-radius:
+    var(--home-radius-lg);
+
+background:
+    #ffffff;
+
+box-shadow:
+    var(--home-shadow-sm);
+
+transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+```
+
+}
+
+.home-news-card:hover {
+
+```
+transform:
+    translateY(-4px);
+
+box-shadow:
+    var(--home-shadow-md);
+```
+
+}
+
+.news-image {
+
+```
+height: 160px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+background:
+    var(--home-green-soft);
+
+font-size: 48px;
+```
+
+}
+
+.news-content {
+
+```
+padding:
+    22px;
+```
+
+}
+
+.news-category {
+
+```
+display: inline-block;
+
+margin-bottom: 10px;
+
+color:
+    var(--home-primary);
+
+font-size: 10px;
+
+font-weight: 800;
+
+letter-spacing:
+    0.8px;
+
+text-transform:
+    uppercase;
+```
+
+}
+
+.news-content h3 {
+
+```
+margin:
+    0
+    0
+    10px;
+
+color:
+    var(--home-text);
+
+font-size: 17px;
+
+line-height: 1.35;
+```
+
+}
+
+.news-content p {
+
+```
+margin:
+    0
+    16px;
+
+color:
+    var(--home-text-muted);
+
+font-size: 13px;
+
+line-height: 1.7;
+```
+
+}
+
+.news-content a {
+
+```
+color:
+    var(--home-primary);
+
+font-size: 12px;
+
+font-weight: 800;
+```
+
+}
+
+/* =========================================================
+EDUCATION
+========================================================= */
+
+.home-education {
+
+```
+background:
+    var(--home-background);
+```
+
+}
+
+.education-topic-grid {
+
+```
+display: grid;
+
+grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+gap: 16px;
+```
+
+}
+
+.education-topic {
+
+```
+display: flex;
+
+align-items: flex-start;
+
+gap: 14px;
+
+padding:
+    20px;
+
+border:
+    1px solid
+    var(--home-border);
+
+border-radius:
+    var(--home-radius-md);
+
+background:
+    #ffffff;
+
+transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+```
+
+}
+
+.education-topic:hover {
+
+```
+transform:
+    translateY(-3px);
+
+box-shadow:
+    var(--home-shadow-sm);
+```
+
+}
+
+.education-topic > span {
+
+```
+width: 45px;
+height: 45px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+flex-shrink: 0;
+
+border-radius:
+    12px;
+
+background:
+    var(--home-green-soft);
+
+font-size: 20px;
+```
+
+}
+
+.education-topic strong {
+
+```
+display: block;
+
+margin-bottom: 4px;
+
+color:
+    var(--home-text);
+
+font-size: 14px;
+```
+
+}
+
+.education-topic small {
+
+```
+display: block;
+
+color:
+    var(--home-text-muted);
+
+font-size: 11px;
+
+line-height: 1.55;
+```
+
+}
+
+/* =========================================================
+CTA
+========================================================= */
+
+.home-cta {
+
+```
+padding:
+    70px
+    0;
+
+background:
+    #ffffff;
+```
+
+}
+
+.home-cta-inner {
+
+```
+position: relative;
+
+overflow: hidden;
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+gap: 40px;
+
+padding:
+    50px
+    60px;
+
+border-radius:
+    28px;
+
+color:
+    #ffffff;
+
+background:
+    linear-gradient(
+        135deg,
+        #0f766e,
+        #115e59
+    );
+
+box-shadow:
+    var(--home-shadow-lg);
+```
+
+}
+
+.home-cta-inner::after {
+
+```
+content: "";
+
+position: absolute;
+
+width: 300px;
+height: 300px;
+
+right: -100px;
+top: -170px;
+
+border-radius:
+    50%;
+
+background:
+    rgba(255,255,255,0.07);
+```
+
+}
+
+.home-cta-inner > div {
+
+```
+position: relative;
+
+z-index: 2;
+
+max-width: 650px;
+```
+
+}
+
+.home-cta .home-section-label {
+
+```
+color:
+    #99f6e4;
+```
+
+}
+
+.home-cta h2 {
+
+```
+margin:
+    0
+    0
+    12px;
+
+color:
+    #ffffff;
+
+font-size:
+    clamp(
+        28px,
+        4vw,
+        40px
+    );
+
+line-height: 1.15;
+```
+
+}
+
+.home-cta p {
+
+```
+margin: 0;
+
+color:
+    rgba(255,255,255,0.8);
+
+font-size: 14px;
+
+line-height: 1.7;
+```
+
+}
+
+.home-cta .btn {
+
+```
+position: relative;
+
+z-index: 2;
+
+flex-shrink: 0;
+
+min-width: 150px;
+```
+
+}
+
+/* =========================================================
+RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+```
+.home-hero {
+
+    padding:
+        70px
+        0
+        80px;
+
+}
+
+
+.home-hero-grid {
+
+    gap: 40px;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(300px, 0.8fr);
+
+}
+
+
+.home-hero-content h1 {
+
+    font-size:
+        clamp(
+            38px,
+            5vw,
+            55px
+        );
+
+}
+
+
+.home-quick-grid {
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+}
+
+
+.education-topic-grid {
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+}
+
+
+.home-about-grid {
+
+    gap: 50px;
+
+}
+```
+
+}
+
+/* =========================================================
+RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+```
+.home-container {
+
+    width:
+        calc(100% - 32px);
+
+}
+
+
+.home-hero {
+
+    padding:
+        55px
+        0
+        65px;
+
+}
+
+
+.home-hero-grid {
+
+    grid-template-columns:
+        1fr;
+
+    gap: 50px;
+
+}
+
+
+.home-hero-content {
+
+    max-width:
+        100%;
+
+    text-align:
+        center;
+
+}
+
+
+.home-badge {
+
+    margin-inline:
+        auto;
+
+}
+
+
+.home-hero-content h1 {
+
+    font-size:
+        clamp(
+            37px,
+            10vw,
+            52px
+        );
+
+    letter-spacing:
+        -1px;
+
+}
+
+
+.home-hero-content p {
+
+    margin-inline:
+        auto;
+
+    font-size:
+        15px;
+
+}
+
+
+.home-hero-actions {
+
+    justify-content:
+        center;
+
+}
+
+
+.home-hero-visual {
+
+    min-height:
+        350px;
+
+}
+
+
+.hero-medical-card {
+
+    width:
+        min(
+            330px,
+            80%
+        );
+
+}
+
+
+.hero-card-one {
+
+    left:
+        0;
+
+    top:
+        10px;
+
+}
+
+
+.hero-card-two {
+
+    right:
+        0;
+
+    bottom:
+        15px;
+
+}
+
+
+.home-section {
+
+    padding:
+        65px
+        0;
+
+}
+
+
+.home-section-heading {
+
+    margin-bottom:
+        32px;
+
+}
+
+
+.home-quick-grid {
+
+    grid-template-columns:
+        1fr 1fr;
+
+}
+
+
+.home-about-grid {
+
+    grid-template-columns:
+        1fr;
+
+    gap:
+        45px;
+
+}
+
+
+.home-about-content {
+
+    text-align:
+        center;
+
+}
+
+
+.home-about-content .home-section-label {
+
+    display:
+        block;
+
+}
+
+
+.about-points {
+
+    text-align:
+        left;
+
+    max-width:
+        350px;
+
+    margin-inline:
+        auto;
+
+}
+
+
+.home-about-visual {
+
+    min-height:
+        330px;
+
+}
+
+
+.home-news-grid {
+
+    grid-template-columns:
+        1fr;
+
+}
+
+
+.home-news-card {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        150px 1fr;
+
+}
+
+
+.news-image {
+
+    height:
+        100%;
+
+    min-height:
+        170px;
+
+}
+
+
+.home-heading-row {
+
+    align-items:
+        flex-start;
+
+    flex-direction:
+        column;
+
+}
+
+
+.home-view-all {
+
+    margin-top:
+        -15px;
+
+}
+
+
+.home-cta-inner {
+
+    padding:
+        40px
+        30px;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+
+}
+```
+
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+```
+.home-container {
+
+    width:
+        calc(100% - 24px);
+
+}
+
+
+.home-hero {
+
+    padding:
+        45px
+        0
+        55px;
+
+}
+
+
+.home-hero-content h1 {
+
+    font-size:
+        clamp(
+            34px,
+            11vw,
+            45px
+        );
+
+}
+
+
+.home-hero-actions {
+
+    flex-direction:
+        column;
+
+    width:
+        100%;
+
+}
+
+
+.home-hero-actions .btn {
+
+    width:
+        100%;
+
+}
+
+
+.home-hero-visual {
+
+    min-height:
+        310px;
+
+}
+
+
+.hero-medical-card {
+
+    width:
+        260px;
+
+    min-height:
+        230px;
+
+    padding:
+        25px;
+
+}
+
+
+.hero-medical-icon {
+
+    width:
+        75px;
+
+    height:
+        75px;
+
+    font-size:
+        38px;
+
+}
+
+
+.hero-medical-card strong {
+
+    font-size:
+        17px;
+
+}
+
+
+.hero-card-one {
+
+    left:
+        -3px;
+
+}
+
+
+.hero-card-two {
+
+    right:
+        -3px;
+
+}
+
+
+.hero-floating-card {
+
+    padding:
+        9px
+        11px;
+
+}
+
+
+.hero-floating-card > span {
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+}
+
+
+.hero-floating-card strong {
+
+    font-size:
+        10px;
+
+}
+
+
+.hero-floating-card small {
+
+    font-size:
+        9px;
+
+}
+
+
+.home-section {
+
+    padding:
+        55px
+        0;
+
+}
+
+
+.home-section-heading h2 {
+
+    font-size:
+        28px;
+
+}
+
+
+.home-quick-grid {
+
+    grid-template-columns:
+        1fr;
+
+}
+
+
+.home-feature-card {
+
+    padding:
+        22px;
+
+}
+
+
+.home-about-visual {
+
+    min-height:
+        300px;
+
+}
+
+
+.about-main-card {
+
+    width:
+        260px;
+
+    min-height:
+        260px;
+
+}
+
+
+.about-small-card {
+
+    right:
+        0;
+
+    bottom:
+        5px;
+
+    max-width:
+        180px;
+
+    font-size:
+        10px;
+
+}
+
+
+.home-about-content h2 {
+
+    font-size:
+        29px;
+
+}
+
+
+.home-news-card {
+
+    display:
+        block;
+
+}
+
+
+.news-image {
+
+    height:
+        145px;
+
+    min-height:
+        145px;
+
+}
+
+
+.education-topic-grid {
+
+    grid-template-columns:
+        1fr;
+
+}
+
+
+.home-cta {
+
+    padding:
+        50px
+        0;
+
+}
+
+
+.home-cta-inner {
+
+    padding:
+        35px
+        22px;
+
+    border-radius:
+        22px;
+
+}
+
+
+.home-cta h2 {
+
+    font-size:
+        28px;
+
+}
+
+
+.home-cta .btn {
+
+    width:
+        100%;
+
+}
+```
+
+}
+
+/* =========================================================
+VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+```
+.home-container {
+
+    width:
+        calc(100% - 20px);
+
+}
+
+
+.home-hero-content h1 {
+
+    font-size:
+        32px;
+
+}
+
+
+.hero-medical-card {
+
+    width:
+        230px;
+
+}
+
+
+.hero-floating-card {
+
+    transform:
+        scale(0.88);
+
+}
+
+
+.hero-card-one {
+
+    left:
+        -15px;
+
+}
+
+
+.hero-card-two {
+
+    right:
+        -15px;
+
+}
+
+
+.home-feature-card {
+
+    padding:
+        18px;
+
+}
+
+
+.about-small-card {
+
+    right:
+        -5px;
+
+}
+```
+
+}
+
+/* =========================================================
+REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+```
+*,
+*::before,
+*::after {
+
+    scroll-behavior:
+        auto !important;
+
+    transition:
+        none !important;
+
+    animation:
+        none !important;
+
+}
+```
+
+}
